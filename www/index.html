@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>G3 Data Analytics | Girls Inc of NYC</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link ios-href="build/css/app.ios.css" rel="stylesheet">
+  <link md-href="build/css/app.md.css" rel="stylesheet">
+  <link wp-href="build/css/app.wp.css" rel="stylesheet">  
+</head>
+<body>
+
+  <ion-app></ion-app>
+
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+  <!-- Polyfill needed for platforms without Promise and Collection support -->
+  <script src="build/js/es6-shim.min.js"></script>
+  <!-- Zone.js and Reflect-metadata  -->
+  <script src="build/js/angular2-polyfills.js"></script>
+  <!-- the bundle which is built from the app's source code -->
+  <script src="build/js/app.bundle.js"></script>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+  <script>
+      function playSound(id, loop) {
+            return createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
+        }
+</script>
+</body>
+</html>

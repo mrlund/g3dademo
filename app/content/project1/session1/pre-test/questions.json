@@ -1,0 +1,48 @@
+{
+    "type": "multiple-choice",
+    "questions": [
+        {
+            "question": "Bar graphs graph interval and ratio data, histograms graph nominal and ordinal data",
+            "answers": [
+                {
+                    "answer": "True",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "False",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "question": "The mean of the data set is always in the middle of a histogram",
+            "answers": [
+                {
+                    "answer": "True",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "False",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "question": "The tallest bar or bars on a histogram visually represents the:",
+            "answers": [
+                {
+                    "answer": "Median",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Mean",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Mode",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

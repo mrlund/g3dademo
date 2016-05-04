@@ -1,0 +1,33 @@
+<ion-navbar *navbar hideBackButton="true">
+  <ion-buttons side="left">  
+    <button (click)="toggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+    </button>        
+  </ion-buttons>
+    <ion-title>{{selectedItem.title}}</ion-title>
+</ion-navbar>
+
+<ion-content>
+    <div *ngIf="selectedItem" class="selection">
+        <div [innerHtml]="pageContent"></div> 
+        <animation *ngIf="animationName" [name]="animationName"></animation>
+    </div>
+</ion-content>
+<ion-toolbar position="bottom">
+    <ion-buttons start>
+        <button (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
+            <ion-icon name="arrow-back" item-left></ion-icon>
+            Previous
+        </button>
+    </ion-buttons>
+    <ion-buttons end>
+        <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem">
+            Next
+            <ion-icon name="arrow-forward" item-right></ion-icon>
+        </button>
+        <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem">
+            DONE!
+            <ion-icon name="checkmark" item-right></ion-icon>
+        </button>        
+    </ion-buttons>
+</ion-toolbar>

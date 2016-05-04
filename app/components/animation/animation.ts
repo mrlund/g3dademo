@@ -1,0 +1,109 @@
+import {Component, EventEmitter, Input} from 'angular2/core';
+import {ContentData} from '../../providers/contentProvider';
+
+@Component({
+  selector: 'animation',
+  providers: [ContentData],
+  template: `
+    <canvas (click)="playPauseAnimation()" id="canvas" width="600" height="600" style="background-color:#FFFFFF"></canvas>
+  `,
+  directives: []  
+})
+export class Animation {
+  @Input() name:string;
+  @Input() project:string;
+  @Input() session:string;
+  @Input() urlName:string;
+  private canvas:any;
+  private stage:any;
+  private exportRoot:any;
+  private page_canvas:any;
+  private stageWidth:number;
+  private stageHeight:number;
+  private animationCode:any;
+  private content:ContentData;
+  private isPaused:boolean;
+  //private updateRate:EventEmitter = new EventEmitter();
+  
+  constructor(content: ContentData){
+      this.content = content;
+  }
+ngOnInit() {
+    this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
+        (data) => {
+            this.animationCode = data;
+            this.loadAnimation();
+        },
+        (error) => {
+            console.log(error);
+        }
+    );
+} 
+  
+ update(value) {
+    //this.updateRate.next(value);
+  }
+ playPauseAnimation(){
+      var anim = this.stage.getChildAt(0);
+      //console.log(anim);
+      anim.soundTrack.setPaused(!createjs.Ticker.getPaused());
+      createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+      //console.log("Hit " + createjs.Ticker.getPaused());
+  }
+ loadAnimation(){
+        this.page_canvas = document.getElementsByTagName("canvas")[0];
+        this.stageWidth = this.page_canvas.width;
+        this.stageHeight = this.page_canvas.height;
+
+        this.canvas = document.getElementById("canvas");
+        var loader = new createjs.LoadQueue(false);
+        loader.installPlugin(createjs.Sound);
+        loader.addEventListener("complete", this.handleComplete(this));
+        loader.loadManifest(lib.properties.manifest);
+ }
+ handleComplete(that) {
+     return function(){
+        that.stage = new createjs.Stage(that.canvas);
+        that.stage.addChild(new that.animationCode[that.name]());
+        that.stage.update();
+
+        createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+        createjs.Ticker.setFPS(lib.properties.fps);
+        createjs.Ticker.addEventListener("tick", that.tickHandler(that));
+        that.resizeAnimation();
+     }
+ }
+ tickHandler(that){
+     return function(event){
+        if (!event.paused){
+            that.stage.update();
+        }
+     }
+ }
+ resizeAnimation(){
+        var widthToHeight = this.stageWidth / this.stageHeight;
+        var newWidth = window.innerWidth;
+        var newHeight = window.innerHeight;
+        var newWidthToHeight = newWidth / newHeight;
+        //
+        if (newWidthToHeight > widthToHeight) {
+            newWidth = newHeight * widthToHeight;
+            this.page_canvas.style.height = newHeight + "px";
+            this.page_canvas.style.width = newWidth + "px";
+        } else {
+            newHeight = newWidth / widthToHeight;
+            this.page_canvas.style.height = newHeight + "px";
+            this.page_canvas.style.width = newWidth + "px";
+        }
+        // if (scale){
+        //     scale = newWidthToHeight / widthToHeight;
+        // }
+        if (this.stage) {
+            this.stage.width = newWidth;
+            this.stage.height = newHeight;
+        }
+        //this.page_canvas.style.marginTop = ((window.innerHeight - newHeight) / 2) + "px";
+        this.page_canvas.style.marginLeft = ((window.innerWidth - newWidth) / 2) + "px";
+ }
+ 
+}
