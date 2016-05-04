@@ -34,7 +34,7 @@ var copyFonts = require('ionic-gulp-fonts-copy');
 var copyScripts = require('ionic-gulp-scripts-copy');
 
 var copyContentFiles = function(options) {
-  options.src = 'app/content/**/*.+(json|mp3|js)';
+  options.src = 'app/content/**/*.+(json|mp3|js|png|jpg)';
   options.dest = 'www/build/content';
 
   return gulp.src(options.src)

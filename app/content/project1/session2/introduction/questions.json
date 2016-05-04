@@ -1,0 +1,31 @@
+{
+    "type": "multiple-choice",
+    "questions": [
+        {
+            "question": "What factors do you think contribute to an individual’s annual income?",
+            "answers": [
+                {
+                    "answer": "True",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "False",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "question": "What do you think is the main factor?",
+            "answers": [
+                {
+                    "answer": "True",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "False",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

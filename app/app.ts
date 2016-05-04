@@ -37,8 +37,8 @@ class MyApp {
                 new MenuItem('Introduction', 1, 1, null, [
                     //Pages
                     new ContentItem('intro', 'Introduction', ContentPage),
-                    new ContentItem('assignment', 'Assignment', ContentPage),
-                    new ContentItem('objectives', 'Objectives', ContentPage),
+                    new ContentItem('assignment', 'Objectives', ContentPage),
+                    new ContentItem('objectives', 'Assignment', ContentPage),
                     new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
                 ]),
                 new MenuItem('How To Calculate GPA', 1, 2, null, [
