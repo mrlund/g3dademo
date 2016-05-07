@@ -1,31 +1,43 @@
 {
-    "type": "multiple-choice",
     "questions": [
         {
-            "question": "What factors do you think contribute to an individual’s annual income?",
+            "questionId": 100,
+            "type": "peer-review",            
+            "question": "What conclusions can you draw from this data?",
             "answers": [
                 {
-                    "answer": "True",
-                    "isCorrect": true
-                },
-                {
-                    "answer": "False",
-                    "isCorrect": false
+                    "answer": "Education, Parents",
+                    "isCorrect": true,
+                    "response": "I agree"
                 }
             ]
         },
         {
-            "question": "What do you think is the main factor?",
+            "questionId": 101,
+            "type": "peer-review",                
+            "question": "What are some reasons why higher education leads to a higher annual salary?",
             "answers": [
                 {
-                    "answer": "True",
-                    "isCorrect": true
-                },
-                {
-                    "answer": "False",
-                    "isCorrect": false
+                    "answer": "Education",
+                    "isCorrect": true,
+                    "response": "With a good education you can make it on your own."
                 }
             ]
+
+        },
+        {
+            "questionId": 102,
+            "type": "peer-review",                
+            "question": "What stands out to you about this data set? Why?",
+            "answers": [
+                {
+                    "answer": "Education",
+                    "isCorrect": false,
+                    "response": "With a good education you can make it on your own."
+                }
+            ]
+
         }
+        
     ]
 }

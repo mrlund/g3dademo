@@ -1,7 +1,10 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
+import {RouteConfig} from 'angular2/router';
+
 import {WelcomePage} from './pages/welcome-page/welcome-page';
 import {ContentPage} from './pages/content-page/content-page';
 import {AnswerQuestionPage} from './pages/answer-question-page/answer-question-page';
+import {QuestionPeerReviewPage} from './pages/question-peer-review-page/question-peer-review-page';
 
 import {MenuItem} from './models/menu-item';
 import {ContentItem} from './models/content-item';
@@ -13,6 +16,12 @@ import {ContentItem} from './models/content-item';
         mode: 'ios'
     } // http://ionicframework.com/docs/v2/api/config/Config/
 })
+@RouteConfig([ 
+    { path: '/', component: WelcomePage, as: 'First' }, 
+    { path: '/content/:project/:session/:urlName', component: ContentPage, as: 'Content' },
+    { path: '/question/:project/:session/:urlName', component: AnswerQuestionPage, as: 'Question' },
+    { path: '/question-peer/:project/:session/:urlName', component: QuestionPeerReviewPage, as: 'QuestionPeer' }
+ ]) 
 class MyApp {
     // make HelloIonicPage the root (or first) page
     rootPage: any = WelcomePage;
@@ -26,8 +35,8 @@ class MyApp {
         private menu: MenuController
     ) {
         this.initializeApp();
-
-
+        
+        
         // set our app's pages
         this.pages = [
             new MenuItem('Home', 0, 0, null),
@@ -44,7 +53,7 @@ class MyApp {
                 new MenuItem('How To Calculate GPA', 1, 2, null, [
                     //Page
                     new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
-                    new ContentItem('average-earnings', 'Average Annual Earnings', AnswerQuestionPage)
+                    new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage)
                 ]),
                 new MenuItem('Graphing Quartiles', 1, 2, null, null),
                 new MenuItem('Assumptions Of GPA', 1, 3, null, null),

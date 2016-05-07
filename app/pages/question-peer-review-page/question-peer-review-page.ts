@@ -7,21 +7,22 @@ import {MenuItem} from '../../models/menu-item';
 
 
 @Page({
-    templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
+    templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
     providers: [ContentData],
     directives: []
 })
-export class AnswerQuestionPage {
+export class QuestionPeerReviewPage {
     selectedItem: any;
     pageContent: string;
     questions: Array<any>;
+    state: string = "answer";
 
     constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
         {
-            this.selectedItem = new ContentItem(navParams.get('urlName'), navParams.get('urlName'), AnswerQuestionPage);
+            this.selectedItem = new ContentItem(navParams.get('urlName'), navParams.get('urlName'), QuestionPeerReviewPage);
             this.selectedItem.project = navParams.get('project');
             this.selectedItem.session = navParams.get('session');
             this.selectedItem.menuItem = new MenuItem('Title', this.selectedItem.project, this.selectedItem.session, null, [this.selectedItem]);
@@ -45,6 +46,12 @@ export class AnswerQuestionPage {
                 console.log(error);
             }
         );
+    }
+    submitAnswers(){
+        this.state = "give-feedback";
+    }
+    submitFeedback(){
+        this.state = "get-feedback";
     }
     toggleMenu() {
         if (this.menu.isOpen()) {
