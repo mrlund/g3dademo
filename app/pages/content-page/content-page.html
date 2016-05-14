@@ -11,11 +11,14 @@
     <div *ngIf="selectedItem" class="selection">
         <div [innerHtml]="pageContent" class="content-page">
         </div> 
-        <animation *ngIf="animationName" 
+        <animation *ngIf="animationName && selectedItem" style="position:relative;display:block;"
         [name]="animationName" 
-        [session]="selectedItem.menuItem.session" 
-        [project]="selectedItem.menuItem.project" 
-        [urlName]="selectedItem.urlName"></animation>
+        [session]="selectedItem.menuItem.session"  
+        [project]="selectedItem.menuItem.project"  
+        [urlName]="selectedItem.urlName" 
+        [paused]="pauseAnimation" 
+        (playStateChanged)="setAnimationState($event)"> 
+        </animation>
     </div>
 </ion-content>
 <ion-toolbar position="bottom">

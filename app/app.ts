@@ -4,6 +4,7 @@ import {RouteConfig} from 'angular2/router';
 import {WelcomePage} from './pages/welcome-page/welcome-page';
 import {ContentPage} from './pages/content-page/content-page';
 import {AnswerQuestionPage} from './pages/answer-question-page/answer-question-page';
+import {ActivityTablePage} from './pages/activity-table-page/activity-table-page';
 import {QuestionPeerReviewPage} from './pages/question-peer-review-page/question-peer-review-page';
 
 import {MenuItem} from './models/menu-item';
@@ -16,11 +17,11 @@ import {ContentItem} from './models/content-item';
         mode: 'ios'
     } // http://ionicframework.com/docs/v2/api/config/Config/
 })
-@RouteConfig([ 
-    { path: '/', component: WelcomePage, as: 'First' }, 
+@RouteConfig([  
     { path: '/content/:project/:session/:urlName', component: ContentPage, as: 'Content' },
     { path: '/question/:project/:session/:urlName', component: AnswerQuestionPage, as: 'Question' },
-    { path: '/question-peer/:project/:session/:urlName', component: QuestionPeerReviewPage, as: 'QuestionPeer' }
+    { path: '/question-peer/:project/:session/:urlName', component: QuestionPeerReviewPage, as: 'QuestionPeer' },
+    { path: '/activity-table/:project/:session/:urlName', component: ActivityTablePage, as: 'ActivityTable' }
  ]) 
 class MyApp {
     // make HelloIonicPage the root (or first) page
@@ -53,7 +54,8 @@ class MyApp {
                 new MenuItem('How To Calculate GPA', 1, 2, null, [
                     //Page
                     new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
-                    new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage)
+                    new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
+                    new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage)
                 ]),
                 new MenuItem('Graphing Quartiles', 1, 2, null, null),
                 new MenuItem('Assumptions Of GPA', 1, 3, null, null),

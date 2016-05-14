@@ -1,19 +1,24 @@
-import {Component, EventEmitter, Input} from 'angular2/core';
+import {Component, EventEmitter, Input, Output, OnChanges} from 'angular2/core';
 import {ContentData} from '../../providers/contentProvider';
 
 @Component({
   selector: 'animation',
   providers: [ContentData],
   template: `
-    <canvas (click)="playPauseAnimation()" id="canvas" width="600" height="600" style="background-color:#FFFFFF"></canvas>
+    <canvas (click)="playPauseAnimation()" id="canvas" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+    <img *ngIf="paused" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
   `,
   directives: []  
 })
-export class Animation {
+export class Animation implements OnChanges {
   @Input() name:string;
   @Input() project:string;
   @Input() session:string;
   @Input() urlName:string;
+  @Input() paused:boolean;
+  
+  @Output() playStateChanged:EventEmitter<boolean> = new EventEmitter();
+  
   private canvas:any;
   private stage:any;
   private exportRoot:any;
@@ -39,13 +44,20 @@ ngOnInit() {
         }
     );
 } 
-  
+  ngOnChanges(changes){
+      if (this.paused && this.stage && !createjs.Ticker.getPaused())
+      {
+          console.log("Triggered Paused");
+          this.playPauseAnimation();
+      }
+  }
  update(value) {
     //this.updateRate.next(value);
   }
  playPauseAnimation(){
       var anim = this.stage.getChildAt(0);
       //console.log(anim);
+      this.playStateChanged.emit(!createjs.Ticker.getPaused());
       anim.soundTrack.setPaused(!createjs.Ticker.getPaused());
       createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
       //console.log("Hit " + createjs.Ticker.getPaused());
@@ -71,11 +83,12 @@ ngOnInit() {
         createjs.Ticker.setFPS(lib.properties.fps);
         createjs.Ticker.addEventListener("tick", that.tickHandler(that));
         that.resizeAnimation();
+        createjs.Ticker.setPaused(true);
      }
  }
  tickHandler(that){
      return function(event){
-        if (!event.paused){
+        if (!that.paused && !event.paused){
             that.stage.update();
         }
      }
@@ -104,6 +117,9 @@ ngOnInit() {
         }
         //this.page_canvas.style.marginTop = ((window.innerHeight - newHeight) / 2) + "px";
         this.page_canvas.style.marginLeft = ((window.innerWidth - newWidth) / 2) + "px";
+        // this.page_canvas.parentElement.style.width = this.page_canvas.width + "px";
+        // this.page_canvas.parentElement.style.height = this.page_canvas.height + "px";
+  
  }
  
 }
