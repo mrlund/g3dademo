@@ -1,0 +1,16 @@
+{    
+    "questions": [
+        {
+            "type": "discussion",            
+            "question": "Which category does GPA falls into and why?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",            
+            "question": "Does this type of graph display the data well?",
+            "answers": [
+            ]
+        }
+    ]
+}

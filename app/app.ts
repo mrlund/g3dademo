@@ -71,8 +71,20 @@ class MyApp {
                     new ContentItem('raising-gpa', 'Raising Your GPA', ContentPage),
                     new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
                 ]),                
-                new MenuItem('Graphing Quartiles', 1, 4, null, null),
-                new MenuItem('Assumptions Of GPA', 1, 5, null, null),
+                new MenuItem('Graphing Quartiles', 1, 4, null, 
+                [
+                    new ContentItem('introduction', 'Introduction', ContentPage),
+                    new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+                    new ContentItem('why-box-plots', 'Why Box Plots', ContentPage),
+                    new ContentItem('how-to-create', 'Creating Plots', ContentPage),
+                    new ContentItem('excercise', 'Excercise', ContentPage)
+                ]),
+                new MenuItem('Assumptions Of GPA', 1, 5, null, [
+                    new ContentItem('introduction', 'Introduction', ContentPage),
+                    new ContentItem('types-of-measurement', 'Types of Measurement', ContentPage),
+                    new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
+                    new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+                ]),
                 new MenuItem('Graphing Interval Data', 1, 6, null, null),
                 new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
                 new MenuItem('Summary/Quiz', 1, 6, null, null),

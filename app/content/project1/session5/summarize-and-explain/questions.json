@@ -1,0 +1,56 @@
+{
+    "questions": [
+        {
+            "questionId": 100,
+            "type": "peer-review",            
+            "question": "Nominal",
+            "answers": [
+                {
+                    "answer": "Education, Parents",
+                    "isCorrect": true,
+                    "response": "I agree"
+                }
+            ]
+        },
+        {
+            "questionId": 101,
+            "type": "peer-review",                
+            "question": "Ordinal",
+            "answers": [
+                {
+                    "answer": "Education",
+                    "isCorrect": true,
+                    "response": "With a good education you can make it on your own."
+                }
+            ]
+
+        },
+        {
+            "questionId": 102,
+            "type": "peer-review",                
+            "question": "Interval",
+            "answers": [
+                {
+                    "answer": "Education",
+                    "isCorrect": false,
+                    "response": "With a good education you can make it on your own."
+                }
+            ]
+
+        },
+        {
+            "questionId": 103,
+            "type": "peer-review",                
+            "question": "Ratio",
+            "answers": [
+                {
+                    "answer": "Education",
+                    "isCorrect": false,
+                    "response": "With a good education you can make it on your own."
+                }
+            ]
+
+        }
+        
+    ]
+}
