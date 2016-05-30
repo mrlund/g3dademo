@@ -40,6 +40,7 @@ export class ContentPage {
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.pageContent = data._body;
+                this.animationName = "scene_test";
             },
             (error) => {
                 console.log(error);

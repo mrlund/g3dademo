@@ -10,11 +10,11 @@
                 <ion-label>Classroom Mode</ion-label>
                 <ion-toggle [(ngModel)]="classroomMode"></ion-toggle>
             </ion-item>
-            <div *ngFor="#p of pages">
+            <div *ngFor="let p of pages">
                 <ion-list-header  (click)="showChildren(p)">
                     <ion-icon name="contact"></ion-icon> {{p.title}}
                 </ion-list-header>
-                <ion-item [hidden]="isDisplayed(p)" ion-item *ngFor="#c of p.children" (click)="openPage(c)">
+                <ion-item [hidden]="isDisplayed(p)" ion-item *ngFor="let c of p.children" (click)="openPage(c)">
                     <ion-icon [hidden]="!isComplete(c)" secondary name="ios-checkmark-circle" item-left></ion-icon>
                     <ion-icon [hidden]="isComplete(c)" secondary name="ios-checkmark-circle-outline" item-left></ion-icon>
                     {{c.title}}

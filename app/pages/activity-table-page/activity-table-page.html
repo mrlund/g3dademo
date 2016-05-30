@@ -15,7 +15,7 @@
         <ion-card-content>
             <ion-card-title><strong>Budget</strong></ion-card-title>
             <ion-list>
-                <ion-item *ngFor="#item of table">
+                <ion-item *ngFor="let item of table">
                     <ion-row>
                         <ion-col text-left>{{item.category.name}}</ion-col>
                         <ion-col text-left>{{item.name}}</ion-col>
@@ -31,7 +31,7 @@
                     <ion-col width-70>
                         <ion-select [(ngModel)]="addSelected">
                             <ion-option checked="true" value="0">Choose item</ion-option>
-                            <ion-option *ngFor="#option of addList" [value]="option.item">{{option.name}}</ion-option>
+                            <ion-option *ngFor="let option of addList" [value]="option.item">{{option.name}}</ion-option>
                         </ion-select>
                     </ion-col>
                     <ion-col width-30> 

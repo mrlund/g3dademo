@@ -1,5 +1,7 @@
-import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
-import {RouteConfig} from 'angular2/router';
+import {App, IonicApp, Platform, MenuController, NavController, Nav} from 'ionic-angular';
+import { ViewChild } from '@angular/core';
+
+import {Routes} from '@angular/router';
 
 import {WelcomePage} from './pages/welcome-page/welcome-page';
 import {ContentPage} from './pages/content-page/content-page';
@@ -17,14 +19,15 @@ import {ContentItem} from './models/content-item';
         mode: 'ios'
     } // http://ionicframework.com/docs/v2/api/config/Config/
 })
-@RouteConfig([  
-    { path: '/content/:project/:session/:urlName', component: ContentPage, as: 'Content' },
-    { path: '/question/:project/:session/:urlName', component: AnswerQuestionPage, as: 'Question' },
-    { path: '/question-peer/:project/:session/:urlName', component: QuestionPeerReviewPage, as: 'QuestionPeer' },
-    { path: '/activity-table/:project/:session/:urlName', component: ActivityTablePage, as: 'ActivityTable' }
+@Routes([  
+    { path: '/content/:project/:session/:urlName', component: ContentPage },
+    { path: '/question/:project/:session/:urlName', component: AnswerQuestionPage },
+    { path: '/question-peer/:project/:session/:urlName', component: QuestionPeerReviewPage },
+    { path: '/activity-table/:project/:session/:urlName', component: ActivityTablePage }
  ]) 
 class MyApp {
     // make HelloIonicPage the root (or first) page
+    @ViewChild(Nav) nav: Nav;
     rootPage: any = WelcomePage;
     pages: Array<MenuItem>;
     openMenuGroup: MenuItem;
@@ -47,20 +50,31 @@ class MyApp {
                 new MenuItem('Introduction', 1, 1, null, [
                     //Pages
                     new ContentItem('intro', 'Introduction', ContentPage),
-                    new ContentItem('assignment', 'Objectives', ContentPage),
-                    new ContentItem('objectives', 'Assignment', ContentPage),
+                    new ContentItem('objectives', 'Objectives', ContentPage),
+                    new ContentItem('assignment', 'Assignment', ContentPage),
                     new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
                 ]),
-                new MenuItem('How To Calculate GPA', 1, 2, null, [
+                new MenuItem('Income and GPA', 1, 2, null, [
                     //Page
                     new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
                     new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
-                    new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage)
+                    new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage),
+                    new ContentItem('conclusion', 'Conclusion', AnswerQuestionPage),
                 ]),
-                new MenuItem('Graphing Quartiles', 1, 2, null, null),
-                new MenuItem('Assumptions Of GPA', 1, 3, null, null),
-                new MenuItem('Graphing Interval Data', 1, 4, null, null),
-                new MenuItem('Is GPA A Fair Use Of Data', 1, 5, null, null),
+                new MenuItem('How To Calculate GPA', 1, 3, null, [
+                    //Page
+                    new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
+                    new ContentItem('what-is-gpa', 'What is GPA', ContentPage),
+                    new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
+                    new ContentItem('calculate-excercise', 'Excercise', ContentPage),
+                    new ContentItem('cleaver-high', 'Cleaver High', ContentPage),
+                    new ContentItem('raising-gpa', 'Raising Your GPA', ContentPage),
+                    new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
+                ]),                
+                new MenuItem('Graphing Quartiles', 1, 4, null, null),
+                new MenuItem('Assumptions Of GPA', 1, 5, null, null),
+                new MenuItem('Graphing Interval Data', 1, 6, null, null),
+                new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
                 new MenuItem('Summary/Quiz', 1, 6, null, null),
             ]),
             new MenuItem('2: Is School Discipline Fair?', 2, 0, [
@@ -136,12 +150,9 @@ class MyApp {
     openPage(page: MenuItem) {
         // close the menu when clicking a link from the menu
         this.menu.close();
-        // navigate to the new page if it is not the current page
-        let nav = this.app.getComponent('nav');
-        //console.log(page);
-        
+        // navigate to the new page if it is not the current page        
         var firstContentPage = page.pages[0];
-        nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
+        this.nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
     }
     showChildren(item) {
         if (item.children) {
@@ -151,9 +162,8 @@ class MyApp {
                 this.openMenuGroup = item;
             }
         } else {
-            let nav = this.app.getComponent('nav');
             this.menu.close();
-            nav.setRoot(WelcomePage);
+            this.nav.setRoot(WelcomePage);
         }
     }
     isDisplayed(item) {

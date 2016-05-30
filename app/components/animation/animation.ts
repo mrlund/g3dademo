@@ -1,11 +1,13 @@
-import {Component, EventEmitter, Input, Output, OnChanges} from 'angular2/core';
+import {Component, EventEmitter, Input, Output, OnChanges} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
+declare var createjs: any; 
+declare var lib: any;
 
 @Component({
   selector: 'animation',
   providers: [ContentData],
   template: `
-    <canvas (click)="playPauseAnimation()" id="canvas" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+    <canvas [hidden]="!animationFileFound" (click)="playPauseAnimation()" id="canvas" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
     <img *ngIf="paused" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
   `,
   directives: []  
@@ -28,6 +30,7 @@ export class Animation implements OnChanges {
   private animationCode:any;
   private content:ContentData;
   private isPaused:boolean;
+  private animationFileFound: boolean;
   //private updateRate:EventEmitter = new EventEmitter();
   
   constructor(content: ContentData){
@@ -36,11 +39,13 @@ export class Animation implements OnChanges {
 ngOnInit() {
     this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
         (data) => {
+            this.animationFileFound = true;
             this.animationCode = data;
             this.loadAnimation();
         },
         (error) => {
             console.log(error);
+            this.animationFileFound = false;
         }
     );
 } 
@@ -83,6 +88,7 @@ ngOnInit() {
         createjs.Ticker.setFPS(lib.properties.fps);
         createjs.Ticker.addEventListener("tick", that.tickHandler(that));
         that.resizeAnimation();
+        that.stage.getChildAt(0).soundTrack.setPaused(true);
         createjs.Ticker.setPaused(true);
      }
  }

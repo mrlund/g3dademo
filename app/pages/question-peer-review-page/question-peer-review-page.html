@@ -22,7 +22,7 @@
             <strong>How did you do?</strong> Your classmate gave you the following response.
         </ion-card-content>
     </ion-card>
-    <ion-card *ngFor="#question of questions.questions">
+    <ion-card *ngFor="let question of questions.questions">
         <ion-card-content>
             <ion-card-title *ngIf="questions">
                 <strong>
@@ -31,7 +31,7 @@
             </ion-card-title>
             <ion-list radio-group>
                 <div *ngIf="state == 'give-feedback'">
-                    <ion-item *ngFor="#answer of question.answers">
+                    <ion-item *ngFor="let answer of question.answers">
                         <ion-label>Answer: {{answer.answer}}
                             <br /><br />
                             <strong>Your assessment:</strong>
@@ -47,7 +47,7 @@
                     </ion-item>
                 </div>
                 <div *ngIf="state == 'get-feedback'">
-                    <div *ngFor="#answer of question.answers">
+                    <div *ngFor="let answer of question.answers">
                         <ion-item>
                             <ion-label><strong>Your answer:</strong> {{answer.answer}}</ion-label>
                         </ion-item>
