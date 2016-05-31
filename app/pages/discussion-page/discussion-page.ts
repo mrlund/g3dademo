@@ -4,7 +4,7 @@ import {WelcomePage} from '../welcome-page/welcome-page';
 
 @Page({
   templateUrl: 'build/pages/discussion-page/discussion-page.html',
-  providers: [ContentData],
+  providers: [],
   directives: []
 })
 export class DiscussionPage {

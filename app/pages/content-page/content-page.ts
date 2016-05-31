@@ -10,7 +10,7 @@ import {MenuItem} from '../../models/menu-item';
 
 @Page({
     templateUrl: 'build/pages/content-page/content-page.html',
-    providers: [ContentData],
+    providers: [],
     directives: [Animation]
 })
 export class ContentPage {

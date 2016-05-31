@@ -46,7 +46,9 @@ export class ProgressProvider implements OnInit {
   getCompletedLessons() : Array<MenuItem> {
       return this.completedLessons;
   }
-  
+  getFirstLesson(){
+      return this.pages[1].children[0].pages[0];
+  }
   findNextLesson(lesson: MenuItem){
       let nextLesson: MenuItem;
       this.pages.forEach((project, index) => {

@@ -9,7 +9,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 @Page({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
-    providers: [ContentData],
+    providers: [],
     directives: []
 })
 export class ActivityTablePage {

@@ -10,7 +10,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 @Page({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
-    providers: [ContentData],
+    providers: [],
     directives: []
 })
 export class AnswerQuestionPage {

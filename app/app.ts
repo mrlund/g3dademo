@@ -18,7 +18,7 @@ import {Events} from 'ionic-angular';
 
 @App({
     templateUrl: 'build/app.html',
-    providers: [ProgressProvider],
+    providers: [ProgressProvider, ContentData],
     config: {
         mode: 'ios'
     } // http://ionicframework.com/docs/v2/api/config/Config/
@@ -43,7 +43,8 @@ class MyApp {
         private platform: Platform,
         private menu: MenuController,
         private progress: ProgressProvider,
-        private events: Events
+        private events: Events,
+        private content: ContentData
     ) {
         this.initializeApp();
         

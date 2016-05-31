@@ -8,7 +8,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 @Page({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
-    providers: [ContentData],
+    providers: [],
     directives: []
 })
 export class QuestionPeerReviewPage {

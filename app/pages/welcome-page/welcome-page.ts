@@ -26,4 +26,8 @@ export class WelcomePage {
     
     this.nav.setPages(pages)
   }
+  startCourse(){
+    let firstPage = this.progress.getFirstLesson();
+    this.nav.setRoot(firstPage.componentType, { item: firstPage});
+  }
 }
