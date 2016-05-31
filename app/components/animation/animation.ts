@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnChanges} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnChanges, ElementRef} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 declare var createjs: any; 
 declare var lib: any;
@@ -7,7 +7,7 @@ declare var lib: any;
   selector: 'animation',
   providers: [ContentData],
   template: `
-    <canvas [hidden]="!animationFileFound" (click)="playPauseAnimation()" id="canvas" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+    <canvas [hidden]="!animationFileFound" (click)="playPauseAnimation()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
     <img *ngIf="paused" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
   `,
   directives: []  
@@ -33,7 +33,7 @@ export class Animation implements OnChanges {
   private animationFileFound: boolean;
   //private updateRate:EventEmitter = new EventEmitter();
   
-  constructor(content: ContentData){
+  constructor(content: ContentData, private thisElement: ElementRef){
       this.content = content;
   }
 ngOnInit() {
@@ -68,11 +68,11 @@ ngOnInit() {
       //console.log("Hit " + createjs.Ticker.getPaused());
   }
  loadAnimation(){
-        this.page_canvas = document.getElementsByTagName("canvas")[0];
+        this.page_canvas = this.thisElement.nativeElement.firstElementChild;
         this.stageWidth = this.page_canvas.width;
         this.stageHeight = this.page_canvas.height;
 
-        this.canvas = document.getElementById("canvas");
+        this.canvas = this.thisElement.nativeElement.firstElementChild;
         var loader = new createjs.LoadQueue(false);
         loader.installPlugin(createjs.Sound);
         loader.addEventListener("complete", this.handleComplete(this));

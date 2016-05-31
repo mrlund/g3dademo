@@ -4,6 +4,7 @@ import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
+import {ProgressProvider} from '../../providers/progressProvider';
 
 
 @Page({
@@ -20,7 +21,7 @@ export class ActivityTablePage {
     addSelected: any;
     total: number;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -77,12 +78,15 @@ export class ActivityTablePage {
         }
     }
     navigateBackTo(page) {
+        this.progress.openPage(page);
         this.nav.pop();
     }
     navigateForwardTo(page) {
+        this.progress.openPage(page);
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
+        this.progress.completeLesson(this.selectedItem.menuItem);
         let toast = Toast.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 1000
@@ -92,5 +96,6 @@ export class ActivityTablePage {
         });
         this.nav.present(toast);
     }
+
 
 }

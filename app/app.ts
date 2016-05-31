@@ -2,6 +2,8 @@ import {App, IonicApp, Platform, MenuController, NavController, Nav} from 'ionic
 import { ViewChild } from '@angular/core';
 
 import {Routes} from '@angular/router';
+import {ProgressProvider} from './providers/progressProvider';
+import {ContentData} from './providers/contentProvider';
 
 import {WelcomePage} from './pages/welcome-page/welcome-page';
 import {ContentPage} from './pages/content-page/content-page';
@@ -12,9 +14,11 @@ import {QuestionPeerReviewPage} from './pages/question-peer-review-page/question
 import {MenuItem} from './models/menu-item';
 import {ContentItem} from './models/content-item';
 
+import {Events} from 'ionic-angular';
 
 @App({
     templateUrl: 'build/app.html',
+    providers: [ProgressProvider],
     config: {
         mode: 'ios'
     } // http://ionicframework.com/docs/v2/api/config/Config/
@@ -31,94 +35,106 @@ class MyApp {
     rootPage: any = WelcomePage;
     pages: Array<MenuItem>;
     openMenuGroup: MenuItem;
-    completedItems: Array<string>;
+    
+    completedLessons: Array<MenuItem>;
 
     constructor(
         private app: IonicApp,
         private platform: Platform,
-        private menu: MenuController
+        private menu: MenuController,
+        private progress: ProgressProvider,
+        private events: Events
     ) {
         this.initializeApp();
         
+        this.completedLessons = progress.getCompletedLessons();
         
+        console.log("Get content");
         // set our app's pages
-        this.pages = [
-            new MenuItem('Home', 0, 0, null),
-            //Project
-            new MenuItem('Your GPA - Is It Fair?', 1, 0, [
-                //Session
-                new MenuItem('Introduction', 1, 1, null, [
-                    //Pages
-                    new ContentItem('intro', 'Introduction', ContentPage),
-                    new ContentItem('objectives', 'Objectives', ContentPage),
-                    new ContentItem('assignment', 'Assignment', ContentPage),
-                    new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
-                ]),
-                new MenuItem('Income and GPA', 1, 2, null, [
-                    //Page
-                    new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
-                    new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
-                    new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage),
-                    new ContentItem('conclusion', 'Conclusion', AnswerQuestionPage),
-                ]),
-                new MenuItem('How To Calculate GPA', 1, 3, null, [
-                    //Page
-                    new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
-                    new ContentItem('what-is-gpa', 'What is GPA', ContentPage),
-                    new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
-                    new ContentItem('calculate-excercise', 'Excercise', ContentPage),
-                    new ContentItem('cleaver-high', 'Cleaver High', ContentPage),
-                    new ContentItem('raising-gpa', 'Raising Your GPA', ContentPage),
-                    new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
-                ]),                
-                new MenuItem('Graphing Quartiles', 1, 4, null, 
-                [
-                    new ContentItem('introduction', 'Introduction', ContentPage),
-                    new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
-                    new ContentItem('why-box-plots', 'Why Box Plots', ContentPage),
-                    new ContentItem('how-to-create', 'Creating Plots', ContentPage),
-                    new ContentItem('excercise', 'Excercise', ContentPage)
-                ]),
-                new MenuItem('Assumptions Of GPA', 1, 5, null, [
-                    new ContentItem('introduction', 'Introduction', ContentPage),
-                    new ContentItem('types-of-measurement', 'Types of Measurement', ContentPage),
-                    new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
-                    new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
-                ]),
-                new MenuItem('Graphing Interval Data', 1, 6, null, null),
-                new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
-                new MenuItem('Summary/Quiz', 1, 6, null, null),
+        //this.pages = progress.getCourseContent();
+            this.pages = [
+        new MenuItem('Home', 0, 0, null),
+        //Project
+        new MenuItem('Your GPA - Is It Fair?', 1, 0, [
+            //Session
+            new MenuItem('Introduction', 1, 1, null, [
+                //Pages
+                new ContentItem('intro', 'Introduction', ContentPage),
+                new ContentItem('objectives', 'Objectives', ContentPage),
+                new ContentItem('assignment', 'Assignment', ContentPage),
+                new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
             ]),
-            new MenuItem('2: Is School Discipline Fair?', 2, 0, [
-                new MenuItem('Introduction', 2, 1, null, null),
-                new MenuItem('Representing Quantitive Data', 2, 2, null, null),
-                new MenuItem('Analyzing Data - Mean', 2, 3, null, null),
-                new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, null),
-                new MenuItem('Making Prediction About Data', 2, 5, null, null),
-                new MenuItem('Breaking the Cycle', 2, 6, null, null),
-                new MenuItem('Summary/Quiz', 2, 7, null, null),
+            new MenuItem('Income and GPA', 1, 2, null, [
+                //Page
+                new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
+                new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
+                new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage),
+                new ContentItem('conclusion', 'Conclusion', AnswerQuestionPage),
             ]),
-            new MenuItem('3: Shoplifting', 3, 0, [
-                new MenuItem('Introduction', 3, 1, null, null),
-                new MenuItem('Data Distribution - Shape', 3, 2, null, null),
-                new MenuItem('Determining Outliers in Data', 3, 3, null, null),
-                new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, null),
-                new MenuItem('Summary/Quiz', 3, 5, null, null),
+            new MenuItem('How To Calculate GPA', 1, 3, null, [
+                //Page
+                new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
+                new ContentItem('what-is-gpa', 'What is GPA', ContentPage),
+                new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
+                new ContentItem('calculate-excercise', 'Excercise', ContentPage),
+                new ContentItem('cleaver-high', 'Cleaver High', ContentPage),
+                new ContentItem('raising-gpa', 'Raising Your GPA', ContentPage),
+                new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
+            ]),                
+            new MenuItem('Graphing Quartiles', 1, 4, null, 
+            [
+                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+                new ContentItem('why-box-plots', 'Why Box Plots', ContentPage),
+                new ContentItem('how-to-create', 'Creating Plots', ContentPage),
+                new ContentItem('excercise', 'Excercise', ContentPage)
             ]),
-            new MenuItem('4: Cell Phone Usage', 4, 0, [
-                new MenuItem('Introduction', 4, 1, null, null),
-                new MenuItem('Unobtrusive Measures', 4, 2, null, null),
-                new MenuItem('Data Representation: Tables and Charts', 4, 3, null, null),
-                new MenuItem('Two Way Frequency Tables', 4, 4, null, null),
-                new MenuItem('Summary/Quiz', 4, 5, null, null)
-            ])
-        ];
+            new MenuItem('Assumptions Of GPA', 1, 5, null, [
+                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('types-of-measurement', 'Types of Measurement', ContentPage),
+                new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
+                new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+            ]),
+            new MenuItem('Graphing Interval Data', 1, 6, null, null),
+            new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
+            new MenuItem('Summary/Quiz', 1, 6, null, null),
+        ]),
+        new MenuItem('2: Is School Discipline Fair?', 2, 0, [
+            new MenuItem('Introduction', 2, 1, null, null),
+            new MenuItem('Representing Quantitive Data', 2, 2, null, null),
+            new MenuItem('Analyzing Data - Mean', 2, 3, null, null),
+            new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, null),
+            new MenuItem('Making Prediction About Data', 2, 5, null, null),
+            new MenuItem('Breaking the Cycle', 2, 6, null, null),
+            new MenuItem('Summary/Quiz', 2, 7, null, null),
+        ]),
+        new MenuItem('3: Shoplifting', 3, 0, [
+            new MenuItem('Introduction', 3, 1, null, null),
+            new MenuItem('Data Distribution - Shape', 3, 2, null, null),
+            new MenuItem('Determining Outliers in Data', 3, 3, null, null),
+            new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, null),
+            new MenuItem('Summary/Quiz', 3, 5, null, null),
+        ]),
+        new MenuItem('4: Cell Phone Usage', 4, 0, [
+            new MenuItem('Introduction', 4, 1, null, null),
+            new MenuItem('Unobtrusive Measures', 4, 2, null, null),
+            new MenuItem('Data Representation: Tables and Charts', 4, 3, null, null),
+            new MenuItem('Two Way Frequency Tables', 4, 4, null, null),
+            new MenuItem('Summary/Quiz', 4, 5, null, null)
+        ])
+    ];
 
-        this.completedItems = ["Introduction", "How To Calculate GPA", "Graphing Quartiles"];
+        console.log("Got content");
 
+        progress.setCourseContent(this.pages);
+        
         this.setupMenuNodes();
+        console.log("Setup content");
+        
+        events.subscribe('lesson:complete', (lesson) => {
+            lesson[0].isComplete = true;
+        });
     }
-
     initializeApp() {
         this.platform.ready().then(() => {
             // The platform is now ready. Note: if this callback fails to fire, follow
@@ -147,6 +163,10 @@ class MyApp {
     }
     setupChildren(node: MenuItem) {
         for (var i = 0; i < node.children.length; i++) {
+            if (this.completedLessons.indexOf(node.children[i])> -1)
+            {
+                node.children[i].isComplete = true;
+            }
             if (node.children[i].children) {
                 this.setupChildren(node.children[i]);
             } else if (node.children[i].pages && node.children[i].pages.length > 0) {
@@ -164,6 +184,8 @@ class MyApp {
         this.menu.close();
         // navigate to the new page if it is not the current page        
         var firstContentPage = page.pages[0];
+        this.progress.openPage(firstContentPage);
+        
         this.nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
     }
     showChildren(item) {
@@ -185,9 +207,6 @@ class MyApp {
         }
         //console.log(item.title);
         return true;
-    }
-    isComplete(item) {
-        return this.completedItems.indexOf(item.title) > -1;
     }
 
 }

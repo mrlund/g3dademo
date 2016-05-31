@@ -9,6 +9,7 @@ export class MenuItem {
     prevItem: MenuItem;
     nextItem: MenuItem;
     pages: Array<IContentItem>;
+    isComplete: boolean;
     
     constructor(title: string, project: number, session: number, children: Array<MenuItem>, pages?: Array<IContentItem>){
         this.title = title;

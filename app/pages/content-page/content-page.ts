@@ -1,5 +1,6 @@
 import {Page, NavController, NavParams, MenuController, Toast} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
+import {ProgressProvider} from '../../providers/progressProvider';
 
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {Animation} from '../../components/animation/animation';
@@ -18,7 +19,7 @@ export class ContentPage {
     animationName: string;
     pauseAnimation: boolean = true;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -31,7 +32,6 @@ export class ContentPage {
             this.animationName = "scene_test";
         }
         if (this.selectedItem.page == 1) {
-            console.log(this.selectedItem);
             this.animationName = "scene_test";
         }
         this.pageContent = "<h1>This is a content page!</h1>";
@@ -55,15 +55,18 @@ export class ContentPage {
             this.menu.open();
         }
     }
-    navigateBackTo(page) {
+    navigateBackTo(page: ContentItem) {
+        this.progress.openPage(page);
         this.pauseAnimation = true;
         this.nav.pop();
     }
-    navigateForwardTo(page) {
+    navigateForwardTo(page: ContentItem) {
+        this.progress.openPage(page);
         this.pauseAnimation = true;
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
+        this.progress.completeLesson(this.selectedItem.menuItem);
         let toast = Toast.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 1000

@@ -10,8 +10,8 @@ export interface IContentItem {
         session: number;
         page: number;  
         menuItem: MenuItem;
-        prevItem: IContentItem;
-        nextItem: IContentItem;
+        prevItem: ContentItem;
+        nextItem: ContentItem;
         
 }
 
@@ -24,8 +24,8 @@ export class ContentItem implements IContentItem {
         session: number;
         page: number;   
         menuItem: MenuItem;                
-        prevItem: IContentItem;
-        nextItem: IContentItem;
+        prevItem: ContentItem;
+        nextItem: ContentItem;
                 
         constructor(urlName: string, title: string, componentType: any){
             this.urlName = urlName;

@@ -12,6 +12,10 @@
     <img style="width:100%" src="/img/g3-girls.jpg" />
   </div>
   <div>
+    <button *ngIf="continueFrom" (click)="navigateTo(continueFrom)">Continue from {{continueFrom.menuItem.title}}: {{continueFrom.title}}</button>
+    <button *ngIf="!continueFrom">Get Started!</button>
+  </div>
+  <div>
     <img style="width:100%" src="/img/g3-intro-text.png" />
   </div>
   

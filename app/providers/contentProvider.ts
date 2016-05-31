@@ -5,15 +5,10 @@ declare var lib: any;
 
 @Injectable()
 export class ContentData {
-  static get parameters(){
-    return [[Http]];
-  }
-
-  http: any;
   data: any; 
   private animations:Array<any>;
   
-  constructor(http) {
+  constructor(private http: Http) {
     // inject the Http provider and set to this instance
     this.http = http;
     this.animations = new Array<any>();
