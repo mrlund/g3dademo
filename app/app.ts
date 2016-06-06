@@ -96,7 +96,12 @@ class MyApp {
                 new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
             ]),
-            new MenuItem('Graphing Interval Data', 1, 6, null, null),
+            new MenuItem('Graphing Interval Data', 1, 6, null, [
+                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('how-to-create', 'Creating histogram', ContentPage),
+                new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+                new ContentItem('activity-page', 'Activity', ContentPage),
+            ]),
             new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
             new MenuItem('Summary/Quiz', 1, 6, null, null),
         ]),
