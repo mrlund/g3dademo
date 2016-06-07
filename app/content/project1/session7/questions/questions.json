@@ -1,0 +1,22 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "question": "Do you think GPA is misleading?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Does this impact you?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Is there anything you can do about it?",
+            "answers": [
+            ]
+        }
+    ]
+}

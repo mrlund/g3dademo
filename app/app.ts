@@ -102,6 +102,12 @@ class MyApp {
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
                 new ContentItem('activity-page', 'Activity', ContentPage),
             ]),
+            new MenuItem('Is GPA A fair use of data?', 1, 7, null, [
+                new ContentItem('grading-scales', 'Grading scales', ContentPage),
+                new ContentItem('questions', 'Discussion', AnswerQuestionPage),
+                new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
+
+            ]),
             new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
             new MenuItem('Summary/Quiz', 1, 6, null, null),
         ]),
