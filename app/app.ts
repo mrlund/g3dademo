@@ -102,13 +102,17 @@ class MyApp {
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
                 new ContentItem('activity-page', 'Activity', ContentPage),
             ]),
-            new MenuItem('Is GPA A fair use of data?', 1, 7, null, [
+            new MenuItem('Project Workshop', 1, 7, null, [
                 new ContentItem('grading-scales', 'Grading scales', ContentPage),
                 new ContentItem('questions', 'Discussion', AnswerQuestionPage),
                 new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
-
             ]),
-            new MenuItem('Is GPA A Fair Use Of Data', 1, 7, null, null),
+            new MenuItem('Presentations', 1, 8, null, [
+                new ContentItem('provide-feedback', 'Provide feedback', ContentPage),
+                new ContentItem('class-session-agenda', 'Class session agenda', ContentPage),
+                new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
+                new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+            ]),
             new MenuItem('Summary/Quiz', 1, 6, null, null),
         ]),
         new MenuItem('2: Is School Discipline Fair?', 2, 0, [
