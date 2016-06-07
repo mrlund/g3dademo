@@ -97,7 +97,7 @@ class MyApp {
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
             ]),
             new MenuItem('Graphing Interval Data', 1, 6, null, [
-                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('graphing-interval-data', 'Graphing interval data', AnswerQuestionPage),
                 new ContentItem('how-to-create', 'Creating histogram', ContentPage),
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
                 new ContentItem('activity-page', 'Activity', ContentPage),
