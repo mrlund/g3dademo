@@ -8,7 +8,7 @@
 </ion-navbar>
 <ion-content *ngIf="questions">
     <ion-card>
-        <ion-card-content [innerHtml]="pageContent">
+        <ion-card-content [innerHtml]="pageContent" class="content-page">
         </ion-card-content>
     </ion-card>
     <ion-card *ngFor="let question of questions.questions">
