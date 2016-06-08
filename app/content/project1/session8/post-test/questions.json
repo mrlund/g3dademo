@@ -29,7 +29,7 @@
             ]
         },
         {
-            "type": "text",
+            "type": "multiple-choice",
             "question": "The tallest bar or bars on a histogram visually represents the:",
             "answers": [
                 {

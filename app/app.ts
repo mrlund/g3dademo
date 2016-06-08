@@ -113,12 +113,28 @@ class MyApp {
                 new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
                 new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
             ]),
-            new MenuItem('Summary/Quiz', 1, 6, null, null),
+            new MenuItem('Summary/Quiz', 1, 9, null, null),
         ]),
         new MenuItem('2: Is School Discipline Fair?', 2, 0, [
-            new MenuItem('Introduction', 2, 1, null, null),
-            new MenuItem('Representing Quantitive Data', 2, 2, null, null),
-            new MenuItem('Analyzing Data - Mean', 2, 3, null, null),
+            new MenuItem('Introduction', 2, 1, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('storyline', 'Story line', ContentPage),
+                new ContentItem('project-statement', 'Project Statement ', ContentPage),
+                new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
+            ]),
+            new MenuItem('Representing Quantitive Data', 2, 2, null, [
+                new ContentItem('intro-video', 'Experiencing', ContentPage),
+                new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
+                new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
+                new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
+            ]),
+            new MenuItem('Analyzing Data - Mean', 2, 3, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('processing-activity', 'Processing - activity', ContentPage),
+                new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
+                new ContentItem('applying-activity', 'Applying: activity', ContentPage),
+            ]),
             new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, null),
             new MenuItem('Making Prediction About Data', 2, 5, null, null),
             new MenuItem('Breaking the Cycle', 2, 6, null, null),
