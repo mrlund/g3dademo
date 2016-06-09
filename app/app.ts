@@ -135,10 +135,65 @@ class MyApp {
                 new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
                 new ContentItem('applying-activity', 'Applying: activity', ContentPage),
             ]),
-            new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, null),
-            new MenuItem('Making Prediction About Data', 2, 5, null, null),
-            new MenuItem('Breaking the Cycle', 2, 6, null, null),
-            new MenuItem('Summary/Quiz', 2, 7, null, null),
+            new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, [
+                new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+                new ContentItem('discussion', 'Processing - class discussion', AnswerQuestionPage),
+                new ContentItem('generalizing-activity', 'Generalizing - activity', ContentPage),
+                new ContentItem('applying-class-discussion', 'Applying class discussion', AnswerQuestionPage),
+            ]),
+            new MenuItem('Making Prediction About Data', 2, 5, null, [
+                new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
+                new ContentItem('processing-activity', 'Processing - activity', ContentPage),
+                new ContentItem('activity', 'Activity', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
+            ]),
+            new MenuItem('Breaking the Cycle', 2, 6, null, [
+                new ContentItem('experiencing', 'Experiencing - video', ContentPage),
+                new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying-activity', 'Applying - activity', ContentPage)
+            ]),
+            new MenuItem('Lesson6', 2, 7, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('end', 'What is standard deviation?', ContentPage)
+            ]),
+            new MenuItem('Lesson7', 2, 8, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
+                new ContentItem('processing', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Lesson8', 2, 9, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Lesson9', 2, 10, null, [
+                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Lesson10', 2, 11, null, [
+                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Lesson11', 2, 12, null, [
+                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Summary/Quiz', 2, 13, null, null),
         ]),
         new MenuItem('3: Shoplifting', 3, 0, [
             new MenuItem('Introduction', 3, 1, null, null),

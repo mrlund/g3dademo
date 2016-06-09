@@ -1,0 +1,20 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "question": "What does one tell you that the other does not?",
+            "answers": [
+            ]
+        },{
+            "type": "discussion",
+            "question": "Which is more precise?",
+            "answers": [
+            ]
+        },{
+            "type": "discussion",
+            "question": "Are they both useful? When and why?",
+            "answers": [
+            ]
+        }
+    ]
+}
