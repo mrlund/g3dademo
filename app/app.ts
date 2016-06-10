@@ -111,7 +111,7 @@ class MyApp {
                 new ContentItem('provide-feedback', 'Provide feedback', ContentPage),
                 new ContentItem('class-session-agenda', 'Class session agenda', ContentPage),
                 new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
-                new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+                new ContentItem('post-test', 'Complete project post test', QuestionPeerReviewPage)
             ]),
             new MenuItem('Summary/Quiz', 1, 9, null, null),
         ]),
@@ -191,7 +191,8 @@ class MyApp {
                 new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
                 new ContentItem('processing', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
-                new ContentItem('applying', 'Appplying', ContentPage)
+                new ContentItem('applying', 'Appplying', ContentPage),
+                new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
             ]),
             new MenuItem('Summary/Quiz', 2, 13, null, null),
         ]),
