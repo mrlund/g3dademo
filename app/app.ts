@@ -135,59 +135,59 @@ class MyApp {
                 new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
                 new ContentItem('applying-activity', 'Applying: activity', ContentPage),
             ]),
-            new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, [
-                new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
-                new ContentItem('discussion', 'Processing - class discussion', AnswerQuestionPage),
-                new ContentItem('generalizing-activity', 'Generalizing - activity', ContentPage),
-                new ContentItem('applying-class-discussion', 'Applying class discussion', AnswerQuestionPage),
-            ]),
-            new MenuItem('Making Prediction About Data', 2, 5, null, [
+            new MenuItem('Analyzing Data – Interquartile Range', 2, 5, null, [
                 new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
                 new ContentItem('processing-activity', 'Processing - activity', ContentPage),
                 new ContentItem('activity', 'Activity', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
             ]),
-            new MenuItem('Breaking the Cycle', 2, 6, null, [
+            new MenuItem('Analyzing Data – Normal Distribution', 2, 6, null, [
                 new ContentItem('experiencing', 'Experiencing - video', ContentPage),
                 new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('applying-activity', 'Applying - activity', ContentPage)
             ]),
-            new MenuItem('Lesson6', 2, 7, null, [
+            //new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, [
+            //    new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+            //    new ContentItem('discussion', 'Processing - class discussion', AnswerQuestionPage),
+            //    new ContentItem('generalizing-activity', 'Generalizing - activity', ContentPage),
+            //    new ContentItem('applying-class-discussion', 'Applying class discussion', AnswerQuestionPage),
+            //]),
+            new MenuItem('Analyzing Data - Standard Deviation', 2, 7, null, [
                 new ContentItem('intro-video', 'Introduction', ContentPage),
                 new ContentItem('experiencing', 'Experiencing', ContentPage),
                 new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('end', 'What is standard deviation?', ContentPage)
             ]),
-            new MenuItem('Lesson7', 2, 8, null, [
+            new MenuItem('Making Predictions About Data', 2, 8, null, [
                 new ContentItem('intro-video', 'Introduction', ContentPage),
                 new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
                 new ContentItem('processing', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('applying', 'Appplying', ContentPage)
             ]),
-            new MenuItem('Lesson8', 2, 9, null, [
+            new MenuItem('Breaking The Cycle', 2, 9, null, [
                 new ContentItem('intro-video', 'Introduction', ContentPage),
                 new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
                 new ContentItem('processing', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('applying', 'Appplying', ContentPage)
             ]),
-            new MenuItem('Lesson9', 2, 10, null, [
+            new MenuItem('Project Workshop', 2, 10, null, [
                 new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
                 new ContentItem('processing', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('applying', 'Appplying', ContentPage)
             ]),
-            new MenuItem('Lesson10', 2, 11, null, [
-                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
-                new ContentItem('processing', 'Processing class discussion', ContentPage),
-                new ContentItem('generalizing', 'Generalizing', ContentPage),
-                new ContentItem('applying', 'Appplying', ContentPage)
-            ]),
-            new MenuItem('Lesson11', 2, 12, null, [
+            //new MenuItem('Lesson10', 2, 11, null, [
+            //    new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+            //    new ContentItem('processing', 'Processing class discussion', ContentPage),
+            //    new ContentItem('generalizing', 'Generalizing', ContentPage),
+            //    new ContentItem('applying', 'Appplying', ContentPage)
+            //]),
+            new MenuItem('Project Presentation', 2, 12, null, [
                 new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
                 new ContentItem('processing', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
