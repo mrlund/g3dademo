@@ -1,0 +1,40 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "question": "Symmetry",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Peaks",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Skewness",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Uniformity",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Gaps",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Spread",
+            "answers": [
+            ]
+        }
+    ]
+}

@@ -197,9 +197,26 @@ class MyApp {
             new MenuItem('Summary/Quiz', 2, 13, null, null),
         ]),
         new MenuItem('3: Shoplifting', 3, 0, [
-            new MenuItem('Introduction', 3, 1, null, null),
-            new MenuItem('Data Distribution - Shape', 3, 2, null, null),
-            new MenuItem('Determining Outliers in Data', 3, 3, null, null),
+            new MenuItem('Project Introduction', 3, 1, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('storyline', 'Story line', ContentPage),
+                new ContentItem('project-statement', 'Project title Project Statement', ContentPage),
+                new ContentItem('pre-test', 'Shoplifting', AnswerQuestionPage)
+            ]),
+            new MenuItem('Data Distribution - Shape', 3, 2, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('processing', 'Processing', AnswerQuestionPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Determining Outliers In Data', 3, 3, null, [
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('processing', 'Processing', AnswerQuestionPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
             new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, null),
             new MenuItem('Summary/Quiz', 3, 5, null, null),
         ]),
