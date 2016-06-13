@@ -240,10 +240,37 @@ class MyApp {
             new MenuItem('Summary/Quiz', 3, 7, null, null),
         ]),
         new MenuItem('4: Cell Phone Usage', 4, 0, [
-            new MenuItem('Introduction', 4, 1, null, null),
-            new MenuItem('Unobtrusive Measures', 4, 2, null, null),
-            new MenuItem('Data Representation: Tables and Charts', 4, 3, null, null),
-            new MenuItem('Two Way Frequency Tables', 4, 4, null, null),
+            new MenuItem('Introduction', 4, 1, null,  [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('introduction', 'Introduction', ContentPage),
+                new ContentItem('storyline', 'Story line', ContentPage),
+                new ContentItem('project-statement', 'Project Statement ', ContentPage),
+                new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
+            ]),
+            new MenuItem('Unobtrusive Measures', 4, 2, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('video', 'Video', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', AnswerQuestionPage)
+            ]),
+            new MenuItem('Data Representation: Tables and Charts', 4, 3, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('processing', 'Processing', ContentPage),
+                new ContentItem('table45', 'Table 45', ContentPage),
+                new ContentItem('generalizing', 'Class discussion', ContentPage),
+                new ContentItem('applying', 'Appplying', AnswerQuestionPage)
+            ]),
+            new MenuItem('Two Way Frequency Tables', 4, 4, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+                new ContentItem('processing', 'Processing', ContentPage),
+                new ContentItem('table45', 'Table 45', ContentPage),
+                new ContentItem('generalizing', 'Class discussion', AnswerQuestionPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
             new MenuItem('Summary/Quiz', 4, 5, null, null)
         ])
     ];
