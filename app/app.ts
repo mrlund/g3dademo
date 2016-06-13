@@ -135,14 +135,14 @@ class MyApp {
                 new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
                 new ContentItem('applying-activity', 'Applying: activity', ContentPage),
             ]),
-            new MenuItem('Analyzing Data – Interquartile Range', 2, 5, null, [
+            new MenuItem('Analyzing Data ï¿½ Interquartile Range', 2, 5, null, [
                 new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
                 new ContentItem('processing-activity', 'Processing - activity', ContentPage),
                 new ContentItem('activity', 'Activity', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
             ]),
-            new MenuItem('Analyzing Data – Normal Distribution', 2, 6, null, [
+            new MenuItem('Analyzing Data ï¿½ Normal Distribution', 2, 6, null, [
                 new ContentItem('experiencing', 'Experiencing - video', ContentPage),
                 new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
@@ -217,8 +217,27 @@ class MyApp {
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('applying', 'Appplying', ContentPage)
             ]),
-            new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, null),
-            new MenuItem('Summary/Quiz', 3, 5, null, null),
+            new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, [
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('processing', 'Processing', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', AnswerQuestionPage)
+            ]),
+            new MenuItem('Project Workshop', 3, 5, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
+                new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
+                new ContentItem('applying', 'Appplying', AnswerQuestionPage)
+            ]),
+            new MenuItem('Project Presentation', 3, 6, null, [
+                new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
+                new ContentItem('processing', 'Processing class discussion', ContentPage),
+                new ContentItem('generalizing', 'Generalizing', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage),
+                new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+            ]),
+            new MenuItem('Summary/Quiz', 3, 7, null, null),
         ]),
         new MenuItem('4: Cell Phone Usage', 4, 0, [
             new MenuItem('Introduction', 4, 1, null, null),
