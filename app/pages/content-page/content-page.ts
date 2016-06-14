@@ -4,14 +4,14 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {Animation} from '../../components/animation/animation';
+import {InnerContent} from '../content-page/inner-content';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
-
 
 @Page({
     templateUrl: 'build/pages/content-page/content-page.html',
     providers: [],
-    directives: [Animation]
+    directives: [Animation, InnerContent]
 })
 export class ContentPage {
     selectedItem: ContentItem;
