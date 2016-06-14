@@ -261,16 +261,32 @@ class MyApp {
                 new ContentItem('processing', 'Processing', ContentPage),
                 new ContentItem('table45', 'Table 45', ContentPage),
                 new ContentItem('generalizing', 'Class discussion', ContentPage),
-                new ContentItem('applying', 'Appplying', AnswerQuestionPage)
+                new ContentItem('applying', 'Appplying', ContentPage)
             ]),
             new MenuItem('Two Way Frequency Tables', 4, 4, null, [
                 new ContentItem('intro-video', 'Introduction', ContentPage),
                 new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
                 new ContentItem('processing', 'Processing', ContentPage),
                 new ContentItem('table45', 'Table 45', ContentPage),
-                new ContentItem('generalizing', 'Class discussion', AnswerQuestionPage),
+                new ContentItem('generalizing', 'Class discussion', QuestionPeerReviewPage),
                 new ContentItem('applying', 'Appplying', ContentPage)
             ]),
+            new MenuItem('Project workshop', 4, 5, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Experiencing', ContentPage),
+                new ContentItem('data', 'Data', ContentPage),
+                new ContentItem('processing', 'Processing', ContentPage),
+                new ContentItem('generalizing', 'Class discussion', ContentPage),
+                new ContentItem('applying', 'Appplying', ContentPage)
+            ]),
+            new MenuItem('Project Presentations', 4, 6, null, [
+                new ContentItem('intro-video', 'Introduction', ContentPage),
+                new ContentItem('experiencing', 'Class session agenda', ContentPage),
+                new ContentItem('presentation1', ' ', ContentPage),
+                new ContentItem('presentation2', ' ', ContentPage),
+                new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+            ]),
+
             new MenuItem('Summary/Quiz', 4, 5, null, null)
         ])
     ];
