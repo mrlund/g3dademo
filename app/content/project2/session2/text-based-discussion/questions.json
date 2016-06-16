@@ -1,0 +1,22 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "question": "What does the data show?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Is anything surprising about the data?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "What new insights did we gain about this topic?",
+            "answers": [
+            ]
+        }
+    ]
+}

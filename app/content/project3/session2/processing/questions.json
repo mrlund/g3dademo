@@ -1,0 +1,16 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "question": "Do you think this should happen?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "What do you think are the implications?",
+            "answers": [
+            ]
+        }
+    ]
+}

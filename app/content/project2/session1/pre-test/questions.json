@@ -1,0 +1,62 @@
+{
+    "questions": [
+        {
+            "type": "multiple-choice",
+            "question": "The mean number of suspensions is greater for which dataset?",
+            "answers": [
+                {
+                    "answer": "Dataset 1 - the mean is 2",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Dataset 1 - the mean is 1.8",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Dataset 2 - the mean is 2.6",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Dataset 2 - the mean is 3",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",            
+            "question": "The median number of suspensions is greater for which dataset?",
+            "answers": [
+                {
+                    "answer": "Dataset 1",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Dataset 2",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "The median is the same for both datasets",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "question": "Which dataset has a smaller spread of data?",
+            "answers": [
+                {
+                    "answer": "Dataset 1",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Dataset 2",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "The spread is the same for both datasets",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

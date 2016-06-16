@@ -1,0 +1,15 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "question": "Does the outlier affect the mean, median or mode?",
+            "answers": [
+            ]
+        }, {
+            "type": "discussion",
+            "question": "Does the outlier affect the interquartile range?",
+            "answers": [
+            ]
+        }
+    ]
+}

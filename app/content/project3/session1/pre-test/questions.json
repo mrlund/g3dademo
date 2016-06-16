@@ -1,0 +1,70 @@
+{
+    "questions": [
+        {
+            "type": "multiple-choice",
+            "question": "Which data point is an outlier?",
+            "answers": [
+                {
+                    "answer": "number of shoplifters 18 and older on Tuesday",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "number of shoplifters 18 and older on Thursday",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "number of shoplifters younger than 18 Friday",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "number of shoplifters younger than 18 on Thursday",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",            
+            "question": "Assuming the data is normally distributed, the outlier would make the distribution of the data",
+            "answers": [
+                {
+                    "answer": "left skewed",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "right skewed",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "normal",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "none of the above",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "question": "An outlier in a data set is ______________ than the rest of the points in the dataset",
+            "answers": [
+                {
+                    "answer": "much higher",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "much lower",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "much higher or lower",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "none of above",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}
