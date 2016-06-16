@@ -14,6 +14,8 @@ import {QuestionPeerReviewPage} from './pages/question-peer-review-page/question
 import {MenuItem} from './models/menu-item';
 import {ContentItem} from './models/content-item';
 
+import {CourseIndexPage} from './pages/course-index-page/course-index-page';
+
 import {Events} from 'ionic-angular';
 
 @App({
@@ -135,14 +137,14 @@ class MyApp {
                 new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
                 new ContentItem('applying-activity', 'Applying: activity', ContentPage),
             ]),
-            new MenuItem('Analyzing Data � Interquartile Range', 2, 5, null, [
+            new MenuItem('Analyzing Data: Interquartile Range', 2, 5, null, [
                 new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
                 new ContentItem('processing-activity', 'Processing - activity', ContentPage),
                 new ContentItem('activity', 'Activity', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
                 new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
             ]),
-            new MenuItem('Analyzing Data � Normal Distribution', 2, 6, null, [
+            new MenuItem('Analyzing Data: Normal Distribution', 2, 6, null, [
                 new ContentItem('experiencing', 'Experiencing - video', ContentPage),
                 new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
                 new ContentItem('generalizing', 'Generalizing', ContentPage),
@@ -374,6 +376,10 @@ class MyApp {
         }
         //console.log(item.title);
         return true;
+    }
+    showIndex(){
+        this.menu.close();
+        this.nav.setRoot(CourseIndexPage);
     }
 
 }
