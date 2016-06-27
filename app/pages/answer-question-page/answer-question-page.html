@@ -7,30 +7,32 @@
     <ion-title>{{selectedItem.title}}</ion-title>
 </ion-navbar>
 <ion-content *ngIf="questions">
-    <ion-card>
-        <ion-card-content [innerHtml]="pageContent" class="content-page">
-        </ion-card-content>
-    </ion-card>
-    <ion-card *ngFor="let question of questions.questions">
-        <ion-card-content>
-            <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
-            <ion-list radio-group>
-                <div *ngIf="question.type == 'multiple-choice'">
-                    <ion-item *ngFor="let answer of question.answers">
-                        <ion-label>{{answer.answer}}</ion-label>
-                        <ion-radio value="{{answer.answer}}"></ion-radio>
+    <div class="page-container">
+        <ion-card>
+            <ion-card-content [innerHtml]="pageContent" class="content-page">
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let question of questions.questions">
+            <ion-card-content>
+                <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
+                <ion-list radio-group>
+                    <div *ngIf="question.type == 'multiple-choice'">
+                        <ion-item *ngFor="let answer of question.answers">
+                            <ion-label>{{answer.answer}}</ion-label>
+                            <ion-radio value="{{answer.answer}}"></ion-radio>
+                        </ion-item>
+                    </div>
+                    <ion-item *ngIf="question.type == 'text'">
+                        <ion-input value=""></ion-input>
                     </ion-item>
-                </div>
-                <ion-item *ngIf="question.type == 'text'">
-                    <ion-input value=""></ion-input>
-                </ion-item>
-            </ion-list>
-            <ion-footer-bar *ngIf="question.type == 'discussion'">
-                <ion-input value="" type="text" placeholder="Type suggestion..."></ion-input>
-                <button  class="right">Suggest</button>
-            </ion-footer-bar>
-        </ion-card-content>
-    </ion-card>
+                </ion-list>
+                <ion-footer-bar *ngIf="question.type == 'discussion'">
+                    <ion-input value="" type="text" placeholder="Type suggestion..."></ion-input>
+                    <button class="right">Suggest</button>
+                </ion-footer-bar>
+            </ion-card-content>
+        </ion-card>
+    </div>
 </ion-content>
 <ion-toolbar position="bottom">
     <ion-buttons start>

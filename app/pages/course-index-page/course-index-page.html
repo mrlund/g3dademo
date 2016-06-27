@@ -1,26 +1,29 @@
 <ion-navbar *navbar hideBackButton="true">
-  <ion-buttons side="left">  
-    <button (click)="toggleMenu()">
+    <ion-buttons side="left">
+        <button (click)="toggleMenu()">
         <ion-icon name="menu"></ion-icon>
-    </button>        
-  </ion-buttons>
+    </button>
+    </ion-buttons>
     <ion-title>Course Index</ion-title>
 </ion-navbar>
 
 <ion-content>
-    <ul>
-        <li *ngFor="let project of courseContent">
-            <h1>{{project.title}}</h1>
-            <ul *ngIf="project.children">
-                <li *ngFor="let session of project.children">
-                    <h3>{{session.title}}</h3>
-                    <ul *ngIf="session.pages">
-                        <li *ngFor="let page of session.pages">
-                            {{page.title}}
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <div class="page-container">
+
+        <ul>
+            <li *ngFor="let project of courseContent">
+                <h1>{{project.title}}</h1>
+                <ul *ngIf="project.children">
+                    <li *ngFor="let session of project.children">
+                        <h3>{{session.title}}</h3>
+                        <ul *ngIf="session.pages">
+                            <li *ngFor="let page of session.pages">
+                                {{page.title}}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
 </ion-content>

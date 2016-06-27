@@ -1,24 +1,21 @@
 <ion-navbar *navbar hideBackButton="true">
-  <ion-buttons side="left">  
-    <button (click)="toggleMenu()">
+    <ion-buttons side="left">
+        <button (click)="toggleMenu()">
         <ion-icon name="menu"></ion-icon>
-    </button>        
-  </ion-buttons>
+    </button>
+    </ion-buttons>
     <ion-title>{{selectedItem.title}}</ion-title>
 </ion-navbar>
 
 <ion-content>
-    <div *ngIf="selectedItem" class="selection">
-        <div [innerHtml]="pageContent" class="content-page">
-        </div> 
-        <animation *ngIf="animationName && selectedItem" style="position:relative;display:block;"
-        [name]="animationName" 
-        [session]="selectedItem.menuItem.session"  
-        [project]="selectedItem.menuItem.project"  
-        [urlName]="selectedItem.urlName" 
-        [paused]="pauseAnimation" 
-        (playStateChanged)="setAnimationState($event)"> 
-        </animation>
+    <div class="page-container">
+        <div *ngIf="selectedItem" class="selection">
+            <div [innerHtml]="pageContent" class="content-page">
+            </div>
+            <animation *ngIf="animationName && selectedItem" style="position:relative;display:block;" [name]="animationName" [session]="selectedItem.menuItem.session"
+                [project]="selectedItem.menuItem.project" [urlName]="selectedItem.urlName" [paused]="pauseAnimation" (playStateChanged)="setAnimationState($event)">
+            </animation>
+        </div>
     </div>
 </ion-content>
 <ion-toolbar position="bottom">
@@ -36,6 +33,6 @@
         <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem">
             DONE!
             <ion-icon name="checkmark" item-right></ion-icon>
-        </button>        
+        </button>
     </ion-buttons>
 </ion-toolbar>

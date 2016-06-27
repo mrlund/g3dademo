@@ -7,73 +7,76 @@
     <ion-title>{{selectedItem.title}}</ion-title>
 </ion-navbar>
 <ion-content *ngIf="questions">
-    <ion-card>
-        <ion-card-content [innerHtml]="pageContent">
-        </ion-card-content>
-    </ion-card>
-    <ion-card *ngIf="state == 'give-feedback'">
-        <ion-card-content>
-            <strong>Now you're the teacher!</strong> The answers below were given by a classmate. Do you think they are correct,
-            and why or why not?
-        </ion-card-content>
-    </ion-card>
-    <ion-card *ngIf="state == 'get-feedback'">
-        <ion-card-content>
-            <strong>How did you do?</strong> Your classmate gave you the following response.
-        </ion-card-content>
-    </ion-card>
-    <ion-card *ngFor="let question of questions.questions">
-        <ion-card-content>
-            <ion-card-title *ngIf="questions">
-                <strong>
+    <div class="page-container">
+
+        <ion-card>
+            <ion-card-content [innerHtml]="pageContent">
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="state == 'give-feedback'">
+            <ion-card-content>
+                <strong>Now you're the teacher!</strong> The answers below were given by a classmate. Do you think they are
+                correct, and why or why not?
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="state == 'get-feedback'">
+            <ion-card-content>
+                <strong>How did you do?</strong> Your classmate gave you the following response.
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let question of questions.questions">
+            <ion-card-content>
+                <ion-card-title *ngIf="questions">
+                    <strong>
                     {{question.question}}
                 </strong>
-            </ion-card-title>
-            <ion-list radio-group>
-                <div *ngIf="state == 'give-feedback'">
-                    <ion-item *ngFor="let answer of question.answers">
-                        <ion-label>Answer: {{answer.answer}}
-                            <br /><br />
-                            <strong>Your assessment:</strong>
-                        </ion-label>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Correct</ion-label>
-                        <ion-radio value="true"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label>Not Correct</ion-label>
-                        <ion-radio value="false"></ion-radio>
-                    </ion-item>
-                </div>
-                <div *ngIf="state == 'get-feedback'">
-                    <div *ngFor="let answer of question.answers">
-                        <ion-item>
-                            <ion-label><strong>Your answer:</strong> {{answer.answer}}</ion-label>
-                        </ion-item>
-                        <ion-item>
-                            <ion-label>
-                                <strong>Your classmates assessment:</strong><br /><br />
-                                <ion-icon class="correct-symbol" name="checkmark" *ngIf="answer.isCorrect"></ion-icon> 
-                                <ion-icon class="incorrect-symbol" name="close" *ngIf="!answer.isCorrect"></ion-icon> 
-                                &nbsp;&nbsp;{{answer.response}}
+                </ion-card-title>
+                <ion-list radio-group>
+                    <div *ngIf="state == 'give-feedback'">
+                        <ion-item *ngFor="let answer of question.answers">
+                            <ion-label>Answer: {{answer.answer}}
+                                <br /><br />
+                                <strong>Your assessment:</strong>
                             </ion-label>
                         </ion-item>
+                        <ion-item>
+                            <ion-label>Correct</ion-label>
+                            <ion-radio value="true"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Not Correct</ion-label>
+                            <ion-radio value="false"></ion-radio>
+                        </ion-item>
                     </div>
-                </div>
-            </ion-list>
-            <ion-footer-bar *ngIf="state == 'give-feedback'">
-                <ion-input value="" type="text" placeholder="Give a reason for your assessment..."></ion-input>
-            </ion-footer-bar>
-            <ion-footer-bar *ngIf="state == 'answer'">
-                <ion-input value="" type="text" placeholder="Answer..."></ion-input>
-            </ion-footer-bar>
-        </ion-card-content>
-    </ion-card>
-    <ion-card>
-        <button *ngIf="state == 'give-feedback'" class="right" (click)="submitFeedback()">Submit Feedback</button>
-        <button *ngIf="state == 'answer'" class="right" (click)="submitAnswers()">Submit Answers</button>
-    </ion-card>
+                    <div *ngIf="state == 'get-feedback'">
+                        <div *ngFor="let answer of question.answers">
+                            <ion-item>
+                                <ion-label><strong>Your answer:</strong> {{answer.answer}}</ion-label>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>
+                                    <strong>Your classmates assessment:</strong><br /><br />
+                                    <ion-icon class="correct-symbol" name="checkmark" *ngIf="answer.isCorrect"></ion-icon>
+                                    <ion-icon class="incorrect-symbol" name="close" *ngIf="!answer.isCorrect"></ion-icon>
+                                    &nbsp;&nbsp;{{answer.response}}
+                                </ion-label>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-list>
+                <ion-footer-bar *ngIf="state == 'give-feedback'">
+                    <ion-input value="" type="text" placeholder="Give a reason for your assessment..."></ion-input>
+                </ion-footer-bar>
+                <ion-footer-bar *ngIf="state == 'answer'">
+                    <ion-input value="" type="text" placeholder="Answer..."></ion-input>
+                </ion-footer-bar>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <button *ngIf="state == 'give-feedback'" class="right" (click)="submitFeedback()">Submit Feedback</button>
+            <button *ngIf="state == 'answer'" class="right" (click)="submitAnswers()">Submit Answers</button>
+        </ion-card>
+    </div>
 </ion-content>
 <ion-toolbar position="bottom">
     <ion-buttons start>

@@ -61,9 +61,9 @@ ngOnInit() {
   }
  playPauseAnimation(){
       var anim = this.stage.getChildAt(0);
-      //console.log(anim);
       this.playStateChanged.emit(!createjs.Ticker.getPaused());
-      anim.soundTrack.setPaused(!createjs.Ticker.getPaused());
+      let st = anim.soundTrack ? anim.soundTrack : anim.children[0].soundTrack;
+      st.setPaused(!createjs.Ticker.getPaused());
       createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
       //console.log("Hit " + createjs.Ticker.getPaused());
   }
@@ -73,7 +73,8 @@ ngOnInit() {
         this.stageHeight = this.page_canvas.height;
 
         this.canvas = this.thisElement.nativeElement.firstElementChild;
-        var loader = new createjs.LoadQueue(false);
+        let basePath = "/build/content/project"+this.project+"/session"+this.session+"/"+this.urlName+"/";
+        var loader = new createjs.LoadQueue(false,basePath);
         loader.installPlugin(createjs.Sound);
         loader.addEventListener("complete", this.handleComplete(this));
         loader.loadManifest(lib.properties.manifest);
@@ -88,7 +89,10 @@ ngOnInit() {
         createjs.Ticker.setFPS(lib.properties.fps);
         createjs.Ticker.addEventListener("tick", that.tickHandler(that));
         that.resizeAnimation();
-        that.stage.getChildAt(0).soundTrack.setPaused(true);
+
+        let st = that.stage.getChildAt(0).soundTrack ? that.stage.getChildAt(0).soundTrack : that.stage.getChildAt(0).children[0].soundTrack;
+        st.setPaused(true);
+
         createjs.Ticker.setPaused(true);
      }
  }
@@ -101,28 +105,32 @@ ngOnInit() {
  }
  resizeAnimation(){
         var widthToHeight = this.stageWidth / this.stageHeight;
-        var newWidth = window.innerWidth;
-        var newHeight = window.innerHeight;
+        var newWidth = this.thisElement.nativeElement.offsetWidth; //window.innerWidth;
+        var newHeight = this.thisElement.nativeElement.offsetHeight; //window.innerHeight;
         var newWidthToHeight = newWidth / newHeight;
         //
-        if (newWidthToHeight > widthToHeight) {
-            newWidth = newHeight * widthToHeight;
-            this.page_canvas.style.height = newHeight + "px";
-            this.page_canvas.style.width = newWidth + "px";
-        } else {
-            newHeight = newWidth / widthToHeight;
-            this.page_canvas.style.height = newHeight + "px";
-            this.page_canvas.style.width = newWidth + "px";
-        }
+        // if (newWidthToHeight > widthToHeight) {
+        //     newWidth = newHeight * widthToHeight;
+        //     this.page_canvas.style.height = newHeight + "px";
+        //     this.page_canvas.style.width = newWidth + "px";
+        // } else {
+        //     newHeight = newWidth / widthToHeight;
+        //     this.page_canvas.style.height = newHeight + "px";
+        //     this.page_canvas.style.width = newWidth + "px";
+        // }
         // if (scale){
         //     scale = newWidthToHeight / widthToHeight;
         // }
+
+        this.page_canvas.style.height = newWidth + "px";
+        this.page_canvas.style.width = newWidth + "px";
+
         if (this.stage) {
             this.stage.width = newWidth;
-            this.stage.height = newHeight;
+            this.stage.height = newWidth;
         }
         //this.page_canvas.style.marginTop = ((window.innerHeight - newHeight) / 2) + "px";
-        this.page_canvas.style.marginLeft = ((window.innerWidth - newWidth) / 2) + "px";
+        //this.page_canvas.style.marginLeft = ((window.innerWidth - newWidth) / 2) + "px";
         // this.page_canvas.parentElement.style.width = this.page_canvas.width + "px";
         // this.page_canvas.parentElement.style.height = this.page_canvas.height + "px";
   

@@ -7,45 +7,48 @@
     <ion-title>{{selectedItem.title}}</ion-title>
 </ion-navbar>
 <ion-content *ngIf="categories">
-    <ion-card>
-        <ion-card-content [innerHtml]="pageContent">
-        </ion-card-content>
-    </ion-card>
-    <ion-card>
-        <ion-card-content>
-            <ion-card-title><strong>Budget</strong></ion-card-title>
-            <ion-list>
-                <ion-item *ngFor="let item of table">
-                    <ion-row>
-                        <ion-col text-left>{{item.category.name}}</ion-col>
-                        <ion-col text-left>{{item.name}}</ion-col>
-                        <ion-col text-right>$ {{item.price}}</ion-col>
+    <div class="page-container">
+
+        <ion-card>
+            <ion-card-content [innerHtml]="pageContent">
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <ion-card-content>
+                <ion-card-title><strong>Budget</strong></ion-card-title>
+                <ion-list>
+                    <ion-item *ngFor="let item of table">
+                        <ion-row>
+                            <ion-col text-left>{{item.category.name}}</ion-col>
+                            <ion-col text-left>{{item.name}}</ion-col>
+                            <ion-col text-right>$ {{item.price}}</ion-col>
+                        </ion-row>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label text-right><strong>$ {{total}}</strong></ion-label>
+                    </ion-item>
+                </ion-list>
+                <ion-footer-bar>
+                    <ion-row *ngIf="addList && addList.length > 0">
+                        <ion-col width-70>
+                            <ion-select [(ngModel)]="addSelected">
+                                <ion-option checked="true" value="0">Choose item</ion-option>
+                                <ion-option *ngFor="let option of addList" [value]="option.item">{{option.name}}</ion-option>
+                            </ion-select>
+                        </ion-col>
+                        <ion-col width-30>
+                            <button class="right" (click)="addItem()">Add</button>
+                        </ion-col>
                     </ion-row>
-                </ion-item>
-                <ion-item>
-                    <ion-label text-right><strong>$ {{total}}</strong></ion-label>
-                </ion-item>
-            </ion-list>
-            <ion-footer-bar>
-                <ion-row *ngIf="addList && addList.length > 0">
-                    <ion-col width-70>
-                        <ion-select [(ngModel)]="addSelected">
-                            <ion-option checked="true" value="0">Choose item</ion-option>
-                            <ion-option *ngFor="let option of addList" [value]="option.item">{{option.name}}</ion-option>
-                        </ion-select>
-                    </ion-col>
-                    <ion-col width-30> 
-                        <button class="right" (click)="addItem()">Add</button>
-                    </ion-col>
-                </ion-row>
-                <ion-row *ngIf="addList && addList.length == 0">
-                    <ion-col>
-                        <button class="right">Submit Budget</button>
-                    </ion-col>
-                </ion-row>
-            </ion-footer-bar>
-        </ion-card-content>
-    </ion-card>
+                    <ion-row *ngIf="addList && addList.length == 0">
+                        <ion-col>
+                            <button class="right">Submit Budget</button>
+                        </ion-col>
+                    </ion-row>
+                </ion-footer-bar>
+            </ion-card-content>
+        </ion-card>
+    </div>
 </ion-content>
 <ion-toolbar position="bottom">
     <ion-buttons start>
