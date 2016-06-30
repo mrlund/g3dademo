@@ -10,7 +10,7 @@ lib.properties = {
 	color: "#FFFFFF",
 	path: "/",
 	manifest: [
-		{src:"/build/content/project1/session1/intro/bensoundhappyrock.mp3?1460526586215", id:"bensoundhappyrock"}
+		{src:"bensoundhappyrock.mp3?1460526586215", id:"bensoundhappyrock"}
 	]
 };
 

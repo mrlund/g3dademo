@@ -1,25 +1,24 @@
-
-<ion-navbar *navbar>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <ion-title>G3 Data Analytics</ion-title>
-</ion-navbar>
-
+<ion-header>
+    <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>G3 Data Analytics</ion-title>
+  </ion-navbar>
+</ion-header>
 
 <ion-content padding class="getting-started">  
-  <div>
-    <img style="width:100%" src="/img/g3-girls.jpg" />
+  <div class="page-container">
+    <div>
+      <img style="width:100%" src="/img/g3-girls.jpg" />
+    </div>
+    <div style="text-align: center">
+      <button class="red" *ngIf="continueFrom" (click)="navigateTo(continueFrom)">Continue from {{continueFrom.menuItem.title}}: {{continueFrom.title}}</button>
+      <button class="red"  *ngIf="!continueFrom" (click)="startCourse()">Get Started!</button>
+    </div>
+    <div>
+      <img style="width:100%" src="/img/g3-intro-text.png" />
+    </div>
   </div>
-  <div style="text-align: center">
-    <button class="red" *ngIf="continueFrom" (click)="navigateTo(continueFrom)">Continue from {{continueFrom.menuItem.title}}: {{continueFrom.title}}</button>
-    <button class="red"  *ngIf="!continueFrom" (click)="startCourse()">Get Started!</button>
-  </div>
-  <div>
-    <img style="width:100%" src="/img/g3-intro-text.png" />
-  </div>
-  
-  
-<br>
-
+  <br>
 </ion-content>

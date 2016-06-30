@@ -12,3 +12,10 @@
 @import "../pages/answer-question-page/answer-question-page";
 @import "../pages/activity-table-page/activity-table-page";
 @import "../pages/question-peer-review-page/question-peer-review-page";
+
+@media screen and (min-width: 789px) {
+    .page-container {
+        width: 789px;
+        margin: 0 auto;   
+    }
+}

@@ -1,4 +1,5 @@
-import {Page, NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {Component} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
 
@@ -8,7 +9,7 @@ import {InnerContent} from '../content-page/inner-content';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
-@Page({
+@Component({
     templateUrl: 'build/pages/content-page/content-page.html',
     providers: [],
     directives: [Animation, InnerContent]

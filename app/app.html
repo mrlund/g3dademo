@@ -11,7 +11,7 @@
                 <ion-toggle [(ngModel)]="classroomMode"></ion-toggle>
             </ion-item>
             <div *ngFor="let p of pages">
-                <ion-list-header  (click)="showChildren(p)">
+                <ion-list-header (click)="showChildren(p)">
                     <ion-icon name="contact"></ion-icon> {{p.title}}
                 </ion-list-header>
                 <ion-item [hidden]="isDisplayed(p)" ion-item *ngFor="let c of p.children" (click)="openPage(c)">
@@ -21,6 +21,9 @@
                     <ion-icon name="arrow-forward" item-right></ion-icon>
                 </ion-item>
             </div>
+            <ion-item (click)="showIndex()">
+                Course Index
+            </ion-item>
         </ion-list>
     </ion-content>
 

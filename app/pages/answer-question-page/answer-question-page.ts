@@ -1,4 +1,5 @@
-import {Page, NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
@@ -8,7 +9,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 
 
-@Page({
+@Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
     providers: [],
     directives: []
@@ -64,13 +65,21 @@ export class AnswerQuestionPage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
+        let self = this;
         this.progress.completeLesson(this.selectedItem.menuItem);
         let toast = Toast.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 1000
         });
         toast.onDismiss(() => {
-            this.nav.setRoot(WelcomePage);
+            let nextLessonPage = self.progress.findNextLesson(self.selectedItem.menuItem)
+            if(nextLessonPage && nextLessonPage.pages && nextLessonPage.pages[0]){ // if there is next page so open it
+                let firstContentPage = nextLessonPage.pages[0];
+                self.progress.openPage(firstContentPage);
+                self.nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
+            } else {
+                this.nav.setRoot(WelcomePage); // if no next page so open welcome page
+            }
         });
         this.nav.present(toast);
     }
