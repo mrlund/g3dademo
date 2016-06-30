@@ -18,21 +18,23 @@
     </div>
 </ion-content>
 
-<ion-toolbar position="bottom">
-    <ion-buttons start>
-        <button (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
-            <ion-icon name="arrow-back" item-left></ion-icon>
-            Previous
-        </button>
-    </ion-buttons>
-    <ion-buttons end>
-        <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem">
-            Next
-            <ion-icon name="arrow-forward" item-right></ion-icon>
-        </button>
-        <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem">
-            DONE!
-            <ion-icon name="checkmark" item-right></ion-icon>
-        </button>
-    </ion-buttons>
-</ion-toolbar>
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons start>
+            <button (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
+                <ion-icon name="arrow-back" item-left></ion-icon>
+                Previous
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem">
+                Next
+                <ion-icon name="arrow-forward" item-right></ion-icon>
+            </button>
+            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem">
+                DONE!
+                <ion-icon name="checkmark" item-right></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
