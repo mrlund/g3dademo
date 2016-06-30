@@ -1,9 +1,10 @@
-import {Page, NavController, MenuController} from 'ionic-angular';
+import {NavController, MenuController} from 'ionic-angular';
+import {Component} from '@angular/core';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
-@Page({
+@Component({
   templateUrl: 'build/pages/course-index-page/course-index-page.html'
 })
 export class CourseIndexPage {

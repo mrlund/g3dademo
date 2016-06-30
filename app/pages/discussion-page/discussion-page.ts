@@ -1,8 +1,9 @@
-import {Page, NavController, NavParams, MenuController} from 'ionic-angular';
+import {NavController, NavParams, MenuController} from 'ionic-angular';
+import {Component} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 
-@Page({
+@Component({
   templateUrl: 'build/pages/discussion-page/discussion-page.html',
   providers: [],
   directives: []

@@ -1,4 +1,5 @@
-import {Page, NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
@@ -8,7 +9,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 
 
-@Page({
+@Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
     providers: [],
     directives: []

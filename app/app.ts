@@ -1,5 +1,5 @@
-import {App, IonicApp, Platform, MenuController, NavController, Nav} from 'ionic-angular';
-import { ViewChild } from '@angular/core';
+import {App, Platform, MenuController, NavController, Nav, ionicBootstrap} from 'ionic-angular';
+import {ViewChild, Component } from '@angular/core';
 
 import {Routes} from '@angular/router';
 import {ProgressProvider} from './providers/progressProvider';
@@ -18,19 +18,9 @@ import {CourseIndexPage} from './pages/course-index-page/course-index-page';
 
 import {Events} from 'ionic-angular';
 
-@App({
+@Component({
     templateUrl: 'build/app.html',
-    providers: [ProgressProvider, ContentData],
-    config: {
-        mode: 'ios'
-    } // http://ionicframework.com/docs/v2/api/config/Config/
 })
-@Routes([  
-    { path: '/content/:project/:session/:urlName', component: ContentPage },
-    { path: '/question/:project/:session/:urlName', component: AnswerQuestionPage },
-    { path: '/question-peer/:project/:session/:urlName', component: QuestionPeerReviewPage },
-    { path: '/activity-table/:project/:session/:urlName', component: ActivityTablePage }
- ]) 
 class MyApp {
     // make HelloIonicPage the root (or first) page
     @ViewChild(Nav) nav: Nav;
@@ -41,7 +31,7 @@ class MyApp {
     completedLessons: Array<MenuItem>;
 
     constructor(
-        private app: IonicApp,
+        private app: App,
         private platform: Platform,
         private menu: MenuController,
         private progress: ProgressProvider,
@@ -308,6 +298,7 @@ class MyApp {
             lesson[0].isComplete = true;
         });
     }
+
     initializeApp() {
         this.platform.ready().then(() => {
             // The platform is now ready. Note: if this callback fails to fire, follow
@@ -387,4 +378,8 @@ class MyApp {
     }
 
 }
+
+ionicBootstrap(MyApp, [ProgressProvider, ContentData], {
+    mode: 'ios'
+});
 
