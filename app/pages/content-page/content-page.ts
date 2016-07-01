@@ -17,6 +17,7 @@ import {MenuItem} from '../../models/menu-item';
 export class ContentPage {
     selectedItem: ContentItem;
     pageContent: string;
+    pageModel: string;
     animationName: string;
     pauseAnimation: boolean = true;
 
@@ -47,7 +48,14 @@ export class ContentPage {
                 console.log(error);
             }
         );
-        
+        this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
+            (data) => {
+                this.pageModel = data._body; //model as string
+            },
+            (error) => {
+                console.log(error);
+            }
+        );
     }
     toggleMenu() {
         if (this.menu.isOpen()) {
