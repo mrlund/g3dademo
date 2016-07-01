@@ -51,11 +51,6 @@ export class ContentData {
     });
   }
   loadModel(projectNo, sessionNo, pageName) {
-    if (this.data) {
-      // already loaded data
-      return Promise.resolve(this.data);
-    }
-    // don't have the data yet
     return new Promise(resolve => {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.

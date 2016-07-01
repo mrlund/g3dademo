@@ -98,5 +98,4 @@ export class ActivityTablePage {
         this.nav.present(toast);
     }
 
-
 }

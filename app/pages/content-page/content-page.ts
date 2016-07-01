@@ -37,6 +37,7 @@ export class ContentPage {
             this.animationName = "scene_test";
         }
         this.pageContent = "<h1>This is a content page!</h1>";
+        this.pageModel = null;
     }
     ngOnInit(){
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(

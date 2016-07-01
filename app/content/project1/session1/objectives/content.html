@@ -1,8 +1,4 @@
-<h1>You will learn</h1>
+<h1>You will learn:</h1>
 <ul class="listed-items">
-    <li>How To Calculate GPA And Why It Is Important</li>
-    <li>Graphing Quartiles - Box And Whisker Plots</li>
-    <li>Assumptions Of The GPA Formula</li>
-    <li>Graphing Interval Data - Histograms</li>
-    <li>Is GPA A Fair Use Of Data?</li>
+    <li *ngFor='let point of model.pointsToLearn'>{{point}}</li>
 </ul>

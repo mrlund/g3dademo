@@ -15,6 +15,7 @@ export class InnerContent {
     ngOnChanges() {
         var template = this.template;
         var target = this.target;
+        var model = this.model;
         var self = this;
         if(template && target){
             @Component({
@@ -24,8 +25,8 @@ export class InnerContent {
             class CompiledComponent {}
             this.target.clear();
             this.dcl.loadNextToLocation(CompiledComponent, target).then((ref:ComponentRef<CompiledComponent>) => {
-                if(self.model){
-                    ref.instance.ctrl = JSON.parse(self.model);
+                if(model){
+                    ref.instance.model = JSON.parse(model);
                 }
             });
         }
