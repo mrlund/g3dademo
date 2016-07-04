@@ -6,8 +6,7 @@ import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
 import {ProgressProvider} from '../../providers/progressProvider';
-
-
+import {ChannelService} from '../../services/channelService';
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -19,7 +18,7 @@ export class AnswerQuestionPage {
     pageContent: string;
     questions: Array<any>;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -82,6 +81,9 @@ export class AnswerQuestionPage {
             }
         });
         this.nav.present(toast);
+    }
+    onSuggest(){
+        this.channelService.hubConnection.send(['testName', 'testMsg']);
     }
 
 }

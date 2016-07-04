@@ -1,5 +1,7 @@
 import {App, Platform, MenuController, NavController, Nav, ionicBootstrap} from 'ionic-angular';
-import {ViewChild, Component } from '@angular/core';
+import {ViewChild, Component, OnInit, provide} from '@angular/core';
+
+import {HTTP_PROVIDERS} from "@angular/http";
 
 import {Routes} from '@angular/router';
 import {ProgressProvider} from './providers/progressProvider';
@@ -14,21 +16,31 @@ import {QuestionPeerReviewPage} from './pages/question-peer-review-page/question
 import {MenuItem} from './models/menu-item';
 import {ContentItem} from './models/content-item';
 
+import {ChannelService, ConnectionState, ChannelConfig, SignalrWindow} from './services/channelService';
+
 import {CourseIndexPage} from './pages/course-index-page/course-index-page';
+import {TeacherPage} from './pages/teacher-page/teacher-page';
 
 import {Events} from 'ionic-angular';
+
+import {Observable} from "rxjs/Observable";
+
+let channelConfig = new ChannelConfig();
+channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
+channelConfig.hubName = "inClassHub";
+
 
 @Component({
     templateUrl: 'build/app.html',
 })
-class MyApp {
+class MyApp implements OnInit{
     // make HelloIonicPage the root (or first) page
     @ViewChild(Nav) nav: Nav;
     rootPage: any = WelcomePage;
     pages: Array<MenuItem>;
     openMenuGroup: MenuItem;
-    
     completedLessons: Array<MenuItem>;
+    connectionState$: Observable<string>;
 
     constructor(
         private app: App,
@@ -36,8 +48,22 @@ class MyApp {
         private menu: MenuController,
         private progress: ProgressProvider,
         private events: Events,
-        private content: ContentData
+        private content: ContentData,
+        private channelService: ChannelService
     ) {
+        //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
+        this.channelService.error$.subscribe(
+            (error: any) => { console.warn(error); },
+            (error: any) => { console.error("errors$ error", error); }
+        );
+        // Wire up a handler for the starting$ observable to log the
+        //  success/fail result
+        //
+        this.channelService.starting$.subscribe(
+            () => { console.log("signalr service has been started"); },
+            () => { console.warn("signalr service failed to start!"); }
+        );
+
         this.initializeApp();
         
         this.completedLessons = progress.getCompletedLessons();
@@ -318,6 +344,7 @@ class MyApp {
             
         });
     }
+
     setupMenuNodes() {
         for (var i = 0; i < this.pages.length; i++) {
             if (this.pages[i].children) {
@@ -376,10 +403,26 @@ class MyApp {
         this.menu.close();
         this.nav.setRoot(CourseIndexPage);
     }
-
+    showTeacherPage(){
+        this.menu.close();
+        this.nav.setRoot(TeacherPage);
+    }
+    ngOnInit() {
+        // Start the connection up!
+        console.log("Starting the channel service");
+        this.channelService.start();
+    }
 }
 
-ionicBootstrap(MyApp, [ProgressProvider, ContentData], {
-    mode: 'ios'
-});
+ionicBootstrap(MyApp, [
+        HTTP_PROVIDERS,
+        ProgressProvider,
+        ContentData,
+        ChannelService,
+        provide(SignalrWindow, {useValue: window}),
+        provide("channel.config", { useValue: channelConfig })
+    ], {
+        mode: 'ios'
+    }
+);
 

@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-buttons side="left">
+            <button (click)="toggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>Teacher page</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div class="page-container">
+        <ul>
+            <li *ngFor="let suggestion of suggestions">
+                <h1>{{suggestion}}</h1>
+            </li>
+        </ul>
+    </div>
+    <button (click)="publish()"></button>
+</ion-content>
