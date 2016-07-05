@@ -83,7 +83,7 @@ export class AnswerQuestionPage {
         this.nav.present(toast);
     }
     onSuggest(){
-        this.channelService.hubConnection.send(['testName', 'testMsg']);
+        this.channelService.send('testName', 'testMsg');
     }
 
 }

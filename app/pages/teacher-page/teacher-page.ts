@@ -21,7 +21,7 @@ export class TeacherPage {
     ngOnInit() {
         // Create a function that the hub can call to broadcast messages.
         var self = this;
-        this.channelService.hubConnection.received(function (data) {
+        this.channelService.getConnection().received(function (data) {
             if (data.A.length > 1) self.suggestions.push(data.A[0] + ': ' + data.A[1]);
         })
     }

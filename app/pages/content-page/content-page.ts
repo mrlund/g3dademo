@@ -40,10 +40,11 @@ export class ContentPage {
         this.pageModel = null;
     }
     ngOnInit(){
+        let self = this;
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this.pageContent = data._body;
-                this.animationName = "scene_test";
+                self.pageContent = data['_body'];
+                self.animationName = "scene_test";
             },
             (error) => {
                 console.log(error);
@@ -51,7 +52,7 @@ export class ContentPage {
         );
         this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this.pageModel = data._body; //model as string
+                self.pageModel = data['_body']; //model as string
             },
             (error) => {
                 console.log(error);

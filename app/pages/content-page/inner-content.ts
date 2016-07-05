@@ -4,7 +4,7 @@ import { Component, Input, DynamicComponentLoader, ElementRef,Injector, OnInit, 
     selector: 'inner-content',
     template: '<div #container></div>'
 })
-export class InnerContent {
+export class InnerContent implements OnChanges{
     @Input() template: string;
     @Input() model: string;
 
@@ -16,7 +16,6 @@ export class InnerContent {
         var template = this.template;
         var target = this.target;
         var model = this.model;
-        var self = this;
         if(template && target){
             @Component({
                 selector: 'compiled-component',
@@ -26,7 +25,7 @@ export class InnerContent {
             this.target.clear();
             this.dcl.loadNextToLocation(CompiledComponent, target).then((ref:ComponentRef<CompiledComponent>) => {
                 if(model){
-                    ref.instance.model = JSON.parse(model);
+                    ref.instance['model'] = JSON.parse(model);
                 }
             });
         }

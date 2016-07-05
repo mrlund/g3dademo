@@ -173,7 +173,7 @@ start(): void {
     //
     this.hubConnection.start()
     .done(() => {
-        this.startingSubject.next();
+        //this.startingSubject.next();
     })
     .fail((error: any) => {
         this.startingSubject.error(error);
@@ -253,4 +253,11 @@ publish(): void {
     this.hubProxy.invoke("Send", this.window.$.makeArray(["pavel","213213"]));
 }
 
+send(name: string, msg: string ): void {
+    this.hubConnection.send([name, msg]);
+}
+
+getConnection(): any {
+    return this.hubConnection;
+}
 }
