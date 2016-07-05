@@ -26,6 +26,12 @@
                 <strong>How did you do?</strong> Your classmate gave you the following response.
             </ion-card-content>
         </ion-card>
+        <ion-card *ngIf="state == 'loading'">
+            <ion-card-content>
+                Waiting for assignment....
+                <ion-spinner></ion-spinner>
+            </ion-card-content>
+        </ion-card>        
         <ion-card *ngFor="let question of questions.questions">
             <ion-card-content>
                 <ion-card-title *ngIf="questions">

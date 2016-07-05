@@ -1,4 +1,4 @@
-import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, Loading } from 'ionic-angular';
 import {Component} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
@@ -6,6 +6,7 @@ import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
 import {ProgressProvider} from '../../providers/progressProvider';
+import {ChannelService} from '../../services/channelService';
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -17,8 +18,9 @@ export class QuestionPeerReviewPage {
     pageContent: string;
     questions: Array<any>;
     state: string = "answer";
+    loader: Loading;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -47,9 +49,20 @@ export class QuestionPeerReviewPage {
                 console.log(error);
             }
         );
+        this.channelService.getConnection().proxies.inclasshub.on('receiveAssignment', (answer) => {
+            console.log("Got in page:", answer);
+            this.state = "give-feedback";
+            this.gotAssignment(answer);
+        });
+    }
+    gotAssignment(answer){
+        this.questions = answer.questions;
+        this.state = "give-feedback";
     }
     submitAnswers(){
-        this.state = "give-feedback";
+        this.loader = Loading.create();
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.getAnswer());
+        this.state = "loading";
     }
     submitFeedback(){
         this.state = "get-feedback";
@@ -79,6 +92,52 @@ export class QuestionPeerReviewPage {
             this.nav.setRoot(WelcomePage);
         });
         this.nav.present(toast);
+    }
+    private getAnswer(){
+        var resp = `{
+            "questions": [
+                {
+                    "questionId": 100,
+                    "type": "peer-review",
+                    "question": "What conclusions can you draw from this data?",
+                    "answers": [
+                        {
+                            "answer": "Education, Parents",
+                            "isCorrect": true,
+                            "response": "I agree"
+                        }
+                    ]
+                },
+                {
+                    "questionId": 101,
+                    "type": "peer-review",
+                    "question": "What are some reasons why higher education leads to a higher annual salary?",
+                    "answers": [
+                        {
+                            "answer": "Education",
+                            "isCorrect": true,
+                            "response": "With a good education you can make it on your own."
+                        }
+                    ]
+
+                },
+                {
+                    "questionId": 102,
+                    "type": "peer-review",
+                    "question": "What stands out to you about this data set? Why?",
+                    "answers": [
+                        {
+                            "answer": "Education",
+                            "isCorrect": false,
+                            "response": "With a good education you can make it on your own."
+                        }
+                    ]
+
+                }
+
+            ]
+            }`;
+            return JSON.parse(resp);
     }
 
 }
