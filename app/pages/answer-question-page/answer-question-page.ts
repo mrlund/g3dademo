@@ -82,8 +82,8 @@ export class AnswerQuestionPage {
         });
         this.nav.present(toast);
     }
-    onSuggest(){
-        this.channelService.send('testName', 'testMsg');
+    onSuggest(question){
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'student', question.suggestion);
     }
 
 }

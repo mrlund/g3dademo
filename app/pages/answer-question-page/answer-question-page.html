@@ -30,8 +30,8 @@
                     </ion-item>
                 </ion-list>
                 <ion-footer-bar *ngIf="question.type == 'discussion'">
-                    <ion-input value="" type="text" placeholder="Type suggestion..."></ion-input>
-                    <button (click)="onSuggest()" class="right">Suggest</button>
+                    <ion-input [(ngModel)]="question.suggestion" type="text" placeholder="Type suggestion..."></ion-input>
+                    <button (click)="onSuggest(question)" class="right">Suggest</button>
                 </ion-footer-bar>
             </ion-card-content>
         </ion-card>
