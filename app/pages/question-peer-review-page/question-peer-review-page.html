@@ -9,9 +9,8 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="questions">
+<ion-content class="has-header has-footer" *ngIf="questions">
     <div class="page-container">
-
         <ion-card>
             <ion-card-content [innerHtml]="pageContent">
             </ion-card-content>

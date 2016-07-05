@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-navbar hideBackButton="true">
+    <ion-navbar no-border-bottom hideBackButton="true">
         <ion-buttons side="left">
             <button (click)="toggleMenu()">
             <ion-icon name="menu"></ion-icon>
@@ -9,7 +9,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content *ngIf="questions">
+<ion-content class="has-header has-footer" *ngIf="questions">
     <div class="page-container">
         <ion-card>
             <ion-card-content [innerHtml]="pageContent" class="content-page">

@@ -19,3 +19,14 @@
         margin: 0 auto;   
     }
 }
+
+.has-header {
+    top: 44px !important;
+    bottom: 0px;
+    height: initial !important;
+}
+
+.has-footer {
+    bottom: 44px !important;
+    height: initial !important;
+}
