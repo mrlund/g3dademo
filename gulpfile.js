@@ -40,6 +40,10 @@ var extLibsPathsArray = [
     'node_modules/jqcloud2/dist/jqcloud.js',
 ];
 
+var extLibsCssFilesPathsArray = [
+    'node_modules/jqcloud2/dist/jqcloud.css',
+];
+
 var copyContentFiles = function(options) {
   options.src = 'app/content/**/*.+(json|mp3|js|png|jpg)';
   options.dest = 'www/build/content';
@@ -50,15 +54,22 @@ var copyContentFiles = function(options) {
 
 var isRelease = argv.indexOf('--release') > -1;
 
-gulp.task('extlibs', function() {
+gulp.task('extLibsJS', function() {
    return gulp.src(extLibsPathsArray)
          .pipe(gulpConcat('external-libaries.js'))
      .pipe(gulp.dest('www/build/js'));
  });
 
+gulp.task('extLibsCss', function() {
+    return gulp.src(extLibsCssFilesPathsArray)
+        .pipe(gulpConcat('external-libaries.css'))
+        .pipe(gulp.dest('www/build/css'));
+});
+
+
 gulp.task('watch', ['clean'], function(done){
   runSequence(
-    ['sass', 'html', 'fonts', 'scripts', 'extlibs', 'content'],
+    ['sass', 'html', 'fonts', 'scripts', 'extLibsJS', 'extLibsCss', 'content'],
     function(){
       gulpWatch('app/**/*.scss', function(){ gulp.start('sass'); });
       gulpWatch('app/**/*.html', function(){ gulp.start('html'); });
@@ -69,7 +80,7 @@ gulp.task('watch', ['clean'], function(done){
 
 gulp.task('build', ['clean'], function(done){
   runSequence(
-    ['sass', 'html', 'fonts', 'scripts', 'extlibs', 'content'],
+    ['sass', 'html', 'fonts', 'scripts', 'extLibsJS', 'extLibsCSS', 'content'],
     function(){
       buildBrowserify({
         minify: isRelease,
