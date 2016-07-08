@@ -37,11 +37,11 @@ var gulpConcat = require('gulp-concat');
 
 var extLibsPathsArray = [
     'node_modules/jquery/dist/jquery.js',
-    'node_modules/jqcloud2/dist/jqcloud.js',
+    'node_modules/jqcloud2/dist/jqcloud.js'
 ];
 
 var extLibsCssFilesPathsArray = [
-    'node_modules/jqcloud2/dist/jqcloud.css',
+    'node_modules/jqcloud2/dist/jqcloud.css'
 ];
 
 var copyContentFiles = function(options) {

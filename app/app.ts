@@ -16,7 +16,7 @@ import {QuestionPeerReviewPage} from './pages/question-peer-review-page/question
 import {MenuItem} from './models/menu-item';
 import {ContentItem} from './models/content-item';
 
-import {ChannelService, ConnectionState, ChannelConfig, SignalrWindow} from './services/channelService';
+import {ChannelService, ChannelConfig, SignalrWindow} from './services/channelService';
 
 import {CourseIndexPage} from './pages/course-index-page/course-index-page';
 import {TeacherPage} from './pages/teacher-page/teacher-page';
@@ -28,7 +28,6 @@ import {Observable} from "rxjs/Observable";
 let channelConfig = new ChannelConfig();
 channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
 channelConfig.hubName = "inClassHub";
-
 
 @Component({
     templateUrl: 'build/app.html',

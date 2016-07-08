@@ -39,7 +39,8 @@ export class TeacherPage {
             }
         }
 
-        this.channelService.getConnection().received(function (data) {
+        let dataObservable = this.channelService.getReceivedData();
+        dataObservable.source.subscribe((data) => {
             if (data.A && data.A.length > 1) {
                 self.suggestions.push({author: data.A[0], text: data.A[1]});
                 window.localStorage.setItem('suggestions', JSON.stringify(self.suggestions));
