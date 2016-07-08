@@ -13,6 +13,7 @@ var gulp = require('gulp'),
 gulp.task('serve:before', ['watch']);
 gulp.task('emulate:before', ['build']);
 gulp.task('deploy:before', ['build']);
+
 gulp.task('build:before', ['build']);
 
 // we want to 'watch' when livereloading
@@ -32,6 +33,16 @@ var buildSass = require('ionic-gulp-sass-build');
 var copyHTML = require('ionic-gulp-html-copy');
 var copyFonts = require('ionic-gulp-fonts-copy');
 var copyScripts = require('ionic-gulp-scripts-copy');
+var gulpConcat = require('gulp-concat');
+
+var extLibsPathsArray = [
+    'node_modules/jquery/dist/jquery.js',
+    'node_modules/jqcloud2/dist/jqcloud.js'
+];
+
+var extLibsCssFilesPathsArray = [
+    'node_modules/jqcloud2/dist/jqcloud.css'
+];
 
 var copyContentFiles = function(options) {
   options.src = 'app/content/**/*.+(json|mp3|js|png|jpg)';
@@ -39,13 +50,26 @@ var copyContentFiles = function(options) {
 
   return gulp.src(options.src)
     .pipe(gulp.dest(options.dest));
-}
+};
 
 var isRelease = argv.indexOf('--release') > -1;
 
+gulp.task('extLibsJS', function() {
+   return gulp.src(extLibsPathsArray)
+         .pipe(gulpConcat('external-libaries.js'))
+     .pipe(gulp.dest('www/build/js'));
+ });
+
+gulp.task('extLibsCss', function() {
+    return gulp.src(extLibsCssFilesPathsArray)
+        .pipe(gulpConcat('external-libaries.css'))
+        .pipe(gulp.dest('www/build/css'));
+});
+
+
 gulp.task('watch', ['clean'], function(done){
   runSequence(
-    ['sass', 'html', 'fonts', 'scripts', 'content'],
+    ['sass', 'html', 'fonts', 'scripts', 'extLibsJS', 'extLibsCss', 'content'],
     function(){
       gulpWatch('app/**/*.scss', function(){ gulp.start('sass'); });
       gulpWatch('app/**/*.html', function(){ gulp.start('html'); });
@@ -56,7 +80,7 @@ gulp.task('watch', ['clean'], function(done){
 
 gulp.task('build', ['clean'], function(done){
   runSequence(
-    ['sass', 'html', 'fonts', 'scripts', 'content'],
+    ['sass', 'html', 'fonts', 'scripts', 'extLibsJS', 'extLibsCSS', 'content'],
     function(){
       buildBrowserify({
         minify: isRelease,
