@@ -51,7 +51,7 @@ export class QuestionPeerReviewPage {
         );
 
         let answersDataObservable = this.channelService.getAssignmentData();
-        answersDataObservable.source.subscribe((answer) => {
+        answersDataObservable['source'].subscribe((answer) => {
             console.log("Got in page:", answer);
             this.state = "give-feedback";
             this.gotAssignment(answer);

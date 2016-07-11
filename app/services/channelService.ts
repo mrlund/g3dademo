@@ -176,15 +176,15 @@ export class ChannelService {
         //  a client subscried to it the start sequence would be triggered
         //  again since it's a cold observable.
         //
-        var dataSource = this.data$.source;
-        var assignmentDataSource = this.asignmentData$.source;
+        var dataSource = this.data$['source'];
+        var assignmentDataSource = this.asignmentData$['source'];
         this.hubConnection.start()
             .done(() => {
                 this.hubConnection.received((data) => {
-                    dataSource.next(data);
+                    dataSource['next'](data);
                 });
                 this.hubConnection.proxies.inclasshub.on('receiveAssignment', (data) => {
-                    assignmentDataSource.next(data);
+                    assignmentDataSource['next'](data);
                 });
             })
             .fail((error:any) => {

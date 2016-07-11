@@ -1,7 +1,7 @@
 import {NavController, MenuController} from 'ionic-angular';
 import {Component} from '@angular/core';
 
-import {ChannelService} from '../../services/channelService';
+import {ChannelService, SignalrWindow} from '../../services/channelService';
 
 @Component({
     templateUrl: 'build/pages/teacher-page/teacher-page.html'
@@ -11,7 +11,7 @@ export class TeacherPage {
     public counts = {};
     public processedSuggestions = [];
 
-    constructor(private menu:MenuController, private channelService:ChannelService) {
+    constructor(private menu:MenuController, private channelService:ChannelService, private window:SignalrWindow) {
     }
     ngOnInit() {
         // Create a function that the hub can call to broadcast messages.
@@ -40,13 +40,13 @@ export class TeacherPage {
         }
 
         let dataObservable = this.channelService.getReceivedData();
-        dataObservable.source.subscribe((data) => {
+        dataObservable['source'].subscribe((data) => {
             if (data.A && data.A.length > 1) {
                 self.suggestions.push({author: data.A[0], text: data.A[1]});
-                window.localStorage.setItem('suggestions', JSON.stringify(self.suggestions));
-                if(window.$('#jqcloud').length){
+                this.window.localStorage.setItem('suggestions', JSON.stringify(self.suggestions));
+                if(this.window.$('#jqcloud').length){
                     processNewSuggestions();
-                    window.$('#jqcloud').jQCloud('update', self.processedSuggestions);
+                    this.window.$('#jqcloud').jQCloud('update', self.processedSuggestions);
                 }
             }
         });
@@ -61,7 +61,7 @@ export class TeacherPage {
         }
     }
     ngAfterViewInit(){
-        window.jQuery('#jqcloud').jQCloud(this.processedSuggestions);
+        this.window.$('#jqcloud').jQCloud(this.processedSuggestions);
     }
 
 }
