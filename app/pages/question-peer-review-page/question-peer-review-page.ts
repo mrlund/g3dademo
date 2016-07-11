@@ -49,7 +49,9 @@ export class QuestionPeerReviewPage {
                 console.log(error);
             }
         );
-        this.channelService.getConnection().proxies.inclasshub.on('receiveAssignment', (answer) => {
+
+        let answersDataObservable = this.channelService.getAssignmentData();
+        answersDataObservable.source.subscribe((answer) => {
             console.log("Got in page:", answer);
             this.state = "give-feedback";
             this.gotAssignment(answer);

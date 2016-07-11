@@ -71,6 +71,7 @@ export class ChannelService {
     error$:Observable<string>;
 
     data$:Observable<any>;
+    asignmentData$:Observable<any>;
 
     // These are used to feed the public observables 
     //
@@ -78,6 +79,7 @@ export class ChannelService {
     private startingSubject = new Subject<any>();
     private errorSubject = new Subject<any>();
     private dataSubject = new Subject<any>();
+    private asignmentDataSubject = new Subject<any>();
 
     // These are used to track the internal SignalR state 
     //
@@ -100,6 +102,7 @@ export class ChannelService {
         this.error$ = this.errorSubject.asObservable();
         this.starting$ = this.startingSubject.asObservable();
         this.data$ = this.dataSubject.asObservable();
+        this.asignmentData$ = this.asignmentDataSubject.asObservable();
 
         this.hubConnection = this.window.$.hubConnection();
         this.hubConnection.url = channelConfig.url;
@@ -174,11 +177,15 @@ export class ChannelService {
         //  again since it's a cold observable.
         //
         var dataSource = this.data$.source;
+        var assignmentDataSource = this.asignmentData$.source;
         this.hubConnection.start()
             .done(() => {
                 this.hubConnection.received((data) => {
                     dataSource.next(data);
-                })
+                });
+                this.hubConnection.proxies.inclasshub.on('receiveAssignment', (data) => {
+                    assignmentDataSource.next(data);
+                });
             })
             .fail((error:any) => {
                 this.startingSubject.error(error);
@@ -200,5 +207,9 @@ export class ChannelService {
 
     getReceivedData():Observable<any> {
         return this.data$;
+    }
+
+    getAssignmentData():Observable<any> {
+        return this.asignmentData$;
     }
 }
