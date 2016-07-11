@@ -51,7 +51,7 @@ export class ContentData {
     });
   }
   loadModel(projectNo, sessionNo, pageName) {
-    return new Promise(resolve => {
+    return new Promise((resolve, reject) => {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
@@ -60,6 +60,8 @@ export class ContentData {
         // and save the data for later reference
         // this.data = this.processData(res.json());
         resolve(res);
+      }, (err) => {
+        reject(err)
       });
     });
   }

@@ -1,5 +1,5 @@
 import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
 
@@ -20,6 +20,8 @@ export class ContentPage {
     pageModel: string;
     animationName: string;
     pauseAnimation: boolean = true;
+
+    @ViewChild(InnerContent) innerContent:InnerContent;
 
     constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
         // If we navigated to this page, we will have an item available as a nav param
@@ -45,14 +47,14 @@ export class ContentPage {
             (data) => {
                 self.pageContent = data['_body'];
                 self.animationName = "scene_test";
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-        this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
-            (data) => {
-                self.pageModel = data['_body']; //model as string
+                self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
+                    (data) => {
+                        self.pageModel = data['_body']; //model as string
+                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                    }
+                ).catch((e) => {
+                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                })
             },
             (error) => {
                 console.log(error);
