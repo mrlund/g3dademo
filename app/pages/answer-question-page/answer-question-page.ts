@@ -83,7 +83,10 @@ export class AnswerQuestionPage {
         this.nav.present(toast);
     }
     onSuggest(question){
+        question.suggestions = [];
+        question.suggestions.push(question.suggestion);
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'student', question.suggestion);
+        question.suggestion = ""; 
     }
 
 }

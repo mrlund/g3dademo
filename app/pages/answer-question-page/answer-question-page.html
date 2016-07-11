@@ -29,6 +29,11 @@
                         <ion-input value=""></ion-input>
                     </ion-item>
                 </ion-list>
+                <ion-list *ngIf="question.suggestions && question.suggestions.length">
+                    <ul>
+                        <li *ngFor="let suggestion of question.suggestions">{{suggestion}}</li>
+                    </ul>
+                </ion-list>
                 <ion-footer-bar *ngIf="question.type == 'discussion'">
                     <ion-input [(ngModel)]="question.suggestion" type="text" placeholder="Type suggestion..."></ion-input>
                     <button (click)="onSuggest(question)" class="right">Suggest</button>
