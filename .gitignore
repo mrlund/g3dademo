@@ -3,8 +3,10 @@
 
 node_modules/
 www/build/
+.idea/
 platforms/
 plugins/
 *.swp
 .DS_Store
+G3DA.iml
 Thumbs.db
