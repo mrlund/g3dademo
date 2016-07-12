@@ -17,11 +17,12 @@ export class QuestionPeerReviewPage {
     selectedItem: any;
     pageContent: string;
     questions: Array<any>;
-    state: string = "answer";
+    state: string;
     loader: Loading;
 
     constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService) {
         // If we navigated to this page, we will have an item available as a nav param
+        this.state = 'answer';
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
         {
@@ -33,9 +34,10 @@ export class QuestionPeerReviewPage {
         }
     }
     ngOnInit() {
+        let self = this;
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this.questions = data;
+                self.questions = data;
             },
             (error) => {
                 console.log(error);
@@ -43,7 +45,7 @@ export class QuestionPeerReviewPage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this.pageContent = data._body;
+                self.pageContent = data._body;
             },
             (error) => {
                 console.log(error);
@@ -53,8 +55,8 @@ export class QuestionPeerReviewPage {
         let answersDataObservable = this.channelService.getAssignmentData();
         answersDataObservable['source'].subscribe((answer) => {
             console.log("Got in page:", answer);
-            this.state = "give-feedback";
-            this.gotAssignment(answer);
+            self.state = "give-feedback";
+            self.gotAssignment(answer);
         });
     }
     gotAssignment(answer){
