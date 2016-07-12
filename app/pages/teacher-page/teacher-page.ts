@@ -1,12 +1,12 @@
 import {NavController, MenuController} from 'ionic-angular';
-import {Component} from '@angular/core';
+import {Component, AfterContentInit} from '@angular/core';
 
 import {ChannelService, SignalrWindow} from '../../services/channelService';
 
 @Component({
     templateUrl: 'build/pages/teacher-page/teacher-page.html'
 })
-export class TeacherPage {
+export class TeacherPage implements AfterContentInit{
     public suggestions = [];
     public counts = {};
     public processedSuggestions = [];
@@ -23,7 +23,7 @@ export class TeacherPage {
             self.counts = {};
             self.processedSuggestions = [];
             let maxCount = 0;
-            let minCount = 1;
+            let maxSize = 15;
 
             for(let i = 0 ; i < self.suggestions.length; i++){
                 var text = self.suggestions[i].text;
@@ -34,8 +34,8 @@ export class TeacherPage {
             var textKeys = Object.keys(self.counts);
             for(let i = 0 ; i < textKeys.length; i++) {
                 let currentKey = textKeys[i];
-                let curSize = (self.counts[currentKey]/maxCount)*15;
-                self.processedSuggestions.push({text: currentKey, weight: curSize >= 9 ? curSize : 9 })
+                let curSize = (self.counts[currentKey]*maxSize)/maxCount; // max = 15(font-size); current = x(font-size); ... x = current * 15 / max
+                self.processedSuggestions.push({text: currentKey, weight: curSize})
             }
         }
 
@@ -60,8 +60,15 @@ export class TeacherPage {
             this.menu.open();
         }
     }
-    ngAfterViewInit(){
-        this.window.$('#jqcloud').jQCloud(this.processedSuggestions);
+    ngAfterContentInit(){
+        let cloudElement = this.window.$('#jqcloud');
+        var heightOfCloud = this.window.$('.teacher-page').height() - 100;
+        var widthOfCloud = this.window.$('.teacher-page').width();
+        cloudElement.height(heightOfCloud);
+        cloudElement.width(widthOfCloud);
+        cloudElement.jQCloud(this.processedSuggestions, {
+            autoResize: true
+        });
     }
 
 }
