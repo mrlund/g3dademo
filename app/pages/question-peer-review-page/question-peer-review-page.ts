@@ -1,5 +1,6 @@
 import {NavController, NavParams, MenuController, Toast, Loading } from 'ionic-angular';
-import {Component} from '@angular/core';
+import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
+import {Component, ChangeDetectorRef} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
@@ -15,12 +16,18 @@ import {ChannelService} from '../../services/channelService';
 })
 export class QuestionPeerReviewPage {
     selectedItem: any;
-    pageContent: string;
+    private _pageContent: string;
     questions: Array<any>;
-    state: string;
+    state: string = '';
     loader: Loading;
+    receivedReview: any; 
+    submittedReview: boolean;
+    respondingToClientId: string;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData,
+                private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService,
+                private cdRef: ChangeDetectorRef, private _sanitizer: DomSanitizationService) {
+
         // If we navigated to this page, we will have an item available as a nav param
         this.state = 'answer';
         this.selectedItem = navParams.get('item');
@@ -34,10 +41,9 @@ export class QuestionPeerReviewPage {
         }
     }
     ngOnInit() {
-        let self = this;
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                self.questions = data;
+                this.questions = data;
             },
             (error) => {
                 console.log(error);
@@ -45,7 +51,7 @@ export class QuestionPeerReviewPage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                self.pageContent = data._body;
+                this._pageContent = data._body; //to avoud xss attacks warnings
             },
             (error) => {
                 console.log(error);
@@ -54,22 +60,47 @@ export class QuestionPeerReviewPage {
 
         let answersDataObservable = this.channelService.getAssignmentData();
         answersDataObservable['source'].subscribe((answer) => {
-            console.log("Got in page:", answer);
-            self.state = "give-feedback";
-            self.gotAssignment(answer);
+            console.log("Got assignment:", answer);
+            this.state = "give-feedback";
+            this.gotAssignment(answer);
         });
+        let reviewDataObservable = this.channelService.getReviewData();
+        reviewDataObservable['source'].subscribe((answer) => {
+            console.log("Got review:", answer);
+            if (this.receivedReview){
+                console.log("Show feedback");
+                this.state = "get-feedback";
+                this.gotAssignment(answer);
+            } else {
+                console.log("Still giving feedback, store for later.");
+                this.receivedReview = answer;
+            }
+        });        
     }
+    public get pageContent() : SafeHtml {
+        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent);
+    }
+
     gotAssignment(answer){
-        this.questions = answer.questions;
-        this.state = "give-feedback";
+        this.respondingToClientId = answer.ClientId;
+        this.questions = answer;
+        this.cdRef.detectChanges();
     }
     submitAnswers(){
         this.loader = Loading.create();
-        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.getAnswer());
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.getAnswer());    
         this.state = "loading";
-    }
+    }    
     submitFeedback(){
-        this.state = "get-feedback";
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.getAnswer());
+        if (this.receivedReview){
+            this.questions = this.receivedReview;
+            this.state = "get-feedback";
+            this.cdRef.detectChanges();
+        }else {
+            this.receivedReview = true;
+            this.state = "loading";
+        }        
     }
     toggleMenu() {
         if (this.menu.isOpen()) {
@@ -141,7 +172,11 @@ export class QuestionPeerReviewPage {
 
             ]
             }`;
-            return JSON.parse(resp);
+            var obj = JSON.parse(resp); 
+            if (this.respondingToClientId){
+                obj.ClientId = this.respondingToClientId;
+            }
+            return obj;
     }
 
 }
