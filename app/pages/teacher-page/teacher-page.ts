@@ -1,12 +1,12 @@
-import {NavController, MenuController} from 'ionic-angular';
-import {Component, AfterContentInit} from '@angular/core';
+import {MenuController} from 'ionic-angular';
+import {Component, AfterViewInit} from '@angular/core';
 
 import {ChannelService, SignalrWindow} from '../../services/channelService';
 
 @Component({
     templateUrl: 'build/pages/teacher-page/teacher-page.html'
 })
-export class TeacherPage implements AfterContentInit{
+export class TeacherPage implements AfterViewInit{
     public suggestions = [];
     public counts = {};
     public processedSuggestions = [];
@@ -60,10 +60,12 @@ export class TeacherPage implements AfterContentInit{
             this.menu.open();
         }
     }
-    ngAfterContentInit(){
+    ngAfterViewInit(){
+        var headerHeight = 44;
         let cloudElement = this.window.$('#jqcloud');
-        var heightOfCloud = this.window.$('.teacher-page').height() - 100;
-        var widthOfCloud = this.window.$('.teacher-page').width();
+        let teacherPageElement = this.window.$('.teacher-page-inner-content');
+        var heightOfCloud = this.window.$(window).height() - headerHeight;
+        var widthOfCloud = teacherPageElement.width();
         cloudElement.height(heightOfCloud);
         cloudElement.width(widthOfCloud);
         cloudElement.jQCloud(this.processedSuggestions, {
