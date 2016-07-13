@@ -39,7 +39,7 @@
                     {{question.question}}
                 </strong>
                 </ion-card-title>
-                <ion-list radio-group>
+                <ion-list radio-group [(ngModel)]="question.answers[0].isCorrect">
                     <div *ngIf="state == 'give-feedback'">
                         <ion-item *ngFor="let answer of question.answers">
                             <ion-label>Answer: {{answer.answer}}
@@ -73,10 +73,10 @@
                     </div>
                 </ion-list>
                 <ion-footer-bar *ngIf="state == 'give-feedback'">
-                    <ion-input value="" type="text" placeholder="Give a reason for your assessment..."></ion-input>
+                    <ion-input value="" [(ngModel)]="question.answers[0].response" type="text" placeholder="Give a reason for your assessment..."></ion-input>
                 </ion-footer-bar>
                 <ion-footer-bar *ngIf="state == 'answer'">
-                    <ion-input value="" type="text" placeholder="Answer..."></ion-input>
+                    <ion-input value="" [(ngModel)]="question.answers[0].answer" type="text" placeholder="Answer..."></ion-input>
                 </ion-footer-bar>
             </ion-card-content>
         </ion-card>

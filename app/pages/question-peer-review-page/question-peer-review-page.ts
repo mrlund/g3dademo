@@ -51,7 +51,7 @@ export class QuestionPeerReviewPage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this._pageContent = data._body; //to avoud xss attacks warnings
+                this._pageContent = data._body;
             },
             (error) => {
                 console.log(error);
@@ -78,7 +78,7 @@ export class QuestionPeerReviewPage {
         });        
     }
     public get pageContent() : SafeHtml {
-        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent);
+        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
 
     gotAssignment(answer){
@@ -88,11 +88,11 @@ export class QuestionPeerReviewPage {
     }
     submitAnswers(){
         this.loader = Loading.create();
-        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.getAnswer());    
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "loading";
     }    
     submitFeedback(){
-        this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.getAnswer());
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
         if (this.receivedReview){
             this.questions = this.receivedReview;
             this.state = "get-feedback";
