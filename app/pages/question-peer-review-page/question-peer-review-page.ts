@@ -44,6 +44,7 @@ export class QuestionPeerReviewPage {
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.questions = data;
+                
             },
             (error) => {
                 console.log(error);
@@ -61,6 +62,11 @@ export class QuestionPeerReviewPage {
         let answersDataObservable = this.channelService.getAssignmentData();
         answersDataObservable['source'].subscribe((answer) => {
             console.log("Got assignment:", answer);
+            for(let question of answer.questions) { // to reset isCorrect and response fields before giving feedback
+                let firstAnswer = question['answers'][0];
+                firstAnswer['isCorrect'] = null;
+                firstAnswer['response'] = null;
+            }
             this.state = "give-feedback";
             this.gotAssignment(answer);
         });
