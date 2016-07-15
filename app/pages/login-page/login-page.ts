@@ -15,8 +15,6 @@ export class LoginPage {
 
   loginAction(){
     let user = new User(this.login, this.password);
-    if (!this.userService.login(user)){
-      alert('incorrect credentials!')
-    }
+    this.userService.newLogin(user);
   }
 }

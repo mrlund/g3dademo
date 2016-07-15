@@ -1,5 +1,5 @@
-import {App, Platform, MenuController, ionicBootstrap} from 'ionic-angular';
-import {Component, OnInit, provide} from '@angular/core';
+import {ionicBootstrap} from 'ionic-angular';
+import {Component, provide} from '@angular/core';
 
 import {HTTP_PROVIDERS} from "@angular/http";
 
@@ -11,8 +11,6 @@ import {ChannelService, ChannelConfig, SignalrWindow} from './services/channelSe
 import {UserService} from './services/userService';
 
 import { appRouterProviders } from './routes';
-
-import {Events} from 'ionic-angular';
 
 let channelConfig = new ChannelConfig();
 channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
@@ -26,13 +24,6 @@ channelConfig.hubName = "inClassHub";
 })
 class MyApp {
     constructor(
-        private app: App,
-        private platform: Platform,
-        private menu: MenuController,
-        private progress: ProgressProvider,
-        private events: Events,
-        private content: ContentData,
-        private channelService: ChannelService,
         private userService: UserService
     ) {
         this.userService.checkCredentials();

@@ -4,9 +4,11 @@ import {LoginPage} from './pages/login-page/login-page';
 import {MainPage} from './pages/main-page/main-page';
 
 const routes: RouterConfig = [
+
     { path: 'login', component: LoginPage},
     { path: 'main', component: MainPage },
-    { path: '', redirectTo: '/login',  terminal: false}
+    { path: '', redirectTo: '/login',  pathMatch: 'full'}
+
 ];
 
 export const appRouterProviders = [
