@@ -1,41 +1,39 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
+import {Router} from '@angular/router';
+
+
+export class User {
+    constructor(
+        public login: string,
+        public password: string) { }
+}
+
+var users = [
+    new User('test','test')
+];
 
 @Injectable()
 export class UserService {
-    private loggedIn = false;
+    
+    constructor(private _router: Router){}
 
-    constructor(private http: Http) {
-        this.loggedIn = !!window.localStorage.getItem('auth_token');
+    logout():void{
+        localStorage.removeItem("user");
+        this._router.navigate(['/login']);
     }
 
-    login(email, password) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-
-        // return this.http
-        //     .post(
-        //         '/login',
-        //         JSON.stringify({ email, password }),
-        //         { headers }
-        //     )
-        //     .map(res => res.json())
-        //     .map((res) => {
-        //         if (res.success) {
-        //             window.localStorage.setItem('auth_token', res.auth_token);
-        //             this.loggedIn = true;
-        //         }
-        //
-        //         return res.success;
-        //     });
+    login(user):boolean{
+        let authenticatedUser = users.find(u => u.login === user.login);
+        if (authenticatedUser && authenticatedUser.password === user.password){
+            localStorage.setItem("user", JSON.stringify(authenticatedUser));
+            this._router.navigate(['/main']);
+            return true;
+        }
+        return false;
     }
 
-    logout() {
-        localStorage.removeItem('auth_token');
-        this.loggedIn = false;
-    }
-
-    isLoggedIn() {
-        return this.loggedIn;
+    checkCredentials():void{
+        let nextState = localStorage.getItem("user") === null ? '/login' : '/main';
+        this._router.navigate([nextState]);
     }
 }

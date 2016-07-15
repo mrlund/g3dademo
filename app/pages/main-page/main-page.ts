@@ -27,7 +27,7 @@ channelConfig.hubName = "inClassHub";
 @Component({
   templateUrl: 'build/pages/main-page/main-page.html',
 })
-class MainPage implements OnInit{
+export class MainPage implements OnInit{
   // make HelloIonicPage the root (or first) page
   @ViewChild(Nav) nav: Nav;
   rootPage: any = WelcomePage;
@@ -377,6 +377,10 @@ class MainPage implements OnInit{
   showTeacherPage(){
     this.menu.close();
     this.nav.setRoot(TeacherPage);
+  }
+  logout(){
+    this.menu.close();
+    this.userService.logout();
   }
   ngOnInit() {
     // Start the connection up!

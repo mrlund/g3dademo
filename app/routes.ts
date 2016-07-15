@@ -1,12 +1,12 @@
 import { provideRouter, RouterConfig } from '@angular/router';
-import {LoginPage} from './pages/login-page/login-page';
 
-// import {MainPage} from './pages/main-page/main-page';
+import {LoginPage} from './pages/login-page/login-page';
+import {MainPage} from './pages/main-page/main-page';
 
 const routes: RouterConfig = [
-    // { path: 'home', component: MainPage },
-    { path: 'login', component: LoginPage },
-    { path: '', component: LoginPage }
+    { path: 'login', component: LoginPage},
+    { path: 'main', component: MainPage },
+    { path: '', redirectTo: '/login',  terminal: false}
 ];
 
 export const appRouterProviders = [

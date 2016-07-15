@@ -21,14 +21,10 @@ channelConfig.hubName = "inClassHub";
 @Component({
     directives: [ROUTER_DIRECTIVES],
     template:  `
-    <h1>Component Router</h1>
-    <nav>
-      <a [routerLink]="['/login']">login</a>
-    </nav>
             <router-outlet></router-outlet>
         `
 })
-class MyApp implements OnInit{
+class MyApp {
     constructor(
         private app: App,
         private platform: Platform,
@@ -36,11 +32,10 @@ class MyApp implements OnInit{
         private progress: ProgressProvider,
         private events: Events,
         private content: ContentData,
-        private channelService: ChannelService
+        private channelService: ChannelService,
+        private userService: UserService
     ) {
-    }
-
-    ngOnInit() {
+        this.userService.checkCredentials();
     }
 }
 
