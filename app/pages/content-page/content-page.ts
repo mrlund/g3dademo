@@ -8,6 +8,7 @@ import {Animation} from '../../components/animation/animation';
 import {InnerContent} from '../content-page/inner-content';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
+import {Globals} from '../../globals';
 
 @Component({
     templateUrl: 'build/pages/content-page/content-page.html',
@@ -20,10 +21,16 @@ export class ContentPage {
     pageModel: string;
     animationName: string;
     pauseAnimation: boolean = true;
+    isClassroomModeOn: boolean = false;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
+    constructor(private nav: NavController,
+                navParams: NavParams,
+                private content: ContentData,
+                private menu: MenuController,
+                private progress: ProgressProvider,
+                private _globals: Globals) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -40,6 +47,10 @@ export class ContentPage {
         }
         this.pageContent = "<h1>This is a content page!</h1>";
         this.pageModel = null;
+
+        this._globals.isClassroomModeOn.subscribe(value => {
+            this.isClassroomModeOn = value
+        });
     }
     ngOnInit(){
         let self = this;

@@ -9,6 +9,7 @@ import {ContentData} from './providers/contentProvider';
 
 import {ChannelService, ChannelConfig, SignalrWindow} from './services/channelService';
 import {UserService} from './services/userService';
+import {Globals} from './globals';
 
 import { appRouterProviders } from './routes';
 
@@ -37,6 +38,7 @@ ionicBootstrap(MyApp, [
         ContentData,
         ChannelService,
         UserService,
+        Globals,
         provide(SignalrWindow, {useValue: window}),
         provide("channel.config", { useValue: channelConfig })
     ], {

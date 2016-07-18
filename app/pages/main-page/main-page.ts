@@ -19,6 +19,7 @@ import {ContentItem} from '../../models/content-item';
 
 import {ChannelService, ChannelConfig, SignalrWindow} from '../../services/channelService';
 import {UserService} from '../../services/userService';
+import {Globals} from '../../globals';
 
 let channelConfig = new ChannelConfig();
 channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
@@ -44,7 +45,8 @@ export class MainPage implements OnInit{
       private events: Events,
       private content: ContentData,
       private channelService: ChannelService,
-      private userService: UserService
+      private userService: UserService,
+      private _globals: Globals
   ) {
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.subscribe(
@@ -386,5 +388,8 @@ export class MainPage implements OnInit{
     // Start the connection up!
     console.log("Starting the channel service");
     this.channelService.start();
+  }
+  onClassroomModeSwitch(classroomMode: boolean){
+    this._globals.setClassroomModeStatus(classroomMode);
   }
 }
