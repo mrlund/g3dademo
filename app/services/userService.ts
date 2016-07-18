@@ -33,7 +33,10 @@ export class UserService {
     }
 
     checkCredentials():void{
-        let nextState = localStorage.getItem("api_token") === null ? '/login' : '/main';
+        
+        //Changed to eliminate the need to login for the time being. 
+        //let nextState = localStorage.getItem("api_token") === null ? '/login' : '/main';
+        let nextState = '/main';
         this.router.navigate([nextState]);
     }
     goToForgetPasswordPage():void{
