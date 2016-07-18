@@ -36,4 +36,10 @@ export class UserService {
         let nextState = localStorage.getItem("api_token") === null ? '/login' : '/main';
         this.router.navigate([nextState]);
     }
+    goToForgetPasswordPage():void{
+        this.router.navigate(['/forget-password']);
+    }
+    resetPassword():void{
+        this.router.navigate(['/login']);
+    }
 }

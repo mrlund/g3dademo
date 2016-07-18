@@ -2,19 +2,22 @@ import {Component} from '@angular/core';
 import {UserService, User} from '../../services/userService';
 
 @Component({
-  templateUrl: 'build/pages/login-page/login-page.html'
+  templateUrl: 'build/pages/login-page/login-page.html',
 })
 export class LoginPage {
-  login: string;
-  password: string;
+  authType: string = "login";
 
   constructor(private userService: UserService) {
-    this.login = '';
-    this.password = '';
   }
 
-  loginAction(){
-    let user = new User(this.login, this.password);
+  loginAction(obj: any){
+    let user = new User(obj.login, obj.password);
     this.userService.newLogin(user);
+  }
+  signupAction(obj: any){
+    alert('need to implement signup method');
+  }
+  redirectToForgotPasswordPage(){
+    this.userService.goToForgetPasswordPage();
   }
 }
