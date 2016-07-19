@@ -2,6 +2,7 @@ import {MenuController} from 'ionic-angular';
 import {Component, AfterViewInit} from '@angular/core';
 
 import {ChannelService, SignalrWindow} from '../../services/channelService';
+import {TeacherPageService} from '../../services/teacherPageService';
 
 @Component({
     templateUrl: 'build/pages/teacher-page/teacher-page.html'
@@ -11,7 +12,10 @@ export class TeacherPage implements AfterViewInit{
     public counts = {};
     public processedSuggestions = [];
 
-    constructor(private menu:MenuController, private channelService:ChannelService, private window:SignalrWindow) {
+    constructor(private menu:MenuController,
+                private channelService:ChannelService,
+                private teacherPageService:TeacherPageService,
+                private window:SignalrWindow) {
     }
     ngOnInit() {
         // Create a function that the hub can call to broadcast messages.
@@ -69,7 +73,7 @@ export class TeacherPage implements AfterViewInit{
         }
     }
     deleteSuggestions(){
-        window.localStorage.removeItem("suggestions");
+        this.teacherPageService.clearAssignments();
         this.suggestions = [];
         this.processedSuggestions = [];
         this.window.$('#jqcloud').jQCloud('update', this.processedSuggestions);

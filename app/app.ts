@@ -10,6 +10,7 @@ import {ContentData} from './providers/contentProvider';
 
 import {ChannelService, ChannelConfig, SignalrWindow} from './services/channelService';
 import {UserService} from './services/userService';
+import {TeacherPageService} from './services/teacherPageService';
 import {Globals} from './globals';
 
 import { appRouterProviders } from './routes';
@@ -37,6 +38,7 @@ ionicBootstrap(MyApp, [
         ContentData,
         ChannelService,
         UserService,
+        TeacherPageService,
         Globals,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         provide(SignalrWindow, {useValue: window}),

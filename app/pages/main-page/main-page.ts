@@ -19,6 +19,7 @@ import {ContentItem} from '../../models/content-item';
 
 import {ChannelService, ChannelConfig, SignalrWindow} from '../../services/channelService';
 import {UserService} from '../../services/userService';
+import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
 
 let channelConfig = new ChannelConfig();
@@ -47,6 +48,7 @@ export class MainPage implements OnInit{
       private content: ContentData,
       private channelService: ChannelService,
       private userService: UserService,
+      private teacherPageService: TeacherPageService,
       private _globals: Globals
   ) {
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
@@ -389,6 +391,7 @@ export class MainPage implements OnInit{
     // Start the connection up!
     console.log("Starting the channel service");
     this.channelService.start();
+    this.teacherPageService.startTimer(); //timer for clearing suggestions every hour
   }
   onClassroomModeSwitch(classroomMode: boolean){
     this._globals.setClassroomModeStatus(classroomMode);
