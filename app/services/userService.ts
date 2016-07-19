@@ -33,7 +33,6 @@ export class UserService {
     }
 
     checkCredentials():void{
-        
         //Changed to eliminate the need to login for the time being. 
         //let nextState = localStorage.getItem("api_token") === null ? '/login' : '/main';
         let nextState = '/main';

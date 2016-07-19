@@ -3,6 +3,7 @@ import {UserService, User} from '../../services/userService';
 
 @Component({
   templateUrl: 'build/pages/login-page/login-page.html',
+  selector : 'login-page-cmp',
 })
 export class LoginPage {
   authType: string = "login";

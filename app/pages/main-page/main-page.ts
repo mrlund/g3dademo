@@ -27,6 +27,7 @@ channelConfig.hubName = "inClassHub";
 
 @Component({
   templateUrl: 'build/pages/main-page/main-page.html',
+  selector : 'main-page-cmp'
 })
 export class MainPage implements OnInit{
   // make HelloIonicPage the root (or first) page

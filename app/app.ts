@@ -20,9 +20,7 @@ channelConfig.hubName = "inClassHub";
 
 @Component({
     directives: [ROUTER_DIRECTIVES],
-    template:  `
-            <router-outlet></router-outlet>
-        `
+    template:  "<router-outlet></router-outlet>"
 })
 class MyApp {
     constructor(
