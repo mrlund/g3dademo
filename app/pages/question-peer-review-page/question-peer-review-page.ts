@@ -127,7 +127,7 @@ export class QuestionPeerReviewPage {
         this.progress.completeLesson(this.selectedItem.menuItem);
         let toast = Toast.create({
             message: 'Congratulations - You completed the lesson!',
-            duration: 1000
+            duration: 3000
         });
         toast.onDismiss(() => {
             this.nav.setRoot(WelcomePage);

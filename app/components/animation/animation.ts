@@ -19,7 +19,7 @@ export class Animation implements OnChanges {
   @Input() urlName:string;
   @Input() paused:boolean;
   
-  @Output() playStateChanged:EventEmitter<boolean> = new EventEmitter();
+  @Output() playStateChanged:EventEmitter<boolean> = new EventEmitter<boolean>();
   
   private canvas:any;
   private stage:any;
@@ -63,7 +63,12 @@ ngOnInit() {
       var anim = this.stage.getChildAt(0);
       this.playStateChanged.emit(!createjs.Ticker.getPaused());
       let st = anim.soundTrack ? anim.soundTrack : anim.children[0].soundTrack;
-      st.setPaused(!createjs.Ticker.getPaused());
+      if (!st){
+          st = createjs.Sound._instances[0];
+      }
+      if (st){
+          st.setPaused(!createjs.Ticker.getPaused());
+      }
       createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
       //console.log("Hit " + createjs.Ticker.getPaused());
   }
@@ -91,8 +96,12 @@ ngOnInit() {
         that.resizeAnimation();
 
         let st = that.stage.getChildAt(0).soundTrack ? that.stage.getChildAt(0).soundTrack : that.stage.getChildAt(0).children[0].soundTrack;
-        st.setPaused(true);
-
+        if (!st){
+            st = createjs.Sound._instances[0];
+        }        
+        if (st){
+            st.setPaused(true);
+        }
         createjs.Ticker.setPaused(true);
      }
  }

@@ -8,7 +8,7 @@
         <ion-list>
             <ion-item>
                 <ion-label>Classroom Mode</ion-label>
-                <ion-toggle [(ngModel)]="classroomMode"></ion-toggle>
+                <ion-toggle [(ngModel)]="classroomMode" (ionChange)="onClassroomModeSwitch(classroomMode)"></ion-toggle>
             </ion-item>
             <div *ngFor="let p of pages">
                 <ion-list-header (click)="showChildren(p)">
@@ -26,6 +26,9 @@
             </ion-item>
             <ion-item (click)="showTeacherPage()">
                 Teacher Page (TEST)
+            </ion-item>
+            <ion-item (click)="logout()">
+               Logout
             </ion-item>
         </ion-list>
     </ion-content>
