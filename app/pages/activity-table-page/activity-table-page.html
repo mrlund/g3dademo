@@ -11,10 +11,7 @@
 
 <ion-content class="has-header has-footer" *ngIf="categories">
     <div class="page-container">
-        <ion-card>
-            <ion-card-content [innerHtml]="pageContent">
-            </ion-card-content>
-        </ion-card>
+        <inner-content [template]="pageContent" [model]="pageModel"></inner-content>
         <ion-card>
             <ion-card-content>
                 <ion-card-title><strong>Budget</strong></ion-card-title>
