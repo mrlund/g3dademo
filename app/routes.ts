@@ -7,7 +7,9 @@ import {ForgotPassword} from './pages/forgot-password-page/forgot-password-page'
 const routes: RouterConfig = [
     { path: 'login', component: LoginPage},
     { path: 'main', component: MainPage },
-    { path: 'forget-password', component: ForgotPassword }
+    { path: 'forget-password', component: ForgotPassword },
+    { path: '', redirectTo: '/main', pathMatch: 'full'}
+
 ];
 
 export const appRouterProviders = [
