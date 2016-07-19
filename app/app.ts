@@ -4,6 +4,7 @@ import {Component, provide} from '@angular/core';
 import {HTTP_PROVIDERS} from "@angular/http";
 
 import {ROUTER_DIRECTIVES} from '@angular/router';
+import {LocationStrategy, HashLocationStrategy } from '@angular/common';
 import {ProgressProvider} from './providers/progressProvider';
 import {ContentData} from './providers/contentProvider';
 
@@ -39,6 +40,7 @@ ionicBootstrap(MyApp, [
         ChannelService,
         UserService,
         Globals,
+        {provide: LocationStrategy, useClass: HashLocationStrategy},
         provide(SignalrWindow, {useValue: window}),
         provide("channel.config", { useValue: channelConfig })
     ], {

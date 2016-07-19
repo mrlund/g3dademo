@@ -9,7 +9,7 @@ const routes: RouterConfig = [
     { path: 'login', component: LoginPage},
     { path: 'main', component: MainPage },
     { path: 'forget-password', component: ForgotPassword },
-    { path: '', redirectTo: '/login',  pathMatch: 'full'}
+    { path: '', redirectTo: '/main',  pathMatch: 'full'}
 
 ];
 
