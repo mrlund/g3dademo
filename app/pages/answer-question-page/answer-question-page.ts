@@ -68,7 +68,7 @@ export class AnswerQuestionPage {
         this.progress.completeLesson(this.selectedItem.menuItem);
         let toast = Toast.create({
             message: 'Congratulations - You completed the lesson!',
-            duration: 1000
+            duration: 3000
         });
         toast.onDismiss(() => {
             let nextLessonPage = self.progress.findNextLesson(self.selectedItem.menuItem)
@@ -83,7 +83,9 @@ export class AnswerQuestionPage {
         this.nav.present(toast);
     }
     onSuggest(question){
-        question.suggestions = [];
+        if (!question.suggestions){
+            question.suggestions = [];    
+        }
         question.suggestions.push(question.suggestion);
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'student', question.suggestion);
         question.suggestion = ""; 

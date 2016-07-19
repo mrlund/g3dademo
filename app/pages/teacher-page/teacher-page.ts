@@ -17,7 +17,14 @@ export class TeacherPage implements AfterViewInit{
         // Create a function that the hub can call to broadcast messages.
         var self = this;
         var earlySuggestions = window.localStorage.getItem('suggestions');
-        if(earlySuggestions) self.suggestions = JSON.parse(earlySuggestions);
+        var updatedDate = +this.window.localStorage.getItem('suggestionsUpdate');
+
+        if(earlySuggestions && (new Date().getTime() - updatedDate) > 1000*60*60){
+            self.suggestions = JSON.parse(earlySuggestions);
+        } else {
+            this.window.localStorage.removeItem("suggestionsUpdate");
+        }
+            
 
         function processNewSuggestions(){
             self.counts = {};
@@ -44,6 +51,7 @@ export class TeacherPage implements AfterViewInit{
             if (data.A && data.A.length > 1) {
                 self.suggestions.push({author: data.A[0], text: data.A[1]});
                 this.window.localStorage.setItem('suggestions', JSON.stringify(self.suggestions));
+                this.window.localStorage.setItem('suggestionsUpdate', new Date().getTime().toString());
                 if(this.window.$('#jqcloud').length){
                     processNewSuggestions();
                     this.window.$('#jqcloud').jQCloud('update', self.processedSuggestions);
@@ -60,6 +68,12 @@ export class TeacherPage implements AfterViewInit{
             this.menu.open();
         }
     }
+    deleteSuggestions(){
+        window.localStorage.removeItem("suggestions");
+        this.suggestions = [];
+        this.processedSuggestions = [];
+        this.window.$('#jqcloud').jQCloud('update', this.processedSuggestions);
+    }
     ngAfterViewInit(){
         var headerHeight = 44;
         let cloudElement = this.window.$('#jqcloud');
@@ -69,7 +83,9 @@ export class TeacherPage implements AfterViewInit{
         cloudElement.height(heightOfCloud);
         cloudElement.width(widthOfCloud);
         cloudElement.jQCloud(this.processedSuggestions, {
-            autoResize: true
+            autoResize: true,
+            steps: 3,
+            fontSize: ['60px', '45px','30px' ]
         });
     }
 
