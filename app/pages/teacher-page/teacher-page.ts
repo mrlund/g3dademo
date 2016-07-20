@@ -81,9 +81,8 @@ export class TeacherPage implements AfterViewInit{
     ngAfterViewInit(){
         var headerHeight = 44;
         let cloudElement = this.window.$('#jqcloud');
-        let teacherPageElement = this.window.$('.teacher-page-inner-content');
         var heightOfCloud = this.window.$(window).height() - headerHeight;
-        var widthOfCloud = teacherPageElement.width();
+        var widthOfCloud = this.window.$(window).width();
         cloudElement.height(heightOfCloud);
         cloudElement.width(widthOfCloud);
         cloudElement.jQCloud(this.processedSuggestions, {

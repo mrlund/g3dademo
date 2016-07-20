@@ -7,6 +7,7 @@ import {MenuItem} from '../../models/menu-item';
 
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ChannelService} from '../../services/channelService';
+import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -15,10 +16,16 @@ import {ChannelService} from '../../services/channelService';
 })
 export class AnswerQuestionPage {
     selectedItem: any;
-    pageContent: string;
+    private _pageContent: string;
     questions: Array<any>;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService) {
+    constructor(private nav: NavController,
+                navParams: NavParams,
+                private content: ContentData,
+                private menu: MenuController,
+                private progress: ProgressProvider,
+                private channelService:ChannelService,
+                private _sanitizer: DomSanitizationService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -41,12 +48,15 @@ export class AnswerQuestionPage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this.pageContent = data._body;
+                this._pageContent = data._body;
             },
             (error) => {
                 console.log(error);
             }
         );
+    }
+    public get pageContent() : SafeHtml {
+        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
     toggleMenu() {
         if (this.menu.isOpen()) {

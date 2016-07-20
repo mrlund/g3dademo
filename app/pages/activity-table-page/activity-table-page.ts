@@ -6,6 +6,7 @@ import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
 import {ProgressProvider} from '../../providers/progressProvider';
+import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
 
 
 @Component({
@@ -15,14 +16,19 @@ import {ProgressProvider} from '../../providers/progressProvider';
 })
 export class ActivityTablePage {
     selectedItem: any;
-    pageContent: string;
+    private _pageContent: string;
     categories: Array<any>;
     table: Array<any> = [];
     addList: Array<any> = [];
     addSelected: any;
     total: number;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
+    constructor(private nav: NavController,
+                navParams: NavParams,
+                private content: ContentData,
+                private menu: MenuController,
+                private progress: ProgressProvider,
+                private _sanitizer: DomSanitizationService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -51,12 +57,15 @@ export class ActivityTablePage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this.pageContent = data._body;
+                this._pageContent = data._body;
             },
             (error) => {
                 console.log(error);
             }
         );
+    }
+    public get pageContent() : SafeHtml {
+        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
     addItem(){
         this.table.push(this.addSelected);
