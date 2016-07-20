@@ -6,7 +6,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {Animation} from '../../components/animation/animation';
 import {InnerContent} from '../content-page/inner-content';
-import {ContentItem} from '../../models/content-item';
+import {ContentItem, AnimationContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 import {Globals} from '../../globals';
 
@@ -19,7 +19,7 @@ export class ContentPage {
     selectedItem: ContentItem;
     pageContent: string;
     pageModel: string;
-    animationName: string;
+    animationName: string = '';
     pauseAnimation: boolean = true;
     isClassroomModeOn: boolean = false;
 
@@ -33,20 +33,19 @@ export class ContentPage {
                 private _globals: Globals) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
-        if (!this.selectedItem)
-        {
+        if(this.selectedItem instanceof AnimationContentItem){
+            this.animationName = this.selectedItem['animationName'];
+        }
+        if (!this.selectedItem) {
             this.selectedItem = new ContentItem(navParams.get('urlName'), navParams.get('urlName'), ContentPage);
             this.selectedItem.project = navParams.get('project');
             this.selectedItem.session = navParams.get('session');
             this.selectedItem.menuItem = new MenuItem('Title', this.selectedItem.project, this.selectedItem.session, null, [this.selectedItem]);
             this.selectedItem.page = 2;
-            this.animationName = "scene_test";
-        }
-        if (this.selectedItem.page == 1) {
-            this.animationName = "scene_test";
         }
         this.pageContent = "<h1>This is a content page!</h1>";
         this.pageModel = null;
+
 
         this._globals.isClassroomModeOn.subscribe(value => {
             this.isClassroomModeOn = value
@@ -57,7 +56,6 @@ export class ContentPage {
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 self.pageContent = data['_body'];
-                self.animationName = "scene_test";
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
                         self.pageModel = data['_body']; //model as string

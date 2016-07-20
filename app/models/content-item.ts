@@ -46,9 +46,11 @@ export class AnimationContentItem implements IContentItem {
         nextItem: ContentItem;
         animationName: string;
 
-        constructor(urlName: string, title: string, componentType: any){
+        constructor(urlName: string, title: string, componentType: any, animationName?: string){
+            let defaultAnimationNameFile = "scene_test";
             this.urlName = urlName;
             this.title = title;
             this.componentType = componentType;
+            this.animationName = animationName ? animationName : defaultAnimationNameFile;
         }
 }

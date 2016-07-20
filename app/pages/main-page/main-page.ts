@@ -15,7 +15,7 @@ import {CourseIndexPage} from '../course-index-page/course-index-page';
 import {TeacherPage} from '../teacher-page/teacher-page';
 
 import {MenuItem} from '../../models/menu-item';
-import {ContentItem} from '../../models/content-item';
+import {ContentItem, AnimationContentItem} from '../../models/content-item';
 
 import {ChannelService, ChannelConfig, SignalrWindow} from '../../services/channelService';
 import {UserService} from '../../services/userService';
@@ -75,7 +75,7 @@ export class MainPage implements OnInit{
         //Session
         new MenuItem('Introduction', 1, 1, null, [
           //Pages
-          new ContentItem('intro', 'Introduction', ContentPage),
+          new AnimationContentItem('intro', 'Introduction', ContentPage),
           new ContentItem('objectives', 'Objectives', ContentPage),
           new ContentItem('assignment', 'Assignment', ContentPage),
           new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
@@ -90,35 +90,34 @@ export class MainPage implements OnInit{
         new MenuItem('How To Calculate GPA', 1, 3, null, [
           //Page
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
-          new ContentItem('what-is-gpa', 'What is GPA', ContentPage),
+          new AnimationContentItem('what-is-gpa', 'What is GPA', ContentPage),
           new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
           new ContentItem('calculate-excercise', 'Excercise', ContentPage),
-          new ContentItem('cleaver-high', 'Cleaver High', ContentPage),
+          new AnimationContentItem('cleaver-high', 'Cleaver High', ContentPage),
           new ContentItem('raising-gpa', 'Raising Your GPA', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
-        new MenuItem('Graphing Quartiles', 1, 4, null,
-            [
-              new ContentItem('introduction', 'Introduction', ContentPage),
+        new MenuItem('Graphing Quartiles', 1, 4, null, [
+              new AnimationContentItem('introduction', 'Introduction', ContentPage),
               new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
-              new ContentItem('why-box-plots', 'Why Box Plots', ContentPage),
+              new AnimationContentItem('why-box-plots', 'Why Box Plots', ContentPage),
               new ContentItem('how-to-create', 'Creating Plots', ContentPage),
               new ContentItem('excercise', 'Excercise', ContentPage)
-            ]),
+        ]),
         new MenuItem('Assumptions Of GPA', 1, 5, null, [
-          new ContentItem('introduction', 'Introduction', ContentPage),
+          new AnimationContentItem('introduction', 'Introduction', ContentPage),
           new ContentItem('types-of-measurement', 'Types of Measurement', ContentPage),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Graphing Interval Data', 1, 6, null, [
           new ContentItem('graphing-interval-data', 'Graphing interval data', AnswerQuestionPage),
-          new ContentItem('how-to-create', 'Creating histogram', ContentPage),
+          new AnimationContentItem('how-to-create', 'Creating histogram', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
           new ContentItem('activity-page', 'Activity', ContentPage),
         ]),
         new MenuItem('Project Workshop', 1, 7, null, [
-          new ContentItem('grading-scales', 'Grading scales', ContentPage),
+          new AnimationContentItem('grading-scales', 'Grading scales', ContentPage),
           new ContentItem('questions', 'Discussion', AnswerQuestionPage),
           new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
         ]),
@@ -134,20 +133,20 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
         new MenuItem('Introduction', 2, 1, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('introduction', 'Introduction', ContentPage),
-          new ContentItem('storyline', 'Story line', ContentPage),
+          new AnimationContentItem('storyline', 'Story line', ContentPage),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
         ]),
         new MenuItem('Representing Quantitive Data', 2, 2, null, [
-          new ContentItem('intro-video', 'Experiencing', ContentPage),
+          new AnimationContentItem('intro-video', 'Experiencing', ContentPage),
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Analyzing Data - Mean', 2, 3, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('processing-activity', 'Processing - activity', ContentPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
           new ContentItem('applying-activity', 'Applying: activity', ContentPage),
@@ -172,21 +171,21 @@ export class MainPage implements OnInit{
         //    new ContentItem('applying-class-discussion', 'Applying class discussion', AnswerQuestionPage),
         //]),
         new MenuItem('Analyzing Data - Standard Deviation', 2, 7, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('end', 'What is standard deviation?', ContentPage)
         ]),
         new MenuItem('Making Predictions About Data', 2, 8, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Breaking The Cycle', 2, 9, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
@@ -216,14 +215,14 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('3: Shoplifting', 3, 0, [
         new MenuItem('Project Introduction', 3, 1, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('introduction', 'Introduction', ContentPage),
-          new ContentItem('storyline', 'Story line', ContentPage),
+          new AnimationContentItem('storyline', 'Story line', ContentPage),
           new ContentItem('project-statement', 'Project title Project Statement', ContentPage),
           new ContentItem('pre-test', 'Shoplifting', AnswerQuestionPage)
         ]),
         new MenuItem('Data Distribution - Shape', 3, 2, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
@@ -242,7 +241,7 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Appplying', AnswerQuestionPage)
         ]),
         new MenuItem('Project Workshop', 3, 5, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
@@ -260,22 +259,22 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('4: Cell Phone Usage', 4, 0, [
         new MenuItem('Introduction', 4, 1, null,  [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('introduction', 'Introduction', ContentPage),
-          new ContentItem('storyline', 'Story line', ContentPage),
+          new AnimationContentItem('storyline', 'Story line', ContentPage),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
         ]),
         new MenuItem('Unobtrusive Measures', 4, 2, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('video', 'Video', ContentPage),
+          new AnimationContentItem('video', 'Video', ContentPage),
           new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', AnswerQuestionPage)
         ]),
         new MenuItem('Data Representation: Tables and Charts', 4, 3, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('table45', 'Table 45', ContentPage),
@@ -291,7 +290,7 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Project workshop', 4, 5, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('data', 'Data', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
@@ -299,7 +298,7 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Project Presentations', 4, 6, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Class session agenda', ContentPage),
           new ContentItem('presentation1', ' ', ContentPage),
           new ContentItem('presentation2', ' ', ContentPage)
