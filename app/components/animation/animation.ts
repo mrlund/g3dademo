@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output, OnChanges, ElementRef} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
+import {Globals} from '../../globals';
 declare var createjs: any; 
 declare var lib: any;
 
@@ -7,8 +8,14 @@ declare var lib: any;
   selector: 'animation',
   providers: [ContentData],
   template: `
-    <canvas [hidden]="!animationFileFound" (click)="playPauseAnimation()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-    <img *ngIf="paused" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
+    <div *ngIf="isClassroomModeOn == false">
+        <canvas [hidden]="!animationFileFound" (click)="playPauseAnimation()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+        <img *ngIf="paused" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
+    </div>  
+    <div *ngIf="isClassroomModeOn == true">
+        <canvas width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+        <img src="/img/play-button-disabled-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
+    </div>
   `,
   directives: []  
 })
@@ -32,9 +39,15 @@ export class Animation implements OnChanges {
   private isPaused:boolean;
   private animationFileFound: boolean;
   //private updateRate:EventEmitter = new EventEmitter();
+  private isClassroomModeOn: boolean = false;
   
-  constructor(content: ContentData, private thisElement: ElementRef){
+  constructor(content: ContentData,
+              private thisElement: ElementRef,
+              private _globals: Globals){
       this.content = content;
+      this._globals.isClassroomModeOn.subscribe(value => {
+          this.isClassroomModeOn = value
+      });
   }
 ngOnInit() {
     this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
