@@ -1,9 +1,10 @@
 import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
+import {InnerContent} from '../content-page/inner-content';
 
 import {ProgressProvider} from '../../providers/progressProvider';
 import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
@@ -12,7 +13,7 @@ import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
     providers: [],
-    directives: []
+    directives: [InnerContent]
 })
 export class ActivityTablePage {
     selectedItem: any;
@@ -22,13 +23,11 @@ export class ActivityTablePage {
     addList: Array<any> = [];
     addSelected: any;
     total: number;
+    pageModel: string;
 
-    constructor(private nav: NavController,
-                navParams: NavParams,
-                private content: ContentData,
-                private menu: MenuController,
-                private progress: ProgressProvider,
-                private _sanitizer: DomSanitizationService) {
+    @ViewChild(InnerContent) innerContent:InnerContent;
+
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -41,6 +40,7 @@ export class ActivityTablePage {
         }
     }
     ngOnInit() {
+        let self = this;
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.categories = data.categories;
@@ -57,7 +57,15 @@ export class ActivityTablePage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this._pageContent = data._body;
+                self.pageContent = data['_body'];
+                self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
+                    (data) => {
+                        self.pageModel = data['_body']; //model as string
+                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                    }
+                ).catch((e) => {
+                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                })
             },
             (error) => {
                 console.log(error);

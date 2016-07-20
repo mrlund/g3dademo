@@ -1,5 +1,12 @@
 <h1>Budget Excercise</h1>
 <p>
-    Create a monthly budget using your <strong>Status assignment</strong> and <strong>Health assignment</strong>. 
-    Be realistic about how much you think you would spend and remember that any leftover money can be saved for the future or for other luxuries like vacation.
+    Create a monthly budget using your <strong>Status assignment</strong> and <strong>Health assignment</strong>. Be realistic
+    about how much you think you would spend and remember that any leftover money can be saved for the future or for other
+    luxuries like vacation.
 </p>
+<ion-card *ngFor="let card of model.cards">
+    <ion-card-content>
+        <ion-card-title>Your <strong>{{card.assignmentName}}</strong> assignment is</ion-card-title>
+        <h1>{{card.assignment}}</h1>
+    </ion-card-content>
+</ion-card>
