@@ -83,7 +83,7 @@ export class ContentData {
             var newAnimation = { name: name, animation: lib};
             //this.animations.push(newAnimation);
             resolve(newAnimation.animation);
-        }
+        };
         document.head.appendChild(script);
     });
   }

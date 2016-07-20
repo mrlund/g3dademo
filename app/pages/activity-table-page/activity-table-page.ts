@@ -17,7 +17,7 @@ import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
 })
 export class ActivityTablePage {
     selectedItem: any;
-    private _pageContent: string;
+    pageContent: string;
     categories: Array<any>;
     table: Array<any> = [];
     addList: Array<any> = [];
@@ -71,9 +71,6 @@ export class ActivityTablePage {
                 console.log(error);
             }
         );
-    }
-    public get pageContent() : SafeHtml {
-        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
     addItem(){
         this.table.push(this.addSelected);

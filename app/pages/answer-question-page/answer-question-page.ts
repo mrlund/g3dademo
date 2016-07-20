@@ -81,14 +81,15 @@ export class AnswerQuestionPage {
             duration: 3000
         });
         toast.onDismiss(() => {
-            let nextLessonPage = self.progress.findNextLesson(self.selectedItem.menuItem)
-            if(nextLessonPage && nextLessonPage.pages && nextLessonPage.pages[0]){ // if there is next page so open it
-                let firstContentPage = nextLessonPage.pages[0];
-                self.progress.openPage(firstContentPage);
-                self.nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
-            } else {
-                this.nav.setRoot(WelcomePage); // if no next page so open welcome page
-            }
+            // let nextLessonPage = self.progress.findNextLesson(self.selectedItem.menuItem)
+            // if(nextLessonPage && nextLessonPage.pages && nextLessonPage.pages[0]){ // if there is next page so open it
+            //     let firstContentPage = nextLessonPage.pages[0];
+            //     self.progress.openPage(firstContentPage);
+            //     self.nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
+            // } else {
+            //     this.nav.setRoot(WelcomePage); // if no next page so open welcome page
+            // }
+            this.nav.setRoot(WelcomePage); //now we need only welcome page after finishing lesson in all cases;
         });
         this.nav.present(toast);
     }
