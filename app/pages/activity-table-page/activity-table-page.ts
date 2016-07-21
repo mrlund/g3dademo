@@ -4,7 +4,7 @@ import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
-import {InnerContent} from '../content-page/inner-content';
+import {InnerContent} from '../../components/inner-content/inner-content';
 
 import {ProgressProvider} from '../../providers/progressProvider';
 import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";

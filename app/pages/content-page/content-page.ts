@@ -5,14 +5,15 @@ import {ProgressProvider} from '../../providers/progressProvider';
 
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {Animation} from '../../components/animation/animation';
-import {InnerContent} from '../content-page/inner-content';
+import {InnerContent} from '../../components/inner-content/inner-content';
 import {ContentItem, AnimationContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
+import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 
 @Component({
     templateUrl: 'build/pages/content-page/content-page.html',
     providers: [],
-    directives: [Animation, InnerContent]
+    directives: [Animation, InnerContent, CharacterPhraseImg]
 })
 export class ContentPage {
     selectedItem: ContentItem;
@@ -22,6 +23,7 @@ export class ContentPage {
     pauseAnimation: boolean = true;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
+    @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
 
     constructor(private nav: NavController,
                 navParams: NavParams,
@@ -50,8 +52,9 @@ export class ContentPage {
                 self.pageContent = data['_body'];
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
-                        self.pageModel = data['_body']; //model as string
+                        self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
                         self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                        self.characterPhraseImg.draw(self.pageModel);
                     }
                 ).catch((e) => {
                     self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
