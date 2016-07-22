@@ -8,14 +8,10 @@ declare var lib: any;
   selector: 'animation',
   providers: [ContentData],
   template: `
-    <div *ngIf="isClassroomModeOn == false">
-        <canvas [hidden]="!animationFileFound" (click)="playPauseAnimation()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-        <img *ngIf="paused" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
-    </div>  
-    <div *ngIf="isClassroomModeOn == true">
-        <canvas width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-        <img src="/img/play-button-disabled-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
-    </div>
+        <canvas *ngIf="isClassroomModeOn == false" [hidden]="!animationFileFound" (click)="playPauseAnimation()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+        <img *ngIf="paused && isClassroomModeOn == false" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
+        <canvas *ngIf="isClassroomModeOn == true" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
+        <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
   `,
   directives: []  
 })
@@ -46,22 +42,26 @@ export class Animation implements OnChanges {
               private _globals: Globals){
       this.content = content;
       this._globals.isClassroomModeOn.subscribe(value => {
-          this.isClassroomModeOn = value
+          this.isClassroomModeOn = value;
+          this.loadAnimationAction();
       });
   }
-ngOnInit() {
-    this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
-        (data) => {
-            this.animationFileFound = true;
-            this.animationCode = data;
-            this.loadAnimation();
-        },
-        (error) => {
-            console.log(error);
-            this.animationFileFound = false;
-        }
-    );
-} 
+  ngOnInit() {
+      this.loadAnimationAction();
+  }
+  loadAnimationAction(){
+      this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
+          (data) => {
+              this.animationFileFound = true;
+              this.animationCode = data;
+              this.loadAnimation();
+          },
+          (error) => {
+              console.log(error);
+              this.animationFileFound = false;
+          }
+      );
+  }
   ngOnChanges(changes){
       if (this.paused && this.stage && !createjs.Ticker.getPaused())
       {
