@@ -45,6 +45,9 @@ export class Animation implements OnChanges {
           this.isClassroomModeOn = value;
           this.loadAnimationAction();
       });
+      window['playSound'] = function (id, loop) {
+          return createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
+      }
   }
   ngOnInit() {
       this.loadAnimationAction();
@@ -86,6 +89,7 @@ export class Animation implements OnChanges {
       //console.log("Hit " + createjs.Ticker.getPaused());
   }
  loadAnimation(){
+     if (!createjs.Sound.initializeDefaultPlugins()) { return; }
         this.page_canvas = this.thisElement.nativeElement.firstElementChild;
         this.stageWidth = this.page_canvas.width;
         this.stageHeight = this.page_canvas.height;
