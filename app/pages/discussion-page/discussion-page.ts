@@ -13,7 +13,7 @@ export class DiscussionPage {
   selectedItem: any;
   private _pageContent: string;
   animationName: string;
-
+    
   constructor(private nav: NavController,
               navParams: NavParams,
               content: ContentData,

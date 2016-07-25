@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
@@ -8,16 +8,21 @@ import {MenuItem} from '../../models/menu-item';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ChannelService} from '../../services/channelService';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
+import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
+import {InnerContent} from "../../components/inner-content/inner-content";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
     providers: [],
-    directives: []
+    directives: [CharacterPhraseImg, InnerContent]
 })
 export class AnswerQuestionPage {
     selectedItem: any;
     private _pageContent: string;
     questions: Array<any>;
+
+    @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
+    @ViewChild(InnerContent) innerContent:InnerContent;
 
     constructor(private nav: NavController,
                 navParams: NavParams,
@@ -49,6 +54,15 @@ export class AnswerQuestionPage {
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this._pageContent = data._body;
+                this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
+                    (data) => {
+                        let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
+                        this.innerContent.recompileTemplate(this.pageContent, pageModel, this);
+                        this.characterPhraseImg.draw(pageModel);
+                    }
+                ).catch((e) => {
+                    this.innerContent.recompileTemplate(this.pageContent, '');
+                })
             },
             (error) => {
                 console.log(error);
