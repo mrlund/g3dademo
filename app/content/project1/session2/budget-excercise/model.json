@@ -1,6 +1,40 @@
 {
-  "cards": [
-    { "assignmentName": "Status", "assignment": "You remain healthy"},
-    { "assignmentName": "Education", "assignment": "You decided to continue your education and get a Master’s Degree. Your monthly income is $7,420."}
+  "assignments": [
+    [
+      {
+        "assignmentName": "Education",
+        "assignment": "You decided to continue your education and get a Master’s Degree. Your monthly income is $7,420."
+      },
+      {
+        "assignmentName": "Education",
+        "assignment": "You decided to go to college and get a Bachelor’s degree. Your monthly income is $3,800."
+      },
+      {
+        "assignmentName": "Education",
+        "assignment": "You graduated from High school or earned a GED. Your monthly income is $2,650."
+      },
+      {
+        "assignmentName": "Education",
+        "assignment": "You dropped out of High School. Your monthly income is $1,348"
+      }
+    ],
+    [
+      {
+        "assignmentName": "Status",
+        "assignment": "You remain healthy"
+      },
+      {
+        "assignmentName": "Status",
+        "assignment": "You remain healthy"
+      },
+      {
+        "assignmentName": "Status",
+        "assignment": "You have poor health"
+      },
+      {
+        "assignmentName": "Status",
+        "assignment": "You remain healthy"
+      }
+    ]
   ]
 }

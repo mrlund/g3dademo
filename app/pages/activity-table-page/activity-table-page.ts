@@ -8,12 +8,12 @@ import {InnerContent} from '../../components/inner-content/inner-content';
 
 import {ProgressProvider} from '../../providers/progressProvider';
 import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
-
+import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
     providers: [],
-    directives: [InnerContent]
+    directives: [InnerContent, CharacterPhraseImg]
 })
 export class ActivityTablePage {
     selectedItem: any;
@@ -24,8 +24,10 @@ export class ActivityTablePage {
     addSelected: any;
     total: number;
     pageModel: string;
+    Math : any = window['Math'];
 
     @ViewChild(InnerContent) innerContent:InnerContent;
+    @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
 
     constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
         // If we navigated to this page, we will have an item available as a nav param
@@ -60,8 +62,9 @@ export class ActivityTablePage {
                 self.pageContent = data['_body'];
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
-                        self.pageModel = data['_body']; //model as string
+                        self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
                         self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                        self.characterPhraseImg.draw(self.pageModel);
                     }
                 ).catch((e) => {
                     self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
@@ -71,6 +74,9 @@ export class ActivityTablePage {
                 console.log(error);
             }
         );
+    }
+    getRandom(arr){
+        return arr[Math.floor(Math.random() * arr.length)];
     }
     addItem(){
         this.table.push(this.addSelected);
