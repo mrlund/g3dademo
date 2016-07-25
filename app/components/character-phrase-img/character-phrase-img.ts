@@ -5,12 +5,12 @@ import {SignalrWindow} from "../../services/channelService";
     selector: 'character-phrase-img',
     providers: [],
     template: `
-        <div style="display: inline-block; width: 100%">
-            <div id='character-image-block' *ngIf="imagePath && show" style="float: left; width: 0px">
-                <img src="{{imagePath}}">
+        <div class="character-phrase-block">
+            <div class="character-image-block" *ngIf="imagePath">
+                <img [ngClass]="{'image-animation': isImgAnimationOn}" src="{{imagePath}}">
             </div>
-            <div id='character-text-block' *ngIf="text && show" style="float: left; display: none">
-                <p class="triangle-border left">{{text}}</p>
+            <div class="character-text-block" *ngIf="text && isTextAnimationOn">
+                <p class="triangle-border left" [ngClass]="{'text-animation': isTextAnimationOn}">{{text}}</p>
             </div>
         </div>
   `,
@@ -18,7 +18,8 @@ import {SignalrWindow} from "../../services/channelService";
 export class CharacterPhraseImg {
     private text: string;
     private imagePath: string;
-    private show: boolean = false;
+    private isTextAnimationOn: boolean = false;
+    private isImgAnimationOn: boolean = false;
 
     constructor(@Inject(SignalrWindow) private window:SignalrWindow){}
 
@@ -26,16 +27,10 @@ export class CharacterPhraseImg {
         if(model['characterImagePath'] && model['characterImageText']) {
             this.text = model['characterImageText'];
             this.imagePath = model['characterImagePath'];
-            this.show = true;
+            this.isImgAnimationOn = true;
             setTimeout(() => {
-                let image = this.window.$("#character-image-block");
-                image.animate({width: 100});
-            }, 300);
-            setTimeout(() => {
-                let text = this.window.$("#character-text-block");
-                text.fadeIn( "slow" );
-            }, 700);
-
+                this.isTextAnimationOn = true;
+            }, 1000);
         }
     }
 }

@@ -80,3 +80,32 @@ input.small {
 .class-session-agenda-table{
   min-width: 800px;
 }
+.character-phrase-block{
+  display: inline-block;
+  width: 100%;
+  .character-image-block{
+    float: left;
+    width: 20%;
+    .image-animation{
+      animation-name: character-image-animation;
+      animation-duration: 1s;
+    }
+  }
+  .character-text-block{
+    float: left;
+    width: 79%;
+    .text-animation{
+      animation-name: character-text-animation;
+      animation-duration: 2s;
+    }
+  }
+}
+
+@keyframes character-image-animation {
+  from {margin-left: -500px}
+  to {margin-left: 0px}
+}
+@keyframes character-text-animation {
+  from {opacity: 0}
+  to {opacity: 1}
+}
