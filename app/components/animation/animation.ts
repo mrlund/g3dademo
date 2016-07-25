@@ -53,17 +53,19 @@ export class Animation implements OnChanges {
       this.loadAnimationAction();
   }
   loadAnimationAction(){
-      this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
-          (data) => {
-              this.animationFileFound = true;
-              this.animationCode = data;
-              this.loadAnimation();
-          },
-          (error) => {
-              console.log(error);
-              this.animationFileFound = false;
-          }
-      );
+      if(this.project && this.session && this.urlName && this.name){
+          this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
+              (data) => {
+                  this.animationFileFound = true;
+                  this.animationCode = data;
+                  this.loadAnimation();
+              },
+              (error) => {
+                  console.log(error);
+                  this.animationFileFound = false;
+              }
+          );
+      }
   }
   ngOnChanges(changes){
       if (this.paused && this.stage && !createjs.Ticker.getPaused())

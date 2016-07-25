@@ -5,7 +5,7 @@ import {SignalrWindow} from "../../services/channelService";
     selector: 'character-phrase-img',
     providers: [],
     template: `
-        <div class="character-phrase-block">
+        <div *ngIf="show" class="character-phrase-block">
             <div class="character-image-block" *ngIf="imagePath">
                 <img [ngClass]="{'image-animation': isImgAnimationOn}" src="{{imagePath}}">
             </div>
@@ -20,11 +20,13 @@ export class CharacterPhraseImg {
     private imagePath: string;
     private isTextAnimationOn: boolean = false;
     private isImgAnimationOn: boolean = false;
+    private show: boolean = false;
 
     constructor(@Inject(SignalrWindow) private window:SignalrWindow){}
 
     draw(model:any){
         if(model['characterImagePath'] && model['characterImageText']) {
+            this.show = true;
             this.text = model['characterImageText'];
             this.imagePath = model['characterImagePath'];
             this.isImgAnimationOn = true;

@@ -57,11 +57,11 @@ export class AnswerQuestionPage {
                 this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
                     (data) => {
                         let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        this.innerContent.recompileTemplate(this.pageContent, pageModel, this);
+                        this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
                         this.characterPhraseImg.draw(pageModel);
                     }
                 ).catch((e) => {
-                    this.innerContent.recompileTemplate(this.pageContent, '');
+                    this.innerContent.recompileTemplate(this._pageContent, '');
                 })
             },
             (error) => {
