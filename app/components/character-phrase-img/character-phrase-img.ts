@@ -5,7 +5,7 @@ import {SignalrWindow} from "../../services/channelService";
     selector: 'character-phrase-img',
     providers: [],
     template: `
-        <div style="float-left: 30px; position: absolute; top: 0; Z-INDEX: -9999;">
+        <div style="display: inline-block; width: 100%">
             <div id='character-image-block' *ngIf="imagePath && show" style="float: left; width: 0px">
                 <img src="{{imagePath}}">
             </div>
