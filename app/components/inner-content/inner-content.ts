@@ -9,7 +9,7 @@ export class InnerContent{
 
     constructor(private dcl: DynamicComponentLoader) {}
 
-    recompileTemplate(template, model) {
+    recompileTemplate(template, model, parentCtrl?) {
         var target = this.target;
         if(template && target){
             @Component({
@@ -19,9 +19,8 @@ export class InnerContent{
             class CompiledComponent {}
             this.target.clear();
             this.dcl.loadNextToLocation(CompiledComponent, target).then((ref:ComponentRef<CompiledComponent>) => {
-                if(model){
-                    ref.instance['model'] = model;
-                }
+                if(model) ref.instance['model'] = model;
+                if(parentCtrl) ref.instance['parentCtrl'] = parentCtrl;
             });
         }
     }

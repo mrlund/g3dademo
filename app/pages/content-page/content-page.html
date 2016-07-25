@@ -12,8 +12,7 @@
 <ion-content class="has-header has-footer">
     <div class="page-container">
         <div *ngIf="selectedItem" class="selection">
-            <character-phrase-img>
-            </character-phrase-img>
+            <character-phrase-img></character-phrase-img>
             <inner-content></inner-content>
             <animation *ngIf="animationName && selectedItem" style="position:relative;display:block;" [name]="animationName" [session]="selectedItem.menuItem.session"
                 [project]="selectedItem.menuItem.project" [urlName]="selectedItem.urlName" [paused]="pauseAnimation" (playStateChanged)="setAnimationState($event)">

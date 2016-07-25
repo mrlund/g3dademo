@@ -63,7 +63,7 @@ export class ActivityTablePage {
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
                         self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel, self);
                         self.characterPhraseImg.draw(self.pageModel);
                     }
                 ).catch((e) => {
@@ -76,7 +76,7 @@ export class ActivityTablePage {
         );
     }
     getRandom(arr){
-        return arr[Math.floor(Math.random() * arr.length)];
+        return '123';//arr[Math.floor(Math.random() * arr.length)];
     }
     addItem(){
         this.table.push(this.addSelected);
