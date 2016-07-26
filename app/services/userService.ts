@@ -11,8 +11,7 @@ export class User {
 
 @Injectable()
 export class UserService {
-    private _baseUrl: string = 'https://rsvpdk-staging.azurewebsites.net';
-    
+
     constructor(private router: Router, private http: Http){}
 
     logout():void{
@@ -25,10 +24,19 @@ export class UserService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-        this.http.post(this._baseUrl + '/token', creds, {headers: headers}).subscribe(res => {
-            var parsedRes = res.json();
-            localStorage.setItem("api_token", parsedRes['access_token']);
-            this.router.navigate(['/main']);
+        this.http.post('/login-api' + '/token', creds, {headers: headers}).subscribe(res => {
+            let parsedRes = res.json();
+            let token = parsedRes['access_token'];
+            localStorage.setItem("api_token", token);
+            let headers = new Headers();
+            headers.append('Authorization', 'Bearer ' + token);
+            //get data of userprofile
+            this.http.get('/app-api' + '/api/account/userprofile', {headers: headers}).subscribe(res => {
+                let parsedRes = res.json();
+                localStorage.setItem("userData", parsedRes);
+                this.router.navigate(['/main']);
+            });
+
         });
     }
 

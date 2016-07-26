@@ -2,5 +2,15 @@
   "name": "G3DA",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "/login-api",
+      "proxyUrl": "https://rsvpdk-staging.azurewebsites.net"
+    },
+    {
+      "path": "/app-api",
+      "proxyUrl": "https://girlsinc.azurewebsites.net"
+    }
+  ]
 }
