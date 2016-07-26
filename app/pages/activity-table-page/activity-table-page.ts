@@ -77,7 +77,7 @@ export class ActivityTablePage {
         );
     }
     getRandom(arr){
-        return '123';//arr[Math.floor(Math.random() * arr.length)];
+        return arr[Math.floor(Math.random() * arr.length)];
     }
     addItem(){
         this.table.push(this.addSelected);
