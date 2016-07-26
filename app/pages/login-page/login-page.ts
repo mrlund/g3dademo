@@ -16,7 +16,7 @@ export class LoginPage {
     this.userService.newLogin(user);
   }
   signupAction(obj: any){
-    alert('need to implement signup method');
+    this.userService.singUp(obj);
   }
   redirectToForgotPasswordPage(){
     this.userService.goToForgetPasswordPage();
