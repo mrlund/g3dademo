@@ -9,6 +9,7 @@ import {InnerContent} from '../../components/inner-content/inner-content';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
+import {Http} from "@angular/http";
 
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
@@ -29,7 +30,7 @@ export class ActivityTablePage {
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider,  private http: Http) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -116,6 +117,11 @@ export class ActivityTablePage {
             this.nav.setRoot(WelcomePage);
         });
         this.nav.present(toast);
+    }
+    onSubmit(){
+        this.http.post('https://girlsinc.azurewebsites.net' + '/api/assignment', JSON.stringify({suggestions: this.table})).subscribe(res => {
+            
+        });
     }
 
 }

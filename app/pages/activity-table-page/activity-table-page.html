@@ -40,9 +40,9 @@
                             <button class="right" (click)="addItem()">Add</button>
                         </ion-col>
                     </ion-row>
-                    <ion-row *ngIf="addList && addList.length == 0">
+                    <ion-row *ngIf="addList && addList.length >= 0">
                         <ion-col>
-                            <button class="right">Submit Budget</button>
+                            <button class="right" (click)="onSubmit()">Submit Budget</button>
                         </ion-col>
                     </ion-row>
                 </ion-footer-bar>
