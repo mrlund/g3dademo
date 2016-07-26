@@ -1,5 +1,5 @@
 import {App, Platform, MenuController, Nav} from 'ionic-angular';
-import {ViewChild, Component, OnInit, provide} from '@angular/core';
+import {ViewChild, Component, OnInit, provide, Inject} from '@angular/core';
 import {Events} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 
@@ -21,10 +21,6 @@ import {ChannelService, ChannelConfig, SignalrWindow} from '../../services/chann
 import {UserService} from '../../services/userService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
-
-let channelConfig = new ChannelConfig();
-channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
-channelConfig.hubName = "inClassHub";
 
 @Component({
   templateUrl: 'build/pages/main-page/main-page.html',
@@ -49,7 +45,8 @@ export class MainPage implements OnInit{
       private channelService: ChannelService,
       private userService: UserService,
       private teacherPageService: TeacherPageService,
-      private _globals: Globals
+      private _globals: Globals,
+      @Inject("channel.config") private channelConfig:ChannelConfig
   ) {
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.subscribe(

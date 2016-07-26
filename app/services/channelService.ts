@@ -23,6 +23,7 @@ export class ChannelConfig {
     url:string;
     hubName:string;
     channel:string;
+    uid:string;
 }
 
 export class ChannelEvent {
@@ -98,6 +99,8 @@ export class ChannelService {
             throw new Error("The variable '$' or the .hubConnection() function are not defined...please check the SignalR scripts have been loaded properly");
         }
 
+        var userData = JSON.parse(<string>localStorage.getItem('userData'));
+        channelConfig.uid = userData['StudentId'];
         // Set up our observables
         //
         this.connectionState$ = this.connectionStateSubject.asObservable();
@@ -110,6 +113,7 @@ export class ChannelService {
 
         this.hubConnection = this.window.$.hubConnection();
         this.hubConnection.url = channelConfig.url;
+        this.hubConnection.qs = {'uid': channelConfig.uid};
         this.hubProxy = this.hubConnection.createHubProxy(channelConfig.hubName);
 
         // Define handlers for the connection state events
