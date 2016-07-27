@@ -100,7 +100,7 @@ export class ChannelService {
         }
 
         var userData = JSON.parse(<string>localStorage.getItem('userData'));
-        channelConfig.uid = userData['StudentId'];
+        channelConfig.uid = userData && userData['StudentId'] ? userData['StudentId'] : null;
         // Set up our observables
         //
         this.connectionState$ = this.connectionStateSubject.asObservable();
