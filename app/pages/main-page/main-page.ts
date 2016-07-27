@@ -95,7 +95,7 @@ export class MainPage implements OnInit{
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Graphing Quartiles', 1, 4, null, [
-              new AnimationContentItem('introduction', 'Introduction', ContentPage),
+              new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s3'),
               new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
               new AnimationContentItem('why-box-plots', 'Why Box Plots', ContentPage),
               new ContentItem('how-to-create', 'Creating Plots', ContentPage),
