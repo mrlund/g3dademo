@@ -4,10 +4,9 @@
     about how much you think you would spend and remember that any leftover money can be saved for the future or for other
     luxuries like vacation.
 </p>
-<ion-card *ngFor="let card of model.assignments">
+<ion-card *ngFor="let assignment of model.randomAssignments">
     <ion-card-content>
-        <ion-card-title>Your <strong>{{parentCtrl.getRandom(card)}}</strong> assignment is</ion-card-title>
-        <!--<h1>{{parentCtrl.getRandom(card).assignment}}</h1>-->
-        <h1>{{parentCtrl.getRandom(card)}}</h1>
+        <ion-card-title>Your <strong>{{assignment.assignmentName}}</strong> assignment is</ion-card-title>
+        <h1>{{assignment.assignment}}</h1>
     </ion-card-content>
 </ion-card>

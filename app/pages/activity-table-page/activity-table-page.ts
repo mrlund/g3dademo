@@ -9,7 +9,7 @@ import {InnerContent} from '../../components/inner-content/inner-content';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
-import {Http} from "@angular/http";
+import {Http, Headers} from "@angular/http";
 
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
@@ -48,8 +48,9 @@ export class ActivityTablePage {
             (data) => {
                 this.categories = data.categories;
                 this.categories.forEach(cat => {
+                   let processedCat = {categoryId: cat.categoryId, name: cat.name};
                    cat.items.forEach(item => {
-                      item.category = cat; 
+                      item.category = processedCat;
                       this.addList.push({categoryId: cat.categoryId, name: item.name + ' $' + item.price, item: item});
                    });
                 });
@@ -64,6 +65,12 @@ export class ActivityTablePage {
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
                         self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
+                        let assignments = self.pageModel['assignments'];
+                        let randomAssignments = [];
+                        for(let assighment of assignments){
+                            randomAssignments.push(self.getRandom(assighment));
+                        }
+                        self.pageModel['randomAssignments'] = randomAssignments;
                         self.innerContent.recompileTemplate(self.pageContent, self.pageModel, self);
                         self.characterPhraseImg.draw(self.pageModel);
                     }
@@ -77,7 +84,8 @@ export class ActivityTablePage {
         );
     }
     getRandom(arr){
-        return '123';//arr[Math.floor(Math.random() * arr.length)];
+        // return arr[Math.floor(Math.random() * arr.length)];
+        return arr[0];
     }
     addItem(){
         this.table.push(this.addSelected);
@@ -119,8 +127,18 @@ export class ActivityTablePage {
         this.nav.present(toast);
     }
     onSubmit(){
-        this.http.post('https://girlsinc.azurewebsites.net' + '/api/assignment', JSON.stringify({suggestions: this.table})).subscribe(res => {
-            
+        var token= localStorage.getItem("api_token");
+        let headers = new Headers();
+        headers.append('Authorization', 'Bearer ' + token);
+        this.http.post('/app-api' + '/api/assignment',
+            {
+                AssignmentId : 102,
+                AssignmentName: 'budget exercise',
+                AssignmentData: JSON.stringify(this.table)
+            },
+            {headers: headers}
+        ).subscribe(res => {
+            alert('success!!')
         });
     }
 
