@@ -84,12 +84,8 @@ export class ActivityTablePage {
         );
     }
     getRandom(arr){
-<<<<<<< HEAD
         // return arr[Math.floor(Math.random() * arr.length)];
         return arr[0];
-=======
-        return arr[Math.floor(Math.random() * arr.length)];
->>>>>>> master
     }
     addItem(){
         this.table.push(this.addSelected);
