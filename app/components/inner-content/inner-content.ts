@@ -1,16 +1,24 @@
 import { Component, DynamicComponentLoader, ViewChild, ViewContainerRef, ComponentRef} from '@angular/core';
+import {BehaviorSubject} from "rxjs/Rx";
 
 @Component({
     selector: 'inner-content',
-    template: '<div #container></div>'
+    template: `
+        <div *ngIf="show">
+           <div #container></div>
+        </div>
+  `
 })
 export class InnerContent{
     @ViewChild('container', {read: ViewContainerRef}) target;
+    public show:BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    constructor(private dcl: DynamicComponentLoader) {}
+    constructor(private dcl: DynamicComponentLoader) {
+    }
 
     recompileTemplate(template, model, parentCtrl?) {
         var target = this.target;
+        this.show.next(true);
         if(template && target){
             @Component({
                 selector: 'compiled-component',
