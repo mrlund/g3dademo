@@ -1,6 +1,7 @@
 .character-phrase-block{
   display: inline-block;
   width: 100%;
+  min-height: 200px;
   .character-image-block{
     float: left;
     width: 20%;
@@ -20,7 +21,7 @@
 }
 
 @keyframes character-image-animation {
-from {margin-left: -500px}
+from {margin-left: -3000px}
 to {margin-left: 0px}
 }
 @keyframes character-text-animation {

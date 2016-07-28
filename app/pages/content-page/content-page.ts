@@ -53,8 +53,8 @@ export class ContentPage {
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
                         self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
                         self.characterPhraseImg.draw(self.pageModel);
+                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
                     }
                 ).catch((e) => {
                     self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
