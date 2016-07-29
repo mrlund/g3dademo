@@ -80,3 +80,13 @@ input.small {
 .class-session-agenda-table{
   min-width: 800px;
 }
+input.correct {
+  background-color: #d4f8cd;
+}
+input ~ i {
+  display: none;
+}
+input.correct ~ i {
+  color: #0F0;
+  display: inline-block;
+}
