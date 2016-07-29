@@ -43,9 +43,23 @@
                 {
                     "answer": "Mode",
                     "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "question": "The tallest bar or bars on a histogram visually represents the:",
+            "answers": [
+                {
+                    "answer": "Median",
+                    "isCorrect": true
                 },
                 {
-                    "answer": "None of the above",
+                    "answer": "Mean",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Mode",
                     "isCorrect": false
                 }
             ]
