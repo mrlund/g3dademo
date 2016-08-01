@@ -98,10 +98,17 @@ export class Animation implements OnChanges {
 
         this.canvas = this.thisElement.nativeElement.firstElementChild;
         let basePath = "/build/content/project"+this.project+"/session"+this.session+"/"+this.urlName+"/";
-        var loader = new createjs.LoadQueue(false,basePath);
+        var loader = new createjs.LoadQueue(false, basePath);
         loader.installPlugin(createjs.Sound);
         loader.addEventListener("complete", this.handleComplete(this));
+        loader.addEventListener("fileload", this.handleFileLoad);
         loader.loadManifest(lib.properties.manifest);
+ }
+ handleFileLoad(evt) {
+    if (evt.item.type == "image") { 
+        if(!window['createJSImages']) window['createJSImages'] = {};
+        window['createJSImages'][evt.item.id] = evt.result;
+    }
  }
  handleComplete(that) {
      return function(){
