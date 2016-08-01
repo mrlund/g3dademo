@@ -11,8 +11,10 @@
 
 <ion-content class="has-header has-footer" *ngIf="questions">
     <div class="page-container">
+        <character-phrase-img></character-phrase-img>
         <ion-card>
-            <ion-card-content [innerHtml]="pageContent">
+            <ion-card-content class="content-page">
+                <inner-content></inner-content>
             </ion-card-content>
         </ion-card>
         <ion-card *ngIf="state == 'give-feedback'">

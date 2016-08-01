@@ -1,6 +1,6 @@
 import {NavController, NavParams, MenuController, Toast, Loading } from 'ionic-angular';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
-import {Component, ChangeDetectorRef} from '@angular/core';
+import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
@@ -9,10 +9,14 @@ import {MenuItem} from '../../models/menu-item';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ChannelService} from '../../services/channelService';
 
+import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
+import {InnerContent} from "../../components/inner-content/inner-content";
+
+
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
     providers: [],
-    directives: []
+    directives: [CharacterPhraseImg, InnerContent]
 })
 export class QuestionPeerReviewPage {
     selectedItem: any;
@@ -23,6 +27,10 @@ export class QuestionPeerReviewPage {
     receivedReview: any; 
     submittedReview: boolean;
     respondingToClientId: string;
+
+    @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
+    @ViewChild(InnerContent) innerContent:InnerContent;
+    
 
     constructor(private nav: NavController, navParams: NavParams, private content: ContentData,
                 private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService,
@@ -53,6 +61,16 @@ export class QuestionPeerReviewPage {
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this._pageContent = data._body;
+                this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
+                    (data) => {
+                        let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
+                        this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
+                        this.characterPhraseImg.draw(pageModel);
+                    }
+                ).catch((e) => {
+                    this.innerContent.recompileTemplate(this._pageContent, '');
+                })
+                
             },
             (error) => {
                 console.log(error);
