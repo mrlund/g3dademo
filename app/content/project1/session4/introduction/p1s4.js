@@ -9,24 +9,26 @@ lib.properties = {
 	fps: 24,
 	color: "#FFFFFF",
 	manifest: [
-		{src:"sounds/_1.mp3?1469611181534", id:"_1"},
-		{src:"sounds/_10.mp3?1469611181534", id:"_10"},
-		{src:"sounds/_11.mp3?1469611181534", id:"_11"},
-		{src:"sounds/_12.mp3?1469611181534", id:"_12"},
-		{src:"sounds/_13.mp3?1469611181534", id:"_13"},
-		{src:"sounds/_14.mp3?1469611181534", id:"_14"},
-		{src:"sounds/_15.mp3?1469611181534", id:"_15"},
-		{src:"sounds/_16.mp3?1469611181534", id:"_16"},
-		{src:"sounds/_17.mp3?1469611181534", id:"_17"},
-		{src:"sounds/_18.mp3?1469611181534", id:"_18"},
-		{src:"sounds/_2.mp3?1469611181534", id:"_2"},
-		{src:"sounds/_3.mp3?1469611181534", id:"_3"},
-		{src:"sounds/_4.mp3?1469611181534", id:"_4"},
-		{src:"sounds/_5.mp3?1469611181534", id:"_5"},
-		{src:"sounds/_6.mp3?1469611181534", id:"_6"},
-		{src:"sounds/_7.mp3?1469611181534", id:"_7"},
-		{src:"sounds/_8.mp3?1469611181534", id:"_8"},
-		{src:"sounds/_9.mp3?1469611181534", id:"_9"}
+		{src:"images/image002.png?1470049285717", id:"image002"},
+		{src:"images/image002psd.png?1470049285718", id:"image002psd"},
+		{src:"sounds/_1.mp3?1470049285718", id:"_1"},
+		{src:"sounds/_10.mp3?1470049285718", id:"_10"},
+		{src:"sounds/_11.mp3?1470049285718", id:"_11"},
+		{src:"sounds/_12.mp3?1470049285718", id:"_12"},
+		{src:"sounds/_13.mp3?1470049285718", id:"_13"},
+		{src:"sounds/_14.mp3?1470049285718", id:"_14"},
+		{src:"sounds/_15.mp3?1470049285718", id:"_15"},
+		{src:"sounds/_16.mp3?1470049285718", id:"_16"},
+		{src:"sounds/_17.mp3?1470049285718", id:"_17"},
+		{src:"sounds/_18.mp3?1470049285718", id:"_18"},
+		{src:"sounds/_2.mp3?1470049285718", id:"_2"},
+		{src:"sounds/_3.mp3?1470049285718", id:"_3"},
+		{src:"sounds/_4.mp3?1470049285718", id:"_4"},
+		{src:"sounds/_5.mp3?1470049285718", id:"_5"},
+		{src:"sounds/_6.mp3?1470049285718", id:"_6"},
+		{src:"sounds/_7.mp3?1470049285718", id:"_7"},
+		{src:"sounds/_8.mp3?1470049285718", id:"_8"},
+		{src:"sounds/_9.mp3?1470049285718", id:"_9"}
 	]
 };
 
@@ -37,17 +39,15 @@ lib.properties = {
 
 
 (lib.image002 = function() {
-	this.spriteSheet = ss["p1s3_atlas_"];
-	this.gotoAndStop(0);
-}).prototype = p = new cjs.Sprite();
-
+	this.initialize(img.image002);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,600,325);
 
 
 (lib.image002psd = function() {
-	this.spriteSheet = ss["p1s3_atlas_"];
-	this.gotoAndStop(1);
-}).prototype = p = new cjs.Sprite();
-
+	this.initialize(img.image002psd);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,300,161);
 
 
 (lib.Zinabbody = function(mode,startPosition,loop) {
@@ -11865,16 +11865,8 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 
 
-(lib.p1s3 = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{m:0});
-
-	// timeline functions:
-	this.frame_0 = function() {
-		this.gotoAndPlay("m");
-	}
-
-	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(2591));
+(lib.p1s4 = function(mode,startPosition,loop) {
+	this.initialize(mode,startPosition,loop,{});
 
 	// Слой 3 (mask)
 	var mask = new cjs.Shape();
