@@ -27,6 +27,7 @@ export class ActivityTablePage {
     total: number;
     pageModel: string;
     Math : any = window['Math'];
+    isSubmitted : boolean = false;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
@@ -135,7 +136,13 @@ export class ActivityTablePage {
             },
             {headers: headers}
         ).subscribe(res => {
-            alert('success!!')
+            this.isSubmitted = true;
+            let toast = Toast.create({
+                message: 'Your assignment was saved successfully!',
+                duration: 2000,
+                cssClass: 'little-positive-toast'
+            });
+            this.nav.present(toast);
         });
     }
 
