@@ -1,4 +1,6 @@
 {
+      "characterImagePath": "/build/content/general/valeria.png",
+  "characterImageText": "I hope you were paying attention - now try it yourself! Use the table below to calculate your GPA. Correct answers make the field turn green!",
     "scores": {
         "NoOfA": 0,
         "NoOfB": 0,

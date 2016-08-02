@@ -68,7 +68,7 @@ export class MainPage implements OnInit{
     this.pages = [
       new MenuItem('Home', 0, 0, null),
       //Project
-      new MenuItem('Your GPA - Is It Fair?', 1, 0, [
+      new MenuItem('1: Your GPA - Is It Fair?', 1, 0, [
         //Session
         new MenuItem('Introduction', 1, 1, null, [
           //Pages

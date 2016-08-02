@@ -22,19 +22,19 @@
     ],
     [
       {
-        "assignmentName": "Status",
+        "assignmentName": "Health",
         "assignment": "You remain healthy"
       },
       {
-        "assignmentName": "Status",
+        "assignmentName": "Health",
         "assignment": "You remain healthy"
       },
       {
-        "assignmentName": "Status",
+        "assignmentName": "Health",
         "assignment": "You have poor health"
       },
       {
-        "assignmentName": "Status",
+        "assignmentName": "Health",
         "assignment": "You remain healthy"
       }
     ]
