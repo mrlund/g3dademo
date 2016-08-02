@@ -17,6 +17,7 @@ import {Http, Headers} from "@angular/http";
     directives: [InnerContent, CharacterPhraseImg]
 })
 export class ActivityTablePage {
+    randomSuggestions: any = null;
     selectedItem: any;
     pageContent: string;
     categories: Array<any>;
@@ -65,17 +66,11 @@ export class ActivityTablePage {
                 self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
                         self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        let assignments = self.pageModel['assignments'];
-                        let randomAssignments = [];
-                        for(let assighment of assignments){
-                            randomAssignments.push(self.getRandom(assighment));
-                        }
-                        self.pageModel['randomAssignments'] = randomAssignments;
                         self.innerContent.recompileTemplate(self.pageContent, self.pageModel, self);
                         self.characterPhraseImg.draw(self.pageModel);
                     }
                 ).catch((e) => {
-                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
+                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel, self);
                 })
             },
             (error) => {
@@ -84,8 +79,10 @@ export class ActivityTablePage {
         );
     }
     getRandom(arr){
-        // return arr[Math.floor(Math.random() * arr.length)];
-        return arr[0];
+        if(!this.randomSuggestions){ //it's needed to avoid repeated calling of getRandom method.
+            this.randomSuggestions = arr[Math.floor(Math.random() * arr.length)];
+        }
+        return this.randomSuggestions
     }
     addItem(){
         this.table.push(this.addSelected);
@@ -130,7 +127,7 @@ export class ActivityTablePage {
         var token= localStorage.getItem("api_token");
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
-        this.http.post('/app-api' + '/api/assignment',
+        this.http.post('/app-api' + '/api/assignments',
             {
                 AssignmentId : 102,
                 AssignmentName: 'budget exercise',
