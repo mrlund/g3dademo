@@ -36,7 +36,8 @@ export class Animation implements OnChanges {
   private animationFileFound: boolean;
   //private updateRate:EventEmitter = new EventEmitter();
   private isClassroomModeOn: boolean = false;
-  
+  private isClassroomModeOn: boolean = false;
+
   constructor(content: ContentData,
               private thisElement: ElementRef,
               private _globals: Globals){
@@ -132,10 +133,19 @@ export class Animation implements OnChanges {
      }
  }
  tickHandler(that){
+     var self = this;
+     var newCircle = false;
      return function(event){
         if (!that.paused && !event.paused){
             that.stage.update();
         }
+         let stage = that.stage.children[0];
+         let timeline = stage['timeline'];
+         if(timeline.position == 0) newCircle = false;
+         if(timeline.duration - timeline.position == 1 && !newCircle){ //to pause at the end of movie
+             newCircle = true;
+             self.playPauseAnimation();
+         }
      }
  }
  resizeAnimation(){
