@@ -1,5 +1,5 @@
 import {MenuController} from 'ionic-angular';
-import {Component, AfterViewInit} from '@angular/core';
+import {Component} from '@angular/core';
 
 import {ChannelService, SignalrWindow} from '../../services/channelService';
 import {TeacherPageService} from '../../services/teacherPageService';
@@ -7,7 +7,7 @@ import {TeacherPageService} from '../../services/teacherPageService';
 @Component({
     templateUrl: 'build/pages/teacher-page/teacher-page.html'
 })
-export class TeacherPage implements AfterViewInit{
+export class TeacherPage{
     public suggestions = []; //array of all suggestions
     public processedSuggestions = {}; //object with suggestions sorted by questionId
     public counts = {};
@@ -73,7 +73,7 @@ export class TeacherPage implements AfterViewInit{
 
         dataObservable['source'].subscribe((data) => {
             if (data.A && data.A.length > 1) {
-                self.suggestions.push({author: data.A[0], text: data.A[1], id: randomIntFromInterval(1, 3)});
+                self.suggestions.push({author: data.A[0], text: data.A[1], id: randomIntFromInterval(1, 5)});
                 this.window.localStorage.setItem('suggestions', JSON.stringify(self.suggestions));
                 this.window.localStorage.setItem('suggestionsUpdate', new Date().getTime().toString());
                 if(this.window.$('#jqcloud').length){
@@ -86,14 +86,12 @@ export class TeacherPage implements AfterViewInit{
                         } else {
                             var headerHeight = 44;
                             var heightOfScreen = this.window.$(window).height() - headerHeight;
-                            var widthOfScreen = this.window.$(window).width();
 
-                            let cloudElement = this.window.$(cloudsBlock).append("<div class='inner-jqcloud-block' id='"+ "jqcloud-innner-"+ id+"'></div>");
-
+                            this.window.$(cloudsBlock).append("<div class='inner-jqcloud-block' id='"+ "jqcloud-innner-"+ id+"'></div>");
+                            let cloudElement = this.window.$("#jqcloud-innner-" + id);
                             let newHeight = heightOfScreen / Object.keys(this.processedSuggestions).length;
 
                             cloudElement.height(newHeight < 300 ? newHeight : 300);
-                            cloudElement.width(widthOfScreen);
                             let currentCloudData = this.processedSuggestions[id];
                             cloudElement.jQCloud(currentCloudData, {
                                 autoResize: true,
@@ -107,6 +105,24 @@ export class TeacherPage implements AfterViewInit{
         });
 
         processNewSuggestions();
+
+        setTimeout(() => {
+            var headerHeight = 44;
+            let cloudElement = this.window.$('#jqcloud');
+            var heightOfCloud = this.window.$(window).height() - headerHeight;
+            let newHeight = heightOfCloud / Object.keys(this.processedSuggestions).length;
+
+            for(let id in this.processedSuggestions) {
+                this.window.$(cloudElement).append("<div class='inner-jqcloud-block' id='"+ "jqcloud-innner-"+ id+"'></div>");
+                let jqcloudEl = this.window.$("#jqcloud-innner-" + id);
+                jqcloudEl.height(newHeight < 300 ? newHeight : 300);
+                jqcloudEl.jQCloud(this.processedSuggestions[id], {
+                    autoResize: true,
+                    steps: 3,
+                    fontSize: ['60px', '45px','30px' ]
+                });
+            }
+        }, 700)
     }
     toggleMenu() {
         if (this.menu.isOpen()) {
@@ -120,29 +136,6 @@ export class TeacherPage implements AfterViewInit{
         this.suggestions = [];
         this.processedSuggestions = [];
         this.window.$('.teacher-page-inner-content .inner-jqcloud-block').jQCloud('update', this.processedSuggestions);
-    }
-    ngAfterViewInit(){
-        var headerHeight = 44;
-        let cloudElement = this.window.$('#jqcloud');
-        var heightOfCloud = this.window.$(window).height() - headerHeight;
-        var widthOfCloud = this.window.$(window).width();
-        // cloudElement.height(heightOfCloud);
-        cloudElement.width(widthOfCloud);
-
-        let newHeight = heightOfCloud / Object.keys(this.processedSuggestions).length;
-
-
-
-        for(let id in this.processedSuggestions) {
-            let jqcloudEl = this.window.$(cloudElement).append("<div class='inner-jqcloud-block' id='"+ "jqcloud-innner-"+ id+"'></div>");
-            jqcloudEl.height(newHeight < 300 ? newHeight : 300);
-            jqcloudEl.width(widthOfCloud);
-            jqcloudEl.jQCloud(this.processedSuggestions[id], {
-                autoResize: true,
-                steps: 3,
-                fontSize: ['60px', '45px','30px' ]
-            });
-        }
     }
 
 }
