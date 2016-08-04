@@ -37,22 +37,26 @@ export class Animation implements OnChanges {
   //private updateRate:EventEmitter = new EventEmitter();
   private isClassroomModeOn: boolean = false;
   private isClassroomModeOn: boolean = false;
+  private sound: any = null;
 
   constructor(content: ContentData,
               private thisElement: ElementRef,
               private _globals: Globals){
+      var self = this;
       this.content = content;
       this._globals.isClassroomModeOn.subscribe(value => {
           this.isClassroomModeOn = value;
           this.loadAnimationAction();
       });
       window['playSound'] = function (id, loop) {
-          return createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
+          self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
+          return self.sound;
       }
   }
   ngOnInit() {
       this.loadAnimationAction();
   }
+    
   loadAnimationAction(){
       if(this.project && this.session && this.urlName && this.name){
           this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
@@ -81,15 +85,11 @@ export class Animation implements OnChanges {
  playPauseAnimation(){
       var anim = this.stage.getChildAt(0);
       this.playStateChanged.emit(!createjs.Ticker.getPaused());
-      let st = anim.soundTrack ? anim.soundTrack : anim.children[0].soundTrack;
-      if (!st){
-          st = createjs.Sound._instances[0];
-      }
+      let st = this.sound;
       if (st){
           st.setPaused(!createjs.Ticker.getPaused());
       }
       createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
-      //console.log("Hit " + createjs.Ticker.getPaused());
   }
  loadAnimation(){
      if (!createjs.Sound.initializeDefaultPlugins()) { return; }
