@@ -39,13 +39,13 @@ lib.properties = {
 
 
 (lib.image002 = function() {
-	this.initialize(window.createJSImages.image002);
+	this.initialize(img.image002);
 }).prototype = p = new cjs.Bitmap();
 p.nominalBounds = new cjs.Rectangle(0,0,600,325);
 
 
 (lib.image002psd = function() {
-	this.initialize(window.createJSImages.image002psd);
+	this.initialize(img.image002psd);
 }).prototype = p = new cjs.Bitmap();
 p.nominalBounds = new cjs.Rectangle(0,0,300,161);
 

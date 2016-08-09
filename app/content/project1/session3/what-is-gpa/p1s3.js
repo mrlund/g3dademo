@@ -9,17 +9,17 @@ lib.properties = {
 	fps: 24,
 	color: "#FFFFFF",
 	manifest: [
-		{src:"sounds/_1.mp3?1468486410872", id:"_1"},
-		{src:"sounds/_11.mp3?1468486410872", id:"_11"},
-		{src:"sounds/_13702SFXImpactHandSlap7.mp3?1468486410872", id:"_13702SFXImpactHandSlap7"},
-		{src:"sounds/_2_1.mp3?1468486410872", id:"_2_1"},
-		{src:"sounds/_3.mp3?1468486410872", id:"_3"},
-		{src:"sounds/_4.mp3?1468486410872", id:"_4"},
-		{src:"sounds/_5.mp3?1468486410872", id:"_5"},
-		{src:"sounds/_6.mp3?1468486410872", id:"_6"},
-		{src:"sounds/_7.mp3?1468486410872", id:"_7"},
-		{src:"sounds/_8.mp3?1468486410872", id:"_8"},
-		{src:"sounds/_9.mp3?1468486410872", id:"_9"}
+		{src:"sounds/_1.mp3?1470125804689", id:"_1"},
+		{src:"sounds/_11.mp3?1470125804689", id:"_11"},
+		{src:"sounds/_13702SFXImpactHandSlap7.mp3?1470125804689", id:"_13702SFXImpactHandSlap7"},
+		{src:"sounds/_2.mp3?1470125804689", id:"_2"},
+		{src:"sounds/_3.mp3?1470125804689", id:"_3"},
+		{src:"sounds/_4.mp3?1470125804689", id:"_4"},
+		{src:"sounds/_5.mp3?1470125804689", id:"_5"},
+		{src:"sounds/_6.mp3?1470125804689", id:"_6"},
+		{src:"sounds/_7.mp3?1470125804689", id:"_7"},
+		{src:"sounds/_8.mp3?1470125804689", id:"_8"},
+		{src:"sounds/_9.mp3?1470125804689", id:"_9"}
 	]
 };
 
@@ -2136,10 +2136,10 @@ p.nominalBounds = new cjs.Rectangle(0,0,124.8,175.6);
 
 	// timeline functions:
 	this.frame_10 = function() {
-		this.soundTrack = playSound("_11");
+		playSound("_11");
 	}
 	this.frame_100 = function() {
-		this.soundTrack = playSound("_13702SFXImpactHandSlap7");
+		playSound("_13702SFXImpactHandSlap7");
 	}
 
 	// actions tween:
@@ -2810,7 +2810,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_7 = function() {
-		this.soundTrack = playSound("_9");
+		playSound("_9");
 	}
 
 	// actions tween:
@@ -3468,7 +3468,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_14 = function() {
-		this.soundTrack = playSound("_8");
+		playSound("_8");
 	}
 
 	// actions tween:
@@ -4121,7 +4121,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_9 = function() {
-		this.soundTrack = playSound("_7");
+		playSound("_7");
 	}
 
 	// actions tween:
@@ -4780,7 +4780,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_14 = function() {
-		this.soundTrack = playSound("_6");
+		playSound("_6");
 	}
 
 	// actions tween:
@@ -5433,7 +5433,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_9 = function() {
-		this.soundTrack = playSound("_5");
+		playSound("_5");
 	}
 
 	// actions tween:
@@ -6100,7 +6100,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_14 = function() {
-		this.soundTrack = playSound("_4");
+		playSound("_4");
 	}
 
 	// actions tween:
@@ -6757,7 +6757,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_11 = function() {
-		this.soundTrack = playSound("_2_1");
+		playSound("_2");
 	}
 
 	// actions tween:
@@ -7436,7 +7436,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_50 = function() {
-		this.soundTrack = playSound("_1");
+		playSound("_1");
 	}
 
 	// actions tween:
@@ -8104,7 +8104,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_18 = function() {
-		this.soundTrack = playSound("_3");
+		playSound("_3");
 	}
 
 	// actions tween:
@@ -8766,13 +8766,8 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 
 
-(lib.scene_test = function(mode,startPosition,loop) {
+(lib.p1s3 = function(mode,startPosition,loop) {
 	this.initialize(mode,startPosition,loop,{});
-
-	// timeline functions:
-	this.frame_0 = function() {
-		//this.soundTrack = playSound("noise",-1);
-	}
 
 	// Слой 3 (mask)
 	var mask = new cjs.Shape();

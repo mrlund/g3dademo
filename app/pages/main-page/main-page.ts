@@ -72,7 +72,7 @@ export class MainPage implements OnInit{
         //Session
         new MenuItem('Introduction', 1, 1, null, [
           //Pages
-          new AnimationContentItem('intro', 'Introduction', ContentPage),
+          new AnimationContentItem('intro', 'Introduction', ContentPage, 'p1s1'),
           new ContentItem('objectives', 'Objectives', ContentPage),
           new ContentItem('assignment', 'Assignment', ContentPage),
           new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
@@ -80,6 +80,7 @@ export class MainPage implements OnInit{
         new MenuItem('Income and GPA', 1, 2, null, [
           //Page
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
+          new AnimationContentItem('why-higher-ed', 'Why Higher Ed', ContentPage, 'p1s2'),
           new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
           new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage),
           new ContentItem('conclusion', 'Conclusion', AnswerQuestionPage),
@@ -87,7 +88,7 @@ export class MainPage implements OnInit{
         new MenuItem('How To Calculate GPA', 1, 3, null, [
           //Page
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
-          new AnimationContentItem('what-is-gpa', 'What is GPA', ContentPage),
+          new AnimationContentItem('what-is-gpa', 'What is GPA', ContentPage, 'p1s3'),
           new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
           new ContentItem('calculate-excercise', 'Excercise', ContentPage),
           new AnimationContentItem('cleaver-high', 'Cleaver High', ContentPage),
