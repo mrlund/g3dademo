@@ -1,4 +1,4 @@
-import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
@@ -30,7 +30,8 @@ export class ActivityTablePage {
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData, private menu: MenuController, private progress: ProgressProvider,  private http: Http) {
+    constructor(private nav: NavController, navParams: NavParams, private content: ContentData,
+                private menu: MenuController, private progress: ProgressProvider,  private http: Http, private toastController: ToastController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -117,14 +118,14 @@ export class ActivityTablePage {
     }
     finishSession() {
         this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = Toast.create({
+        let toast = this.toastController.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 1000
         });
-        toast.onDismiss(() => {
+        toast.onDidDismiss(() => {
             this.nav.setRoot(WelcomePage);
         });
-        this.nav.present(toast);
+        toast.present();
     }
     onSubmit(){
         var token= localStorage.getItem("api_token");
