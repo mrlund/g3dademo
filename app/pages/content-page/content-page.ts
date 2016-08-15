@@ -1,4 +1,4 @@
-import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
@@ -29,7 +29,8 @@ export class ContentPage {
                 navParams: NavParams,
                 private content: ContentData,
                 private menu: MenuController,
-                private progress: ProgressProvider) {
+                private progress: ProgressProvider,
+                private toastController: ToastController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if(this.selectedItem instanceof AnimationContentItem){
@@ -84,14 +85,14 @@ export class ContentPage {
     }
     finishSession() {
         this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = Toast.create({
+        let toast = this.toastController.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 3000
         });
-        toast.onDismiss(() => {
+        toast.onDidDismiss(() => {
             this.nav.setRoot(WelcomePage);
         });
-        this.nav.present(toast);
+        toast.present();
     }
     setAnimationState(event){
         console.log(event);

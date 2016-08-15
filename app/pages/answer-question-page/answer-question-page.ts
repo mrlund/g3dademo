@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController, NavParams, MenuController, Toast} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
@@ -30,7 +30,8 @@ export class AnswerQuestionPage {
                 private menu: MenuController,
                 private progress: ProgressProvider,
                 private channelService:ChannelService,
-                private _sanitizer: DomSanitizationService) {
+                private _sanitizer: DomSanitizationService,
+                private toastController: ToastController) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -90,11 +91,11 @@ export class AnswerQuestionPage {
     finishSession() {
         let self = this;
         this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = Toast.create({
+        let toast = this.toastController.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 3000
         });
-        toast.onDismiss(() => {
+        toast.onDidDismiss(() => {
             // let nextLessonPage = self.progress.findNextLesson(self.selectedItem.menuItem)
             // if(nextLessonPage && nextLessonPage.pages && nextLessonPage.pages[0]){ // if there is next page so open it
             //     let firstContentPage = nextLessonPage.pages[0];
@@ -105,7 +106,7 @@ export class AnswerQuestionPage {
             // }
             this.nav.setRoot(WelcomePage); //now we need only welcome page after finishing lesson in all cases;
         });
-        this.nav.present(toast);
+        toast.present();
     }
     onSuggest(question){
         if (!question.suggestions){

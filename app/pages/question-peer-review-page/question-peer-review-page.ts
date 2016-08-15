@@ -1,4 +1,7 @@
-import {NavController, NavParams, MenuController, Toast, Loading } from 'ionic-angular';
+import {
+    NavController, NavParams, MenuController, Toast, Loading, ToastController,
+    LoadingController
+} from 'ionic-angular';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
@@ -34,7 +37,8 @@ export class QuestionPeerReviewPage {
 
     constructor(private nav: NavController, navParams: NavParams, private content: ContentData,
                 private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService,
-                private cdRef: ChangeDetectorRef, private _sanitizer: DomSanitizationService) {
+                private cdRef: ChangeDetectorRef, private _sanitizer: DomSanitizationService,
+                private toastController: ToastController, private loadingController:LoadingController) {
 
         // If we navigated to this page, we will have an item available as a nav param
         this.state = 'answer';
@@ -111,7 +115,7 @@ export class QuestionPeerReviewPage {
         this.cdRef.detectChanges();
     }
     submitAnswers(){
-        this.loader = Loading.create();
+        this.loader = this.loadingController.create();
         this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "loading";
     }    
@@ -143,14 +147,14 @@ export class QuestionPeerReviewPage {
     }
     finishSession() {
         this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = Toast.create({
+        let toast = this.toastController.create({
             message: 'Congratulations - You completed the lesson!',
             duration: 3000
         });
-        toast.onDismiss(() => {
+        toast.onDidDismiss(() => {
             this.nav.setRoot(WelcomePage);
         });
-        this.nav.present(toast);
+        toast.present();
     }
     private getAnswer(){
         var resp = `{
