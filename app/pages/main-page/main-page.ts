@@ -103,12 +103,13 @@ export class MainPage implements OnInit{
               new ContentItem('excercise', 'Excercise', ContentPage)
         ]),
         new MenuItem('Assumptions Of GPA', 1, 5, null, [
-          new AnimationContentItem('introduction', 'Introduction', ContentPage),
+          new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s5'),
           new ContentItem('types-of-measurement', 'Types of Measurement', ContentPage),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Graphing Interval Data', 1, 6, null, [
+          new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s6'),
           new ContentItem('graphing-interval-data', 'Graphing interval data', AnswerQuestionPage),
           new AnimationContentItem('how-to-create', 'Creating histogram', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
