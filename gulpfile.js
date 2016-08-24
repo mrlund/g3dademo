@@ -45,7 +45,7 @@ var extLibsCssFilesPathsArray = [
 ];
 
 var copyContentFiles = function(options) {
-  options.src = 'app/content/**/*.+(json|mp3|js|png|jpg)';
+  options.src = 'app/content/**/*.+(json|mp3|js|png|jpg|xlsx)';
   options.dest = 'www/build/content';
 
   return gulp.src(options.src)

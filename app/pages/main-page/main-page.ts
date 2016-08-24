@@ -104,9 +104,9 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Assumptions Of GPA', 1, 5, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s5'),
-          new ContentItem('types-of-measurement', 'Types of Measurement', ContentPage),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+          new ContentItem('graphing', 'Graphing in Excel', ContentPage)
         ]),
         new MenuItem('Graphing Interval Data', 1, 6, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s6'),
@@ -119,12 +119,11 @@ export class MainPage implements OnInit{
           new AnimationContentItem('grading-scales', 'Grading scales', ContentPage),
           new ContentItem('questions', 'Discussion', AnswerQuestionPage),
           new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
+          new AnimationContentItem('begin', 'Begin', ContentPage)
         ]),
         new MenuItem('Presentations', 1, 8, null, [
-          new ContentItem('provide-feedback', 'Provide feedback', ContentPage),
           new ContentItem('class-session-agenda', 'Class session agenda', ContentPage),
           new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage)
-
         ]),
         new MenuItem('Summary/Quiz', 1, 9, null, [
           new ContentItem('post-test', 'Complete project post test', QuestionPeerReviewPage)
@@ -132,7 +131,7 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
         new MenuItem('Introduction', 2, 1, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s1'),
           new ContentItem('introduction', 'Introduction', ContentPage),
           new AnimationContentItem('storyline', 'Story line', ContentPage),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),

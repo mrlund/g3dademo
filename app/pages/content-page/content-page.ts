@@ -66,6 +66,10 @@ export class ContentPage {
             }
         );
     }
+    fileLink(file){
+        var baseUrl = "project" + this.selectedItem.menuItem.project + "/session" +  this.selectedItem.menuItem.session + "/" + this.selectedItem.urlName + "/";
+        return baseUrl + file;
+    }
     toggleMenu() {
         if (this.menu.isOpen()) {
             this.menu.close();
