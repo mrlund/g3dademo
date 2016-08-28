@@ -1,4 +1,7 @@
-import { Component, DynamicComponentLoader, ViewChild, ViewContainerRef, ComponentRef} from '@angular/core';
+import {
+    Component, DynamicComponentLoader, ViewChild, ViewContainerRef, ComponentRef,
+    ChangeDetectionStrategy
+} from '@angular/core';
 import {BehaviorSubject} from "rxjs/Rx";
 
 @Component({
@@ -28,7 +31,7 @@ export class InnerContent{
             this.target.clear();
             this.dcl.loadNextToLocation(CompiledComponent, target).then((ref:ComponentRef<CompiledComponent>) => {
                 if(model) ref.instance['model'] = model;
-                if(parentCtrl) ref.instance['parentCtrl'] = parentCtrl;
+                if(parentCtrl) ref.instance['ctrl'] = parentCtrl;
             });
         }
     }

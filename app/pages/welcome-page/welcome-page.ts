@@ -10,11 +10,13 @@ export class WelcomePage {
   continueFrom: ContentItem;
   
   constructor(private nav: NavController, private progress: ProgressProvider){
-    
   }
   
   ngOnInit() {
-    this.continueFrom = this.progress.getLastPage();
+    let observable = this.progress.getLastPage();
+    observable.subscribe(value => {
+      this.continueFrom = value;
+    });
   }
   navigateTo(page: ContentItem){
     let pages = new Array<any>();
@@ -24,7 +26,6 @@ export class WelcomePage {
           loopPage = loopPage.prevItem;
     }
     pages.reverse().push({page: page.componentType, params: { item: page }});
-    
     this.nav.setPages(pages)
   }
   startCourse(){
