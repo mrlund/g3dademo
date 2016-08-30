@@ -137,19 +137,23 @@ export class MainPage implements OnInit{
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
         ]),
-        new MenuItem('Representing Quantitive Data', 2, 2, null, [
+        new MenuItem('Project Background', 2, 2, null, [
+          new ContentItem('introduction', 'Project Background', ContentPage)
+        ]),
+        new MenuItem('Representing Quantitive Data', 2, 3, null, [
           new AnimationContentItem('intro-video', 'Experiencing', ContentPage),
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
-        ]),
-        new MenuItem('Analyzing Data - Mean', 2, 3, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+        ]),        
+        new MenuItem('Analyzing Data - Mean', 2, 4, null, [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s4'),
           new ContentItem('processing-activity', 'Processing - activity', ContentPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
           new ContentItem('applying-activity', 'Applying: activity', ContentPage),
         ]),
         new MenuItem('Analyzing Data: Interquartile Range', 2, 5, null, [
+          new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s5'),
           new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
           new ContentItem('processing-activity', 'Processing - activity', ContentPage),
           new ContentItem('activity', 'Activity', ContentPage),
@@ -162,12 +166,6 @@ export class MainPage implements OnInit{
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying-activity', 'Applying - activity', ContentPage)
         ]),
-        //new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, [
-        //    new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
-        //    new ContentItem('discussion', 'Processing - class discussion', AnswerQuestionPage),
-        //    new ContentItem('generalizing-activity', 'Generalizing - activity', ContentPage),
-        //    new ContentItem('applying-class-discussion', 'Applying class discussion', AnswerQuestionPage),
-        //]),
         new MenuItem('Analyzing Data - Standard Deviation', 2, 7, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
@@ -195,19 +193,13 @@ export class MainPage implements OnInit{
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
-        //new MenuItem('Lesson10', 2, 11, null, [
-        //    new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
-        //    new ContentItem('processing', 'Processing class discussion', ContentPage),
-        //    new ContentItem('generalizing', 'Generalizing', ContentPage),
-        //    new ContentItem('applying', 'Appplying', ContentPage)
-        //]),
-        new MenuItem('Project Presentation', 2, 12, null, [
+        new MenuItem('Project Presentation', 2, 11, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
-        new MenuItem('Summary/Quiz', 2, 13, null, [
+        new MenuItem('Summary/Quiz', 2, 12, null, [
           new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
         ])
       ]),

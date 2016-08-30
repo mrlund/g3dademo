@@ -2,7 +2,19 @@
     "questions": [
         {
             "type": "discussion",
-            "question": "What is an example of data each type of graph would be good for showing?",
+            "question": "Commonalities do you think students who get suspended frequently have? ",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "Is this fair?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "question": "What can be done to address this issue?",
             "answers": [
             ]
         }
