@@ -111,6 +111,7 @@ export class MainPage implements OnInit{
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s5'),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+          new ContentItem('graphing-videos', 'Graphing Videos', ContentPage),
           new ContentItem('graphing', 'Graphing in Excel', ContentPage)
         ]),
         new MenuItem('Graphing Interval Data', 1, 6, null, [
@@ -137,6 +138,7 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
         new MenuItem('Introduction', 2, 1, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', ContentPage),
           new AnimationContentItem('storyline', 'Story line', ContentPage, 'p2s1'),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
