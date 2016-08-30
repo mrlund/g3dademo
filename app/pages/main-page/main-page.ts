@@ -79,6 +79,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Income and GPA', 1, 2, null, [
           //Page
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
           new AnimationContentItem('why-higher-ed', 'Why Higher Ed', ContentPage, 'p1s2'),
           new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
@@ -87,6 +88,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('How To Calculate GPA', 1, 3, null, [
           //Page
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
           new AnimationContentItem('what-is-gpa', 'What is GPA', ContentPage, 'p1s3'),
           new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
@@ -96,13 +98,16 @@ export class MainPage implements OnInit{
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Graphing Quartiles', 1, 4, null, [
+              new ContentItem('roadmap', 'Roadmap', ContentPage),
               new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s4'),
               new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
               new AnimationContentItem('why-box-plots', 'Why Box Plots', ContentPage),
               new ContentItem('how-to-create', 'Creating Plots', ContentPage),
+              new ContentItem('how-to-discussion', 'Discussion', AnswerQuestionPage),
               new ContentItem('excercise', 'Excercise', ContentPage)
         ]),
         new MenuItem('Assumptions Of GPA', 1, 5, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s5'),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
@@ -111,12 +116,13 @@ export class MainPage implements OnInit{
         new MenuItem('Graphing Interval Data', 1, 6, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s6'),
           new ContentItem('graphing-interval-data', 'Graphing interval data', AnswerQuestionPage),
+          new ContentItem('review-types-of-data', 'Review Types of Data', AnswerQuestionPage),
           new AnimationContentItem('how-to-create', 'Creating histogram', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
           new ContentItem('activity-page', 'Activity', ContentPage),
         ]),
-        new MenuItem('Project Workshop', 1, 7, null, [
-          new AnimationContentItem('grading-scales', 'Grading scales', ContentPage),
+        new MenuItem('Is GPA a fair use of Data?', 1, 7, null, [
+          new AnimationContentItem('grading-scales', 'Grading scales', ContentPage, 'p1s7'),
           new ContentItem('questions', 'Discussion', AnswerQuestionPage),
           new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
           new AnimationContentItem('begin', 'Begin', ContentPage)
@@ -131,9 +137,8 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
         new MenuItem('Introduction', 2, 1, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s1'),
           new ContentItem('introduction', 'Introduction', ContentPage),
-          new AnimationContentItem('storyline', 'Story line', ContentPage),
+          new AnimationContentItem('storyline', 'Story line', ContentPage, 'p2s1'),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
         ]),

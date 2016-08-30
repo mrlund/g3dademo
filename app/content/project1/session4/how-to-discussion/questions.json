@@ -1,0 +1,34 @@
+{    
+    "questions": [
+        {
+            "type": "discussion",            
+            "question": "Step 1",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",            
+            "question": "Step 2",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",            
+            "question": "Step 3",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",            
+            "question": "Step 4",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",            
+            "question": "Step 5",
+            "answers": [
+            ]
+        }                        
+    ]
+}
