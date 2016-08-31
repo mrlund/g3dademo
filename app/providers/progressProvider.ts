@@ -1,41 +1,47 @@
-import {Injectable, Inject, OnInit} from '@angular/core';
+import {Injectable, Inject, OnInit, ViewChild} from '@angular/core';
 import {ContentItem} from '../models/content-item';
 import {MenuItem} from '../models/menu-item';
-import {Events} from 'ionic-angular';
-
-import {ContentPage} from '../pages/content-page/content-page';
+import {Events, ToastController, App, NavController} from 'ionic-angular';
 import {Headers, Http} from "@angular/http";
 import {BehaviorSubject} from "rxjs/Rx";
-// import {AnswerQuestionPage} from '../pages/answer-question-page/answer-question-page';
-// import {ActivityTablePage} from '../pages/activity-table-page/activity-table-page';
-// import {QuestionPeerReviewPage} from '../pages/question-peer-review-page/question-peer-review-page';
-
+import {Globals} from "../globals";
+import {WelcomePage} from "../pages/welcome-page/welcome-page";
 
 @Injectable()
-export class ProgressProvider implements OnInit {
+export class ProgressProvider {
 
+    @ViewChild('rootNavController') nav: NavController;
   private completedLessons: Array<MenuItem>;
   private lastPageOpened:BehaviorSubject<ContentItem> = new BehaviorSubject<ContentItem>(null);
   private pages: Array<MenuItem>;
   private startFrom: MenuItem;
-  
-  constructor(private events: Events, private http: Http) {
-    this.completedLessons = new Array<MenuItem>();
-    let token = localStorage.getItem("api_token");
-    let headers = new Headers();
-    headers.append('Authorization', 'Bearer ' + token);
-    //get data of userprofile
-    this.http.get('/app-api' + '/api/progress', {headers: headers}).subscribe(res => {
-        let parsedRes = res.json();
-        let continueFrom = parsedRes['ContinueFrom'];
-        let page = continueFrom['Page'];
-        let project = continueFrom['Project'];
-        let session = continueFrom['Session'];
-        this.lastPageOpened.next(this.findLastOpenedPage(page, project, session));
-    });
-  }
+  private isLoggedIn: boolean = false;
 
-  ngOnInit(){
+  constructor(private events: Events,
+              private app: App,
+              private http: Http,
+              private _globals: Globals,
+              private toastController: ToastController) {
+    this._globals.isLoggedIn.subscribe(value => {
+        this.isLoggedIn = value;
+        this.completedLessons = new Array<MenuItem>();
+
+        if(value) {
+            //progress should be activated only for logged in users
+            let token = localStorage.getItem("api_token");
+            let headers = new Headers();
+            headers.append('Authorization', 'Bearer ' + token);
+            //get data of userprofile
+            this.http.get('/app-api' + '/api/progress', {headers: headers}).subscribe(res => {
+                let parsedRes = res.json();
+                let continueFrom = parsedRes['ContinueFrom'];
+                let page = continueFrom['Page'];
+                let project = continueFrom['Project'];
+                let session = continueFrom['Session'];
+                this.lastPageOpened.next(this.findLastOpenedPage(page, project, session));
+            });
+        }
+    });
   }
   setCourseContent(pages: Array<MenuItem>){
       this.pages = pages;
@@ -44,24 +50,45 @@ export class ProgressProvider implements OnInit {
       return this.pages;
   }
   openPage(page: ContentItem){
-      let menuItem = page['menuItem'];
-      let data = {
-          "Project": menuItem['project'],
-          "Session": menuItem['session'] > 0 ? menuItem['session']-1 : 0,
-          "Page": menuItem['page'] > 0 ? menuItem['page']-1 : 0
-      };
-      let token = localStorage.getItem("api_token");
-      let headers = new Headers();
-      headers.append('Authorization', 'Bearer ' + token);
-      //get data of userprofile
-      this.http.post('/app-api' + '/api/progress', data, {headers: headers}).subscribe(res => {
+      if(this.isLoggedIn){
+          let menuItem = page['menuItem'];
+          let data = {
+              "Project": menuItem['project'],
+              "Session": menuItem['session'] > 0 ? menuItem['session']-1 : 0,
+              "Page": menuItem['page'] > 0 ? menuItem['page']-1 : 0
+          };
+          let token = localStorage.getItem("api_token");
+          let headers = new Headers();
+          headers.append('Authorization', 'Bearer ' + token);
+          //get data of userprofile
+          this.http.post('/app-api' + '/api/progress', data, {headers: headers}).subscribe(res => {
+              this.lastPageOpened.next(page);
+          });
+      } else {
           this.lastPageOpened.next(page);
-      });
+      }
   }
   completeLesson(lesson: MenuItem){
-      this.completedLessons.push(lesson);
-      this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]);
-      this.events.publish('lesson:complete', lesson);
+      if(this.isLoggedIn){
+          this.completedLessons.push(lesson);
+          this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]);
+          this.events.publish('lesson:complete', lesson);
+      } else {
+          this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]);
+      }
+  }
+  finishSession(lesson:any, nav:any){
+      this.completeLesson(lesson);
+      if(this.isLoggedIn) {
+          let toast = this.toastController.create({
+              message: 'Congratulations - You completed the lesson!',
+              duration: 3000
+          });
+          toast.onDidDismiss(() => {
+              nav.setRoot(WelcomePage);
+          });
+          toast.present();
+      }
   }
   isComplete(lesson: MenuItem){
       return this.completedLessons.indexOf(lesson) > -1;

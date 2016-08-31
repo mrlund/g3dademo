@@ -115,15 +115,7 @@ export class ActivityTablePage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
-        this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = this.toastController.create({
-            message: 'Congratulations - You completed the lesson!',
-            duration: 1000
-        });
-        toast.onDidDismiss(() => {
-            this.nav.setRoot(WelcomePage);
-        });
-        toast.present();
+        this.progress.finishSession(this.selectedItem.menuItem, this.nav);
     }
     onSubmit(){
         var token= localStorage.getItem("api_token");
@@ -138,12 +130,12 @@ export class ActivityTablePage {
             {headers: headers}
         ).subscribe(res => {
             this.isSubmitted = true;
-            let toast = Toast.create({
+            let toast = this.toastController.create({
                 message: 'Your assignment was saved successfully!',
                 duration: 2000,
                 cssClass: 'little-positive-toast'
             });
-            this.nav.present(toast);
+            toast.present();
         });
     }
 

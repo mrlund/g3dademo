@@ -89,24 +89,7 @@ export class AnswerQuestionPage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
-        let self = this;
-        this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = this.toastController.create({
-            message: 'Congratulations - You completed the lesson!',
-            duration: 3000
-        });
-        toast.onDidDismiss(() => {
-            // let nextLessonPage = self.progress.findNextLesson(self.selectedItem.menuItem)
-            // if(nextLessonPage && nextLessonPage.pages && nextLessonPage.pages[0]){ // if there is next page so open it
-            //     let firstContentPage = nextLessonPage.pages[0];
-            //     self.progress.openPage(firstContentPage);
-            //     self.nav.setRoot(firstContentPage.componentType, { item: firstContentPage });
-            // } else {
-            //     this.nav.setRoot(WelcomePage); // if no next page so open welcome page
-            // }
-            this.nav.setRoot(WelcomePage); //now we need only welcome page after finishing lesson in all cases;
-        });
-        toast.present();
+        this.progress.finishSession(this.selectedItem.menuItem, this.nav);
     }
     onSuggest(question){
         if (!question.suggestions){

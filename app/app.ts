@@ -27,7 +27,7 @@ class MyApp {
     constructor(
         private userService: UserService
     ) {
-        this.userService.checkCredentials();
+        this.userService.goToMain();
     }
 }
 

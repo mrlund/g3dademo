@@ -34,6 +34,7 @@ export class MainPage implements OnInit{
   openMenuGroup: MenuItem;
   completedLessons: Array<MenuItem>;
   connectionState$: Observable<string>;
+  isLoggedIn: boolean = false;
 
   constructor(
       private app: App,
@@ -48,6 +49,9 @@ export class MainPage implements OnInit{
       private _globals: Globals,
       @Inject("channel.config") private channelConfig:ChannelConfig
   ) {
+    _globals.isLoggedIn.subscribe(value => {
+      this.isLoggedIn = value;
+    });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.subscribe(
         (error: any) => { console.warn(error); },
@@ -383,6 +387,10 @@ export class MainPage implements OnInit{
   logout(){
     this.menu.close();
     this.userService.logout();
+  }
+  login(){
+    this.menu.close();
+    this.userService.goToLogin();
   }
   ngOnInit() {
     // Start the connection up!

@@ -27,12 +27,15 @@
             <ion-item (click)="showTeacherPage()">
                 Teacher Page (TEST)
             </ion-item>
-            <ion-item (click)="logout()">
+            <ion-item *ngIf="isLoggedIn" (click)="logout()">
                Logout
+            </ion-item>
+            <ion-item *ngIf="!isLoggedIn" (click)="login()">
+                Login
             </ion-item>
         </ion-list>
     </ion-content>
 
 </ion-menu>
 
-<ion-nav id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>
+<ion-nav #rootNavController id="nav" [root]="rootPage" #content swipe-back-enabled="false"></ion-nav>

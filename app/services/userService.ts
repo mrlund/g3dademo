@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
+import {Globals} from "../globals";
 
 
 export class User {
@@ -12,10 +13,15 @@ export class User {
 @Injectable()
 export class UserService {
 
-    constructor(private router: Router, private http: Http){}
+    constructor(private router: Router,
+                private http: Http,
+                private _globals: Globals){
+
+    }
 
     logout():void{
         localStorage.removeItem("api_token");
+        this._globals.isLoggedIn.next(false);
         this.router.navigate(['/login']);
     }
 
@@ -24,6 +30,7 @@ export class UserService {
             this.router.navigate(['/login']);
         });
     }
+
     newLogin(user) {
         let creds = "username=" + user.login + "&password=" + user.password + "&grant_type=password";
         let headers = new Headers();
@@ -32,6 +39,7 @@ export class UserService {
             let parsedRes = res.json();
             let token = parsedRes['access_token'];
             localStorage.setItem("api_token", token);
+            this._globals.isLoggedIn.next(true);
             let headers = new Headers();
             headers.append('Authorization', 'Bearer ' + token);
             //get data of userprofile
@@ -40,15 +48,13 @@ export class UserService {
                 localStorage.setItem("userData", JSON.stringify(parsedRes));
                 this.router.navigate(['/main']);
             });
-
         });
     }
-
-    checkCredentials():void{
-        //Changed to eliminate the need to login for the time being. 
-        //let nextState = localStorage.getItem("api_token") === null ? '/login' : '/main';
-        let nextState = '/main';
-        this.router.navigate([nextState]);
+    goToMain():void{
+        this.router.navigate(['/main']);
+    }
+    goToLogin():void{
+        this.router.navigate(['/login']);
     }
     goToForgetPasswordPage():void{
         this.router.navigate(['/forget-password']);

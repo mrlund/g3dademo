@@ -146,15 +146,7 @@ export class QuestionPeerReviewPage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
-        this.progress.completeLesson(this.selectedItem.menuItem);
-        let toast = this.toastController.create({
-            message: 'Congratulations - You completed the lesson!',
-            duration: 3000
-        });
-        toast.onDidDismiss(() => {
-            this.nav.setRoot(WelcomePage);
-        });
-        toast.present();
+        this.progress.finishSession(this.selectedItem.menuItem, this.nav);
     }
     private getAnswer(){
         var resp = `{
