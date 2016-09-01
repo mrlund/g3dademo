@@ -89,7 +89,7 @@ export class AnswerQuestionPage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
-        this.progress.finishSession(this.selectedItem.menuItem, this.nav);
+        this.progress.finishSession(this.selectedItem.menuItem);
     }
     onSuggest(question){
         if (!question.suggestions){

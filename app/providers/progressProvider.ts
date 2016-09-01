@@ -20,8 +20,7 @@ export class ProgressProvider {
   constructor(private events: Events,
               private app: App,
               private http: Http,
-              private _globals: Globals,
-              private toastController: ToastController) {
+              private _globals: Globals) {
     this._globals.isLoggedIn.subscribe(value => {
         this.isLoggedIn = value;
         this.completedLessons = new Array<MenuItem>();
@@ -77,18 +76,9 @@ export class ProgressProvider {
           this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]);
       }
   }
-  finishSession(lesson:any, nav:any){
+  finishSession(lesson:any){
       this.completeLesson(lesson);
-      if(this.isLoggedIn) {
-          let toast = this.toastController.create({
-              message: 'Congratulations - You completed the lesson!',
-              duration: 3000
-          });
-          toast.onDidDismiss(() => {
-              nav.setRoot(WelcomePage);
-          });
-          toast.present();
-      }
+
   }
   isComplete(lesson: MenuItem){
       return this.completedLessons.indexOf(lesson) > -1;

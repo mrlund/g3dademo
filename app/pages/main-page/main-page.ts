@@ -1,4 +1,4 @@
-import {App, Platform, MenuController, Nav} from 'ionic-angular';
+import {App, Platform, MenuController, Nav, ToastController} from 'ionic-angular';
 import {ViewChild, Component, OnInit, provide, Inject} from '@angular/core';
 import {Events} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
@@ -47,6 +47,7 @@ export class MainPage implements OnInit{
       private userService: UserService,
       private teacherPageService: TeacherPageService,
       private _globals: Globals,
+      private toastController: ToastController,
       @Inject("channel.config") private channelConfig:ChannelConfig
   ) {
     _globals.isLoggedIn.subscribe(value => {
@@ -318,7 +319,17 @@ export class MainPage implements OnInit{
     console.log("Setup content");
 
     events.subscribe('lesson:complete', (lesson) => {
-      lesson[0].isComplete = true;
+      if(this.isLoggedIn) {
+        lesson[0].isComplete = true;
+        let toast = this.toastController.create({
+          message: 'Congratulations - You completed the lesson!',
+          duration: 3000
+        });
+        toast.onDidDismiss(() => {
+          this.nav.setRoot(WelcomePage);
+        });
+        toast.present();
+      }
     });
   }
 

@@ -115,7 +115,7 @@ export class ActivityTablePage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
-        this.progress.finishSession(this.selectedItem.menuItem, this.nav);
+        this.progress.finishSession(this.selectedItem.menuItem);
     }
     onSubmit(){
         var token= localStorage.getItem("api_token");
