@@ -12,12 +12,21 @@ export class LoginPage {
   }
 
   loginAction(obj: any){
-    let user = {login: 'student1@sm-solutions.dk', password: 'Access'};
-    this.userService.newLogin(user);
+    let login = obj.login;
+    let passwd = obj.password;
+    if(login && passwd) {
+      let user = new User(login, passwd);
+      this.userService.newLogin(user);
+    }
   }
 
   signupAction(obj: any){
-    this.userService.singUp(obj);
+    let login = obj.signLogin;
+    let passwd = obj.signPassword;
+    let passwdConfirm = obj.signPasswordConfirm;
+    if(login && passwd && passwdConfirm) {
+      this.userService.singUp({Email: login, Password: passwd, ConfirmPassword: passwdConfirm});
+    }
   }
 
   redirectToForgotPasswordPage(){

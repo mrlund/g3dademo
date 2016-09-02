@@ -16,12 +16,11 @@
             <form *ngSwitchCase="'login'" #loginCreds="ngForm">
                 <ion-item>
                     <ion-label>Login</ion-label>
-                    <ion-input type="text" ngControl="login"></ion-input>
+                    <ion-input name="login" ngModel></ion-input>
                 </ion-item>
-
                 <ion-item>
                     <ion-label>Password</ion-label>
-                    <ion-input type="password" ngControl="password"></ion-input>
+                    <ion-input type="password" name="password" ngModel></ion-input>
                 </ion-item>
 
                 <div padding>
@@ -33,19 +32,18 @@
 
             </form>
 
-            <form *ngSwitchCase="'signup'" #signupCreds="ngForm" (ngSubmit)="signup(signupCreds.value)">
+            <form *ngSwitchCase="'signup'" #signupCreds="ngForm">
                 <ion-item>
                     <ion-label>Login</ion-label>
-                    <ion-input type="text" ngControl="Email"></ion-input>
+                    <ion-input type="text" name="signLogin" ngModel></ion-input>
                 </ion-item>
-
                 <ion-item>
                     <ion-label>Password</ion-label>
-                    <ion-input type="password" ngControl="Password"></ion-input>
+                    <ion-input type="password" name="signPassword" ngModel></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>Confirm password</ion-label>
-                    <ion-input type="password" ngControl="ConfirmPassword"></ion-input>
+                    <ion-input type="password" name="signPasswordConfirm" ngModel></ion-input>
                 </ion-item>
 
                 <div padding>
