@@ -185,7 +185,6 @@ export class MainPage implements OnInit{
           new ContentItem('end', 'What is standard deviation?', ContentPage)
         ]),
         new MenuItem('Making Predictions About Data', 2, 8, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
