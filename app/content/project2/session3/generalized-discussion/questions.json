@@ -2,21 +2,23 @@
     "questions": [
         {
             "type": "discussion",
-            "question": "Commonalities do you think students who get suspended frequently have? ",
-            "answers": [
-            ]
+            "question": "What is an example of the type of data bar charts would be good at showing?",
+            "answers": []
         },
         {
             "type": "discussion",
-            "question": "Is this fair?",
-            "answers": [
-            ]
+            "question": "What is an example of the type of data Pie charts would be good at showing?",
+            "answers": []
         },
         {
             "type": "discussion",
-            "question": "What can be done to address this issue?",
-            "answers": [
-            ]
+            "question": "What is an example of the type of data line graphs would be good at showing?",
+            "answers": []
+        },
+        {
+            "type": "discussion",
+            "question": "What is an example of the type of data Histograms would be good at showing?",
+            "answers": []
         }
     ]
 }

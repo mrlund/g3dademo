@@ -2,27 +2,17 @@
     "questions": [
         {
             "type": "discussion",
-            "question": "What information does the mean provide about a dataset?",
+            "question": "What does one tell you that the other does not?",
             "answers": [
             ]
         },{
             "type": "discussion",
-            "question": "What can’t it tell us?",
+            "question": "Which is more precise?",
             "answers": [
             ]
         },{
             "type": "discussion",
-            "question": "Is it possible that the average number of colds is 11.5 even though most months there are significantly more or less than 11.5 colds? ",
-            "answers": [
-            ]
-        },{
-            "type": "discussion",
-            "question": "Why/how is that possible?",
-            "answers": [
-            ]
-        },{
-            "type": "discussion",
-            "question": "What are some examples of datasets that it is helpful to know the mean of?",
+            "question": "Are they both useful? When and why?",
             "answers": [
             ]
         }
