@@ -16,7 +16,7 @@ export class UserService {
     constructor(private router: Router,
                 private http: Http,
                 private _globals: Globals){
-
+        this.checkIfLoggedInFlag();
     }
 
     logout():void{
@@ -49,6 +49,12 @@ export class UserService {
                 this.router.navigate(['/main']);
             });
         });
+    }
+    checkIfLoggedInFlag():void{
+        let token = localStorage.getItem("api_token");
+        if(token){
+            this._globals.isLoggedIn.next(true);
+        }
     }
     goToMain():void{
         this.router.navigate(['/main']);
