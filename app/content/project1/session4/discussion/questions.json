@@ -1,13 +1,15 @@
 {    
     "questions": [
         {
-            "type": "discussion",            
+            "type": "discussion", 
+            "questionId": 12,           
             "question": "What information can you get from the chart?",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",
+            "questionId": 13,            
             "question": "What additional information could be useful to see in a visual representation of GPA data?",
             "answers": [
             ]

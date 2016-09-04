@@ -1,31 +1,36 @@
 {    
     "questions": [
         {
-            "type": "discussion",            
+            "type": "discussion",   
+            "questionId": 12,         
             "question": "Step 1",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",
+            "questionId": 13,            
             "question": "Step 2",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",
+            "questionId": 14,            
             "question": "Step 3",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",
+            "questionId": 15,            
             "question": "Step 4",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",
+            "questionId": 16,            
             "question": "Step 5",
             "answers": [
             ]

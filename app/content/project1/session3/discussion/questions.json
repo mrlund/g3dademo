@@ -1,13 +1,15 @@
 {    
     "questions": [
         {
-            "type": "discussion",            
+            "type": "discussion",   
+            "questionId": 12,         
             "question": "Would the student in the sample calculation be able to attend any of the schools?",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",       
+            "questionId": 13,     
             "question": "Review why GPA is important and what some limitations are.",
             "answers": [
             ]

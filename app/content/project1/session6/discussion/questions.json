@@ -2,24 +2,28 @@
     "questions": [
         {
             "type": "discussion",
+            "questionId": 12,
             "question": "Explain what a histogram is in own words.",
             "answers": [
             ]
         },
         {
             "type": "discussion",
+            "questionId": 13,
             "question": "What is the difference between a histogram and a bar graph?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
+            "questionId": 14,
             "question": "What is something you would use a histogram for vs. a bar graph?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
+            "questionId": 15,
             "question": "What does continuous data mean?",
             "answers": [
             ]

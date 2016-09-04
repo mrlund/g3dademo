@@ -2,6 +2,7 @@
     "questions": [
         {
             "type": "multiple-choice",
+            "questionId": 12,
             "question": "What type of data starts at a zero value?",
             "answers": [
                 {
@@ -15,7 +16,8 @@
             ]
         },
         {
-            "type": "multiple-choice",            
+            "type": "multiple-choice",     
+            "questionId": 13,       
             "question": "What type of data can not be ordered?",
             "answers": [
                 {
@@ -30,6 +32,7 @@
         },
         {
             "type": "multiple-choice",
+            "questionId": 14,
             "question": "What type of data can be ordered but does not increase in even increments?",
             "answers": [
                 {
@@ -48,6 +51,7 @@
         },
         {
             "type": "text",
+            "questionId": 15,
             "question": "What type of data can be ordered and increases in even increments?",
             "answers": [
                 {
