@@ -116,7 +116,7 @@ export class PollingPage {
                 ans.voteState = "voted";
             }
         })
-        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'student', answer.answer);
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, 'student', answer.answer);
     }
 
 }

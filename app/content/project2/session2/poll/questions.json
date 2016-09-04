@@ -2,6 +2,7 @@
     "questions": [
         {
             "type": "poll",
+            "questionId": 15,
             "question": "The mean number of suspensions is greater for which dataset?",
             "answers": [
                 {
@@ -23,7 +24,8 @@
             ]
         },
         {
-            "type": "poll",            
+            "type": "poll",
+            "questionId": 16,    
             "question": "The median number of suspensions is greater for which dataset?",
             "answers": [
                 {

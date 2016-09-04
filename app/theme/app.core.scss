@@ -39,6 +39,27 @@
 .teacher-page-inner-content {
     height: 100% !important;
 }
+.voting-container {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+.voting-container table {
+    margin: 0 auto;
+}
+.voting-container .graph-column {
+    height: 200px;
+    vertical-align: bottom;
+}
+.voting-container .graph-column > div {
+    background-color: #ed6464;
+    max-width: 50px;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+}
+.voting-container td {
+    padding: 0 20px;
+}
 .toast-message { 
     background-color: #E5053A;
     font-size: 20px;
