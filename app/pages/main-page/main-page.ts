@@ -8,6 +8,7 @@ import {ContentData} from '../../providers/contentProvider';
 
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentPage} from '../content-page/content-page';
+import {PollingPage} from '../polling-page/polling-page';
 import {AnswerQuestionPage} from '../answer-question-page/answer-question-page';
 import {ActivityTablePage} from '../activity-table-page/activity-table-page';
 import {QuestionPeerReviewPage} from '../question-peer-review-page/question-peer-review-page';
@@ -147,6 +148,7 @@ export class MainPage implements OnInit{
         new MenuItem('Project Background', 2, 2, null, [
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
+          new ContentItem('poll', 'Polling test', PollingPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Representing Quantitive Data', 2, 3, null, [
