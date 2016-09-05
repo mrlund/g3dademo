@@ -331,6 +331,45 @@ export class MainPage implements OnInit{
         toast.present();
       }
     });
+
+    this.loadCompletedLessons();
+  }
+
+  loadCompletedLessons() {
+    this.progress.getApiProgress().subscribe(res => {
+      let parsedRes = res.json();
+      let completedPages = parsedRes.CompletedPages;
+      let completedPagesSet = new Map();
+      if (completedPages) {
+        for (let i = 0; i < completedPages.length; i++) {
+          if (completedPages[i].ProjectNumber && completedPages[i].SessionNumber) {
+            let projectNumber = completedPages[i].ProjectNumber;
+            let sessionNumber = completedPages[i].SessionNumber;
+            let pageNumber = completedPages[i].PageNumber;
+            completedPagesSet.set(projectNumber + '_' + sessionNumber + '_' + pageNumber,
+                {project: projectNumber, session: sessionNumber, page: pageNumber});
+          }
+        }
+        completedPagesSet.forEach((page) => {
+          this.setCompletedPages(this.pages, page['project'], page['session'], page['page']);
+        });
+      }
+    })
+  }
+
+  setCompletedPages(pages: Array<any>, projectNumber: number, sessionNumber: number, pageNumber: number) {
+    for (let i = 0; i < pages.length; i++) {
+      if (!pages[i].isComplete) {
+
+        if (pages[i].children) {
+          this.setCompletedPages(pages[i].children, projectNumber, sessionNumber, pageNumber);
+          return;
+        }
+        if (pages[i].project == projectNumber && pages[i].session == sessionNumber && pages[i].pages && pages[i].pages.length == pageNumber) {
+          pages[i].isComplete = true;
+        }
+      }
+    }
   }
 
   setupMenuNodes() {

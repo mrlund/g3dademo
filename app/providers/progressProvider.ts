@@ -26,12 +26,7 @@ export class ProgressProvider {
         this.completedLessons = new Array<MenuItem>();
 
         if(value) {
-            //progress should be activated only for logged in users
-            let token = localStorage.getItem("api_token");
-            let headers = new Headers();
-            headers.append('Authorization', 'Bearer ' + token);
-            //get data of userprofile
-            this.http.get('/app-api' + '/api/progress', {headers: headers}).subscribe(res => {
+            this.getApiProgress().subscribe(res => {
                 let parsedRes = res.json();
                 let continueFrom = parsedRes['ContinueFrom'];
                 let page = continueFrom['Page'];
@@ -88,6 +83,13 @@ export class ProgressProvider {
   }
   getCompletedLessons() : Array<MenuItem> {
       return this.completedLessons;
+  }
+
+  getApiProgress(): any {
+    let token = localStorage.getItem("api_token");
+    let headers = new Headers();
+    headers.append('Authorization', 'Bearer ' + token);
+    return this.http.get('/app-api' + '/api/progress', {headers: headers});
   }
   getFirstLesson(){
       return this.pages[1].children[0].pages[0];
