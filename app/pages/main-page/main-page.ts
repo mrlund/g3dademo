@@ -351,7 +351,8 @@ export class MainPage implements OnInit{
           }
         }
         completedPagesSet.forEach((page) => {
-          this.setCompletedPages(this.pages, page['project'], page['session'], page['page']);
+          var projectIndex = page.project;
+          this.setCompletedPages(this.pages[projectIndex].children, page['project'], page['session'], page['page']);
         });
       }
     })
