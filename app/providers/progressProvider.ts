@@ -49,7 +49,7 @@ export class ProgressProvider {
           let data = {
               "Project": menuItem['project'],
               "Session": menuItem['session'] > 0 ? menuItem['session']-1 : 0,
-              "Page": menuItem['page'] > 0 ? menuItem['page']-1 : 0
+              "Page": page.page //menuItem['page'] > 0 ? menuItem['page']-1 : 0
           };
           let token = localStorage.getItem("api_token");
           let headers = new Headers();
