@@ -96,7 +96,7 @@ export class AnswerQuestionPage {
             question.suggestions = [];    
         }
         question.suggestions.push(question.suggestion);
-        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'student', question.suggestion);
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, 'student', question.suggestion);
         question.suggestion = ""; 
     }
 

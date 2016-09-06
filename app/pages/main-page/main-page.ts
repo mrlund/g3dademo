@@ -8,6 +8,7 @@ import {ContentData} from '../../providers/contentProvider';
 
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentPage} from '../content-page/content-page';
+import {PollingPage} from '../polling-page/polling-page';
 import {AnswerQuestionPage} from '../answer-question-page/answer-question-page';
 import {ActivityTablePage} from '../activity-table-page/activity-table-page';
 import {QuestionPeerReviewPage} from '../question-peer-review-page/question-peer-review-page';
@@ -90,6 +91,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Income and GPA', 1, 2, null, [
           //Page
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
           new AnimationContentItem('why-higher-ed', 'Why Higher Ed', ContentPage, 'p1s2'),
           new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
@@ -98,6 +100,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('How To Calculate GPA', 1, 3, null, [
           //Page
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
           new AnimationContentItem('what-is-gpa', 'What is GPA', ContentPage, 'p1s3'),
           new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
@@ -107,27 +110,32 @@ export class MainPage implements OnInit{
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Graphing Quartiles', 1, 4, null, [
+              new ContentItem('roadmap', 'Roadmap', ContentPage),
               new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s4'),
               new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
               new AnimationContentItem('why-box-plots', 'Why Box Plots', ContentPage),
               new ContentItem('how-to-create', 'Creating Plots', ContentPage),
+              new ContentItem('how-to-discussion', 'Discussion', AnswerQuestionPage),
               new ContentItem('excercise', 'Excercise', ContentPage)
         ]),
         new MenuItem('Assumptions Of GPA', 1, 5, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s5'),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+          new ContentItem('graphing-videos', 'Graphing Videos', ContentPage),
           new ContentItem('graphing', 'Graphing in Excel', ContentPage)
         ]),
         new MenuItem('Graphing Interval Data', 1, 6, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s6'),
           new ContentItem('graphing-interval-data', 'Graphing interval data', AnswerQuestionPage),
+          new ContentItem('review-types-of-data', 'Review Types of Data', AnswerQuestionPage),
           new AnimationContentItem('how-to-create', 'Creating histogram', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
           new ContentItem('activity-page', 'Activity', ContentPage),
         ]),
-        new MenuItem('Project Workshop', 1, 7, null, [
-          new AnimationContentItem('grading-scales', 'Grading scales', ContentPage),
+        new MenuItem('Is GPA a fair use of Data?', 1, 7, null, [
+          new AnimationContentItem('grading-scales', 'Grading scales', ContentPage, 'p1s7'),
           new ContentItem('questions', 'Discussion', AnswerQuestionPage),
           new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
           new AnimationContentItem('begin', 'Begin', ContentPage)
@@ -142,59 +150,60 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
         new MenuItem('Introduction', 2, 1, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s1'),
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', ContentPage),
-          new AnimationContentItem('storyline', 'Story line', ContentPage),
+          new AnimationContentItem('storyline', 'Story line', ContentPage, 'p2s1'),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
         ]),
-        new MenuItem('Representing Quantitive Data', 2, 2, null, [
-          new AnimationContentItem('intro-video', 'Experiencing', ContentPage),
+        new MenuItem('Project Background', 2, 2, null, [
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
+          new ContentItem('poll', 'Polling test', PollingPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
         ]),
-        new MenuItem('Analyzing Data - Mean', 2, 3, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
-          new ContentItem('processing-activity', 'Processing - activity', ContentPage),
-          new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
-          new ContentItem('applying-activity', 'Applying: activity', ContentPage),
+        new MenuItem('Representing Quantitive Data', 2, 3, null, [
+          new AnimationContentItem('intro-video', 'Experiencing', ContentPage),
+          new ContentItem('generalized-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
+          new ContentItem('processing-activity', 'Text-Based Discussion Protocol', AnswerQuestionPage),
+          new ContentItem('applying-activity', 'Generalizing - class discussion', AnswerQuestionPage),
+        ]),        
+        new MenuItem('Analyzing Data - Mean', 2, 4, null, [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s4'),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('discussion', 'Discussion', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying-class-discussion', 'Applying', ContentPage),
         ]),
         new MenuItem('Analyzing Data: Interquartile Range', 2, 5, null, [
+          new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s5'),
           new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
-          new ContentItem('processing-activity', 'Processing - activity', ContentPage),
+          new ContentItem('processing-class-discussion', 'Processing - activity', ContentPage),
           new ContentItem('activity', 'Activity', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Analyzing Data: Normal Distribution', 2, 6, null, [
+          new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s6'),
           new ContentItem('experiencing', 'Experiencing - video', ContentPage),
           new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying-activity', 'Applying - activity', ContentPage)
+          new ContentItem('activity', 'Applying - activity', ContentPage)
         ]),
-        //new MenuItem('Analyzing Data - Standard Deviation', 2, 4, null, [
-        //    new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
-        //    new ContentItem('discussion', 'Processing - class discussion', AnswerQuestionPage),
-        //    new ContentItem('generalizing-activity', 'Generalizing - activity', ContentPage),
-        //    new ContentItem('applying-class-discussion', 'Applying class discussion', AnswerQuestionPage),
-        //]),
         new MenuItem('Analyzing Data - Standard Deviation', 2, 7, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s7'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('end', 'What is standard deviation?', ContentPage)
         ]),
         new MenuItem('Making Predictions About Data', 2, 8, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Breaking The Cycle', 2, 9, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
@@ -206,19 +215,13 @@ export class MainPage implements OnInit{
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
-        //new MenuItem('Lesson10', 2, 11, null, [
-        //    new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
-        //    new ContentItem('processing', 'Processing class discussion', ContentPage),
-        //    new ContentItem('generalizing', 'Generalizing', ContentPage),
-        //    new ContentItem('applying', 'Appplying', ContentPage)
-        //]),
-        new MenuItem('Project Presentation', 2, 12, null, [
+        new MenuItem('Project Presentation', 2, 11, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
-        new MenuItem('Summary/Quiz', 2, 13, null, [
+        new MenuItem('Summary/Quiz', 2, 12, null, [
           new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
         ])
       ]),

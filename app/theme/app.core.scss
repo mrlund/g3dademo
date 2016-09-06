@@ -9,6 +9,7 @@
 
 @import "../pages/welcome-page/welcome-page";
 @import "../pages/content-page/content-page";
+@import "../pages/polling-page/polling-page";
 @import "../pages/answer-question-page/answer-question-page";
 @import "../pages/activity-table-page/activity-table-page";
 @import "../pages/question-peer-review-page/question-peer-review-page";
@@ -37,6 +38,27 @@
 }
 .teacher-page-inner-content {
     height: 100% !important;
+}
+.voting-container {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+.voting-container table {
+    margin: 0 auto;
+}
+.voting-container .graph-column {
+    height: 200px;
+    vertical-align: bottom;
+}
+.voting-container .graph-column > div {
+    background-color: #ed6464;
+    max-width: 50px;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+}
+.voting-container td {
+    padding: 0 20px;
 }
 .toast-message { 
     background-color: #E5053A;
@@ -179,4 +201,11 @@
 }
 #character-text-block {
     max-width: 600px;
+}
+h1 {
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+.toolbar-title {
+    color: #E5053A;
 }

@@ -2,9 +2,23 @@
     "questions": [
         {
             "type": "discussion",
-            "question": "What is an example of data each type of graph would be good for showing?",
-            "answers": [
-            ]
+            "question": "What is an example of the type of data bar charts would be good at showing?",
+            "answers": []
+        },
+        {
+            "type": "discussion",
+            "question": "What is an example of the type of data Pie charts would be good at showing?",
+            "answers": []
+        },
+        {
+            "type": "discussion",
+            "question": "What is an example of the type of data line graphs would be good at showing?",
+            "answers": []
+        },
+        {
+            "type": "discussion",
+            "question": "What is an example of the type of data Histograms would be good at showing?",
+            "answers": []
         }
     ]
 }

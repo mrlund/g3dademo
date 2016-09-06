@@ -1,0 +1,68 @@
+{
+    "questions": [
+        {
+            "type": "multiple-choice",
+            "question": "What type of data starts at a zero value?",
+            "answers": [
+                {
+                    "answer": "Ratio",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Option 2",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",            
+            "question": "What type of data can not be ordered?",
+            "answers": [
+                {
+                    "answer": "Option",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Nominal",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "question": "What type of data can be ordered but does not increase in even increments?",
+            "answers": [
+                {
+                    "answer": "Option",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Option",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Option",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "question": "What type of data can be ordered and increases in even increments?",
+            "answers": [
+                {
+                    "answer": "Option",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Option",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Option",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}
