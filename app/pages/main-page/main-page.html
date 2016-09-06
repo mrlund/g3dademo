@@ -24,6 +24,9 @@
             <ion-item (click)="showIndex()">
                 Course Index
             </ion-item>
+            <ion-item (click)="showAddNotePopup()" *ngIf="currentPage">
+                Add Note
+            </ion-item>
             <ion-item (click)="showTeacherPage()">
                 Teacher Page (TEST)
             </ion-item>

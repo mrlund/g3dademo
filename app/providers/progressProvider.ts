@@ -58,9 +58,16 @@ export class ProgressProvider {
           this.http.post('/app-api' + '/api/progress', data, {headers: headers}).subscribe(res => {
               this.lastPageOpened.next(page);
           });
+          this._globals.setCurrentPage({project: data.Project, session: data.Session, page: data.Page});
       } else {
           this.lastPageOpened.next(page);
       }
+  }
+  saveNote(noteData) {
+      let token = localStorage.getItem("api_token");
+      let headers = new Headers();
+      headers.append('Authorization', 'Bearer ' + token);
+      return this.http.post('/app-api' + '/api/notes', noteData, {headers: headers});
   }
   completeLesson(lesson: MenuItem){
       if(this.isLoggedIn){

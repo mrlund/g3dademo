@@ -1,4 +1,4 @@
-import {App, Platform, MenuController, Nav, ToastController} from 'ionic-angular';
+import {App, Platform, MenuController, Nav, ToastController, ModalController} from 'ionic-angular';
 import {ViewChild, Component, OnInit, provide, Inject} from '@angular/core';
 import {Events} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
@@ -21,6 +21,7 @@ import {ChannelService, ChannelConfig, SignalrWindow} from '../../services/chann
 import {UserService} from '../../services/userService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
+import {NotePopup} from "../note/note-popup";
 
 @Component({
   templateUrl: 'build/pages/main-page/main-page.html',
@@ -35,6 +36,7 @@ export class MainPage implements OnInit{
   completedLessons: Array<MenuItem>;
   connectionState$: Observable<string>;
   isLoggedIn: boolean = false;
+  currentPage: any = null;
 
   constructor(
       private app: App,
@@ -48,10 +50,14 @@ export class MainPage implements OnInit{
       private teacherPageService: TeacherPageService,
       private _globals: Globals,
       private toastController: ToastController,
+      private modalCtrl: ModalController,
       @Inject("channel.config") private channelConfig:ChannelConfig
   ) {
     _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
+    });
+    _globals.currentPage.subscribe(value => {
+        this.currentPage = value;
     });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.subscribe(
@@ -428,19 +434,23 @@ export class MainPage implements OnInit{
     return true;
   }
   showIndex(){
+    this._globals.clearCurrentPage();
     this.menu.close();
     this.nav.setRoot(CourseIndexPage);
   }
   showTeacherPage(){
+    this._globals.clearCurrentPage();
     this.menu.close();
     this.nav.setRoot(TeacherPage);
   }
   logout(){
+    this._globals.clearCurrentPage();
     this.menu.close();
     this.userService.logout();
   }
   login(){
     this.menu.close();
+    this._globals.clearCurrentPage();
     this.userService.goToLogin();
   }
   ngOnInit() {
@@ -451,5 +461,16 @@ export class MainPage implements OnInit{
   }
   onClassroomModeSwitch(classroomMode: boolean){
     this._globals.setClassroomModeStatus(classroomMode);
+  }
+
+  showAddNotePopup() {
+    if (this.isLoggedIn && this.currentPage) {
+      let modal = this.modalCtrl.create(NotePopup, {
+        sessionNumber: this.currentPage.session,
+        projectNumber: this.currentPage.project,
+        pageNumber: this.currentPage.page
+      });
+      modal.present();
+    }
   }
 }
