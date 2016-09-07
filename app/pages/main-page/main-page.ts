@@ -152,7 +152,7 @@ export class MainPage implements OnInit{
           new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage)
         ]),
         new MenuItem('Summary/Quiz', 1, 9, null, [
-          new ContentItem('post-test', 'Complete project post test', QuestionPeerReviewPage)
+          new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
         ])
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
