@@ -14,7 +14,7 @@ export class MyAssigmentsPage {
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
         return new Promise(resolve => {
-            this.http.get('https://girlsinc.azurewebsites.net' + 'api/assignments', {headers: headers}).subscribe(data => {
+            this.http.get('https://girlsinc.azurewebsites.net' + '/api/assignments', {headers: headers}).subscribe(data => {
                 resolve(data.json());
             });
         });
