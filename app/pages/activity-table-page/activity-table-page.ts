@@ -121,7 +121,7 @@ export class ActivityTablePage {
         var token= localStorage.getItem("api_token");
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
-        this.http.post('/app-api' + '/api/assignments',
+        this.http.post('https://girlsinc.azurewebsites.net' + '/api/assignments',
             {
                 AssignmentId : 102,
                 AssignmentName: 'budget exercise',

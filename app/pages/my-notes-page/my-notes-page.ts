@@ -14,7 +14,7 @@ export class MyNotesPage {
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
         return new Promise(resolve => {
-            this.http.get('/app-api/' + 'api/notes', {headers: headers}).subscribe(data => {
+            this.http.get('https://girlsinc.azurewebsites.net' + 'api/notes', {headers: headers}).subscribe(data => {
                 resolve(data.json());
             });
         });

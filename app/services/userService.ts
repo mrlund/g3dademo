@@ -28,7 +28,7 @@ export class UserService {
     }
 
     singUp(newUserData: any) {
-        this.http.post('/app-api' + '/api/account/register', newUserData).subscribe(res => {
+        this.http.post('https://girlsinc.azurewebsites.net' + '/api/account/register', newUserData).subscribe(res => {
             this.router.navigate(['/login']);
         });
     }
@@ -37,7 +37,7 @@ export class UserService {
         let creds = "username=" + user.login + "&password=" + user.password + "&grant_type=password";
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('/app-api' + '/token', creds, {headers: headers}).subscribe(res => {
+        this.http.post('https://girlsinc.azurewebsites.net' + '/token', creds, {headers: headers}).subscribe(res => {
             let parsedRes = res.json();
             let token = parsedRes['access_token'];
             localStorage.setItem("api_token", token);
@@ -45,7 +45,7 @@ export class UserService {
             let headers = new Headers();
             headers.append('Authorization', 'Bearer ' + token);
             //get data of userprofile
-            this.http.get('/app-api' + '/api/account/userprofile', {headers: headers}).subscribe(res => {
+            this.http.get('https://girlsinc.azurewebsites.net' + '/api/account/userprofile', {headers: headers}).subscribe(res => {
                 let parsedRes = res.json();
                 localStorage.setItem("userData", JSON.stringify(parsedRes));
                 this.router.navigate(['/main']);
