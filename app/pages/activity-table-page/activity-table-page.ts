@@ -125,7 +125,10 @@ export class ActivityTablePage {
             {
                 AssignmentId : 102,
                 AssignmentName: 'budget exercise',
-                AssignmentData: JSON.stringify(this.table)
+                AssignmentData: JSON.stringify(this.table),
+                ProjectNumber: this.selectedItem['menuItem']['project'],
+                SessionNumber:  this.selectedItem['menuItem']['session'],
+                PageNumber:  this.selectedItem['page']
             },
             {headers: headers}
         ).subscribe(res => {
