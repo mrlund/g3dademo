@@ -1,5 +1,5 @@
 import {App, Platform, MenuController, Nav, ToastController, ModalController} from 'ionic-angular';
-import {ViewChild, Component, OnInit, provide, Inject} from '@angular/core';
+import {ViewChild, Component, OnInit} from '@angular/core';
 import {Events} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
 
@@ -13,7 +13,6 @@ import {AnswerQuestionPage} from '../answer-question-page/answer-question-page';
 import {ActivityTablePage} from '../activity-table-page/activity-table-page';
 import {QuestionPeerReviewPage} from '../question-peer-review-page/question-peer-review-page';
 import {CourseIndexPage} from '../course-index-page/course-index-page';
-import {TeacherPage} from '../teacher-page/teacher-page';
 
 import {MenuItem} from '../../models/menu-item';
 import {ContentItem, AnimationContentItem} from '../../models/content-item';
@@ -368,7 +367,7 @@ export class MainPage implements OnInit{
           }
         }
         completedPagesSet.forEach((page) => {
-          var projectIndex = page.project;
+          var projectIndex = page['project'];
           this.setCompletedPages(this.pages[projectIndex].children, page['project'], page['session'], page['page']);
         });
       }
@@ -449,11 +448,6 @@ export class MainPage implements OnInit{
     this.menu.close();
     this.nav.setRoot(CourseIndexPage);
   }
-  showTeacherPage(){
-    this._globals.clearCurrentPage();
-    this.menu.close();
-    this.nav.setRoot(TeacherPage);
-  }
   logout(){
     this._globals.clearCurrentPage();
     this.menu.close();
@@ -474,9 +468,9 @@ export class MainPage implements OnInit{
     this.channelService.start();
   }
   setupSelectedCourse() {
-    if (this.userData.IsFacilitator && !this.userData['SelectedCourseId']) {
-      this.userData['SelectedCourseId'] = this.userData.ClassesTaught && this.userData.ClassesTaught.length ?
-          this.userData.ClassesTaught[0].CourseClassId : MainPage.SELECTED_COURSE_NONE;
+    if (this.userData['IsFacilitator'] && !this.userData['SelectedCourseId']) {
+      this.userData['SelectedCourseId'] = this.userData['ClassesTaught'] && this.userData['ClassesTaught'].length ?
+          this.userData['ClassesTaught'][0].CourseClassId : MainPage.SELECTED_COURSE_NONE;
       this.userService.setSelectedCourse(this.userData['SelectedCourseId']);
     }
   }

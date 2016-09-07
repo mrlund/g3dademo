@@ -10,6 +10,8 @@ import {ChannelService} from '../../services/channelService';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
+import {UserService} from "../../services/userService";
+import {TeacherPage} from "../teacher-page/teacher-page";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -20,6 +22,7 @@ export class AnswerQuestionPage {
     selectedItem: any;
     private _pageContent: string;
     questions: Array<any>;
+    userData: Map<string, string>;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -31,9 +34,11 @@ export class AnswerQuestionPage {
                 private progress: ProgressProvider,
                 private channelService:ChannelService,
                 private _sanitizer: DomSanitizationService,
-                private toastController: ToastController) {
+                private toastController: ToastController,
+                private userService: UserService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
+        this.userData = userService.getUserData();
         if (!this.selectedItem)
         {
             this.selectedItem = new ContentItem(navParams.get('urlName'), navParams.get('urlName'), AnswerQuestionPage);
@@ -99,5 +104,7 @@ export class AnswerQuestionPage {
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, 'student', question.suggestion);
         question.suggestion = ""; 
     }
-
+    goToTeacherPage():void{
+        this.nav.setRoot(TeacherPage);
+    }
 }

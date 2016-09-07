@@ -8,7 +8,7 @@ import {LocationStrategy, HashLocationStrategy } from '@angular/common';
 import {ProgressProvider} from './providers/progressProvider';
 import {ContentData} from './providers/contentProvider';
 
-import {ChannelService, ChannelConfig, SignalrWindow} from './services/channelService';
+import {ChannelService, SignalrWindow} from './services/channelService';
 import {UserService} from './services/userService';
 import {TeacherPageService} from './services/teacherPageService';
 import {Globals} from './globals';
