@@ -10,6 +10,13 @@
                 <ion-label>Classroom Mode</ion-label>
                 <ion-toggle [(ngModel)]="classroomMode" (ionChange)="onClassroomModeSwitch(classroomMode)"></ion-toggle>
             </ion-item>
+            <ion-item [hidden]="!userData.IsFacilitator">
+                <ion-label>Current Course</ion-label>
+                <ion-select [(ngModel)]="userData['SelectedCourseId']" (ngModelChange)="changeSelectedCourse()">
+                    <ion-option *ngIf="!userData.ClassesTaught || !userData.ClassesTaught.length">None</ion-option>
+                    <ion-option *ngFor="let course of userData.ClassesTaught" [value]="course.CourseClassId">{{course.Name}}</ion-option>
+                </ion-select>
+            </ion-item>
             <div *ngFor="let p of pages">
                 <ion-list-header (click)="showChildren(p)">
                     <ion-icon name="contact"></ion-icon> {{p.title}}

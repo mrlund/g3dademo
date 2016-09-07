@@ -15,10 +15,6 @@ import {Globals} from './globals';
 
 import { appRouterProviders } from './routes';
 
-let channelConfig = new ChannelConfig();
-channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
-channelConfig.hubName = "inClassHub";
-
 @Component({
     directives: [ROUTER_DIRECTIVES],
     template:  "<router-outlet></router-outlet>"
@@ -41,8 +37,7 @@ ionicBootstrap(MyApp, [
         TeacherPageService,
         Globals,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
-        provide(SignalrWindow, {useValue: window}),
-        provide("channel.config", { useValue: channelConfig })
+        provide(SignalrWindow, {useValue: window})
     ], {
         mode: 'ios'
     }

@@ -1,6 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
+import {UserService} from "./userService";
 
 /**
  * When SignalR runs it will add functions to the global $ variable
@@ -23,7 +24,7 @@ export class ChannelConfig {
     url:string;
     hubName:string;
     channel:string;
-    uid:string;
+    params: Map<string, string>;
 }
 
 export class ChannelEvent {
@@ -94,18 +95,12 @@ export class ChannelService {
     private subjects = new Array<ChannelSubject>();
 
     constructor(@Inject(SignalrWindow) private window:SignalrWindow,
-                @Inject("channel.config") private channelConfig:ChannelConfig) {
+                @Inject(UserService) private userService:UserService
+    ) {
         if (this.window.$ === undefined || this.window.$.hubConnection === undefined) {
             throw new Error("The variable '$' or the .hubConnection() function are not defined...please check the SignalR scripts have been loaded properly");
         }
 
-        var userData = JSON.parse(<string>localStorage.getItem('userData'));
-        channelConfig.uid = userData && userData['StudentId'] ? userData['StudentId'] : null;
-        if (!channelConfig.uid){
-            var fakeProfile = {"StudentId": "b29cee4f-5547-40db-a6fe-2303e0feed85","Name": "ml@eqt1.com","CourseClassId": 1,"StudentAssignments": null};
-            localStorage.setItem("userData", JSON.stringify(fakeProfile));
-            channelConfig.uid = fakeProfile.StudentId;
-        }
         // Set up our observables
         //
         this.connectionState$ = this.connectionStateSubject.asObservable();
@@ -114,11 +109,13 @@ export class ChannelService {
         this.data$ = this.dataSubject.asObservable();
         this.asignmentData$ = this.asignmentDataSubject.asObservable();
         this.reviewData$ = this.reviewDataSubject.asObservable();
-
+    }
+    createConnection():void {
+        var channelConfig = this.userService.getChannelConfiguration();
 
         this.hubConnection = this.window.$.hubConnection();
         this.hubConnection.url = channelConfig.url;
-        this.hubConnection.qs = {'uid': channelConfig.uid};
+        this.hubConnection.qs = channelConfig.params;
         this.hubProxy = this.hubConnection.createHubProxy(channelConfig.hubName);
 
         // Define handlers for the connection state events
@@ -173,8 +170,8 @@ export class ChannelService {
             }
         });
 
+        return this.hubConnection;
     }
-
     /**
      * Start the SignalR connection. The starting$ stream will emit an
      * event if the connection is established, otherwise it will emit an
@@ -189,10 +186,11 @@ export class ChannelService {
         //  a client subscried to it the start sequence would be triggered
         //  again since it's a cold observable.
         //
+        this.stop();
         var dataSource = this.data$['source'];
         var assignmentDataSource = this.asignmentData$['source'];
         var reviewDataSource = this.reviewData$['source'];
-        this.hubConnection.start()
+        this.createConnection().start()
             .done(() => {
                 this.hubConnection.received((data) => {
                     dataSource['next'](data);
@@ -207,6 +205,13 @@ export class ChannelService {
             .fail((error:any) => {
                 this.startingSubject.error(error);
             });
+    }
+
+    stop():void {
+        if (this.hubConnection) {
+            this.hubConnection.stop()
+            this.hubConnection = null;
+        }
     }
 
     /** publish provides a way for calles to emit events on any channel. In a

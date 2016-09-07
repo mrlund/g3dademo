@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
 import {Globals} from "../globals";
+import {ChannelConfig} from "./channelService";
 
 
 export class User {
@@ -21,6 +22,7 @@ export class UserService {
 
     logout():void{
         localStorage.removeItem("api_token");
+        localStorage.removeItem("userData");
         this._globals.isLoggedIn.next(false);
         this.router.navigate(['/login']);
     }
@@ -67,5 +69,24 @@ export class UserService {
     }
     resetPassword():void{
         this.router.navigate(['/login']);
+    }
+    getUserData(){
+        let userDataString = localStorage.getItem('userData');
+        return userDataString ? JSON.parse(userDataString) : {};
+    }
+    setSelectedCourse(courseId) {
+        let userData = this.getUserData();
+        userData.SelectedCourseId = courseId;
+        localStorage.setItem("userData", JSON.stringify(userData));
+    }
+    getChannelConfiguration() {
+        var userData = this.getUserData();
+        let channelConfig = new ChannelConfig();
+        channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
+        channelConfig.hubName = "inClassHub";
+        channelConfig.params = new Map<string, string>();
+        channelConfig.params['uid'] = userData.UserId;
+        channelConfig.params['courseClassId'] = userData.SelectedCourseId;
+        return channelConfig;
     }
 }

@@ -18,7 +18,7 @@ import {TeacherPage} from '../teacher-page/teacher-page';
 import {MenuItem} from '../../models/menu-item';
 import {ContentItem, AnimationContentItem} from '../../models/content-item';
 
-import {ChannelService, ChannelConfig, SignalrWindow} from '../../services/channelService';
+import {ChannelService} from '../../services/channelService';
 import {UserService} from '../../services/userService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
@@ -31,6 +31,8 @@ import {MyNotesPage} from "../my-notes-page/my-notes-page";
   selector : 'main-page-cmp'
 })
 export class MainPage implements OnInit{
+  private static SELECTED_COURSE_NONE: string = 'None';
+
   // make HelloIonicPage the root (or first) page
   @ViewChild(Nav) nav: Nav;
   rootPage: any = WelcomePage;
@@ -39,6 +41,7 @@ export class MainPage implements OnInit{
   completedLessons: Array<MenuItem>;
   connectionState$: Observable<string>;
   isLoggedIn: boolean = false;
+  userData: Map<string, string>;
   currentPage: any = null;
 
   constructor(
@@ -53,8 +56,7 @@ export class MainPage implements OnInit{
       private teacherPageService: TeacherPageService,
       private _globals: Globals,
       private toastController: ToastController,
-      private modalCtrl: ModalController,
-      @Inject("channel.config") private channelConfig:ChannelConfig
+      private modalCtrl: ModalController
   ) {
     _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
@@ -74,6 +76,10 @@ export class MainPage implements OnInit{
         () => { console.log("signalr service has been started"); },
         () => { console.warn("signalr service failed to start!"); }
     );
+
+    this.userData = userService.getUserData();
+
+    this.setupSelectedCourse();
 
     this.completedLessons = progress.getCompletedLessons();
     console.log("Get content");
@@ -460,9 +466,23 @@ export class MainPage implements OnInit{
   }
   ngOnInit() {
     // Start the connection up!
+    this.startHubChannel();
+    this.teacherPageService.startTimer(); //timer for clearing suggestions every hour
+  }
+  startHubChannel(){
     console.log("Starting the channel service");
     this.channelService.start();
-    this.teacherPageService.startTimer(); //timer for clearing suggestions every hour
+  }
+  setupSelectedCourse() {
+    if (this.userData.IsFacilitator && !this.userData['SelectedCourseId']) {
+      this.userData['SelectedCourseId'] = this.userData.ClassesTaught && this.userData.ClassesTaught.length ?
+          this.userData.ClassesTaught[0].CourseClassId : MainPage.SELECTED_COURSE_NONE;
+      this.userService.setSelectedCourse(this.userData['SelectedCourseId']);
+    }
+  }
+  changeSelectedCourse(){
+    this.userService.setSelectedCourse(this.userData['SelectedCourseId']);
+    this.startHubChannel();
   }
   onClassroomModeSwitch(classroomMode: boolean){
     this._globals.setClassroomModeStatus(classroomMode);
