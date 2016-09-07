@@ -2,6 +2,7 @@
     "questions": [
         {
             "type": "multiple-choice",
+            "questionId": 12,
             "question": "The mean number of suspensions is greater for which dataset?",
             "answers": [
                 {
@@ -23,7 +24,8 @@
             ]
         },
         {
-            "type": "multiple-choice",            
+            "type": "multiple-choice",
+            "questionId": 13,            
             "question": "The median number of suspensions is greater for which dataset?",
             "answers": [
                 {
@@ -42,6 +44,7 @@
         },
         {
             "type": "multiple-choice",
+            "questionId": 14,
             "question": "Which dataset has a smaller spread of data?",
             "answers": [
                 {

@@ -1,13 +1,15 @@
 {    
     "questions": [
         {
-            "type": "discussion",            
+            "type": "discussion",   
+            "questionId": 12,         
             "question": "Who would you like to share the information you learned today with?",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
+            "type": "discussion",
+            "questionId": 13,            
             "question": "How would you summarize the key points of the lesson?",
             "answers": [
             ]

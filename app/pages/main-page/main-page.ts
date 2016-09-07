@@ -170,7 +170,7 @@ export class MainPage implements OnInit{
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Representing Quantitive Data', 2, 3, null, [
-          new AnimationContentItem('intro-video', 'Experiencing', ContentPage),
+          new AnimationContentItem('intro-video', 'Experiencing', ContentPage, 'p2s3'),
           new ContentItem('generalized-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('processing-activity', 'Text-Based Discussion Protocol', AnswerQuestionPage),
           new ContentItem('applying-activity', 'Generalizing - class discussion', AnswerQuestionPage),

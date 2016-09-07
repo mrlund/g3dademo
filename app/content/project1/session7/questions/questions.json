@@ -2,18 +2,21 @@
     "questions": [
         {
             "type": "discussion",
+            "questionId": 12,
             "question": "Do you think GPA is misleading?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
+            "questionId": 13,
             "question": "Does this impact you?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
+            "questionId": 14,
             "question": "Is there anything you can do about it?",
             "answers": [
             ]
