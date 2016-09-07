@@ -1,0 +1,23 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 1051,
+            "question": "Now that you've collected and analyzed your own data, do using graphs make data easier to understand?",
+            "answers": [
+                {
+                    "answer": "Very",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Not at all",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

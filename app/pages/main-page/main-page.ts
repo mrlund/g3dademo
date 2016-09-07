@@ -91,47 +91,52 @@ export class MainPage implements OnInit{
         //Session
         new MenuItem('Introduction', 1, 1, null, [
           //Pages
+          new ContentItem('meet-the-giga-girls', 'Meet the Giga Girls!', ContentPage),
           new AnimationContentItem('intro', 'Introduction', ContentPage, 'p1s1'),
-          new ContentItem('objectives', 'Objectives', ContentPage),
+          new ContentItem('objectives', 'Project Roadmap', ContentPage),
           new ContentItem('assignment', 'Assignment', ContentPage),
           new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
         ]),
         new MenuItem('Income and GPA', 1, 2, null, [
           //Page
-          new ContentItem('roadmap', 'Roadmap', ContentPage),
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
           new AnimationContentItem('why-higher-ed', 'Why Higher Ed', ContentPage, 'p1s2'),
           new ContentItem('average-earnings', 'Average Annual Earnings', QuestionPeerReviewPage),
           new ContentItem('budget-excercise', 'Budget Excercise', ActivityTablePage),
           new ContentItem('conclusion', 'Conclusion', AnswerQuestionPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
         ]),
         new MenuItem('How To Calculate GPA', 1, 3, null, [
           //Page
-          new ContentItem('roadmap', 'Roadmap', ContentPage),
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', AnswerQuestionPage),
           new AnimationContentItem('what-is-gpa', 'What is GPA', ContentPage, 'p1s3'),
           new ContentItem('calculating-gpa', 'Calculating GPA', ContentPage),
           new ContentItem('calculate-excercise', 'Excercise', ContentPage),
-          new AnimationContentItem('cleaver-high', 'Cleaver High', ContentPage),
+          new ContentItem('cleaver-high', 'Cleaver High', ContentPage),
           new ContentItem('raising-gpa', 'Raising Your GPA', ContentPage),
-          new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
+          new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
         ]),
         new MenuItem('Graphing Quartiles', 1, 4, null, [
-              new ContentItem('roadmap', 'Roadmap', ContentPage),
+              new ContentItem('roadmap', 'Session Roadmap', ContentPage),
               new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s4'),
               new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
               new AnimationContentItem('why-box-plots', 'Why Box Plots', ContentPage),
               new ContentItem('how-to-create', 'Creating Plots', ContentPage),
               new ContentItem('how-to-discussion', 'Discussion', AnswerQuestionPage),
-              new ContentItem('excercise', 'Excercise', ContentPage)
+              new ContentItem('excercise', 'Excercise', ContentPage),
+              new ContentItem('poll', 'What do you think?', PollingPage),
         ]),
         new MenuItem('Assumptions Of GPA', 1, 5, null, [
-          new ContentItem('roadmap', 'Roadmap', ContentPage),
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s5'),
           new ContentItem('summarize-and-explain', 'Summarize and Explain', QuestionPeerReviewPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
           new ContentItem('graphing-videos', 'Graphing Videos', ContentPage),
-          new ContentItem('graphing', 'Graphing in Excel', ContentPage)
+          new ContentItem('graphing', 'Graphing in Excel', ContentPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
         ]),
         new MenuItem('Graphing Interval Data', 1, 6, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p1s6'),
@@ -140,16 +145,20 @@ export class MainPage implements OnInit{
           new AnimationContentItem('how-to-create', 'Creating histogram', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
           new ContentItem('activity-page', 'Activity', ContentPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
         ]),
         new MenuItem('Is GPA a fair use of Data?', 1, 7, null, [
           new AnimationContentItem('grading-scales', 'Grading scales', ContentPage, 'p1s7'),
           new ContentItem('questions', 'Discussion', AnswerQuestionPage),
           new ContentItem('brainstorm', 'Brainstorm ', AnswerQuestionPage),
-          new AnimationContentItem('begin', 'Begin', ContentPage)
+          new ContentItem('begin', 'Making a presentation', ContentPage),
+          new ContentItem('presenting', 'Giving a presentation', ContentPage)
         ]),
         new MenuItem('Presentations', 1, 8, null, [
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
           new ContentItem('class-session-agenda', 'Class session agenda', ContentPage),
-          new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage)
+          new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
+          new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/Quiz', 1, 9, null, [
           new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)

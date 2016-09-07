@@ -1,0 +1,23 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 15,
+            "question": "Knowing the correlation between education and income, are you more interested in a carreer in maths or data analytics than before you started?",
+            "answers": [
+                {
+                    "answer": "Very",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Not at all",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

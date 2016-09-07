@@ -1,0 +1,32 @@
+<h1>We're the giga girls!</h1>
+<p>We're going to help you through this course on Data Analytics, and show you all the ways understanding data analytics can make a big difference to your education and life. </p>
+<div class="row character-intros" [ngClass]="showIntroFor">
+    <div class="character-intro zynab">
+        <strong>Hi! I'm Zynab!</strong> I.. 
+    </div>
+    <div class="character-intro kimberley">
+        <strong>Hi! I'm Kimberley!</strong> I.. 
+    </div>
+    <div class="character-intro yuna">
+        <strong>Hi! I'm Yuna!</strong> I.. 
+    </div>
+    <div class="character-intro valeria">
+        <strong>Hi! I'm Valeria!</strong> I.. 
+    </div>
+</div>
+<ion-grid>
+    <ion-row [ngClass]="showIntroFor" class="character-images">
+        <ion-col (mouseover)="showIntroFor = 'zynab'">
+            <img src="/build/content/general/zynab.png" style="width:100%;" class="zynab" />
+        </ion-col>
+        <ion-col (mouseover)="showIntroFor = 'kimberley'">
+            <img src="/build/content/general/kimberley.png" style="width:100%;" class="kimberley" />
+        </ion-col>
+        <ion-col (mouseover)="showIntroFor = 'yuna'">
+            <img src="/build/content/general/yuna.png" style="width:100%;" class="yuna" />
+        </ion-col>
+        <ion-col (mouseover)="showIntroFor = 'valeria'">
+            <img src="/build/content/general/valeria.png" style="width:100%;" class="valeria" />
+        </ion-col>
+    </ion-row>
+</ion-grid>
