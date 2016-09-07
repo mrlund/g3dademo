@@ -30,6 +30,12 @@
             <ion-item (click)="showTeacherPage()">
                 Teacher Page (TEST)
             </ion-item>
+            <ion-item *ngIf="isLoggedIn" (click)="showMyAssignmentsPage()">
+                My Assignments
+            </ion-item>
+            <ion-item *ngIf="isLoggedIn" (click)="showMyNotesPage()">
+                My Notes
+            </ion-item>
             <ion-item *ngIf="isLoggedIn" (click)="logout()">
                Logout
             </ion-item>

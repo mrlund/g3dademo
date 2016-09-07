@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-buttons side="left">
+            <button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>My assignments</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header">
+    <div class="page-container">
+        <ion-card *ngFor="let assignment of myAssignments">
+            <ion-card-header>
+                <p>app user {{assignment.ApplicationUserId}}</p>
+                <p>course class {{assignment.CourseClassId}}</p>
+                <p>project {{assignment.ProjectNumber}}</p>
+                <p>session {{assignment.SessionNumber}}</p>
+                <p>page {{assignment.PageNumber}}</p>
+            </ion-card-header>
+            <ion-card-content>
+                <p>name: {{ assignment.AssignmentName }} </p>
+                <p>data: {{ assignment.AssignmentData }} </p>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

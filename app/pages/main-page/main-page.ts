@@ -23,6 +23,8 @@ import {UserService} from '../../services/userService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
 import {NotePopup} from "../note/note-popup";
+import {MyAssigmentsPage} from "../my-assignments-page/my-assignments-page";
+import {MyNotesPage} from "../my-notes-page/my-notes-page";
 
 @Component({
   templateUrl: 'build/pages/main-page/main-page.html',
@@ -465,7 +467,6 @@ export class MainPage implements OnInit{
   onClassroomModeSwitch(classroomMode: boolean){
     this._globals.setClassroomModeStatus(classroomMode);
   }
-
   showAddNotePopup() {
     if (this.isLoggedIn && this.currentPage) {
       let modal = this.modalCtrl.create(NotePopup, {
@@ -475,5 +476,13 @@ export class MainPage implements OnInit{
       });
       modal.present();
     }
+  }
+  showMyAssignmentsPage(){
+      this.menu.close();
+      this.nav.setRoot(MyAssigmentsPage);
+  }
+  showMyNotesPage(){
+      this.menu.close();
+      this.nav.setRoot(MyNotesPage);
   }
 }
