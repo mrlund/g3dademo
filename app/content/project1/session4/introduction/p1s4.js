@@ -9,26 +9,30 @@ lib.properties = {
 	fps: 24,
 	color: "#FFFFFF",
 	manifest: [
-		{src:"images/image002.png?1470049285717", id:"image002"},
-		{src:"images/image002psd.png?1470049285718", id:"image002psd"},
-		{src:"sounds/_1.mp3?1470049285718", id:"_1"},
-		{src:"sounds/_10.mp3?1470049285718", id:"_10"},
-		{src:"sounds/_11.mp3?1470049285718", id:"_11"},
-		{src:"sounds/_12.mp3?1470049285718", id:"_12"},
-		{src:"sounds/_13.mp3?1470049285718", id:"_13"},
-		{src:"sounds/_14.mp3?1470049285718", id:"_14"},
-		{src:"sounds/_15.mp3?1470049285718", id:"_15"},
-		{src:"sounds/_16.mp3?1470049285718", id:"_16"},
-		{src:"sounds/_17.mp3?1470049285718", id:"_17"},
-		{src:"sounds/_18.mp3?1470049285718", id:"_18"},
-		{src:"sounds/_2.mp3?1470049285718", id:"_2"},
-		{src:"sounds/_3.mp3?1470049285718", id:"_3"},
-		{src:"sounds/_4.mp3?1470049285718", id:"_4"},
-		{src:"sounds/_5.mp3?1470049285718", id:"_5"},
-		{src:"sounds/_6.mp3?1470049285718", id:"_6"},
-		{src:"sounds/_7.mp3?1470049285718", id:"_7"},
-		{src:"sounds/_8.mp3?1470049285718", id:"_8"},
-		{src:"sounds/_9.mp3?1470049285718", id:"_9"}
+		{src:"images/_1.png?1473341950903", id:"_1"},
+		{src:"images/_2.png?1473341950903", id:"_2"},
+		{src:"images/_3.png?1473341950903", id:"_3"},
+		{src:"images/_4.png?1473341950903", id:"_4"},
+		{src:"images/_5.png?1473341950903", id:"_5"},
+		{src:"images/image002psd.png?1473341950903", id:"image002psd"},
+		{src:"sounds/_1_1.mp3?1473341950903", id:"_1_1"},
+		{src:"sounds/_10.mp3?1473341950903", id:"_10"},
+		{src:"sounds/_11.mp3?1473341950903", id:"_11"},
+		{src:"sounds/_12.mp3?1473341950903", id:"_12"},
+		{src:"sounds/_13.mp3?1473341950903", id:"_13"},
+		{src:"sounds/_14.mp3?1473341950903", id:"_14"},
+		{src:"sounds/_15.mp3?1473341950903", id:"_15"},
+		{src:"sounds/_16.mp3?1473341950903", id:"_16"},
+		{src:"sounds/_17.mp3?1473341950903", id:"_17"},
+		{src:"sounds/_18.mp3?1473341950903", id:"_18"},
+		{src:"sounds/_2_1.mp3?1473341950903", id:"_2_1"},
+		{src:"sounds/_3_1.mp3?1473341950903", id:"_3_1"},
+		{src:"sounds/_4_1.mp3?1473341950903", id:"_4_1"},
+		{src:"sounds/_5_1.mp3?1473341950903", id:"_5_1"},
+		{src:"sounds/_6.mp3?1473341950903", id:"_6"},
+		{src:"sounds/_7.mp3?1473341950903", id:"_7"},
+		{src:"sounds/_8.mp3?1473341950903", id:"_8"},
+		{src:"sounds/_9.mp3?1473341950903", id:"_9"}
 	]
 };
 
@@ -38,10 +42,34 @@ lib.properties = {
 
 
 
-(lib.image002 = function() {
-	this.initialize(img.image002);
+(lib._1 = function() {
+	this.initialize(img._1);
 }).prototype = p = new cjs.Bitmap();
-p.nominalBounds = new cjs.Rectangle(0,0,600,325);
+p.nominalBounds = new cjs.Rectangle(0,0,509,292);
+
+
+(lib._2 = function() {
+	this.initialize(img._2);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,509,292);
+
+
+(lib._3 = function() {
+	this.initialize(img._3);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,509,292);
+
+
+(lib._4 = function() {
+	this.initialize(img._4);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,509,292);
+
+
+(lib._5 = function() {
+	this.initialize(img._5);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,509,292);
 
 
 (lib.image002psd = function() {
@@ -780,28 +808,6 @@ p.nominalBounds = new cjs.Rectangle(0,0,37.9,12.5);
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(0,0,155.5,157.4);
-
-
-(lib.tegtergt = function(mode,startPosition,loop) {
-	this.initialize(mode,startPosition,loop,{});
-
-	// Слой 1
-	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#5E4534").s().p("AAXg/QAFgrgJgnIgJgeIBzgjQAaESiKBmQgpAfg2ALIguADQCJiJAOiJg");
-	this.shape.setTransform(316.8,90,1.131,1.131);
-
-	this.shape_1 = new cjs.Shape();
-	this.shape_1.graphics.f("#70503B").s().p("AoOKUQhvgfhOhOQgOgegOg0QgahnAEhnQAOlIFAjUQE/jUBohyQAyg4gLgPIAcAjQAbAugFA5QgNC3k+DaIBqhBQCAhNBwg9QFvjDBcAhQBcAilvDOQhzBAiTBKIh6A9IBxgyQCLg6B4grQGBiJAxBIQAyBImDCEQh6AqiWAoIh8AjICHgRQCjgTCCgIQGjgeg5BKQg5BMlVAcQhqAJh7ADIhlABIBdAIQBwAKBbANQEiArgcA9QgOAdiAASQi0AUhsASQm0BIiaDeIgDAAQgmAAg2gPg");
-	this.shape_1.setTransform(358,76.4,1.131,1.131);
-
-	this.shape_2 = new cjs.Shape();
-	this.shape_2.graphics.f("#605C2F").s().p("ABPX6Qjvh1jVidQqon7iGriQiHrghZoGQgtkDgShvQE0F3E8HYQJ5OtAtHgMAP9ghOIBJgYQBbgUBVASQENA4BsGhMgStApPQhOgbh5g6g");
-	this.shape_2.setTransform(166.8,267.3,1.131,1.131);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.shape_2},{t:this.shape_1},{t:this.shape}]}).wait(1));
-
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(0,0,444.7,449.9);
 
 
 (lib.Path_14 = function(mode,startPosition,loop) {
@@ -2553,23 +2559,31 @@ p.nominalBounds = new cjs.Rectangle(-2.5,-3,1334.7,1313.9);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(51).to({_off:false},0).to({x:321.3,y:173.8},10).wait(27).to({x:321.4,y:174},0).to({guide:{path:[321.3,173.9,292,191.2,255.6,191.2,223.1,191.2,196.2,177.4]}},25).to({x:374.2,y:105.8},36).wait(26).to({x:378.4,y:107.4},0).to({x:562.2,y:264.7},12).wait(472));
 
+	// Слой 5 (mask)
+	var mask = new cjs.Shape();
+	mask._off = true;
+	mask.graphics.p("EglVAW1QhCAAgvgrQgwgsAAg9MAAAgpCQAAg9AwgrQAvgrBCAAMBKqAAAQBEAAAuArQAwArAAA9MAAAApCQAAA9gwAsQgvArhDAAg");
+	mask.setTransform(172.3,5.3);
+
 	// Слой 6
-	this.instance_1 = new lib.image002();
-	this.instance_1.setTransform(-78,-130.9,0.83,0.83);
+	this.instance_1 = new lib._1();
+	this.instance_1.setTransform(-81.6,-140.9);
+
+	this.instance_1.mask = mask;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(659));
 
 	// Слой 2 (mask)
-	var mask = new cjs.Shape();
-	mask._off = true;
-	mask.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
-	mask.setTransform(173.9,72.7);
+	var mask_1 = new cjs.Shape();
+	mask_1._off = true;
+	mask_1.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
+	mask_1.setTransform(173.9,72.7);
 
 	// Режим изоляции
 	this.instance_2 = new lib.rtgretgretg45g345g();
 	this.instance_2.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
 
-	this.instance_2.mask = mask;
+	this.instance_2.mask = mask_1;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(659));
 
@@ -3265,19 +3279,36 @@ p.nominalBounds = new cjs.Rectangle(0,0,458.9,156.4);
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(4).to({x:442.6},8).to({y:36.7},3).to({y:14.7},4).wait(8).to({y:-7.3},7).to({y:5.7},3).to({y:-7.3},3).wait(9).to({regX:99.1,regY:223.8,rotation:11.2,x:397.6,y:13.7},7).to({y:39.7},4).to({y:13.7},3).wait(8).to({regX:99,regY:223.9,rotation:0,x:488.7,y:14.7},9).to({y:35.7},3).to({y:14.7},3).wait(18).to({x:641.7},9).wait(546));
 
-	// Слой 2 (mask)
+	// Слой 5 (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
-	mask.setTransform(173.9,72.7);
+	mask.graphics.p("EglVAW1QhCAAgvgrQgwgsAAg9MAAAgpCQAAg9AwgrQAvgrBCAAMBKqAAAQBEAAAuArQAwArAAA9MAAAApCQAAA9gwAsQgvArhDAAg");
+	mask.setTransform(172.3,5.3);
+
+	// Слой 6
+	this.instance_1 = new lib._4();
+	this.instance_1.setTransform(-81.6,-140.9);
+
+	this.instance_2 = new lib._5();
+	this.instance_2.setTransform(-81.6,-140.9);
+
+	this.instance_1.mask = this.instance_2.mask = mask;
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1}]}).to({state:[{t:this.instance_2}]},105).to({state:[]},553).wait(1));
+
+	// Слой 2 (mask)
+	var mask_1 = new cjs.Shape();
+	mask_1._off = true;
+	mask_1.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
+	mask_1.setTransform(173.9,72.7);
 
 	// Режим изоляции
-	this.instance_1 = new lib.rtgretgretg45g345g();
-	this.instance_1.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
+	this.instance_3 = new lib.rtgretgretg45g345g();
+	this.instance_3.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
 
-	this.instance_1.mask = mask;
+	this.instance_3.mask = mask_1;
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(659));
+	this.timeline.addTween(cjs.Tween.get(this.instance_3).wait(659));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-131.7,-233.9,719.3,613.2);
@@ -3294,19 +3325,33 @@ p.nominalBounds = new cjs.Rectangle(-131.7,-233.9,719.3,613.2);
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(659));
 
-	// Слой 2 (mask)
+	// Слой 5 (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
-	mask.setTransform(173.9,72.7);
+	mask.graphics.p("EglVAW1QhCAAgvgrQgwgsAAg9MAAAgpCQAAg9AwgrQAvgrBCAAMBKqAAAQBEAAAuArQAwArAAA9MAAAApCQAAA9gwAsQgvArhDAAg");
+	mask.setTransform(172.3,5.3);
 
-	// Режим изоляции
-	this.instance = new lib.rtgretgretg45g345g();
-	this.instance.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
+	// Слой 6
+	this.instance = new lib._3();
+	this.instance.setTransform(-81.6,-140.9);
 
 	this.instance.mask = mask;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance).wait(659));
+
+	// Слой 2 (mask)
+	var mask_1 = new cjs.Shape();
+	mask_1._off = true;
+	mask_1.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
+	mask_1.setTransform(173.9,72.7);
+
+	// Режим изоляции
+	this.instance_1 = new lib.rtgretgretg45g345g();
+	this.instance_1.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
+
+	this.instance_1.mask = mask_1;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(659));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-131.7,-233.9,611.1,613.2);
@@ -3323,31 +3368,33 @@ p.nominalBounds = new cjs.Rectangle(-131.7,-233.9,611.1,613.2);
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(659));
 
-	// Режим изоляции
-	this.instance = new lib.ClipGroup_1();
-	this.instance.setTransform(568.8,286.9,1.297,1.297,0,0,0,296.7,199.9);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({x:321.3,y:173.8},10).wait(27).to({x:321.4,y:174},0).to({x:196.4,y:177.4},25).wait(14).to({x:374.2,y:105.8},35).wait(31).to({x:378.4,y:107.4},0).to({x:179.2,y:183.8},18).wait(32).to({x:186.7,y:171.9},0).to({x:248.5,y:67.7},24).wait(24).to({x:313.5,y:158.7},21).wait(49).to({x:430.5,y:197.7},17).wait(332));
-
-	// Слой 6
-	this.instance_1 = new lib.image002();
-	this.instance_1.setTransform(-78,-130.9,0.83,0.83);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(659));
-
-	// Слой 2 (mask)
+	// Слой 5 (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
-	mask.setTransform(173.9,72.7);
+	mask.graphics.p("EglVAW1QhCAAgvgrQgwgsAAg9MAAAgpCQAAg9AwgrQAvgrBCAAMBKqAAAQBEAAAuArQAwArAAA9MAAAApCQAAA9gwAsQgvArhDAAg");
+	mask.setTransform(172.3,5.3);
+
+	// Слой 6
+	this.instance = new lib._2();
+	this.instance.setTransform(-81.6,-140.9);
+
+	this.instance.mask = mask;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).wait(659));
+
+	// Слой 2 (mask)
+	var mask_1 = new cjs.Shape();
+	mask_1._off = true;
+	mask_1.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
+	mask_1.setTransform(173.9,72.7);
 
 	// Режим изоляции
-	this.instance_2 = new lib.rtgretgretg45g345g();
-	this.instance_2.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
+	this.instance_1 = new lib.rtgretgretg45g345g();
+	this.instance_1.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
 
-	this.instance_2.mask = mask;
+	this.instance_1.mask = mask_1;
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(659));
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(659));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-131.7,-233.9,1085.3,658.7);
@@ -3364,23 +3411,31 @@ p.nominalBounds = new cjs.Rectangle(-131.7,-233.9,1085.3,658.7);
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(679));
 
-	// Режим изоляции
-	this.instance = new lib.tegtergt();
-	this.instance.setTransform(-256.5,154.8,0.919,0.919,-24.7,0,0,222.3,225);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({rotation:0,x:-122.7,y:163.4},9).wait(17).to({x:-69.7,y:102},10).to({x:-18.7,y:154},11).to({x:-110.7,y:234},11).to({x:-146.7,y:167},10).wait(85).to({rotation:15,y:166.9},5).wait(6).to({rotation:-3.5,y:167},5).to({rotation:15,y:166.9},5).wait(10).to({rotation:-3.5,y:167},5).to({rotation:15,y:166.9},5).wait(24).to({rotation:-3.5,y:167},5).to({rotation:15,y:166.9},5).wait(451));
-
-	// Слой 2 (mask)
+	// Слой 5 (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
-	mask.setTransform(173.9,72.7);
+	mask.graphics.p("EglVAW1QhCAAgvgrQgwgsAAg9MAAAgpCQAAg9AwgrQAvgrBCAAMBKqAAAQBEAAAuArQAwArAAA9MAAAApCQAAA9gwAsQgvArhDAAg");
+	mask.setTransform(172.3,5.3);
+
+	// Слой 6
+	this.instance = new lib._2();
+	this.instance.setTransform(-81.6,-140.9);
+
+	this.instance.mask = mask;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({_off:true},659).wait(20));
+
+	// Слой 2 (mask)
+	var mask_1 = new cjs.Shape();
+	mask_1._off = true;
+	mask_1.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
+	mask_1.setTransform(173.9,72.7);
 
 	// Режим изоляции
 	this.instance_1 = new lib.rtgretgretg45g345g();
 	this.instance_1.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
 
-	this.instance_1.mask = mask;
+	this.instance_1.mask = mask_1;
 
 	this.timeline.addTween(cjs.Tween.get(this.instance_1).to({_off:true},659).wait(20));
 
@@ -3399,31 +3454,33 @@ p.nominalBounds = new cjs.Rectangle(-496,-233.9,975.4,662);
 	// actions tween:
 	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(679));
 
-	// Режим изоляции
-	this.instance = new lib.tegtergt();
-	this.instance.setTransform(-256.5,154.8,0.919,0.919,-24.7,0,0,222.3,225);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).to({rotation:0,x:-122.7,y:163.4},9).wait(17).to({x:-69.7,y:102},10).to({x:-18.7,y:154},11).to({x:-110.7,y:234},11).to({x:-146.7,y:167},10).wait(43).to({rotation:15,y:166.9},5).wait(6).to({rotation:-3.5,y:167},5).to({rotation:15,y:166.9},5).wait(10).to({rotation:-3.5,y:167},5).to({rotation:15,y:166.9},5).wait(24).to({rotation:-3.5,y:167},5).to({rotation:15,y:166.9},5).wait(17).to({rotation:9.8,x:8.4,y:160},10).wait(466));
-
-	// Слой 6
-	this.instance_1 = new lib.image002();
-	this.instance_1.setTransform(-78,-130.9,0.83,0.83);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance_1).to({_off:true},659).wait(20));
-
-	// Слой 2 (mask)
+	// Слой 5 (mask)
 	var mask = new cjs.Shape();
 	mask._off = true;
-	mask.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
-	mask.setTransform(173.9,72.7);
+	mask.graphics.p("EglVAW1QhCAAgvgrQgwgsAAg9MAAAgpCQAAg9AwgrQAvgrBCAAMBKqAAAQBEAAAuArQAwArAAA9MAAAApCQAAA9gwAsQgvArhDAAg");
+	mask.setTransform(172.3,5.3);
+
+	// Слой 6
+	this.instance = new lib._1();
+	this.instance.setTransform(-81.6,-140.9);
+
+	this.instance.mask = mask;
+
+	this.timeline.addTween(cjs.Tween.get(this.instance).to({_off:true},659).wait(20));
+
+	// Слой 2 (mask)
+	var mask_1 = new cjs.Shape();
+	mask_1._off = true;
+	mask_1.graphics.p("EgvuAv5MAAAhfyMBfdAAAMAAABfyg");
+	mask_1.setTransform(173.9,72.7);
 
 	// Режим изоляции
-	this.instance_2 = new lib.rtgretgretg45g345g();
-	this.instance_2.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
+	this.instance_1 = new lib.rtgretgretg45g345g();
+	this.instance_1.setTransform(342,-39.7,1,1,0,0,0,664.8,653.9);
 
-	this.instance_2.mask = mask;
+	this.instance_1.mask = mask_1;
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_2).to({_off:true},659).wait(20));
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).to({_off:true},659).wait(20));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-496,-233.9,975.4,662);
@@ -4725,7 +4782,7 @@ p.nominalBounds = new cjs.Rectangle(0,0,124.8,175.6);
 
 	// timeline functions:
 	this.frame_8 = function() {
-		playSound("_5");
+		playSound("_5_1");
 	}
 
 	// actions tween:
@@ -7424,7 +7481,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_10 = function() {
-		playSound("_2");
+		playSound("_2_1");
 	}
 
 	// actions tween:
@@ -9008,7 +9065,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_23 = function() {
-		playSound("_3");
+		playSound("_3_1");
 	}
 
 	// actions tween:
@@ -10031,7 +10088,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_11 = function() {
-		playSound("_4");
+		playSound("_4_1");
 	}
 
 	// actions tween:
@@ -11140,7 +11197,7 @@ p.nominalBounds = new cjs.Rectangle(-16.5,-18.6,654.6,672);
 
 	// timeline functions:
 	this.frame_7 = function() {
-		playSound("_1");
+		playSound("_1_1");
 	}
 
 	// actions tween:
