@@ -108,7 +108,9 @@ export class Animation implements OnChanges {
  handleFileLoad(evt) {
     if (evt.item.type == "image") { 
         if(!window['createJSImages']) window['createJSImages'] = {};
+        if(!window['images']) window['images'] = {};
         window['createJSImages'][evt.item.id] = evt.result;
+        window['images'][evt.item.id] = evt.result;
     }
  }
  handleComplete(that) {
