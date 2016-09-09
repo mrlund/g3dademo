@@ -17,7 +17,7 @@ import {Http, Headers} from "@angular/http";
     directives: [InnerContent, CharacterPhraseImg]
 })
 export class ActivityTablePage {
-    randomSuggestions: any = null;
+    randomSuggestions: Array<any> = [];
     selectedItem: any;
     pageContent: string;
     categories: Array<any>;
@@ -81,8 +81,11 @@ export class ActivityTablePage {
         );
     }
     getRandom(arr){
-        if(!this.randomSuggestions){ //it's needed to avoid repeated calling of getRandom method.
-            this.randomSuggestions = arr[Math.floor(Math.random() * arr.length)];
+        let self = this;
+        if(this.randomSuggestions.length == 0){ //it's needed to avoid repeated calling of getRandom method.
+            arr.forEach(assignments => {
+                self.randomSuggestions.push(assignments[Math.floor(Math.random() * assignments.length)]);
+            }, self);
         }
         return this.randomSuggestions
     }
