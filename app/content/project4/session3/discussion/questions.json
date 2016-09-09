@@ -2,12 +2,14 @@
     "questions": [
         {
             "type": "discussion",
+            "questionId": 4030501,
             "question": "What benefits are there from collecting data from just observing instead of interacting with the data source?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
+            "questionId": 4030502,
             "question": "What are some cons?",
             "answers": [
             ]

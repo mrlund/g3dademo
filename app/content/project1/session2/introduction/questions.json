@@ -1,15 +1,15 @@
-{    
+{
     "questions": [
         {
-            "questionId": 12,
-            "type": "discussion",            
+            "questionId": 1020201,
+            "type": "discussion",
             "question": "What factors do you think contribute to an individual’s annual income?",
             "answers": [
             ]
         },
         {
-            "questionId": 15,
-            "type": "discussion",            
+            "questionId": 1020202,
+            "type": "discussion",
             "question": "What do you think is the main factor?",
             "answers": [
             ]

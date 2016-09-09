@@ -1,53 +1,47 @@
-{    
+{
     "questions": [
         {
             "type": "discussion",
-            "questionId": 12,
+            "questionId": 1030201,
             "question": "What does GPA stand for?",
             "answers": [
             ]
         },
         {
-            "type": "discussion",         
-            "questionId": 13,   
+            "type": "discussion",
+            "questionId": 1030202,
             "question": "What is it?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 14,            
+            "questionId": 1030203,
             "question": "Do you know your GPA?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 15,            
+            "questionId": 1030204,
             "question": "How do you feel about your GPA?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 16,            
+            "questionId": 1030205,
             "question": "Do you think GPA is important?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 17,            
+            "questionId": 1030206,
             "question": "Do you think it is useful?",
             "answers": [
             ]
         }
-        
+
     ]
 }
-
-
-
- 
-
-

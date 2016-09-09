@@ -1,15 +1,15 @@
-{    
+{
     "questions": [
         {
-            "type": "discussion",    
-            "questionId": 12,        
+            "type": "discussion",
+            "questionId": 1050401,
             "question": "Which category does GPA fall into and why?",
             "answers": [
             ]
         },
         {
-            "type": "discussion",            
-            "questionId": 13,
+            "type": "discussion",
+            "questionId": 1050402,
             "question": "Does this type of graph display the data well?",
             "answers": [
             ]
