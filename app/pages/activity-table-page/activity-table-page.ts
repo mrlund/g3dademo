@@ -10,6 +10,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 import {SafeHtml, DomSanitizationService} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {Http, Headers} from "@angular/http";
+import {NoteService} from "../../services/noteService";
 
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
@@ -32,8 +33,14 @@ export class ActivityTablePage {
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData,
-                private menu: MenuController, private progress: ProgressProvider,  private http: Http, private toastController: ToastController) {
+    constructor(private nav: NavController,
+                navParams: NavParams,
+                private content: ContentData,
+                private menu: MenuController,
+                private progress: ProgressProvider,
+                private http: Http,
+                private toastController: ToastController,
+                private noteService: NoteService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -143,6 +150,9 @@ export class ActivityTablePage {
             });
             toast.present();
         });
+    }
+    createNote(){
+        this.noteService.showAddNotePopup();
     }
 
 }

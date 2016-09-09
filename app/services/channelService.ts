@@ -110,7 +110,7 @@ export class ChannelService {
         this.asignmentData$ = this.asignmentDataSubject.asObservable();
         this.reviewData$ = this.reviewDataSubject.asObservable();
     }
-    createConnection():void {
+    createConnection():any {
         var channelConfig = this.userService.getChannelConfiguration();
 
         this.hubConnection = this.window.$.hubConnection();

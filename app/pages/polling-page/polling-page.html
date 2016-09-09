@@ -1,11 +1,16 @@
 <ion-header>
     <ion-navbar no-border-bottom hideBackButton="true">
-        <ion-buttons side="left">
+        <ion-buttons start>
             <button (click)="toggleMenu()">
             <ion-icon name="menu"></ion-icon>
         </button>
         </ion-buttons>
         <ion-title>{{selectedItem.title}}</ion-title>
+        <ion-buttons end>
+            <button (click)="createNote()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 

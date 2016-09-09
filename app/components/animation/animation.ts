@@ -36,7 +36,6 @@ export class Animation implements OnChanges {
   private animationFileFound: boolean;
   //private updateRate:EventEmitter = new EventEmitter();
   private isClassroomModeOn: boolean = false;
-  private isClassroomModeOn: boolean = false;
   private sound: any = null;
 
   constructor(content: ContentData,

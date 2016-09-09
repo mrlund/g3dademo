@@ -1,7 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
+import {NavController, NavParams, MenuController} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
-import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
@@ -12,6 +11,7 @@ import {CharacterPhraseImg} from "../../components/character-phrase-img/characte
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {UserService} from "../../services/userService";
 import {TeacherPage} from "../teacher-page/teacher-page";
+import {NoteService} from "../../services/noteService";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -30,12 +30,12 @@ export class AnswerQuestionPage {
     constructor(private nav: NavController,
                 navParams: NavParams,
                 private content: ContentData,
-                private menu: MenuController,
                 private progress: ProgressProvider,
                 private channelService:ChannelService,
                 private _sanitizer: DomSanitizationService,
-                private toastController: ToastController,
-                private userService: UserService) {
+                private userService: UserService,
+                private noteService: NoteService,
+                private menu: MenuController ) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.userData = userService.getUserData();
@@ -106,5 +106,8 @@ export class AnswerQuestionPage {
     }
     goToTeacherPage():void{
         this.nav.setRoot(TeacherPage);
+    }
+    createNote(){
+        this.noteService.showAddNotePopup();
     }
 }

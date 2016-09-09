@@ -1,4 +1,4 @@
-import {App, Platform, MenuController, Nav, ToastController, ModalController} from 'ionic-angular';
+import {App, Platform, MenuController, Nav, ToastController} from 'ionic-angular';
 import {ViewChild, Component, OnInit} from '@angular/core';
 import {Events} from 'ionic-angular';
 import {Observable} from "rxjs/Observable";
@@ -21,7 +21,6 @@ import {ChannelService} from '../../services/channelService';
 import {UserService} from '../../services/userService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
-import {NotePopup} from "../note/note-popup";
 import {MyAssigmentsPage} from "../my-assignments-page/my-assignments-page";
 import {MyNotesPage} from "../my-notes-page/my-notes-page";
 
@@ -38,7 +37,7 @@ export class MainPage implements OnInit{
   pages: Array<MenuItem>;
   openMenuGroup: MenuItem;
   completedLessons: Array<MenuItem>;
-  connectionState$: Observable<string>;
+  // connectionState$: Observable<string>;
   isLoggedIn: boolean = false;
   userData: Map<string, string>;
   currentPage: any = null;
@@ -54,14 +53,10 @@ export class MainPage implements OnInit{
       private userService: UserService,
       private teacherPageService: TeacherPageService,
       private _globals: Globals,
-      private toastController: ToastController,
-      private modalCtrl: ModalController
+      private toastController: ToastController
   ) {
     _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
-    });
-    _globals.currentPage.subscribe(value => {
-        this.currentPage = value;
     });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.subscribe(
@@ -489,16 +484,6 @@ export class MainPage implements OnInit{
   }
   onClassroomModeSwitch(classroomMode: boolean){
     this._globals.setClassroomModeStatus(classroomMode);
-  }
-  showAddNotePopup() {
-    if (this.isLoggedIn && this.currentPage) {
-      let modal = this.modalCtrl.create(NotePopup, {
-        sessionNumber: this.currentPage.session,
-        projectNumber: this.currentPage.project,
-        pageNumber: this.currentPage.page
-      });
-      modal.present();
-    }
   }
   showMyAssignmentsPage(){
       this.menu.close();

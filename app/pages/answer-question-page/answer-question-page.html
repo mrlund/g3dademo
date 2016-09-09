@@ -5,12 +5,16 @@
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-buttons [hidden]="!userData.IsFacilitator" end>
-            <button (click)="goToTeacherPage()">
+        <ion-title>{{selectedItem.title}}</ion-title>
+        <ion-buttons  end>
+            <button (click)="createNote()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+            <button [hidden]="!userData.IsFacilitator"
+                    (click)="goToTeacherPage()">
                 <ion-icon name="clipboard"></ion-icon>
             </button>
         </ion-buttons>
-        <ion-title>{{selectedItem.title}}</ion-title>
     </ion-navbar>
 </ion-header>
 

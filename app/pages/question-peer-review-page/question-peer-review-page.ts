@@ -1,11 +1,10 @@
 import {
-    NavController, NavParams, MenuController, Toast, Loading, ToastController,
-    LoadingController
+    NavController, NavParams, Loading,
+    LoadingController, MenuController
 } from 'ionic-angular';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
-import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 
@@ -14,7 +13,7 @@ import {ChannelService} from '../../services/channelService';
 
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
-
+import {NoteService} from "../../services/noteService";
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -35,10 +34,16 @@ export class QuestionPeerReviewPage {
     @ViewChild(InnerContent) innerContent:InnerContent;
     
 
-    constructor(private nav: NavController, navParams: NavParams, private content: ContentData,
-                private menu: MenuController, private progress: ProgressProvider, private channelService:ChannelService,
-                private cdRef: ChangeDetectorRef, private _sanitizer: DomSanitizationService,
-                private toastController: ToastController, private loadingController:LoadingController) {
+    constructor(private nav: NavController,
+                navParams: NavParams,
+                private content: ContentData,
+                private progress: ProgressProvider,
+                private channelService:ChannelService,
+                private cdRef: ChangeDetectorRef,
+                private _sanitizer: DomSanitizationService,
+                private loadingController:LoadingController,
+                private noteService: NoteService,
+                private menu: MenuController ) {
 
         // If we navigated to this page, we will have an item available as a nav param
         this.state = 'answer';
@@ -197,6 +202,9 @@ export class QuestionPeerReviewPage {
                 obj.ClientId = this.respondingToClientId;
             }
             return obj;
+    }
+    createNote(){
+        this.noteService.showAddNotePopup();
     }
 
 }
