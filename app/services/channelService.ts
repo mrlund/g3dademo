@@ -120,28 +120,7 @@ export class ChannelService {
 
         // Define handlers for the connection state events
         //
-        this.hubConnection.stateChanged((state:any) => {
-            let newState = ConnectionState.Connecting;
-
-            switch (state.newState) {
-                case this.window.$.signalR.connectionState.connecting:
-                    newState = ConnectionState.Connecting;
-                    break;
-                case this.window.$.signalR.connectionState.connected:
-                    newState = ConnectionState.Connected;
-                    break;
-                case this.window.$.signalR.connectionState.reconnecting:
-                    newState = ConnectionState.Reconnecting;
-                    break;
-                case this.window.$.signalR.connectionState.disconnected:
-                    newState = ConnectionState.Disconnected;
-                    break;
-            }
-
-            // Push the new state on our subject
-            //
-            this.connectionStateSubject.next(newState);
-        });
+        this.hubConnection.stateChanged(this.onStateChanged.bind(this));
 
         // Define handlers for any errors
         //
@@ -172,6 +151,30 @@ export class ChannelService {
 
         return this.hubConnection;
     }
+
+    onStateChanged(state:any):void {
+        let newState = ConnectionState.Connecting;
+
+        switch (state.newState) {
+            case this.window.$.signalR.connectionState.connecting:
+                newState = ConnectionState.Connecting;
+                break;
+            case this.window.$.signalR.connectionState.connected:
+                newState = ConnectionState.Connected;
+                break;
+            case this.window.$.signalR.connectionState.reconnecting:
+                newState = ConnectionState.Reconnecting;
+                break;
+            case this.window.$.signalR.connectionState.disconnected:
+                newState = ConnectionState.Disconnected;
+                break;
+        }
+
+        // Push the new state on our subject
+        //
+        this.connectionStateSubject.next(newState);
+    }
+
     /**
      * Start the SignalR connection. The starting$ stream will emit an
      * event if the connection is established, otherwise it will emit an
@@ -200,7 +203,12 @@ export class ChannelService {
                 });
                 this.hubConnection.proxies.inclasshub.on('receiveReview', (data) => {
                     reviewDataSource['next'](data);
-                });                
+                });
+                this.connectionState$.subscribe((state) => {
+                    if (state == ConnectionState.Disconnected) {
+                        this.onDisconnect();
+                    }
+                });
             })
             .fail((error:any) => {
                 this.startingSubject.error(error);
@@ -208,9 +216,16 @@ export class ChannelService {
     }
 
     stop():void {
+        let connection = this.hubConnection;
+        if (connection) {
+            delete this.hubConnection;
+            connection.stop();
+        }
+    }
+
+    onDisconnect():void {
         if (this.hubConnection) {
-            this.hubConnection.stop()
-            this.hubConnection = null;
+            this.start();
         }
     }
 
