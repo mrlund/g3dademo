@@ -1,4 +1,4 @@
-import {MenuController} from 'ionic-angular';
+import {MenuController, ViewController} from 'ionic-angular';
 import {Component} from '@angular/core';
 
 import {ChannelService, SignalrWindow} from '../../services/channelService';
@@ -16,7 +16,8 @@ export class TeacherPage {
     constructor(private menu: MenuController,
         private channelService: ChannelService,
         private teacherPageService: TeacherPageService,
-        private window: SignalrWindow) {
+        private window: SignalrWindow,
+        private viewCtrl: ViewController) {
     }
     ngOnInit() {
         // Create a function that the hub can call to broadcast messages.
@@ -176,4 +177,7 @@ export class TeacherPage {
         this.window.$('.teacher-page-inner-content .inner-jqcloud-block').jQCloud('update', this.processedSuggestions);
     }
 
+    dismiss() {
+        this.viewCtrl.dismiss();
+    }
 }

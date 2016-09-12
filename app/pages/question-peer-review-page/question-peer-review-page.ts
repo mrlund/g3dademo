@@ -13,7 +13,7 @@ import {ChannelService} from '../../services/channelService';
 
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
-import {NoteService} from "../../services/noteService";
+import {ModalService} from "../../services/modalService";
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -42,7 +42,7 @@ export class QuestionPeerReviewPage {
                 private cdRef: ChangeDetectorRef,
                 private _sanitizer: DomSanitizationService,
                 private loadingController:LoadingController,
-                private noteService: NoteService,
+                private modalService: ModalService,
                 private menu: MenuController ) {
 
         // If we navigated to this page, we will have an item available as a nav param
@@ -204,7 +204,7 @@ export class QuestionPeerReviewPage {
             return obj;
     }
     createNote(){
-        this.noteService.showAddNotePopup();
+        this.modalService.showAddNotePopup();
     }
 
 }

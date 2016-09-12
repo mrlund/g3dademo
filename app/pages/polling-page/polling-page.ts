@@ -10,7 +10,7 @@ import {ChannelService} from '../../services/channelService';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
-import {NoteService} from "../../services/noteService";
+import {ModalService} from "../../services/modalService";
 
 @Component({
     templateUrl: 'build/pages/polling-page/polling-page.html',
@@ -33,7 +33,7 @@ export class PollingPage {
                 private channelService:ChannelService,
                 private _sanitizer: DomSanitizationService,
                 private toastController: ToastController,
-                private noteService: NoteService) {
+                private modalService: ModalService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -121,7 +121,7 @@ export class PollingPage {
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, 'student', answer.answer);
     }
     createNote(){
-        this.noteService.showAddNotePopup();
+        this.modalService.showAddNotePopup();
     }
 
 }

@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import {NotePopup} from "../pages/note/note-popup";
 import {Globals} from "../globals";
 import {ModalController} from "ionic-angular";
+import {TeacherPage} from "../pages/teacher-page/teacher-page";
 
 @Injectable()
-export class NoteService {
+export class ModalService {
     isLoggedIn: boolean = false;
     currentPage: any = null;
 
@@ -25,6 +26,13 @@ export class NoteService {
                 projectNumber: this.currentPage.project,
                 pageNumber: this.currentPage.page
             });
+            modal.present();
+        }
+    }
+
+    showTeacherPagePopup() {
+        if (this.isLoggedIn) {
+            let modal = this.modalCtrl.create(TeacherPage);
             modal.present();
         }
     }

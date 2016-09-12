@@ -2,7 +2,7 @@ import {NavController, NavParams, MenuController} from 'ionic-angular';
 import {Component} from '@angular/core';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
-import {NoteService} from "../../services/noteService";
+import {ModalService} from "../../services/modalService";
 import {ContentData} from "../../providers/contentProvider";
 
 @Component({
@@ -18,7 +18,7 @@ export class DiscussionPage {
   constructor(private nav: NavController,
               navParams: NavParams,
               content: ContentData,
-              private noteService: NoteService,
+              private modalService: ModalService,
               private menu: MenuController,
               private _sanitizer: DomSanitizationService) {
     // If we navigated to this page, we will have an item available as a nav param
@@ -45,7 +45,7 @@ export class DiscussionPage {
       this.nav.setRoot(WelcomePage);
   }
   createNote(){
-      this.noteService.showAddNotePopup();
+      this.modalService.showAddNotePopup();
   }
   
 }
