@@ -1,0 +1,99 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 1010501,
+            "question": "I can see myself in a job that requires math or data analytic.",
+            "answers": [
+                {
+                    "answer": "Very likely",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Not at all",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 1010502,
+            "question": "I'm hessitant taking advanced math classes.",
+            "answers": [
+                {
+                    "answer": "Very",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Not at all",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 1010503,
+            "question": "Reading and understanding articles with lots of data is difficult.",
+            "answers": [
+                {
+                    "answer": "Very",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Not at all",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 1010504,
+            "question": "My major in college would most likely use math.",
+            "answers": [
+                {
+                    "answer": "Very likely",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Not at all likely",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 1010505,
+            "question": "Many interesting careers involve math or data.",
+            "answers": [
+                {
+                    "answer": "True",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Somewhat",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "False",
+                    "isCorrect": false
+                }
+            ]
+        }                                
+    ]
+}

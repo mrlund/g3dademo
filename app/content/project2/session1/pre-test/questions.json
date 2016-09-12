@@ -3,22 +3,22 @@
         {
             "type": "multiple-choice",
             "questionId": 2010501,
-            "question": "The mean number of suspensions is greater for which dataset?",
+            "question": "The mean number of suspensions is greater for which grade?",
             "answers": [
                 {
-                    "answer": "Dataset 1 - the mean is 2",
+                    "answer": "11th Grade - the mean is 2",
                     "isCorrect": true
                 },
                 {
-                    "answer": "Dataset 1 - the mean is 1.8",
+                    "answer": "11th Grade - the mean is 1.8",
                     "isCorrect": false
                 },
                 {
-                    "answer": "Dataset 2 - the mean is 2.6",
+                    "answer": "12th Grade - the mean is 2.6",
                     "isCorrect": false
                 },
                 {
-                    "answer": "Dataset 2 - the mean is 3",
+                    "answer": "12th Grade - the mean is 3",
                     "isCorrect": false
                 }
             ]
@@ -26,18 +26,18 @@
         {
             "type": "multiple-choice",
             "questionId": 2010502,
-            "question": "The median number of suspensions is greater for which dataset?",
+            "question": "The median number of suspensions is greater for which grade?",
             "answers": [
                 {
-                    "answer": "Dataset 1",
+                    "answer": "11th Grade",
                     "isCorrect": true
                 },
                 {
-                    "answer": "Dataset 2",
+                    "answer": "12th Grade",
                     "isCorrect": false
                 },
                 {
-                    "answer": "The median is the same for both datasets",
+                    "answer": "The median is the same for both grades",
                     "isCorrect": false
                 }
             ]
@@ -45,18 +45,18 @@
         {
             "type": "multiple-choice",
             "questionId": 2010503,
-            "question": "Which dataset has a smaller spread of data?",
+            "question": "Which grade has a smaller spread of data?",
             "answers": [
                 {
-                    "answer": "Dataset 1",
+                    "answer": "11th Grade",
                     "isCorrect": true
                 },
                 {
-                    "answer": "Dataset 2",
+                    "answer": "12th Grade",
                     "isCorrect": false
                 },
                 {
-                    "answer": "The spread is the same for both datasets",
+                    "answer": "The spread is the same for both grades",
                     "isCorrect": false
                 }
             ]

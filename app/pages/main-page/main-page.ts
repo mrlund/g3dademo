@@ -90,7 +90,8 @@ export class MainPage implements OnInit{
           new AnimationContentItem('intro', 'Introduction', ContentPage, 'p1s1'),
           new ContentItem('objectives', 'Project Roadmap', ContentPage),
           new ContentItem('assignment', 'Assignment', ContentPage),
-          new ContentItem('pre-test', 'Pre-Test', AnswerQuestionPage)
+          new ContentItem('poll', 'What do you think?', PollingPage),
+          new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
         new MenuItem('Income and GPA', 1, 2, null, [
           //Page
@@ -156,7 +157,7 @@ export class MainPage implements OnInit{
           new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/Quiz', 1, 9, null, [
-          new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+          new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage)
         ])
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
@@ -165,7 +166,7 @@ export class MainPage implements OnInit{
           new ContentItem('introduction', 'Introduction', ContentPage),
           new AnimationContentItem('storyline', 'Story line', ContentPage, 'p2s1'),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
-          new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
+          new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
         new MenuItem('Project Background', 2, 2, null, [
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
@@ -233,7 +234,7 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Summary/Quiz', 2, 12, null, [
-          new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+          new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage)
         ])
       ]),
       new MenuItem('3: Shoplifting', 3, 0, [

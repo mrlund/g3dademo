@@ -24,7 +24,7 @@
                 <ion-item [hidden]="isDisplayed(p)" ion-item *ngFor="let c of p.children" (click)="openPage(c)">
                     <ion-icon [hidden]="!c.isComplete" secondary name="ios-checkmark-circle" item-left></ion-icon>
                     <ion-icon [hidden]="c.isComplete" secondary name="ios-checkmark-circle-outline" item-left></ion-icon>
-                    {{c.title}}
+                    {{c.project + ": " + c.title}}
                     <ion-icon name="arrow-forward" item-right></ion-icon>
                 </ion-item>
             </div>
