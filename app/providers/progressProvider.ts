@@ -103,8 +103,8 @@ export class ProgressProvider {
   }
   findLastOpenedPage(Page : number, Project: number, Session: number){
       let currentProject = this.pages[Project];
-      let currentSession = currentProject.children[Session];
-      let currentPage = currentSession.pages[Page];
+      let currentSession = currentProject.children[Session - 1];
+      let currentPage = currentSession.pages[Page - 1];
       return currentPage;
   }
   findNextLesson(lesson: MenuItem){
