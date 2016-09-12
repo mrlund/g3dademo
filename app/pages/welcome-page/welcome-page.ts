@@ -8,7 +8,8 @@ import {ContentItem} from '../../models/content-item';
 })
 export class WelcomePage {
   continueFrom: ContentItem;
-  
+  continuePage: ContentItem;
+
   constructor(private nav: NavController, private progress: ProgressProvider){
   }
   
@@ -16,6 +17,7 @@ export class WelcomePage {
     let observable = this.progress.getLastPage();
     observable.subscribe(value => {
       this.continueFrom = value;
+      this.continuePage = this.getContinuePage(value);
     });
   }
   navigateTo(page: ContentItem){
@@ -26,7 +28,11 @@ export class WelcomePage {
           loopPage = loopPage.prevItem;
     }
     pages.reverse().push({page: page.componentType, params: { item: page }});
+    this.progress.openPage(page);
     this.nav.setPages(pages)
+  }
+  getContinuePage(page: ContentItem){
+    return page && page.nextItem ? page.nextItem : page;
   }
   startCourse(){
     let firstPage = this.progress.getFirstLesson();
