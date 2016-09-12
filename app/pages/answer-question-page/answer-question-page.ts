@@ -11,7 +11,7 @@ import {CharacterPhraseImg} from "../../components/character-phrase-img/characte
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {UserService} from "../../services/userService";
 import {TeacherPage} from "../teacher-page/teacher-page";
-import {NoteService} from "../../services/noteService";
+import {ModalService} from "../../services/modalService";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -34,7 +34,7 @@ export class AnswerQuestionPage {
                 private channelService:ChannelService,
                 private _sanitizer: DomSanitizationService,
                 private userService: UserService,
-                private noteService: NoteService,
+                private modalService: ModalService,
                 private menu: MenuController ) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
@@ -105,9 +105,10 @@ export class AnswerQuestionPage {
         question.suggestion = ""; 
     }
     goToTeacherPage():void{
-        this.nav.setRoot(TeacherPage);
+        // this.nav.setRoot(TeacherPage);
+        this.modalService.showTeacherPagePopup();
     }
     createNote(){
-        this.noteService.showAddNotePopup();
+        this.modalService.showAddNotePopup();
     }
 }

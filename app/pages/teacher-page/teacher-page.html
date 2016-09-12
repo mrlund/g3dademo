@@ -1,18 +1,21 @@
 <ion-header>
-    <ion-navbar hideBackButton="true">
+    <ion-toolbar>
+        <ion-title>
+            Teacher page
+        </ion-title>
         <ion-buttons start>
-            <button (click)="toggleMenu()">
-                <ion-icon name="menu"></ion-icon>
+            <button (click)="dismiss()">
+                <span primary>Cancel</span>
             </button>
         </ion-buttons>
-        <ion-title>Teacher page</ion-title>
         <ion-buttons end>
             <button (click)="deleteSuggestions()">
                 <ion-icon name="trash"></ion-icon>
-            </button>        
+            </button>
         </ion-buttons>
-    </ion-navbar>
+    </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
     <div class="page-container teacher-page-inner-content">

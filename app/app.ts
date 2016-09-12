@@ -14,7 +14,7 @@ import {TeacherPageService} from './services/teacherPageService';
 import {Globals} from './globals';
 
 import { appRouterProviders } from './routes';
-import {NoteService} from "./services/noteService";
+import {ModalService} from "./services/modalService";
 
 @Component({
     directives: [ROUTER_DIRECTIVES],
@@ -36,7 +36,7 @@ ionicBootstrap(MyApp, [
         ChannelService,
         UserService,
         TeacherPageService,
-        NoteService,
+        ModalService,
         Globals,
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         provide(SignalrWindow, {useValue: window})

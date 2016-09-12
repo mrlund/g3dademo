@@ -9,7 +9,7 @@ import {InnerContent} from '../../components/inner-content/inner-content';
 import {ContentItem, AnimationContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
-import {NoteService} from "../../services/noteService";
+import {ModalService} from "../../services/modalService";
 
 @Component({
     templateUrl: 'build/pages/content-page/content-page.html',
@@ -32,7 +32,7 @@ export class ContentPage {
                 private menu: MenuController,
                 private progress: ProgressProvider,
                 private toastController: ToastController,
-                private noteService: NoteService) {
+                private modalService: ModalService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if(this.selectedItem instanceof AnimationContentItem){
@@ -97,7 +97,7 @@ export class ContentPage {
         this.pauseAnimation = event;
     }
     createNote(){
-        this.noteService.showAddNotePopup();
+        this.modalService.showAddNotePopup();
     }
 
 }
