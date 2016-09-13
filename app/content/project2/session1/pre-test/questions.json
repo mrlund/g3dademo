@@ -3,7 +3,7 @@
         {
             "type": "multiple-choice",
             "questionId": 2010501,
-            "question": "The mean number of suspensions is greater for which grade?",
+            "question": "Calculate the mean number of suspensions for each dataset and determine which dataset has the highest number of suspensions.",
             "answers": [
                 {
                     "answer": "11th Grade - the mean is 2",
@@ -57,6 +57,44 @@
                 },
                 {
                     "answer": "The spread is the same for both grades",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 2010503,
+            "question": "Which grade has a larger range?",
+            "answers": [
+                {
+                    "answer": "11th Grade",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "12th Grade",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "The range is the same for both grades",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 2010503,
+            "question": "Which type of values are removed by the Interquartile range?",
+            "answers": [
+                {
+                    "answer": "Median",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Outliers",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Mode",
                     "isCorrect": false
                 }
             ]
