@@ -63,7 +63,7 @@
         },
         {
             "type": "multiple-choice",
-            "questionId": 2010503,
+            "questionId": 2010504,
             "question": "Which grade has a larger range?",
             "answers": [
                 {
@@ -82,7 +82,7 @@
         },
         {
             "type": "multiple-choice",
-            "questionId": 2010503,
+            "questionId": 2010505,
             "question": "Which type of values are removed by the Interquartile range?",
             "answers": [
                 {

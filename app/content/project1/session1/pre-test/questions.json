@@ -59,7 +59,7 @@
         },
         {
             "type": "multiple-choice",
-            "questionId": 1010403,
+            "questionId": 1010404,
             "question": "The tallest bar or bars on a histogram visually represent the",
             "answers": [
                 {
@@ -78,7 +78,7 @@
         },
         {
             "type": "multiple-choice",
-            "questionId": 1010403,
+            "questionId": 1010405,
             "question": "The middle of the histogram always represents the?",
             "answers": [
                 {
