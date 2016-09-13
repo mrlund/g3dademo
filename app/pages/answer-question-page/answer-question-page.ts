@@ -98,16 +98,27 @@ export class AnswerQuestionPage {
     }
     onSuggest(question){
         if (!question.suggestions){
-            question.suggestions = [];    
+            question.suggestions = [];
         }
         question.suggestions.push(question.suggestion);
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, 'student', question.suggestion);
-        question.suggestion = ""; 
+        question.suggestion = "";
+    }
+    questionsNotProcessed() {
+        var isNotAllQuestionsHasSuggestion = true;
+        if (this.questions != null) {
+            isNotAllQuestionsHasSuggestion = this.questions['questions'].some(this.hasNoOneSuggestionOrAnswer);
+        }
+
+        return isNotAllQuestionsHasSuggestion;
+    }
+    hasNoOneSuggestionOrAnswer(question) {
+        if(question.type == 'discussion') return !question.suggestions || question.suggestions.length === 0;
+        if(question.type == 'multiple-choice') return !(question.answers && question.answers.length);
     }
     goToTeacherPage():void{
         // this.nav.setRoot(TeacherPage);
-        this.modalService.showTeacherPagePopup();
-    }
+        this.modalService.showTeacherPagePopup();    }
     createNote(){
         this.modalService.showAddNotePopup();
     }

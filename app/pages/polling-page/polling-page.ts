@@ -123,5 +123,18 @@ export class PollingPage {
     createNote(){
         this.modalService.showAddNotePopup();
     }
+    questionsNotAnswered() {
+      var isNotAllQuestionsAnswered = true;
+
+      if (this.questions != null) {
+        isNotAllQuestionsAnswered = this.questions.questions.some(this.notAnsweredYet);
+      }
+      return isNotAllQuestionsAnswered;
+    }
+    notAnsweredYet(question) {
+      return question.answers.every(answer => {
+        return !answer.voteState || (answer.voteState && answer.voteState === "voted");
+      });
+    }
 
 }

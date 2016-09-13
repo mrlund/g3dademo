@@ -26,13 +26,12 @@ export class QuestionPeerReviewPage {
     questions: Array<any>;
     state: string = '';
     loader: Loading;
-    receivedReview: any; 
+    receivedReview: any;
     submittedReview: boolean;
     respondingToClientId: string;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
-    
 
     constructor(private nav: NavController,
                 navParams: NavParams,
@@ -61,7 +60,6 @@ export class QuestionPeerReviewPage {
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.questions = data;
-                
             },
             (error) => {
                 console.log(error);
@@ -79,7 +77,6 @@ export class QuestionPeerReviewPage {
                 ).catch((e) => {
                     this.innerContent.recompileTemplate(this._pageContent, '');
                 })
-                
             },
             (error) => {
                 console.log(error);
@@ -108,7 +105,7 @@ export class QuestionPeerReviewPage {
                 console.log("Still giving feedback, store for later.");
                 this.receivedReview = answer;
             }
-        });        
+        });
     }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
@@ -123,7 +120,8 @@ export class QuestionPeerReviewPage {
         this.loader = this.loadingController.create();
         this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "loading";
-    }    
+        this.submittedReview = true;
+    }
     submitFeedback(){
         this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
         if (this.receivedReview){
@@ -133,7 +131,7 @@ export class QuestionPeerReviewPage {
         }else {
             this.receivedReview = true;
             this.state = "loading";
-        }        
+        }
     }
     toggleMenu() {
         if (this.menu.isOpen()) {
@@ -197,7 +195,7 @@ export class QuestionPeerReviewPage {
 
             ]
             }`;
-            var obj = JSON.parse(resp); 
+            var obj = JSON.parse(resp);
             if (this.respondingToClientId){
                 obj.ClientId = this.respondingToClientId;
             }
