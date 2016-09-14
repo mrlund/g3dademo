@@ -29,7 +29,7 @@
         <ion-card *ngFor="let question of questions.questions">
             <ion-card-content>
                 <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
-                <ion-list radio-group>
+                <ion-list radio-group  [(ngModel)]="question.answered">
                     <div *ngIf="question.type == 'multiple-choice'">
                         <ion-item *ngFor="let answer of question.answers">
                             <ion-label>{{answer.answer}}</ion-label>

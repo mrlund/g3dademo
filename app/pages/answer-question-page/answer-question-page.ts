@@ -114,7 +114,7 @@ export class AnswerQuestionPage {
     }
     hasNoOneSuggestionOrAnswer(question) {
         if(question.type == 'discussion') return !question.suggestions || question.suggestions.length === 0;
-        if(question.type == 'multiple-choice') return !(question.answers && question.answers.length);
+        if(question.type == 'multiple-choice') return typeof question.answered == 'undefined';
     }
     goToTeacherPage():void{
         // this.nav.setRoot(TeacherPage);
