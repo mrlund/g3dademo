@@ -11,6 +11,7 @@ import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
+import {Globals} from "../../globals";
 
 @Component({
     templateUrl: 'build/pages/polling-page/polling-page.html',
@@ -21,6 +22,7 @@ export class PollingPage {
     selectedItem: any;
     private _pageContent: string;
     questions: Array<any>;
+    isClassroomModeOn : boolean = false;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -33,7 +35,11 @@ export class PollingPage {
                 private channelService:ChannelService,
                 private _sanitizer: DomSanitizationService,
                 private toastController: ToastController,
-                private modalService: ModalService) {
+                private modalService: ModalService,
+                private _globals: Globals) {
+        _globals.isClassroomModeOn.subscribe((data) => {
+            this.isClassroomModeOn = data;
+        });
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
@@ -124,10 +130,12 @@ export class PollingPage {
         this.modalService.showAddNotePopup();
     }
     questionsNotAnswered() {
-      var isNotAllQuestionsAnswered = true;
-
-      if (this.questions != null) {
-        isNotAllQuestionsAnswered = this.questions.questions.some(this.notAnsweredYet);
+      var isNotAllQuestionsAnswered = false;
+      if(this.isClassroomModeOn) {
+        isNotAllQuestionsAnswered = true;
+      }
+      if (this.questions != null && this.isClassroomModeOn) {
+        isNotAllQuestionsAnswered = this.questions['questions'].some(this.notAnsweredYet);
       }
       return isNotAllQuestionsAnswered;
     }

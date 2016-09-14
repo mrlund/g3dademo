@@ -9,6 +9,7 @@ import {ProgressProvider} from '../../providers/progressProvider';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {Http, Headers} from "@angular/http";
 import {ModalService} from "../../services/modalService";
+import {Globals} from "../../globals";
 
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
@@ -27,6 +28,7 @@ export class ActivityTablePage {
     pageModel: string;
     Math : any = window['Math'];
     isSubmitted : boolean = false;
+    isClassroomModeOn : boolean = false;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
@@ -38,8 +40,12 @@ export class ActivityTablePage {
                 private progress: ProgressProvider,
                 private http: Http,
                 private toastController: ToastController,
-                private modalService: ModalService) {
+                private modalService: ModalService,
+                private _globals: Globals) {
         // If we navigated to this page, we will have an item available as a nav param
+        _globals.isClassroomModeOn.subscribe((data) => {
+            this.isClassroomModeOn = data;
+        });
         this.selectedItem = navParams.get('item');
         if (!this.selectedItem)
         {

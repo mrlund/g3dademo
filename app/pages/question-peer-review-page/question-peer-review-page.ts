@@ -14,6 +14,7 @@ import {ChannelService} from '../../services/channelService';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
+import {Globals} from "../../globals";
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -23,6 +24,7 @@ import {ModalService} from "../../services/modalService";
 export class QuestionPeerReviewPage {
     selectedItem: any;
     private _pageContent: string;
+    private isClassroomModeOn: boolean;
     questions: Array<any>;
     state: string = '';
     loader: Loading;
@@ -42,8 +44,11 @@ export class QuestionPeerReviewPage {
                 private _sanitizer: DomSanitizationService,
                 private loadingController:LoadingController,
                 private modalService: ModalService,
-                private menu: MenuController ) {
-
+                private menu: MenuController,
+                private _globals: Globals) {
+        _globals.isClassroomModeOn.subscribe((data) => {
+            this.isClassroomModeOn = data;
+        });
         // If we navigated to this page, we will have an item available as a nav param
         this.state = 'answer';
         this.selectedItem = navParams.get('item');

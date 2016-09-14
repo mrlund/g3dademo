@@ -103,11 +103,11 @@
             </button>
         </ion-buttons>
         <ion-buttons end>
-            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!submittedReview">
+            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!submittedReview && isClassroomModeOn">
                 Next
                 <ion-icon name="arrow-forward" item-right></ion-icon>
             </button>
-            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!submittedReview">
+            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!submittedReview && isClassroomModeOn">
                 DONE!
                 <ion-icon name="checkmark" item-right></ion-icon>
             </button>
