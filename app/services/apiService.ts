@@ -7,6 +7,8 @@ import {UserService} from "./userService";
 export class ApiService {
     private currentPage:any = null;
     private userData:any = null;
+
+    // todo: should be fixed with real enum, cause there is no multiple-choice and etc
     private ResponseType:any = {
         'other':0,
         'PreTest':1,
@@ -29,13 +31,13 @@ export class ApiService {
         return result ? result : 0;
     }
 
-    postResponces(answerData: any, answerType: string){
+    postResponces(question: any){
         let token = localStorage.getItem("api_token");
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
         var currentData = new Date();
 
-        var resType = this.getResponceType(answerType);
+        var resType = this.getResponceType(question.type);
         var data = {
             "ProjectNumber": this.currentPage.menuItem['project'],
             "SessionNumber": this.currentPage.menuItem['session'],
@@ -44,10 +46,10 @@ export class ApiService {
             "ResponseType": resType,
             "SubmittedDate": currentData.toISOString(),
             "CourseClassId": this.userData['CourseClassId'],
-            "ResponseData": JSON.stringify(answerData),
+            "ResponseData": JSON.stringify(question),
         };
 
-        return this.http.post('https://girlsinc.azurewebsites.net' + '/api/responces', data, {headers: headers});
+        return this.http.post('https://girlsinc.azurewebsites.net' + '/api/responses', data, {headers: headers});
     }
 
 

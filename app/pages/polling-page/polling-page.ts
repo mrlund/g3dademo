@@ -128,7 +128,7 @@ export class PollingPage {
         });
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, 'student', answer.answer);
 
-        this.apiService.postResponces(answer, question.type).subscribe((data) => {
+        this.apiService.postResponces(question).subscribe((data) => {
             console.log('answer posted')
         });
     }

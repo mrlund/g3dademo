@@ -33,7 +33,7 @@
                     <div *ngIf="question.type == 'multiple-choice'">
                         <ion-item *ngFor="let answer of question.answers">
                             <ion-label>{{answer.answer}}</ion-label>
-                            <ion-radio value="{{answer.answer}}"></ion-radio>
+                            <ion-radio (click)="sendResponses(question)" value="{{answer.answer}}"></ion-radio>
                         </ion-item>
                     </div>
                     <ion-item *ngIf="question.type == 'text'">

@@ -13,6 +13,7 @@ import {UserService} from "../../services/userService";
 import {TeacherPage} from "../teacher-page/teacher-page";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
+import {ApiService} from "../../services/apiService";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -38,7 +39,8 @@ export class AnswerQuestionPage {
                 private userService: UserService,
                 private modalService: ModalService,
                 private menu: MenuController,
-                private _globals: Globals) {
+                private _globals: Globals,
+                private apiService: ApiService) {
         _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
@@ -102,6 +104,11 @@ export class AnswerQuestionPage {
     finishSession() {
         this.progress.finishSession(this.selectedItem.menuItem);
     }
+    sendResponses(question){
+        this.apiService.postResponces(question).subscribe((data) => {
+            console.log('answer posted')
+        });
+    }
     onSuggest(question){
         if (!question.suggestions){
             question.suggestions = [];
@@ -109,6 +116,9 @@ export class AnswerQuestionPage {
         question.suggestions.push(question.suggestion);
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, 'student', question.suggestion);
         question.suggestion = "";
+        this.apiService.postResponces(question).subscribe((data) => {
+            console.log('answer posted')
+        });
     }
     questionsNotProcessed() {
         var isNotAllQuestionsHasSuggestion = false;
