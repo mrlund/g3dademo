@@ -12,6 +12,8 @@ import {InnerContent} from "../../components/inner-content/inner-content";
 import {UserService} from "../../services/userService";
 import {TeacherPage} from "../teacher-page/teacher-page";
 import {ModalService} from "../../services/modalService";
+import {Globals} from "../../globals";
+import {ApiService} from "../../services/apiService";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -21,6 +23,7 @@ import {ModalService} from "../../services/modalService";
 export class AnswerQuestionPage {
     selectedItem: any;
     private _pageContent: string;
+    private isClassroomModeOn: boolean = false;
     questions: Array<any>;
     userData: Map<string, string>;
 
@@ -35,7 +38,12 @@ export class AnswerQuestionPage {
                 private _sanitizer: DomSanitizationService,
                 private userService: UserService,
                 private modalService: ModalService,
-                private menu: MenuController ) {
+                private menu: MenuController,
+                private _globals: Globals,
+                private apiService: ApiService) {
+        _globals.isClassroomModeOn.subscribe((data) => {
+            this.isClassroomModeOn = data;
+        });
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.userData = userService.getUserData();
@@ -96,18 +104,39 @@ export class AnswerQuestionPage {
     finishSession() {
         this.progress.finishSession(this.selectedItem.menuItem);
     }
+    sendResponses(question){
+        this.apiService.postResponces(question).subscribe((data) => {
+            console.log('answer posted')
+        });
+    }
     onSuggest(question){
         if (!question.suggestions){
-            question.suggestions = [];    
+            question.suggestions = [];
         }
         question.suggestions.push(question.suggestion);
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, 'student', question.suggestion);
-        question.suggestion = ""; 
+        question.suggestion = "";
+        this.apiService.postResponces(question).subscribe((data) => {
+            console.log('answer posted')
+        });
+    }
+    questionsNotProcessed() {
+        var isNotAllQuestionsHasSuggestion = false;
+        if(this.isClassroomModeOn) {
+            isNotAllQuestionsHasSuggestion = true;
+        }
+        if (this.questions != null && this.isClassroomModeOn) {
+            isNotAllQuestionsHasSuggestion = this.questions['questions'].some(this.hasNoOneSuggestionOrAnswer);
+        }
+        return isNotAllQuestionsHasSuggestion;
+    }
+    hasNoOneSuggestionOrAnswer(question) {
+        if(question.type == 'discussion') return !question.suggestions || question.suggestions.length === 0;
+        if(question.type == 'multiple-choice') return typeof question.answered == 'undefined';
     }
     goToTeacherPage():void{
         // this.nav.setRoot(TeacherPage);
-        this.modalService.showTeacherPagePopup();
-    }
+        this.modalService.showTeacherPagePopup();    }
     createNote(){
         this.modalService.showAddNotePopup();
     }

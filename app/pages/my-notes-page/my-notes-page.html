@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar hideBackButton="true">
         <ion-buttons side="left">
-            <button (click)="toggleMenu()">
+            <button menuToggle>
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
@@ -13,14 +13,14 @@
     <div class="page-container">
         <ion-card *ngFor="let note of myNotes">
             <ion-card-header>
-                <p>student {{note.StudentNoteId}}</p>
-                <p>user {{note.UserId}}</p>
-                <p>project {{note.ProjectNumber}}</p>
-                <p>session {{note.SessionNumber}}</p>
-                <p>page {{note.PageNumber}}</p>
+                <h2>Student Id: {{note.StudentNoteId}}</h2>
+                <h2>User Id {{note.UserId}}</h2>
+                <h4>Project Number: {{note.ProjectNumber}}</h4>
+                <h4>Session Number: {{note.SessionNumber}}</h4>
+                <h4>Page Number: {{note.PageNumber}}</h4>
             </ion-card-header>
             <ion-card-content>
-                <p>text: {{ note.NoteText }}</p>
+                <h4>Note text: {{ note.NoteText }}</h4>
             </ion-card-content>
         </ion-card>
     </div>

@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar hideBackButton="true">
         <ion-buttons side="left">
-            <button (click)="toggleMenu()">
+            <button menuToggle>
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
@@ -11,17 +11,21 @@
 
 <ion-content class="has-header">
     <div class="page-container">
-        <ion-card *ngFor="let assignment of myAssignments">
+        <ion-card *ngFor="let assignment of myAssignments" class="my-assignments">
             <ion-card-header>
-                <p>app user {{assignment.ApplicationUserId}}</p>
-                <p>course class {{assignment.CourseClassId}}</p>
-                <p>project {{assignment.ProjectNumber}}</p>
-                <p>session {{assignment.SessionNumber}}</p>
-                <p>page {{assignment.PageNumber}}</p>
+                <h2>User Id: {{assignment.ApplicationUserId}}</h2>
+                <h4>Assignment Name: {{ assignment.AssignmentName }} </h4>
+                <h4>Project Number: {{assignment.ProjectNumber}} </h4>
+                <h4>Session Number: {{assignment.SessionNumber}} </h4>
+                <h4>Page Number: {{assignment.PageNumber}} </h4>
             </ion-card-header>
             <ion-card-content>
-                <p>name: {{ assignment.AssignmentName }} </p>
-                <p>data: {{ assignment.AssignmentData }} </p>
+                <h3>Assignment Data </h3>
+                <ul *ngFor="let assignmentDetails of assignment.AssignmentData">
+                    <li>
+                        {{assignmentDetails.name}}: {{assignmentDetails.price}}
+                    </li>
+                </ul>
             </ion-card-content>
         </ion-card>
     </div>

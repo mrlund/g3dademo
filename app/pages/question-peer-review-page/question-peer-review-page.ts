@@ -14,6 +14,7 @@ import {ChannelService} from '../../services/channelService';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
+import {Globals} from "../../globals";
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -23,16 +24,16 @@ import {ModalService} from "../../services/modalService";
 export class QuestionPeerReviewPage {
     selectedItem: any;
     private _pageContent: string;
+    private isClassroomModeOn: boolean;
     questions: Array<any>;
     state: string = '';
     loader: Loading;
-    receivedReview: any; 
+    receivedReview: any;
     submittedReview: boolean;
     respondingToClientId: string;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
-    
 
     constructor(private nav: NavController,
                 navParams: NavParams,
@@ -43,8 +44,11 @@ export class QuestionPeerReviewPage {
                 private _sanitizer: DomSanitizationService,
                 private loadingController:LoadingController,
                 private modalService: ModalService,
-                private menu: MenuController ) {
-
+                private menu: MenuController,
+                private _globals: Globals) {
+        _globals.isClassroomModeOn.subscribe((data) => {
+            this.isClassroomModeOn = data;
+        });
         // If we navigated to this page, we will have an item available as a nav param
         this.state = 'answer';
         this.selectedItem = navParams.get('item');
@@ -61,7 +65,6 @@ export class QuestionPeerReviewPage {
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.questions = data;
-                
             },
             (error) => {
                 console.log(error);
@@ -79,7 +82,6 @@ export class QuestionPeerReviewPage {
                 ).catch((e) => {
                     this.innerContent.recompileTemplate(this._pageContent, '');
                 })
-                
             },
             (error) => {
                 console.log(error);
@@ -108,7 +110,7 @@ export class QuestionPeerReviewPage {
                 console.log("Still giving feedback, store for later.");
                 this.receivedReview = answer;
             }
-        });        
+        });
     }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
@@ -123,7 +125,8 @@ export class QuestionPeerReviewPage {
         this.loader = this.loadingController.create();
         this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "loading";
-    }    
+        this.submittedReview = true;
+    }
     submitFeedback(){
         this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
         if (this.receivedReview){
@@ -133,7 +136,7 @@ export class QuestionPeerReviewPage {
         }else {
             this.receivedReview = true;
             this.state = "loading";
-        }        
+        }
     }
     toggleMenu() {
         if (this.menu.isOpen()) {
@@ -197,7 +200,7 @@ export class QuestionPeerReviewPage {
 
             ]
             }`;
-            var obj = JSON.parse(resp); 
+            var obj = JSON.parse(resp);
             if (this.respondingToClientId){
                 obj.ClientId = this.respondingToClientId;
             }
