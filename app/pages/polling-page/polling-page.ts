@@ -12,6 +12,7 @@ import {CharacterPhraseImg} from "../../components/character-phrase-img/characte
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
+import {ApiService} from "../../services/apiService";
 
 @Component({
     templateUrl: 'build/pages/polling-page/polling-page.html',
@@ -36,7 +37,8 @@ export class PollingPage {
                 private _sanitizer: DomSanitizationService,
                 private toastController: ToastController,
                 private modalService: ModalService,
-                private _globals: Globals) {
+                private _globals: Globals,
+                private apiService: ApiService) {
         _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
@@ -125,6 +127,10 @@ export class PollingPage {
             }
         });
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, 'student', answer.answer);
+
+        this.apiService.postResponces(answer, question.type).subscribe((data) => {
+            console.log('answer posted')
+        });
     }
     createNote(){
         this.modalService.showAddNotePopup();

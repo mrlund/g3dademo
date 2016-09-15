@@ -15,6 +15,7 @@ import {Globals} from './globals';
 
 import { appRouterProviders } from './routes';
 import {ModalService} from "./services/modalService";
+import {ApiService} from "./services/apiService";
 
 @Component({
     directives: [ROUTER_DIRECTIVES],
@@ -35,6 +36,7 @@ ionicBootstrap(MyApp, [
         ContentData,
         ChannelService,
         UserService,
+        ApiService,
         TeacherPageService,
         ModalService,
         Globals,
