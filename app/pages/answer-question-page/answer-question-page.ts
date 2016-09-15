@@ -10,7 +10,6 @@ import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {UserService} from "../../services/userService";
-import {TeacherPage} from "../teacher-page/teacher-page";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
 import {ApiService} from "../../services/apiService";

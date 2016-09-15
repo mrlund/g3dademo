@@ -13,6 +13,7 @@ import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
 import {ApiService} from "../../services/apiService";
+import {UserService} from "../../services/userService";
 
 @Component({
     templateUrl: 'build/pages/polling-page/polling-page.html',
@@ -24,6 +25,7 @@ export class PollingPage {
     private _pageContent: string;
     questions: Array<any>;
     isClassroomModeOn : boolean = false;
+    userData: Map<string, string>;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -38,7 +40,9 @@ export class PollingPage {
                 private toastController: ToastController,
                 private modalService: ModalService,
                 private _globals: Globals,
-                private apiService: ApiService) {
+                private apiService: ApiService,
+                private userService: UserService) {
+        this.userData = userService.getUserData();
         _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
@@ -149,6 +153,10 @@ export class PollingPage {
       return question.answers.every(answer => {
         return !answer.voteState || (answer.voteState && answer.voteState === "voted");
       });
+    }
+    goToTeacherPage():void{
+        // this.nav.setRoot(TeacherPage);
+        this.modalService.showTeacherPagePopup();
     }
 
 }

@@ -10,6 +10,10 @@
             <button (click)="createNote()">
                 <ion-icon name="create"></ion-icon>
             </button>
+            <button [hidden]="!userData.IsFacilitator"
+                    (click)="goToTeacherPage()">
+                <ion-icon name="clipboard"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
