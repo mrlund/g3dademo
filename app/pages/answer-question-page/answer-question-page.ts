@@ -103,7 +103,14 @@ export class AnswerQuestionPage {
     finishSession() {
         this.progress.finishSession(this.selectedItem.menuItem);
     }
-    sendResponses(question){
+    sendResponses(question, answer){
+        question.answers.forEach(ans => {
+            if (ans == answer){
+                ans.voteState = "votedFor";
+            } else {
+                ans.voteState = "voted";
+            }
+        });
         this.apiService.postResponces(question).subscribe((data) => {
             console.log('answer posted')
         });
