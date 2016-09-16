@@ -6,7 +6,8 @@ import {TeacherPageService} from '../../services/teacherPageService';
 import {BehaviorSubject} from "rxjs";
 
 @Component({
-    templateUrl: 'build/pages/teacher-page/teacher-page.html'
+    templateUrl: 'build/pages/teacher-page/teacher-page.html',
+    selector: 'teacher-popup'
 })
 export class TeacherPage {
     public suggestions: Array<any> = []; //array of all suggestions
@@ -142,7 +143,6 @@ export class TeacherPage {
         this.processedSuggestions = [];
         this.window.$('.teacher-page-inner-content .inner-jqcloud-block').jQCloud('update', this.processedSuggestions);
     }
-
     dismiss() {
         this.viewCtrl.dismiss();
     }

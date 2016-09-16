@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
-import {ModalController, Platform, NavParams, ViewController} from 'ionic-angular';
+import {Platform, NavParams, ViewController} from 'ionic-angular';
 import {ProgressProvider} from '../../providers/progressProvider';
+import {Globals} from "../../globals";
 
     
 @Component({
@@ -15,13 +16,15 @@ export class NotePopup {
         private platform: Platform,
         private params: NavParams,
         private viewCtrl: ViewController,
-        private progress: ProgressProvider
+        private progress: ProgressProvider,
+        private _globals: Globals
     ) {
         this.note = "";
     }
 
     dismiss() {
         this.viewCtrl.dismiss();
+        this._globals.setPopup('');
     }
 
     saveNote() {
@@ -38,7 +41,7 @@ export class NotePopup {
         this.progress.saveNote(noteData).subscribe(res => {
                 console.log('result save note');
                 console.log(res);
-                this.viewCtrl.dismiss();
+                this.dismiss();
             });
     }
 }
