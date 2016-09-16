@@ -78,6 +78,7 @@ export class QuestionPeerReviewPage {
                         let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
                         this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
                         this.characterPhraseImg.draw(pageModel);
+                        this.channelService.getConnection().proxies.inclasshub.invoke("checkForExistingState");
                     }
                 ).catch((e) => {
                     this.innerContent.recompileTemplate(this._pageContent, '');
