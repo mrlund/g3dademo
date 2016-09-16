@@ -7,9 +7,13 @@ export class Globals {
     public isClassroomModeOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
     public currentPage: BehaviorSubject<Object> = new BehaviorSubject<Object>(null);
+    public popupTypeActivated: BehaviorSubject<String> = new BehaviorSubject<String>('');
 
     setClassroomModeStatus(flag: boolean) {
         this.isClassroomModeOn.next(flag);
+    }
+    setPopup(type: string) {
+        this.popupTypeActivated.next(type);
     }
     setLoggedInStatus(flag: boolean) {
         this.isLoggedIn.next(flag);
@@ -20,4 +24,5 @@ export class Globals {
     clearCurrentPage() {
         this.currentPage.next(null);
     }
+
 }
