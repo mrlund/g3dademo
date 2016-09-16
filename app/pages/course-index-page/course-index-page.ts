@@ -17,4 +17,11 @@ export class CourseIndexPage {
     ngOnInit() {
         this.courseContent = this.progress.getCourseContent();
     }
+    toggleMenu() {
+        if (this.menu.isOpen()) {
+            this.menu.close();
+        } else {
+            this.menu.open();
+        }
+    }
 }

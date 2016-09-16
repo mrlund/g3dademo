@@ -15,7 +15,11 @@ export class MyAssigmentsPage {
         headers.append('Authorization', 'Bearer ' + token);
         return new Promise(resolve => {
             this.http.get('https://girlsinc.azurewebsites.net' + '/api/assignments', {headers: headers}).subscribe(data => {
-                resolve(data.json());
+               let myAssignments =  data.json();
+                for (let i of myAssignments) {
+                   i.AssignmentData = JSON.parse(i.AssignmentData)
+                }
+                resolve(myAssignments);
             });
         });
     };
@@ -23,6 +27,7 @@ export class MyAssigmentsPage {
     ngOnInit() {
         this.load().then(data => {
             this.myAssignments = data;
+            
         });
     };
 }

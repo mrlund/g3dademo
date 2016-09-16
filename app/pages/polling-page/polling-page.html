@@ -10,6 +10,10 @@
             <button (click)="createNote()">
                 <ion-icon name="create"></ion-icon>
             </button>
+            <button [hidden]="!userData.IsFacilitator"
+                    (click)="goToTeacherPage()">
+                <ion-icon name="clipboard"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -44,11 +48,11 @@
             </button>
         </ion-buttons>
         <ion-buttons end>
-            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem">
+            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="questionsNotAnswered()">
                 Next
                 <ion-icon name="arrow-forward" item-right></ion-icon>
             </button>
-            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem">
+            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="questionsNotAnswered()">
                 DONE!
                 <ion-icon name="checkmark" item-right></ion-icon>
             </button>
