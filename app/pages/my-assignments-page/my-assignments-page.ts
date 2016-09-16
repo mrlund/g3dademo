@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import {ProgressProvider} from "../../providers/progressProvider";
+import {Nav, NavController} from "ionic-angular";
 
 @Component({
     templateUrl: 'build/pages/my-assignments-page/my-assignments-page.html',
@@ -7,7 +9,9 @@ import {Http, Headers} from '@angular/http';
 export class MyAssigmentsPage {
     private myAssignments: any = [];
 
-    constructor(private http: Http) {}
+    constructor(private http: Http,
+                private progress: ProgressProvider,
+                private nav: NavController) {}
 
     load() {
         let token = localStorage.getItem("api_token");
@@ -27,7 +31,13 @@ export class MyAssigmentsPage {
     ngOnInit() {
         this.load().then(data => {
             this.myAssignments = data;
-            
         });
     };
+
+    redirect(assignmentData:any) {
+        if(assignmentData && (assignmentData.ProjectNumber)) {
+            var page = this.progress.getPageByParams(assignmentData.ProjectNumber, assignmentData.SessionNumber, assignmentData.PageNumber);
+            if(page) this.nav.setRoot(page.componentType, { item: page });
+        }
+    }
 }

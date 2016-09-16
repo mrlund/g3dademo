@@ -13,15 +13,22 @@
     <div class="page-container">
         <ion-card *ngFor="let note of myNotes">
             <ion-card-header>
-                <h2>Student Id: {{note.StudentNoteId}}</h2>
-                <h2>User Id {{note.UserId}}</h2>
-                <h4>Project Number: {{note.ProjectNumber}}</h4>
-                <h4>Session Number: {{note.SessionNumber}}</h4>
-                <h4>Page Number: {{note.PageNumber}}</h4>
+                <h4>Project {{note.ProjectNumber}}, Session {{note.SessionNumber}}, Page {{note.PageNumber}}</h4>
             </ion-card-header>
             <ion-card-content>
                 <h4>Note text: {{ note.NoteText }}</h4>
             </ion-card-content>
+            <ion-row *ngIf="note.ProjectNumber" no-padding>
+                <ion-col>
+                    <button (click)="redirect(note)" class="disable-hover button button-icon-left">
+                        <span class="button-inner">
+                            <ion-icon name="share-alt"></ion-icon>
+                            Redirect
+                        </span>
+                    </button>
+                </ion-col>
+            </ion-row>
         </ion-card>
+
     </div>
 </ion-content>
