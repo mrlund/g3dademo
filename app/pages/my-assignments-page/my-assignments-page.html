@@ -11,9 +11,16 @@
 
 <ion-content class="has-header">
     <div class="page-container">
-        <ion-card *ngFor="let assignment of myAssignments" class="my-assignments">
+        <ion-card *ngFor="let assignment of myAssignments" class="my-assignments notes-card">
             <ion-card-header>
-                <h4>Project {{assignment.ProjectNumber}}, Session {{assignment.SessionNumber}}, Page {{assignment.PageNumber}}</h4>
+                <h4>Project {{assignment.ProjectNumber}}, Session {{assignment.SessionNumber}}, Page {{assignment.PageNumber}}
+                                        <button (click)="redirect(assignment)" class="disable-hover button">
+                        <span class="button-inner">
+                            <ion-icon name="share-alt"></ion-icon>
+                        </span>
+                    </button>
+
+                </h4>
             </ion-card-header>
             <ion-card-content>
                 <h3>Assignment Name: {{ assignment.AssignmentName }} </h3>
@@ -26,12 +33,6 @@
             </ion-card-content>
             <ion-row *ngIf="assignment.ProjectNumber" no-padding>
                 <ion-col>
-                    <button (click)="redirect(assignment)" class="disable-hover button button-icon-left">
-                        <span class="button-inner">
-                            <ion-icon name="share-alt"></ion-icon>
-                            Redirect
-                        </span>
-                    </button>
                 </ion-col>
             </ion-row>
         </ion-card>
