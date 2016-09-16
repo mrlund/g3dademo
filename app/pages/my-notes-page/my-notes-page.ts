@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {Http, Headers} from '@angular/http';
+import {NavController} from "ionic-angular";
+import {ProgressProvider} from "../../providers/progressProvider";
 
 @Component({
     templateUrl: 'build/pages/my-notes-page/my-notes-page.html',
@@ -7,7 +9,9 @@ import {Http, Headers} from '@angular/http';
 export class MyNotesPage {
     myNotes: any = [];
 
-    constructor(private http: Http) {}
+    constructor(private http: Http,
+                private progress: ProgressProvider,
+                private nav: NavController) {}
 
     load() {
         let token = localStorage.getItem("api_token");
@@ -25,4 +29,11 @@ export class MyNotesPage {
             this.myNotes = data;
         });
     };
+
+    redirect(assignmentData:any) {
+        if(assignmentData && (assignmentData.ProjectNumber)) {
+            var page = this.progress.getPageByParams(assignmentData.ProjectNumber, assignmentData.SessionNumber, assignmentData.PageNumber);
+            if(page) this.nav.setRoot(page.componentType, { item: page });
+        }
+    }
 }
