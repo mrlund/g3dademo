@@ -2,6 +2,7 @@ import {Injectable, Inject} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 import {UserService} from "./userService";
+import {ToastService} from "./toastService";
 
 /**
  * When SignalR runs it will add functions to the global $ variable
@@ -89,13 +90,15 @@ export class ChannelService {
     //
     private hubConnection:any;
     private hubProxy:any;
+    private connectionStarted: boolean = false; // is needed for showing toast
 
     // An internal array to track what channel subscriptions exist
     //
     private subjects = new Array<ChannelSubject>();
 
     constructor(@Inject(SignalrWindow) private window:SignalrWindow,
-                @Inject(UserService) private userService:UserService
+                @Inject(UserService) private userService:UserService,
+                @Inject(ToastService) private toastService:ToastService
     ) {
         if (this.window.$ === undefined || this.window.$.hubConnection === undefined) {
             throw new Error("The variable '$' or the .hubConnection() function are not defined...please check the SignalR scripts have been loaded properly");
@@ -189,12 +192,18 @@ export class ChannelService {
         //  a client subscried to it the start sequence would be triggered
         //  again since it's a cold observable.
         //
+
         this.stop();
         var dataSource = this.data$['source'];
         var assignmentDataSource = this.asignmentData$['source'];
         var reviewDataSource = this.reviewData$['source'];
         this.createConnection().start()
             .done(() => {
+                if(this.connectionStarted) {
+                    this.toastService.connectionStarted();
+                } else {
+                    this.connectionStarted = true;
+                }
                 this.hubConnection.received((data) => {
                     dataSource['next'](data);
                 });
@@ -206,6 +215,7 @@ export class ChannelService {
                 });
                 this.connectionState$.subscribe((state) => {
                     if (state == ConnectionState.Disconnected) {
+                        this.toastService.connectionDropped();
                         this.onDisconnect();
                     }
                 });
