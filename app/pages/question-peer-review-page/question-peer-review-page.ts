@@ -3,7 +3,7 @@ import {
     LoadingController, MenuController
 } from 'ionic-angular';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
-import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
+import {Component, ChangeDetectorRef, ChangeDetectionStrategy, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
@@ -15,6 +15,7 @@ import {CharacterPhraseImg} from "../../components/character-phrase-img/characte
 import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
+import {UserService} from "../../services/userService";
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -25,12 +26,13 @@ export class QuestionPeerReviewPage {
     selectedItem: any;
     private _pageContent: string;
     private isClassroomModeOn: boolean;
-    questions: Array<any>;
+    questions: any;
     state: string = '';
     loader: Loading;
     receivedReview: any;
     submittedReview: boolean;
     respondingToClientId: string;
+    userData: Map<string, string>;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -45,8 +47,10 @@ export class QuestionPeerReviewPage {
                 private loadingController:LoadingController,
                 private modalService: ModalService,
                 private menu: MenuController,
-                private _globals: Globals) {
-        _globals.isClassroomModeOn.subscribe((data) => {
+                private _globals: Globals,
+                private userService: UserService) {
+            this.userData = userService.getUserData();
+            _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
         // If we navigated to this page, we will have an item available as a nav param
@@ -79,6 +83,8 @@ export class QuestionPeerReviewPage {
                         this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
                         this.characterPhraseImg.draw(pageModel);
                         this.channelService.getConnection().proxies.inclasshub.invoke("checkForExistingState");
+                        //console.log("Attaching CD");
+                        //this.cdRef.markForCheck();
                     }
                 ).catch((e) => {
                     this.innerContent.recompileTemplate(this._pageContent, '');
@@ -88,7 +94,7 @@ export class QuestionPeerReviewPage {
                 console.log(error);
             }
         );
-
+        this.receivedReview = {};
         let answersDataObservable = this.channelService.getAssignmentData();
         answersDataObservable['source'].subscribe((answer) => {
             console.log("Got assignment:", answer);
@@ -103,7 +109,9 @@ export class QuestionPeerReviewPage {
         let reviewDataObservable = this.channelService.getReviewData();
         reviewDataObservable['source'].subscribe((answer) => {
             console.log("Got review:", answer);
-            if (this.receivedReview){
+            console.log(this.receivedReview);
+            
+            if (this.receivedReview && this.receivedReview.UserId){
                 console.log("Show feedback");
                 this.state = "get-feedback";
                 this.gotAssignment(answer);
@@ -113,10 +121,23 @@ export class QuestionPeerReviewPage {
             }
         });
     }
+    ngOnDestroy(){
+        console.log("Destroy Review");
+        this.receivedReview = {};
+    }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
-
+    showFeedback(){
+        if (this.receivedReview && this.receivedReview.UserId){
+            console.log("Show feedback from function");
+            this.gotAssignment(this.receivedReview);
+            this.state = "get-feedback";
+        }
+    }
+    pullReview(){
+        this.channelService.getConnection().proxies.inclasshub.invoke("pullReview");   
+    }
     gotAssignment(answer){
         this.respondingToClientId = answer.ClientId;
         this.questions = answer;
@@ -124,6 +145,10 @@ export class QuestionPeerReviewPage {
     }
     submitAnswers(){
         this.loader = this.loadingController.create();
+        this.questions.Project = this.selectedItem.menuItem.project;
+        this.questions.Session = this.selectedItem.menuItem.session;
+        this.questions.Page = this.selectedItem.page;
+
         this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "loading";
         this.submittedReview = true;

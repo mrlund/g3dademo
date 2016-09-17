@@ -120,7 +120,7 @@ export class AnswerQuestionPage {
             question.suggestions = [];
         }
         question.suggestions.push(question.suggestion);
-        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, 'student', question.suggestion);
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page, this.userData["Name"], question.question, question.suggestion);
         question.suggestion = "";
         this.apiService.postResponces(question).subscribe((data) => {
             console.log('answer posted')

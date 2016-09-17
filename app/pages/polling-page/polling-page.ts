@@ -130,7 +130,7 @@ export class PollingPage {
                 ans.voteState = "voted";
             }
         });
-        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, 'student', answer.answer);
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page, this.userData["Name"], question.question, answer.answer);
 
         this.apiService.postResponces(question).subscribe((data) => {
             console.log('answer posted')
