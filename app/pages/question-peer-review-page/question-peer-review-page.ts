@@ -31,6 +31,7 @@ export class QuestionPeerReviewPage {
     loader: Loading;
     receivedReview: any;
     submittedReview: boolean;
+    submittedFeedback: boolean;
     respondingToClientId: string;
     userData: Map<string, string>;
 
@@ -111,7 +112,7 @@ export class QuestionPeerReviewPage {
             console.log("Got review:", answer);
             console.log(this.receivedReview);
             
-            if (this.receivedReview && this.receivedReview.UserId){
+            if ((this.receivedReview && this.receivedReview.UserId)||(this.submittedFeedback && this.state == "loading")){
                 console.log("Show feedback");
                 this.state = "get-feedback";
                 this.gotAssignment(answer);
@@ -145,9 +146,9 @@ export class QuestionPeerReviewPage {
     }
     submitAnswers(){
         this.loader = this.loadingController.create();
-        this.questions.Project = this.selectedItem.menuItem.project;
-        this.questions.Session = this.selectedItem.menuItem.session;
-        this.questions.Page = this.selectedItem.page;
+        this.questions.ProjectNumber = this.selectedItem.menuItem.project;
+        this.questions.SessionNumber = this.selectedItem.menuItem.session;
+        this.questions.PageNumber = this.selectedItem.page;
 
         this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "loading";
@@ -155,7 +156,8 @@ export class QuestionPeerReviewPage {
     }
     submitFeedback(){
         this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
-        if (this.receivedReview){
+        this.submittedFeedback = true;
+        if (this.receivedReview && this.receivedReview.UserId){
             this.questions = this.receivedReview;
             this.state = "get-feedback";
             this.cdRef.detectChanges();
