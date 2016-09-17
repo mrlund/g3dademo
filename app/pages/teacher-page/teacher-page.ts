@@ -47,6 +47,7 @@ export class TeacherPage {
                 if (data.A[0] == "poll") {
                     let existingVote = false;
                     let totalVotes = 1;
+                    let maxVote = 0;
                     let votes;
                     for (var i = 0; i < currentCharts.length; i++) {
                         if (currentCharts[i].id == data.A[1]) {
@@ -59,10 +60,15 @@ export class TeacherPage {
                     }
                     for (var i = 0; i < votes.length; i++) {
                         totalVotes += votes[i].count;
+                        if (maxVote < votes[i].count){
+                            maxVote = votes[i].count;
+                        }
                     }
-                    let heightPerVote = (1 / totalVotes) * 100;
+                    console.log(maxVote);
+                    
+                    let heightPerVote = (1 / ++maxVote) * 100;
                     for (var i = 0; i < votes.length; i++) {
-                        if (votes[i].name == data.A[3]) {
+                        if (votes[i].name == data.A[7]) {
                             votes[i].count++;
                             existingVote = true;
                         }
@@ -155,7 +161,7 @@ export class TeacherPage {
         this.counts = {};
         this.processedSuggestions = {};
         let maxCount = 0;
-        let maxSize = 15;
+        let maxSize = 25;
 
         for (let i = 0; i < this.suggestions.length; i++) {
             let questionId = this.suggestions[i].id;
