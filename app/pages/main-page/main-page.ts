@@ -1,7 +1,6 @@
 import {App, Platform, MenuController, Nav, ToastController} from 'ionic-angular';
 import {ViewChild, Component, OnInit} from '@angular/core';
 import {Events} from 'ionic-angular';
-import {Observable} from "rxjs/Observable";
 
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ContentData} from '../../providers/contentProvider';
@@ -41,6 +40,7 @@ export class MainPage implements OnInit{
   isLoggedIn: boolean = false;
   userData: Map<string, string>;
   currentPage: any = null;
+  classroomMode: boolean = false;
 
   constructor(
       private app: App,
@@ -72,7 +72,7 @@ export class MainPage implements OnInit{
     );
 
     this.userData = userService.getUserData();
-
+    this.installClassroomModeValue(this.userData['IsFacilitator']);
     this.setupSelectedCourse();
 
     this.completedLessons = progress.getCompletedLessons();
@@ -355,7 +355,9 @@ export class MainPage implements OnInit{
 
     this.loadCompletedLessons();
   }
-
+  installClassroomModeValue(IsFacilitator):void{
+    this.classroomMode = IsFacilitator ? false : true; // classroom is on only for students
+  }
   loadCompletedLessons() {
     this.progress.getApiProgress().subscribe(res => {
       let parsedRes = res.json();

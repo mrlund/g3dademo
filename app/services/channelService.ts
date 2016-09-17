@@ -90,7 +90,7 @@ export class ChannelService {
     //
     private hubConnection:any;
     private hubProxy:any;
-    private connectionStarted: boolean = false; // is needed for showing toast
+    // private connectionDropped: boolean = false; // is needed for showing toast
 
     // An internal array to track what channel subscriptions exist
     //
@@ -199,11 +199,10 @@ export class ChannelService {
         var reviewDataSource = this.reviewData$['source'];
         this.createConnection().start()
             .done(() => {
-                if(this.connectionStarted) {
-                    this.toastService.connectionStarted();
-                } else {
-                    this.connectionStarted = true;
-                }
+                // if(this.connectionDropped) {
+                //     this.toastService.connectionStarted();
+                // }
+                // this.connectionDropped = false;
                 this.hubConnection.received((data) => {
                     dataSource['next'](data);
                 });
@@ -215,7 +214,8 @@ export class ChannelService {
                 });
                 this.connectionState$.subscribe((state) => {
                     if (state == ConnectionState.Disconnected) {
-                        this.toastService.connectionDropped();
+                        // this.connectionDropped = true;
+                        // this.toastService.connectionDropped();
                         this.onDisconnect();
                     }
                 });

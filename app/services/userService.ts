@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {Http, Headers} from '@angular/http';
 import {Globals} from "../globals";
 import {ChannelConfig} from "./channelService";
+import {ToastService} from "./toastService";
 
 
 export class User {
@@ -16,7 +17,8 @@ export class UserService {
 
     constructor(private router: Router,
                 private http: Http,
-                private _globals: Globals){
+                private _globals: Globals,
+                private toastService: ToastService){
         this.checkIfLoggedInFlag();
     }
 
@@ -50,6 +52,9 @@ export class UserService {
                 localStorage.setItem("userData", JSON.stringify(parsedRes));
                 this.router.navigate(['/main']);
             });
+        }, (err) => {
+            var parsedErr = err.json();
+            if(parsedErr && parsedErr.error_description) this.toastService.loginFails(parsedErr.error_description);
         });
     }
     checkIfLoggedInFlag():void{
