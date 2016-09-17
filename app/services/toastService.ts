@@ -22,4 +22,11 @@ export class ToastService {
         });
         toast.present();
     }
+    loginFails(msg:string):void{
+        let toast = this.toastController.create({
+            message: msg,
+            duration: 2000
+        });
+        toast.present();
+    }
 }
