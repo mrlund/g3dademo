@@ -23,6 +23,7 @@ export class UserService {
     logout():void{
         localStorage.removeItem("api_token");
         localStorage.removeItem("userData");
+        localStorage.removeItem("api_token_expiry");
         this._globals.isLoggedIn.next(false);
         this.router.navigate(['/login']);
     }
@@ -41,6 +42,8 @@ export class UserService {
             let parsedRes = res.json();
             let token = parsedRes['access_token'];
             localStorage.setItem("api_token", token);
+            let expiry = new Date().getTime() + (parsedRes['expires_in'] * 1000) - 300;
+            localStorage.setItem("api_token_expiry", expiry.toString());
             this._globals.isLoggedIn.next(true);
             let headers = new Headers();
             headers.append('Authorization', 'Bearer ' + token);
@@ -54,8 +57,13 @@ export class UserService {
     }
     checkIfLoggedInFlag():void{
         let token = localStorage.getItem("api_token");
-        if(token){
+        let tokenExpiryTime = new Date(parseInt(localStorage.getItem("api_token_expiry")));
+        if(token && new Date() < tokenExpiryTime){
             this._globals.isLoggedIn.next(true);
+        } else {
+            localStorage.removeItem("api_token");
+            localStorage.removeItem("api_token_expiry");
+            localStorage.removeItem("userData");
         }
     }
     goToMain():void{
