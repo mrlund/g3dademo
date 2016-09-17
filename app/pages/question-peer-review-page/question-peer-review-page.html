@@ -10,6 +10,9 @@
             <button (click)="createNote()">
                 <ion-icon name="create"></ion-icon>
             </button>
+            <button [hidden]="!userData.IsFacilitator" (click)="pullReview()">
+                <ion-icon name="checkmark"></ion-icon>
+            </button>            
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -88,6 +91,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
+            <button *ngIf="receivedReview && (state != 'give-feedback' && state != 'get-feedback')" class="" (click)="showFeedback()">Show Feedback</button>
             <button *ngIf="state == 'give-feedback'" class="right" (click)="submitFeedback()">Submit Feedback</button>
             <button *ngIf="state == 'answer'" class="right" (click)="submitAnswers()">Submit Answers</button>
         </ion-card>

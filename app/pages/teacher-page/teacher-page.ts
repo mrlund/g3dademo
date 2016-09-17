@@ -1,5 +1,5 @@
 import {MenuController, ViewController} from 'ionic-angular';
-import {Component} from '@angular/core';
+import {Component, ChangeDetectorRef} from '@angular/core';
 
 import {ChannelService, SignalrWindow} from '../../services/channelService';
 import {TeacherPageService} from '../../services/teacherPageService';
@@ -19,6 +19,7 @@ export class TeacherPage {
         private channelService: ChannelService,
         private teacherPageService: TeacherPageService,
         private window: SignalrWindow,
+        private cdRef: ChangeDetectorRef,
         private viewCtrl: ViewController) {
     }
     ngOnInit() {
@@ -41,6 +42,8 @@ export class TeacherPage {
 
         var currentCharts = this.charts.getValue();
         dataObservable['source'].subscribe((data) => {
+            console.log("Received", data);
+
                 if (data.A[0] == "poll") {
                     let existingVote = false;
                     let totalVotes = 1;
@@ -66,19 +69,21 @@ export class TeacherPage {
                         votes[i].height = (heightPerVote * votes[i].count) + "%";
                     }
                     if (!existingVote) {
-                        votes.push({ name: data.A[3], count: 1, height: heightPerVote + "%" });
+                        votes.push({ name: data.A[7], count: 1, height: heightPerVote + "%", title: data.A[6] });
                     }
 
                     let graphs = [];
                     for (var i = 0; i < currentCharts.length; i++) {
                         graphs.push(currentCharts[i]);
                         if (currentCharts[i].id == data.A[1]) {
+                            currentCharts[i].title = data.A[6];
                             currentCharts[i].votes = votes;
                         }
                     }
                     this.charts.next(graphs);
+                    this.cdRef.detectChanges();
                 } else if (data.A && data.A.length > 1) {
-                    this.suggestions.push({ author: data.A[2], text: data.A[3], id: data.A[1] });
+                    this.suggestions.push({ author: data.A[5], text: data.A[7], id: data.A[1], title: data.A[6] });
                     this.window.localStorage.setItem('suggestions', JSON.stringify(this.suggestions));
                     this.window.localStorage.setItem('suggestionsUpdate', new Date().getTime().toString());
                     if (this.window.$('#jqcloud').length) {
@@ -92,7 +97,7 @@ export class TeacherPage {
                                 var headerHeight = 44;
                                 var heightOfScreen = this.window.$(window).height() - headerHeight;
 
-                                this.window.$(cloudsBlock).append("<div class='inner-jqcloud-block' id='" + "jqcloud-innner-" + id + "'></div>");
+                                this.window.$(cloudsBlock).append("<div class='inner-jqcloud-block' id='" + "jqcloud-innner-" + id + "'><h3>"+ this.processedSuggestions[id].title +"</h3></div>");
                                 let cloudElement = this.window.$("#jqcloud-innner-" + id);
                                 let newHeight = heightOfScreen / Object.keys(this.processedSuggestions).length;
 
@@ -164,6 +169,7 @@ export class TeacherPage {
 
             for (let i = 0; i < this.suggestions.length; i++) {
                 if (this.suggestions[i].id == id) {
+                    this.processedSuggestions[id].title = this.suggestions[i].title; 
                     var text = this.suggestions[i].text;
                     counts[text] = (counts[text] || 0) + 1;
                     if (counts[text] > maxCount) maxCount = counts[text];

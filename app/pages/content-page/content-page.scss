@@ -93,6 +93,12 @@ input.correct ~ i {
   min-height: 100px;
   position: relative;
 }
+@media (max-width: 480px){
+  .character-intros {
+      min-height: 170px;
+      font-size: 0.7em;
+    }
+}
 .character-intros > .character-intro {
     opacity: 0;
     position: absolute;
@@ -107,7 +113,7 @@ input.correct ~ i {
 }
 
 .character-images.zynab img, .character-images.kimberley img, .character-images.yuna img, .character-images.valeria img {
-  opacity: 0.6;
+  opacity: 0.5;
   transition: opacity 0.5s linear;
 }
 .character-images.zynab img.zynab, .character-images.kimberley img.kimberley, .character-images.yuna img.yuna, .character-images.valeria img.valeria {
