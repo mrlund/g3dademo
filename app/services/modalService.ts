@@ -21,10 +21,9 @@ export class ModalService {
             if(value == '') document.querySelector('ion-app').className = "";
             else {
                 document.querySelector('ion-app').className = "";
-                if(value == 'note') document.querySelector('ion-app')['classList'] = [];
+                if(value == 'note') document.querySelector('ion-app').classList.add('note-popup');
                 if(value == 'teacher') document.querySelector('ion-app').classList.add('teacher-popup');
             }
-
         });
     }
 
