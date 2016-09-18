@@ -27,7 +27,11 @@
                         <ion-row>
                             <ion-col text-left>{{item.category.name}}</ion-col>
                             <ion-col text-left>{{item.name}}</ion-col>
-                            <ion-col text-right>$ {{item.price}}</ion-col>
+                            <ion-col text-right>$ {{item.price}}
+                                <button [hidden]="isSubmitted" (click)="removeItem(item)">
+                                    <ion-icon name="close"></ion-icon>
+                                </button>
+                            </ion-col>
                         </ion-row>
                     </ion-item>
                     <ion-item>
@@ -37,13 +41,14 @@
                 <ion-footer-bar>
                     <ion-row *ngIf="addList && addList.length > 0">
                         <ion-col width-70>
-                            <ion-select [(ngModel)]="addSelected">
-                                <ion-option checked="true" value="0">Choose item</ion-option>
-                                <ion-option *ngFor="let option of addList" [value]="option.item">{{option.name}}</ion-option>
-                            </ion-select>
+                            <ion-item>
+                                <ion-select [(ngModel)]="selectItem" (ionChange)="addItem($event)" [placeholder]="'Choose ' + nextCategoryName + ' option...'">
+                                    <ion-option *ngFor="let option of addList" [value]="option.item">{{option.name}}</ion-option>
+                                </ion-select>
+                            </ion-item>
                         </ion-col>
                         <ion-col width-30>
-                            <button *ngIf="!isSubmitted" class="right" (click)="addItem()">Add</button>
+                            <!--<button *ngIf="!isSubmitted" class="right" (click)="addItem()">Add</button>-->
                         </ion-col>
                     </ion-row>
                     <ion-row *ngIf="addList && addList.length == 0">

@@ -1,4 +1,4 @@
-import {NavController, NavParams, MenuController, ToastController} from 'ionic-angular';
+import {NavController, NavParams, MenuController, ToastController, Content} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ContentItem} from '../../models/content-item';
@@ -23,15 +23,19 @@ export class ActivityTablePage {
     categories: Array<any>;
     table: Array<any> = [];
     addList: Array<any> = [];
+    fullList: Array<any> = [];
+    nextCategoryName: string = "";
     addSelected: any;
     total: number;
     pageModel: string;
     Math : any = window['Math'];
     isSubmitted : boolean = false;
     isClassroomModeOn : boolean = false;
+    selectItem: any = {};
 
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
+    @ViewChild(Content) ionContent: Content;
 
     constructor(private nav: NavController,
                 navParams: NavParams,
@@ -66,8 +70,10 @@ export class ActivityTablePage {
                    cat.items.forEach(item => {
                       item.category = processedCat;
                       this.addList.push({categoryId: cat.categoryId, name: item.name + ' $' + item.price, item: item});
+                      this.fullList.push({categoryId: cat.categoryId, name: item.name + ' $' + item.price, item: item});
                    });
                 });
+                this.nextCategoryName = this.addList[0] && this.addList[0].item.category.categoryId ? this.addList[0].item.category.name : "";
             },
             (error) => {
                 console.log(error);
@@ -100,14 +106,30 @@ export class ActivityTablePage {
         }
         return this.randomSuggestions
     }
-    addItem(){
-        this.table.push(this.addSelected);
+    removeItem(removeItem){
+        let tempList: Array<any> = new Array<any>();
+        this.table.splice(this.table.indexOf(removeItem),1);
+        this.fullList.forEach(item => {
+            if (item && item.categoryId == removeItem.category.categoryId){
+                tempList.push(item);
+            };
+        });
+        this.selectItem = {};
+        this.addList = [...tempList, ...this.addList];
+        this.calculateTotal();
+        this.nextCategoryName = this.addList[0] && this.addList[0].item.category.categoryId ? this.addList[0].item.category.name : "";
+    }
+    addItem(selectedItem){        
+        this.table.push(selectedItem);
         var newList = [];
         this.addList = this.addList.filter(item => {
-            return item.categoryId != this.addSelected.category.categoryId
+            return item.categoryId != selectedItem.category.categoryId
         });
+        this.nextCategoryName = this.addList[0] && this.addList[0].item.category.categoryId ? this.addList[0].item.category.name : "";
         this.calculateTotal();
-        this.addSelected = "0";
+        setTimeout(()=>{
+            this.ionContent.scrollToBottom(100);
+        }, 100);
     }
     calculateTotal(){
         this.total = 0;
