@@ -102,6 +102,8 @@ export class ProgressProvider {
       return this.pages[1].children[0].pages[0];
   }
   getPageByParams(project: number, session: number, page: number){
+      var session = session >= 1 ? session-1 : 0;
+      var page = page >= 1 ? page-1 : 0;
       return this.pages[project].children[session].pages[page];
   }
   findLastOpenedPage(Page : number, Project: number, Session: number){

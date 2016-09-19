@@ -3,7 +3,7 @@ import {
     LoadingController, MenuController
 } from 'ionic-angular';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
-import {Component, ChangeDetectorRef, ChangeDetectionStrategy, ViewChild} from '@angular/core';
+import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
