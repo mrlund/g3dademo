@@ -8,18 +8,22 @@ declare var lib: any;
   selector: 'animation',
   providers: [ContentData],
   template: `
-        <canvas *ngIf="isClassroomModeOn == false" [hidden]="!animationFileFound" (click)="playPauseAnimation()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-        <img *ngIf="paused && isClassroomModeOn == false" (click)="playPauseAnimation()" src="/img/play-button-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
-        <canvas *ngIf="isClassroomModeOn == true" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-        <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />
+        <canvas *ngIf="isClassroomModeOn == false" [hidden]="!animationFileFound || !dataLoaded" (click)="playButtonAction()" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas> 
+        <img *ngIf="paused && !dataLoaded" src="/img/{{firstFrame}}" style="position:absolute;width: 600px; height: 600px;top:0;left:0;" />
+        <img *ngIf="paused && isClassroomModeOn == false && isBusy == false" (click)="playButtonAction()" src="/img/play-button-overlay.png" style="position:absolute; width: 600px; height: 600px;top:0;left:0; z-index: 9999" />
+        <!--<img *ngIf="isBusy == true" src="/img/download.png" style="position:absolute;width:600px;height:600px;top:0;left:0;" />-->
+        <div [hidden]="!isBusy" style="background:url(/img/ring-alt.gif) no-repeat center center; width:100%;height:600px;position:absolute;top:0;left:0;"></div>
+        <!--<canvas *ngIf="isClassroomModeOn == true" width="600" height="600" style="background-color:#FFFFFF;position:relative;display:block;"></canvas>-->
+        <!--<img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;width:100%;height:100%;top:0;left:0;" />-->
   `,
-  directives: []  
+  directives: []
 })
 export class Animation implements OnChanges {
   @Input() name:string;
   @Input() project:string;
   @Input() session:string;
   @Input() urlName:string;
+  @Input() firstFrame:string;
   @Input() paused:boolean;
   
   @Output() playStateChanged:EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -32,11 +36,13 @@ export class Animation implements OnChanges {
   private stageHeight:number;
   private animationCode:any;
   private content:ContentData;
-  private isPaused:boolean;
   private animationFileFound: boolean;
   //private updateRate:EventEmitter = new EventEmitter();
   private isClassroomModeOn: boolean = false;
   private sound: any = null;
+
+  private dataLoaded: boolean = false;
+  private isBusy: boolean = false;
 
   constructor(content: ContentData,
               private thisElement: ElementRef,
@@ -45,18 +51,16 @@ export class Animation implements OnChanges {
       this.content = content;
       this._globals.isClassroomModeOn.subscribe(value => {
           this.isClassroomModeOn = value;
-          this.loadAnimationAction();
+          // this.loadAnimationAction();
       });
       window['playSound'] = function (id, loop) {
           self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
           return self.sound;
       }
   }
-  ngOnInit() {
-      this.loadAnimationAction();
-  }
     
   loadAnimationAction(){
+      this.isBusy = true;
       if(this.project && this.session && this.urlName && this.name){
           this.content.loadAnimation(this.project, this.session, this.urlName, this.name).then(
               (data) => {
@@ -81,6 +85,13 @@ export class Animation implements OnChanges {
  update(value) {
     //this.updateRate.next(value);
   }
+  playButtonAction(){
+      if(!this.dataLoaded) {
+          this.loadAnimationAction();
+      } else {
+          this.playPauseAnimation();
+      }
+  }
  playPauseAnimation(){
       var anim = this.stage.getChildAt(0);
       this.playStateChanged.emit(!createjs.Ticker.getPaused());
@@ -89,6 +100,7 @@ export class Animation implements OnChanges {
           st.setPaused(!createjs.Ticker.getPaused());
       }
       createjs.Ticker.setPaused(!createjs.Ticker.getPaused());
+     this.paused = st.paused;
   }
  loadAnimation(){
      if (!createjs.Sound.initializeDefaultPlugins()) { return; }
@@ -113,10 +125,12 @@ export class Animation implements OnChanges {
     }
  }
  handleComplete(that) {
+     this.isBusy = false;
+     this.dataLoaded = true;
+     this.paused = false;
      return function(){
         that.stage = new createjs.Stage(that.canvas);
         that.stage.addChild(new that.animationCode[that.name]());
-        that.stage.update();
 
         createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
         createjs.Ticker.setFPS(lib.properties.fps);
@@ -127,10 +141,10 @@ export class Animation implements OnChanges {
         if (!st){
             st = createjs.Sound._instances[0];
         }        
-        if (st){
-            st.setPaused(true);
-        }
-        createjs.Ticker.setPaused(true);
+        // if (st){
+        //     st.setPaused(true);
+        // }
+        // createjs.Ticker.setPaused(true);
      }
  }
  tickHandler(that){
@@ -179,7 +193,6 @@ export class Animation implements OnChanges {
         //this.page_canvas.style.marginLeft = ((window.innerWidth - newWidth) / 2) + "px";
         // this.page_canvas.parentElement.style.width = this.page_canvas.width + "px";
         // this.page_canvas.parentElement.style.height = this.page_canvas.height + "px";
-  
  }
  
 }

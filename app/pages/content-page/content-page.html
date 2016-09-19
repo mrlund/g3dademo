@@ -20,7 +20,7 @@
             <character-phrase-img></character-phrase-img>
             <inner-content></inner-content>
             <animation *ngIf="animationName && selectedItem" style="position:relative;display:block;" [name]="animationName" [session]="selectedItem.menuItem.session"
-                [project]="selectedItem.menuItem.project" [urlName]="selectedItem.urlName" [paused]="pauseAnimation" (playStateChanged)="setAnimationState($event)">
+                [project]="selectedItem.menuItem.project" [urlName]="selectedItem.urlName" [paused]="pauseAnimation" [firstFrame]="selectedItem.firstFrameFile" (playStateChanged)="setAnimationState($event)">
             </animation>
         </div>
     </div>
