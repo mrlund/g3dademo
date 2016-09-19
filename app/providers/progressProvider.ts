@@ -75,7 +75,7 @@ export class ProgressProvider {
           this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]);
           this.events.publish('lesson:complete', lesson);
       } else {
-          this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]);
+          this.lastPageOpened.next(this.findNextLesson(lesson).pages[0]); // after completing of lesson lastPageOpened will be first page of next lesson
       }
   }
   finishSession(lesson:any){
