@@ -76,6 +76,7 @@ export class ChannelService {
     data$:Observable<any>;
     asignmentData$:Observable<any>;
     reviewData$:Observable<any>;
+    stateData$:Observable<any>;
 
     // These are used to feed the public observables 
     //
@@ -85,6 +86,7 @@ export class ChannelService {
     private dataSubject = new Subject<any>();
     private asignmentDataSubject = new Subject<any>();
     private reviewDataSubject = new Subject<any>();
+    private stateDataSubject = new Subject<any>();
 
     // These are used to track the internal SignalR state 
     //
@@ -112,6 +114,7 @@ export class ChannelService {
         this.data$ = this.dataSubject.asObservable();
         this.asignmentData$ = this.asignmentDataSubject.asObservable();
         this.reviewData$ = this.reviewDataSubject.asObservable();
+        this.stateData$ = this.stateDataSubject.asObservable();
     }
     createConnection():any {
         var channelConfig = this.userService.getChannelConfiguration();
@@ -197,6 +200,8 @@ export class ChannelService {
         var dataSource = this.data$['source'];
         var assignmentDataSource = this.asignmentData$['source'];
         var reviewDataSource = this.reviewData$['source'];
+        var stateDataSource = this.stateData$['source'];
+
         this.createConnection().start()
             .done(() => {
                 // if(this.connectionDropped) {
@@ -212,6 +217,10 @@ export class ChannelService {
                 this.hubConnection.proxies.inclasshub.on('receiveReview', (data) => {
                     reviewDataSource['next'](data);
                 });
+                this.hubConnection.proxies.inclasshub.on('receiveState', (data) => {
+                    stateDataSource['next'](data);
+                });
+
                 this.connectionState$.subscribe((state) => {
                     if (state == ConnectionState.Disconnected) {
                         // this.connectionDropped = true;
@@ -262,4 +271,7 @@ export class ChannelService {
     getReviewData():Observable<any> {
         return this.reviewData$;
     }
+    getPeerReviewState():Observable<any> {
+        return this.stateData$;
+    }    
 }
