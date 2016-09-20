@@ -13,11 +13,11 @@
       <img style="width:100%" src="/img/g3-girls.jpg" />
     </div>
     <div style="text-align: center">
-        <h4 class="toolbar-title"
+        <p class="welcome-student-name"
             *ngIf="userData && userData.Name && isLoggedIn">
             Hello, {{userData.Name}} !
-        </h4>
-        <button *ngIf="!isLoggedIn" class="red" (click)="login()">Login</button>
+        </p>
+        <button *ngIf="!isLoggedIn" class="red" (click)="login()">Welcome! Click here to log in</button>
     </div>
     <div *ngIf="isLoggedIn" style="text-align: center">
       <button class="red" *ngIf="continueFrom" (click)="navigateTo(continuePage)">Continue from {{continuePage.menuItem.title}}: {{continuePage.title}}</button>
