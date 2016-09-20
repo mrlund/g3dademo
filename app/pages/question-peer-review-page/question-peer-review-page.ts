@@ -3,7 +3,7 @@ import {
     LoadingController, MenuController
 } from 'ionic-angular';
 import {DomSanitizationService, SafeHtml} from "@angular/platform-browser";
-import {Component, ChangeDetectorRef, ChangeDetectionStrategy, ViewChild} from '@angular/core';
+import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
@@ -29,6 +29,7 @@ export class QuestionPeerReviewPage {
     questions: any;
     state: string = '';
     loader: Loading;
+    formComplete: boolean = false;
     receivedReview: any;
     submittedReview: boolean;
     submittedFeedback: boolean;
@@ -134,6 +135,7 @@ export class QuestionPeerReviewPage {
             console.log("Show feedback from function");
             this.gotAssignment(this.receivedReview);
             this.state = "get-feedback";
+            this.submittedReview = true;
         }
     }
     pullReview(){
@@ -144,7 +146,19 @@ export class QuestionPeerReviewPage {
         this.questions = answer;
         this.cdRef.detectChanges();
     }
+    validateAnswerFields(){
+        for (var i = 0; i < this.questions.questions.length; i++){
+            console.log(this.questions.questions[i].answers[0].answer);
+            
+            if (!this.questions.questions[i].answers[0].answer || this.questions.questions[i].answers[0].answer.length == 0){
+                this.formComplete = false;
+                return;
+            }
+        }
+        this.formComplete = true;
+    }
     submitAnswers(){
+        //Validate answers completed
         this.loader = this.loadingController.create();
         this.questions.ProjectNumber = this.selectedItem.menuItem.project;
         this.questions.SessionNumber = this.selectedItem.menuItem.session;
@@ -178,6 +192,7 @@ export class QuestionPeerReviewPage {
         this.nav.pop();
     }
     navigateForwardTo(page) {
+
         this.progress.openPage(page);
         this.nav.push(page.componentType, { item: page });
     }

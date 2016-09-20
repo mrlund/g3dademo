@@ -17,7 +17,8 @@ export class WelcomePage {
     let observable = this.progress.getLastPage();
     observable.subscribe(value => {
       this.continueFrom = value;
-      this.continuePage = this.getContinuePage(value);
+      this.continuePage = value;
+      // this.continuePage = this.getContinuePage(value);
     });
   }
   navigateTo(page: ContentItem){

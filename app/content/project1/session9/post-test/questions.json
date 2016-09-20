@@ -2,38 +2,65 @@
     "questions": [
         {
             "type": "multiple-choice",
-            "questionId": 1090101,
-            "question": "Bar graphs graph interval and ratio data, histograms graph nominal and ordinal data",
+            "questionId": 1090201,
+            "question": "Bar graphs are used to display which type of data?",
             "answers": [
                 {
-                    "answer": "True",
+                    "answer": "Interval and Ratio Data",
                     "isCorrect": true
                 },
                 {
-                    "answer": "False",
+                    "answer": "Nominal and Ordinal Data",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Historical Data",
                     "isCorrect": false
                 }
             ]
         },
         {
             "type": "multiple-choice",
-            "questionId": 1090102,
-            "question": "The mean of the data set is always in the middle of a histogram",
+            "questionId": 1090202,
+            "question": "Histograms are used to display which type of data?",
             "answers": [
                 {
-                    "answer": "True",
+                    "answer": "Interval and Ratio Data",
                     "isCorrect": true
                 },
                 {
-                    "answer": "False",
+                    "answer": "Nominal and Ordinal Data",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Historical Data",
                     "isCorrect": false
                 }
             ]
         },
         {
             "type": "multiple-choice",
-            "questionId": 1090103,
-            "question": "The tallest bar or bars on a histogram visually represents the:",
+            "questionId": 1090203,
+            "question": "Box and Whisker Plots are used to display which type of data?",
+            "answers": [
+                {
+                    "answer": "Interval and Ratio Data",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Nominal and Ordinal Data",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Historical Data",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 1090204,
+            "question": "The tallest bar or bars on a histogram visually represent the",
             "answers": [
                 {
                     "answer": "Median",
@@ -46,9 +73,24 @@
                 {
                     "answer": "Mode",
                     "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 1090205,
+            "question": "The middle of the histogram always represents the?",
+            "answers": [
+                {
+                    "answer": "Median",
+                    "isCorrect": true
                 },
                 {
-                    "answer": "None of the above",
+                    "answer": "Mean",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Mode",
                     "isCorrect": false
                 }
             ]

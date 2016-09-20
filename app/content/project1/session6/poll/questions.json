@@ -6,18 +6,22 @@
             "question": "Now that you've collected and analyzed your own data, do using graphs make data easier to understand?",
             "answers": [
                 {
-                    "answer": "Very",
-                    "isCorrect": true
+                    "answer": "Strongly Agree"
                 },
                 {
-                    "answer": "Somewhat",
-                    "isCorrect": false
+                    "answer": "Agree"
                 },
                 {
-                    "answer": "Not at all",
-                    "isCorrect": false
-                }
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
             ]
+
         }
     ]
 }

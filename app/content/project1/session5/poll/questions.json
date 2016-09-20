@@ -6,17 +6,20 @@
             "question": "Math and data are present in a wide variety of careers",
             "answers": [
                 {
-                    "answer": "Agree",
-                    "isCorrect": true
+                    "answer": "Strongly Agree"
                 },
                 {
-                    "answer": "Somewhat",
-                    "isCorrect": false
+                    "answer": "Agree"
                 },
                 {
-                    "answer": "Disagree",
-                    "isCorrect": false
-                }
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
             ]
         }
     ]

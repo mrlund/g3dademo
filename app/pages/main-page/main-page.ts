@@ -157,6 +157,7 @@ export class MainPage implements OnInit{
           new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/Quiz', 1, 9, null, [
+          new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage)
         ])
       ]),

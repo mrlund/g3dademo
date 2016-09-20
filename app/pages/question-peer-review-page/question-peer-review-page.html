@@ -86,14 +86,14 @@
                     <ion-input value="" [(ngModel)]="question.answers[0].response" type="text" placeholder="Give a reason for your assessment..."></ion-input>
                 </ion-footer-bar>
                 <ion-footer-bar *ngIf="state == 'answer'">
-                    <ion-input value="" [(ngModel)]="question.answers[0].answer" type="text" placeholder="Answer..."></ion-input>
+                    <ion-input (blur)="validateAnswerFields()" value="" [(ngModel)]="question.answers[0].answer" type="text" placeholder="Answer..."></ion-input>
                 </ion-footer-bar>
             </ion-card-content>
         </ion-card>
         <ion-card>
             <button *ngIf="receivedReview && receivedReview.UserId && (state != 'give-feedback' && state != 'get-feedback')" class="" (click)="showFeedback()">Show Feedback</button>
             <button *ngIf="state == 'give-feedback'" class="right" (click)="submitFeedback()">Submit Feedback</button>
-            <button *ngIf="state == 'answer'" class="right" (click)="submitAnswers()">Submit Answers</button>
+            <button *ngIf="state == 'answer'" class="right" [disabled]="!formComplete" (click)="submitAnswers()">Submit Answers</button>
         </ion-card>
     </div>
 </ion-content>
