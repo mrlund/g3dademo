@@ -12,7 +12,7 @@ declare var lib: any;
          [hidden]="!animationFileFound || !dataLoaded"
          (click)="playButtonAction()" width="600" height="600" 
          style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-        <img *ngIf="paused && !dataLoaded" src="/img/{{firstFrame}}" 
+        <img *ngIf="paused && !dataLoaded" src="{{firstFramePath}}" 
         style="position:absolute;top:0;left:0;"
         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="paused && isClassroomModeOn == false && isBusy == false"
@@ -56,6 +56,7 @@ export class Animation implements OnChanges {
     private isBusy: boolean = false;
 
     sizeOfCanvas: number = 600;
+    firstFramePath = '';
 
     constructor(content: ContentData,
                 private thisElement: ElementRef,
@@ -72,7 +73,14 @@ export class Animation implements OnChanges {
         };
         setTimeout(() => {
             this.getContainerSize();
+            this.buildFirstFramePath();
         });
+    }
+
+    buildFirstFramePath(){
+        if(this.project && this.session && this.urlName && this.firstFrame) {
+            this.firstFramePath = '/build/content/project' + this.project+'/session' + this.session+ '/' + this.urlName +  '/' + this.firstFrame;
+        }
     }
 
     loadAnimationAction() {
