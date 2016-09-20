@@ -54,7 +54,6 @@ export class AnimationContentItem implements IContentItem {
             this.componentType = componentType;
             this.animationName = animationName ? animationName : defaultAnimationNameFile;
 
-            // now it's just hardcoded, before you add all first frames files for all videos in build/img/
-            this.firstFrameFile = "p1s1.jpg"; // this.animationName + '.jpg'; // now a name of first frame is the same as a name of animation js file
+            this.firstFrameFile =  this.animationName + '.jpg'; // now a name of first frame is the same as a name of animation js file
         }
 }
