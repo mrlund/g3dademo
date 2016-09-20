@@ -91,7 +91,7 @@
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <button *ngIf="state == 'awaitingReviewAssignmentFeedbackReady" class="" (click)="showFeedback()">Show Feedback</button>
+            <button *ngIf="state == 'awaitingReviewAssignmentFeedbackReady'" class="" (click)="showFeedback()">Show Feedback</button>
             <button *ngIf="state == 'reviewing'" class="right" (click)="submitFeedback()">Submit Feedback</button>
             <button *ngIf="state == 'answering'" class="right" [disabled]="!formComplete" (click)="submitAnswers()">Submit Answers</button>
         </ion-card>

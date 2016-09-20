@@ -218,7 +218,8 @@ export class ChannelService {
                     reviewDataSource['next'](data);
                 });
                 this.hubConnection.proxies.inclasshub.on('receiveState', (data) => {
-                    stateDataSource['next'](data);
+                    this.stateDataSubject.next(data);
+                    //stateDataSource['next'](data);
                 });
 
                 this.connectionState$.subscribe((state) => {
@@ -274,4 +275,7 @@ export class ChannelService {
     getPeerReviewState():Observable<any> {
         return this.stateData$;
     }    
+    getStateSubject():Subject<any> {
+        return this.stateDataSubject;
+    }        
 }

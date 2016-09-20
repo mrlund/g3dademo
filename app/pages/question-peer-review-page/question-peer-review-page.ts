@@ -18,6 +18,9 @@ import {Globals} from "../../globals";
 import {UserService} from "../../services/userService";
 
 import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
+import {Subscription} from "rxjs/Subscription";
+
 
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
@@ -33,9 +36,9 @@ export class QuestionPeerReviewPage {
     formComplete: boolean = false;
     userData: Map<string, string>;
 
-    // answersDataObservable: Observable<any>;
-    // reviewDataObservable: Observable<any>;
-
+    answerSub: Subscription;
+    reviewSub: Subscription;
+    stateSub: Subscription;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -95,8 +98,8 @@ export class QuestionPeerReviewPage {
                 console.log(error);
             }
         );
-         let answersDataObservable = this.channelService.getAssignmentData();
-        answersDataObservable['source'].subscribe((answer) => {
+
+         this.answerSub = this.channelService.getAssignmentData().subscribe((answer) => {
             console.log("Got assignment:", answer);
             for(let question of answer.questions) { // to reset isCorrect and response fields before giving feedback
                 let firstAnswer = question['answers'][0];
@@ -106,27 +109,36 @@ export class QuestionPeerReviewPage {
             this.questions = answer;
         });
 
-        let reviewDataObservable = this.channelService.getReviewData();
-        reviewDataObservable['source'].subscribe((answer) => {
+        this.reviewSub = this.channelService.getReviewData().subscribe((answer) => {
             console.log("Got review:", answer);
             this.questions = answer;
         });
 
-        let stateDataObservable = this.channelService.getPeerReviewState();
-        stateDataObservable['source'].subscribe((answer) => {
+        console.log("Subscribed");
+        this.stateSub = this.channelService.getPeerReviewState().subscribe((answer) => {
             console.log("Got state:", answer);
             this.state = answer;
             this.cdRef.detectChanges();
+            
+            setTimeout(() => {
+                console.log("update: " + this.state);
+            }, 10);
+            
         });        
     }
     ngOnDestroy(){
-        
+        console.log("Unsubscribe");
+        this.stateSub.unsubscribe();
+        this.answerSub.unsubscribe();
+        this.reviewSub.unsubscribe();
     }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
     updateState(){
-        this.channelService.getConnection().proxies.inclasshub.invoke("sendUserState");   
+        console.log("Request update state");
+        
+        this.channelService.getConnection().proxies.inclasshub.invoke("sendUserState", "");   
     }
     submitAnswers(){
         this.questions.ProjectNumber = this.selectedItem.menuItem.project;
