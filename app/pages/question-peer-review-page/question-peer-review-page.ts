@@ -40,6 +40,8 @@ export class QuestionPeerReviewPage {
     reviewSub: Subscription;
     stateSub: Subscription;
 
+    submittedReview: boolean = false;
+
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
 
@@ -99,6 +101,8 @@ export class QuestionPeerReviewPage {
             }
         );
 
+        console.log("Subscribed");
+
          this.answerSub = this.channelService.getAssignmentData().subscribe((answer) => {
             console.log("Got assignment:", answer);
             for(let question of answer.questions) { // to reset isCorrect and response fields before giving feedback
@@ -114,9 +118,15 @@ export class QuestionPeerReviewPage {
             this.questions = answer;
         });
 
-        console.log("Subscribed");
         this.stateSub = this.channelService.getPeerReviewState().subscribe((answer) => {
             console.log("Got state:", answer);
+
+            if (answer != "answering"){
+                this.submittedReview = true;
+            } else {
+                this.submittedReview = false;
+            }
+
             this.state = answer;
             this.cdRef.detectChanges();
             
@@ -147,6 +157,7 @@ export class QuestionPeerReviewPage {
 
         this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
         this.state = "awaitingReviewAssignment";
+        this.submittedReview = true;
         this.updateState();
     }
     submitFeedback(){
@@ -154,7 +165,9 @@ export class QuestionPeerReviewPage {
         this.updateState();
     }
 
-
+    pullReview(){
+        this.channelService.getConnection().proxies.inclasshub.invoke("pullReview", this.questions);
+    }
     validateAnswerFields(){
         for (var i = 0; i < this.questions.questions.length; i++){
             console.log(this.questions.questions[i].answers[0].answer);
