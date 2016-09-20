@@ -11,9 +11,10 @@ declare var lib: any;
         <canvas *ngIf="isClassroomModeOn == false"
          [hidden]="!animationFileFound || !dataLoaded"
          (click)="playButtonAction()" width="600" height="600" 
-         style="background-color:#FFFFFF;position:relative;display:block;"></canvas> 
+         style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
         <img *ngIf="paused && !dataLoaded" src="/img/{{firstFrame}}" 
-        style="position:absolute;width: 600px; height: 600px;top:0;left:0;"/>
+        style="position:absolute;top:0;left:0;"
+        [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="paused && isClassroomModeOn == false && isBusy == false"
          (click)="playButtonAction()"
           src="/img/play-button-overlay.png"
@@ -22,7 +23,8 @@ declare var lib: any;
         <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
         <div [hidden]="!isBusy"
-         style="background:url(/img/ring-alt.gif) no-repeat center center; width:600px;height:600px;position:absolute;top:0;left:0;">
+         style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
+         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
          </div>
   `,
     directives: []
@@ -67,7 +69,10 @@ export class Animation implements OnChanges {
         window['playSound'] = function (id, loop) {
             self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
             return self.sound;
-        }
+        };
+        setTimeout(() => {
+            this.getContainerSize();
+        });
     }
 
     loadAnimationAction() {
@@ -191,6 +196,11 @@ export class Animation implements OnChanges {
                 self.playPauseAnimation();
             }
         }
+    }
+
+    getContainerSize(){
+        var newWidth = this.thisElement.nativeElement.offsetWidth; //window.innerWidth;
+        this.sizeOfCanvas = newWidth; //  new value instead of default 600 px
     }
 
     resizeAnimation() {
