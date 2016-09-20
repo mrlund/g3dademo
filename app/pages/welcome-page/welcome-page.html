@@ -13,6 +13,10 @@
       <img style="width:100%" src="/img/g3-girls.jpg" />
     </div>
     <div style="text-align: center">
+        <h3 *ngIf="userData && userData.Name">Hello, {{userData.Name}} !</h3>
+        <button class="red" (click)="login()">Login</button>
+    </div>
+    <div style="text-align: center">
       <button class="red" *ngIf="continueFrom" (click)="navigateTo(continuePage)">Continue from {{continuePage.menuItem.title}}: {{continuePage.title}}</button>
       <button class="red"  *ngIf="!continueFrom" (click)="startCourse()">Get Started!</button>
     </div>

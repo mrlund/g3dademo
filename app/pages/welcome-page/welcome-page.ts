@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ContentItem} from '../../models/content-item';
+import {UserService} from "../../services/userService";
 
 @Component({
   templateUrl: 'build/pages/welcome-page/welcome-page.html'
@@ -9,8 +10,16 @@ import {ContentItem} from '../../models/content-item';
 export class WelcomePage {
   continueFrom: ContentItem;
   continuePage: ContentItem;
+  userData: any;
 
-  constructor(private nav: NavController, private progress: ProgressProvider){
+  constructor(private nav: NavController,
+              private progress: ProgressProvider,
+              private userService: UserService,){
+    this.userData = userService.getUserData();
+  }
+
+  login(){
+    this.userService.goToLogin();
   }
   
   ngOnInit() {
