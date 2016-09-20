@@ -15,7 +15,7 @@ export class User {
 @Injectable()
 export class UserService {
 
-    private baseUrl: string =  "http://localhost:26209"; //"https://girlsinc.azurewebsites.net";
+    private baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
 
     constructor(private router: Router,
                 private http: Http,

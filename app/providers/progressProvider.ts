@@ -16,7 +16,7 @@ export class ProgressProvider {
   private pages: Array<MenuItem>;
   private startFrom: MenuItem;
   private isLoggedIn: boolean = false;
-  private baseUrl: string =  "http://localhost:26209"; //"https://girlsinc.azurewebsites.net";
+  private baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
 
   constructor(private events: Events,
               private app: App,
