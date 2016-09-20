@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {ContentItem} from '../../models/content-item';
 import {UserService} from "../../services/userService";
+import {Globals} from "../../globals";
 
 @Component({
   templateUrl: 'build/pages/welcome-page/welcome-page.html'
@@ -11,11 +12,16 @@ export class WelcomePage {
   continueFrom: ContentItem;
   continuePage: ContentItem;
   userData: any;
+  isLoggedIn: boolean = false;
 
   constructor(private nav: NavController,
               private progress: ProgressProvider,
-              private userService: UserService,){
+              private userService: UserService,
+              private _globals: Globals){
     this.userData = userService.getUserData();
+      _globals.isLoggedIn.subscribe(value => {
+          this.isLoggedIn = value;
+      });
   }
 
   login(){
