@@ -17,6 +17,11 @@ import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
 import {UserService} from "../../services/userService";
 
+import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
+import {Subscription} from "rxjs/Subscription";
+
+
 @Component({
     templateUrl: 'build/pages/question-peer-review-page/question-peer-review-page.html',
     providers: [],
@@ -27,14 +32,13 @@ export class QuestionPeerReviewPage {
     private _pageContent: string;
     private isClassroomModeOn: boolean;
     questions: any;
-    state: string = '';
-    loader: Loading;
+    state: string = 'answering';
     formComplete: boolean = false;
-    receivedReview: any;
-    submittedReview: boolean;
-    submittedFeedback: boolean;
-    respondingToClientId: string;
     userData: Map<string, string>;
+
+    answerSub: Subscription;
+    reviewSub: Subscription;
+    stateSub: Subscription;
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -84,9 +88,7 @@ export class QuestionPeerReviewPage {
                         let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
                         this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
                         this.characterPhraseImg.draw(pageModel);
-                        this.channelService.getConnection().proxies.inclasshub.invoke("checkForExistingState");
-                        //console.log("Attaching CD");
-                        //this.cdRef.markForCheck();
+                        this.updateState();
                     }
                 ).catch((e) => {
                     this.innerContent.recompileTemplate(this._pageContent, '');
@@ -96,56 +98,63 @@ export class QuestionPeerReviewPage {
                 console.log(error);
             }
         );
-        this.receivedReview = {};
-        let answersDataObservable = this.channelService.getAssignmentData();
-        answersDataObservable['source'].subscribe((answer) => {
+
+         this.answerSub = this.channelService.getAssignmentData().subscribe((answer) => {
             console.log("Got assignment:", answer);
             for(let question of answer.questions) { // to reset isCorrect and response fields before giving feedback
                 let firstAnswer = question['answers'][0];
                 firstAnswer['isCorrect'] = null;
                 firstAnswer['response'] = null;
             }
-            this.state = "give-feedback";
-            this.gotAssignment(answer);
+            this.questions = answer;
         });
-        let reviewDataObservable = this.channelService.getReviewData();
-        reviewDataObservable['source'].subscribe((answer) => {
+
+        this.reviewSub = this.channelService.getReviewData().subscribe((answer) => {
             console.log("Got review:", answer);
-            console.log(this.receivedReview);
-            
-            if ((this.receivedReview && this.receivedReview.UserId)||(this.submittedFeedback && this.state == "loading")){
-                console.log("Show feedback");
-                this.state = "get-feedback";
-                this.gotAssignment(answer);
-            } else {
-                console.log("Still giving feedback, store for later.");
-                this.receivedReview = answer;
-            }
+            this.questions = answer;
         });
+
+        console.log("Subscribed");
+        this.stateSub = this.channelService.getPeerReviewState().subscribe((answer) => {
+            console.log("Got state:", answer);
+            this.state = answer;
+            this.cdRef.detectChanges();
+            
+            setTimeout(() => {
+                console.log("update: " + this.state);
+            }, 10);
+            
+        });        
     }
     ngOnDestroy(){
-        console.log("Destroy Review");
-        this.receivedReview = {};
+        console.log("Unsubscribe");
+        this.stateSub.unsubscribe();
+        this.answerSub.unsubscribe();
+        this.reviewSub.unsubscribe();
     }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
-    showFeedback(){
-        if (this.receivedReview && this.receivedReview.UserId){
-            console.log("Show feedback from function");
-            this.gotAssignment(this.receivedReview);
-            this.state = "get-feedback";
-            this.submittedReview = true;
-        }
+    updateState(){
+        console.log("Request update state");
+        
+        this.channelService.getConnection().proxies.inclasshub.invoke("sendUserState", "");   
     }
-    pullReview(){
-        this.channelService.getConnection().proxies.inclasshub.invoke("pullReview");   
+    submitAnswers(){
+        this.questions.ProjectNumber = this.selectedItem.menuItem.project;
+        this.questions.SessionNumber = this.selectedItem.menuItem.session;
+        this.questions.PageNumber = this.selectedItem.page;
+
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
+        this.state = "awaitingReviewAssignment";
+        this.updateState();
     }
-    gotAssignment(answer){
-        this.respondingToClientId = answer.ClientId;
-        this.questions = answer;
-        this.cdRef.detectChanges();
+    submitFeedback(){
+        this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
+        this.updateState();
     }
+
+
     validateAnswerFields(){
         for (var i = 0; i < this.questions.questions.length; i++){
             console.log(this.questions.questions[i].answers[0].answer);
@@ -156,30 +165,7 @@ export class QuestionPeerReviewPage {
             }
         }
         this.formComplete = true;
-    }
-    submitAnswers(){
-        //Validate answers completed
-        this.loader = this.loadingController.create();
-        this.questions.ProjectNumber = this.selectedItem.menuItem.project;
-        this.questions.SessionNumber = this.selectedItem.menuItem.session;
-        this.questions.PageNumber = this.selectedItem.page;
-
-        this.channelService.getConnection().proxies.inclasshub.invoke("submitAnswer", this.questions); //JSON.stringify(this.questions)
-        this.state = "loading";
-        this.submittedReview = true;
-    }
-    submitFeedback(){
-        this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
-        this.submittedFeedback = true;
-        if (this.receivedReview && this.receivedReview.UserId){
-            this.questions = this.receivedReview;
-            this.state = "get-feedback";
-            this.cdRef.detectChanges();
-        }else {
-            this.receivedReview = true;
-            this.state = "loading";
-        }
-    }
+    }    
     toggleMenu() {
         if (this.menu.isOpen()) {
             this.menu.close();
@@ -198,56 +184,6 @@ export class QuestionPeerReviewPage {
     }
     finishSession() {
         this.progress.finishSession(this.selectedItem.menuItem);
-    }
-    private getAnswer(){
-        var resp = `{
-            "questions": [
-                {
-                    "questionId": 100,
-                    "type": "peer-review",
-                    "question": "What conclusions can you draw from this data?",
-                    "answers": [
-                        {
-                            "answer": "Education, Parents",
-                            "isCorrect": true,
-                            "response": "I agree"
-                        }
-                    ]
-                },
-                {
-                    "questionId": 101,
-                    "type": "peer-review",
-                    "question": "What are some reasons why higher education leads to a higher annual salary?",
-                    "answers": [
-                        {
-                            "answer": "Education",
-                            "isCorrect": true,
-                            "response": "With a good education you can make it on your own."
-                        }
-                    ]
-
-                },
-                {
-                    "questionId": 102,
-                    "type": "peer-review",
-                    "question": "What stands out to you about this data set? Why?",
-                    "answers": [
-                        {
-                            "answer": "Education",
-                            "isCorrect": false,
-                            "response": "With a good education you can make it on your own."
-                        }
-                    ]
-
-                }
-
-            ]
-            }`;
-            var obj = JSON.parse(resp);
-            if (this.respondingToClientId){
-                obj.ClientId = this.respondingToClientId;
-            }
-            return obj;
     }
     createNote(){
         this.modalService.showAddNotePopup();

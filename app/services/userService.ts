@@ -15,6 +15,8 @@ export class User {
 @Injectable()
 export class UserService {
 
+    private baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
+
     constructor(private router: Router,
                 private http: Http,
                 private _globals: Globals,
@@ -31,7 +33,7 @@ export class UserService {
     }
 
     singUp(newUserData: any) {
-        this.http.post('https://girlsinc.azurewebsites.net' + '/api/account/register', newUserData).subscribe(res => {
+        this.http.post(this.baseUrl + '/api/account/register', newUserData).subscribe(res => {
             this.router.navigate(['/login']);
         });
     }
@@ -40,7 +42,7 @@ export class UserService {
         let creds = "username=" + user.login + "&password=" + user.password + "&grant_type=password";
         let headers = new Headers();
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
-        this.http.post('https://girlsinc.azurewebsites.net' + '/token', creds, {headers: headers}).subscribe(res => {
+        this.http.post(this.baseUrl + '/token', creds, {headers: headers}).subscribe(res => {
             let parsedRes = res.json();
             let token = parsedRes['access_token'];
             localStorage.setItem("api_token", token);
@@ -50,7 +52,7 @@ export class UserService {
             let headers = new Headers();
             headers.append('Authorization', 'Bearer ' + token);
             //get data of userprofile
-            this.http.get('https://girlsinc.azurewebsites.net' + '/api/account/userprofile', {headers: headers}).subscribe(res => {
+            this.http.get(this.baseUrl + '/api/account/userprofile', {headers: headers}).subscribe(res => {
                 let parsedRes = res.json();
                 localStorage.setItem("userData", JSON.stringify(parsedRes));
                 this.router.navigate(['/main']);
@@ -95,7 +97,7 @@ export class UserService {
     getChannelConfiguration() {
         var userData = this.getUserData();
         let channelConfig = new ChannelConfig();
-        channelConfig.url = "http://girlsinc.azurewebsites.net/signalr";
+        channelConfig.url = this.baseUrl + "/signalr";
         channelConfig.hubName = "inClassHub";
         channelConfig.params = new Map<string, string>();
         channelConfig.params['uid'] = userData.UserId;

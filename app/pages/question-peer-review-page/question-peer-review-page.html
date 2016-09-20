@@ -25,20 +25,20 @@
                 <inner-content></inner-content>
             </ion-card-content>
         </ion-card>
-        <ion-card *ngIf="state == 'give-feedback'">
+        <ion-card *ngIf="state == 'reviewing'">
             <ion-card-content>
                 <strong>Now you're the teacher!</strong> The answers below were given by a classmate. Do you think they are
                 correct, and why or why not?
             </ion-card-content>
         </ion-card>
-        <ion-card *ngIf="state == 'get-feedback'">
+        <ion-card *ngIf="state == 'viewFeedback'">
             <ion-card-content>
                 <strong>How did you do?</strong> Your classmate gave you the following response.
             </ion-card-content>
         </ion-card>
-        <ion-card *ngIf="state == 'loading'">
+        <ion-card *ngIf="state == 'awaitingReviewAssignment' || state == 'awaitingReviewAssignmentFeedbackReady'  || state == 'awaitingFeedback'">
             <ion-card-content>
-                Waiting....
+                Please Wait....
                 <ion-spinner></ion-spinner>
             </ion-card-content>
         </ion-card>
@@ -50,7 +50,7 @@
                 </strong>
                 </ion-card-title>
                 <ion-list radio-group [(ngModel)]="question.answers[0].isCorrect">
-                    <div *ngIf="state == 'give-feedback'">
+                    <div *ngIf="state == 'reviewing'">
                         <ion-item *ngFor="let answer of question.answers">
                             <ion-label>Answer: {{answer.answer}}
                                 <br /><br />
@@ -66,7 +66,7 @@
                             <ion-radio value="false"></ion-radio>
                         </ion-item>
                     </div>
-                    <div *ngIf="state == 'get-feedback'">
+                    <div *ngIf="state == 'viewFeedback'">
                         <div *ngFor="let answer of question.answers">
                             <ion-item>
                                 <ion-label><strong>Your answer:</strong> {{answer.answer}}</ion-label>
@@ -82,18 +82,18 @@
                         </div>
                     </div>
                 </ion-list>
-                <ion-footer-bar *ngIf="state == 'give-feedback'">
+                <ion-footer-bar *ngIf="state == 'reviewing'">
                     <ion-input value="" [(ngModel)]="question.answers[0].response" type="text" placeholder="Give a reason for your assessment..."></ion-input>
                 </ion-footer-bar>
-                <ion-footer-bar *ngIf="state == 'answer'">
+                <ion-footer-bar *ngIf="state == 'answering'">
                     <ion-input (blur)="validateAnswerFields()" value="" [(ngModel)]="question.answers[0].answer" type="text" placeholder="Answer..."></ion-input>
                 </ion-footer-bar>
             </ion-card-content>
         </ion-card>
         <ion-card>
-            <button *ngIf="receivedReview && receivedReview.UserId && (state != 'give-feedback' && state != 'get-feedback')" class="" (click)="showFeedback()">Show Feedback</button>
-            <button *ngIf="state == 'give-feedback'" class="right" (click)="submitFeedback()">Submit Feedback</button>
-            <button *ngIf="state == 'answer'" class="right" [disabled]="!formComplete" (click)="submitAnswers()">Submit Answers</button>
+            <button *ngIf="state == 'awaitingReviewAssignmentFeedbackReady'" class="" (click)="showFeedback()">Show Feedback</button>
+            <button *ngIf="state == 'reviewing'" class="right" (click)="submitFeedback()">Submit Feedback</button>
+            <button *ngIf="state == 'answering'" class="right" [disabled]="!formComplete" (click)="submitAnswers()">Submit Answers</button>
         </ion-card>
     </div>
 </ion-content>
