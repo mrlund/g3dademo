@@ -41,6 +41,7 @@ export class MainPage implements OnInit{
   userData: Map<string, string>;
   currentPage: any = null;
   classroomMode: boolean = false;
+  connectAttempts: number;
 
   constructor(
       private app: App,
@@ -59,8 +60,13 @@ export class MainPage implements OnInit{
       this.isLoggedIn = value;
     });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
-    this.channelService.error$.subscribe(
-        (error: any) => { console.warn(error); },
+    this.channelService.error$.debounceTime(500).subscribe(
+        (error: any) => { 
+          console.warn(error);
+          if (this.connectAttempts++ < 10){
+            this.startHubChannel();
+          } 
+        },
         (error: any) => { console.error("errors$ error", error); }
     );
     // Wire up a handler for the starting$ observable to log the

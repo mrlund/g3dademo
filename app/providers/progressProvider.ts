@@ -16,6 +16,7 @@ export class ProgressProvider {
   private pages: Array<MenuItem>;
   private startFrom: MenuItem;
   private isLoggedIn: boolean = false;
+  private baseUrl: string =  "http://localhost:26209"; //"https://girlsinc.azurewebsites.net";
 
   constructor(private events: Events,
               private app: App,
@@ -55,7 +56,7 @@ export class ProgressProvider {
           let headers = new Headers();
           headers.append('Authorization', 'Bearer ' + token);
           //get data of userprofile
-          this.http.post('https://girlsinc.azurewebsites.net' + '/api/progress', data, {headers: headers}).subscribe(res => {
+          this.http.post(this.baseUrl + '/api/progress', data, {headers: headers}).subscribe(res => {
               this.lastPageOpened.next(page);
           });
           this._globals.setCurrentPage({project: data.Project, session: data.Session, page: data.Page});
@@ -67,7 +68,7 @@ export class ProgressProvider {
       let token = localStorage.getItem("api_token");
       let headers = new Headers();
       headers.append('Authorization', 'Bearer ' + token);
-      return this.http.post('https://girlsinc.azurewebsites.net' + '/api/notes', noteData, {headers: headers});
+      return this.http.post(this.baseUrl + '/api/notes', noteData, {headers: headers});
   }
   completeLesson(lesson: MenuItem){
       if(this.isLoggedIn){
@@ -96,7 +97,7 @@ export class ProgressProvider {
     let token = localStorage.getItem("api_token");
     let headers = new Headers();
     headers.append('Authorization', 'Bearer ' + token);
-    return this.http.get('https://girlsinc.azurewebsites.net' + '/api/progress', {headers: headers});
+    return this.http.get(this.baseUrl + '/api/progress', {headers: headers});
   }
   getFirstLesson(){
       return this.pages[1].children[0].pages[0];
