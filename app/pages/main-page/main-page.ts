@@ -41,7 +41,7 @@ export class MainPage implements OnInit{
   userData: Map<string, string>;
   currentPage: any = null;
   classroomMode: boolean = false;
-  connectAttempts: number;
+  connectAttempts: number = 0;
 
   constructor(
       private app: App,
@@ -64,6 +64,7 @@ export class MainPage implements OnInit{
         (error: any) => { 
           console.warn(error);
           if (this.connectAttempts++ < 10){
+            console.log("Reconnecting");
             this.startHubChannel();
           } 
         },
