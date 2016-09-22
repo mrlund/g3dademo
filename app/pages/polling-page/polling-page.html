@@ -48,12 +48,12 @@
             </button>
         </ion-buttons>
         <ion-buttons end>
-            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="questionsNotAnswered()">
+            <button (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotAnswered()">
                 Next
                 <ion-icon name="arrow-forward" item-right></ion-icon>
             </button>
-            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="questionsNotAnswered()">
-                DONE!
+            <button (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotAnswered()">
+                isComplete
                 <ion-icon name="checkmark" item-right></ion-icon>
             </button>
         </ion-buttons>
