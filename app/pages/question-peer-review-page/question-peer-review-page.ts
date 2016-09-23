@@ -154,7 +154,6 @@ export class QuestionPeerReviewPage {
         this.updateState();
     }
 
-
     validateAnswerFields(){
         for (var i = 0; i < this.questions.questions.length; i++){
             console.log(this.questions.questions[i].answers[0].answer);
