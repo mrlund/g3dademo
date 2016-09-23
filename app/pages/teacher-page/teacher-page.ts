@@ -98,12 +98,28 @@ export class TeacherPage {
                         for (let id in this.processedSuggestions) {
                             var currentCloud = this.window.$('#jqcloud-innner-' + id);
                             if (currentCloud.length) {
-                                currentCloud.jQCloud('update', this.processedSuggestions[id]);
+                                let suggestionsCount = this.processedSuggestions[id].length;
+                                let currentHeight = currentCloud.height();
+                                let newHeight =  ( Math.ceil((suggestionsCount ) / 10) * 50 + 200 ); //every 10 suggestions  are increase to 50 px
+                                if(newHeight >  currentHeight){
+                                    currentCloud.height(newHeight);
+                                    let currentCloudData = this.processedSuggestions[id];
+                                    currentCloud.jQCloud('destroy');
+                                    currentCloud.jQCloud(currentCloudData, {
+                                        autoResize: true,
+                                        steps: 3,
+                                        fontSize: ['60px', '45px', '30px']
+                                    });
+                                 //   currentCloud.jQCloud('update', this.processedSuggestions[id]);
+                                }
+                                else {
+                                    currentCloud.jQCloud('update', this.processedSuggestions[id]);
+                                }
                             } else {
                                 var headerHeight = 44;
                                 var heightOfScreen = this.window.$(window).height() - headerHeight;
 
-                                this.window.$(cloudsBlock).append("<div class='inner-jqcloud-block' id='" + "jqcloud-innner-" + id + "'><h3>"+ this.processedSuggestions[id].title +"</h3></div>");
+                                this.window.$(cloudsBlock).append("<div><h3>"+ this.processedSuggestions[id].title +"</h3><div class='inner-jqcloud-block' id='" + "jqcloud-innner-" + id + "'></div></div>");
                                 let cloudElement = this.window.$("#jqcloud-innner-" + id);
                                 let newHeight = heightOfScreen / Object.keys(this.processedSuggestions).length;
 
