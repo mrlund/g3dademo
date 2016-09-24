@@ -22,9 +22,10 @@ declare var lib: any;
           [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
-        <div [hidden]="!isBusy"
-         style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
-         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
+        <div *ngIf="isBusy == true">
+            <div style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
+             [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
+            </div>
          </div>
   `,
     directives: []
@@ -157,10 +158,10 @@ export class Animation implements OnChanges {
     }
 
     handleComplete(that) {
-        this.isBusy = false;
         this.dataLoaded = true;
         this.paused = false;
         return function () {
+            that.isBusy = false;
             that.stage = new createjs.Stage(that.canvas);
             that.stage.addChild(new that.animationCode[that.name]());
 
