@@ -170,76 +170,77 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
         new MenuItem('Introduction', 2, 1, null, [
-          new ContentItem('roadmap', 'Roadmap', ContentPage),
+          new ContentItem('roadmap', 'Project Roadmap', ContentPage),
           new ContentItem('introduction', 'Introduction', ContentPage),
           new AnimationContentItem('storyline', 'Story line', ContentPage, 'p2s1'),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
         new MenuItem('Project Background', 2, 2, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
           new ContentItem('poll', 'Polling test', PollingPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Representing Quantitive Data', 2, 3, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('intro-video', 'Experiencing', ContentPage, 'p2s3'),
+          new ContentItem('processing-activity', 'Text-Based Discussion Protocol', ContentPage),
           new ContentItem('generalized-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
-          new ContentItem('processing-activity', 'Text-Based Discussion Protocol', AnswerQuestionPage),
-          new ContentItem('applying-activity', 'Generalizing - class discussion', AnswerQuestionPage),
+          new ContentItem('applying-activity', 'Generalizing - class discussion', ContentPage),
         ]),        
         new MenuItem('Analyzing Data - Mean', 2, 4, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s4'),
-          new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('discussion', 'Discussion', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+          new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying-class-discussion', 'Applying', ContentPage),
+          new ContentItem('applying-class-discussion', 'Applying', AnswerQuestionPage),
         ]),
         new MenuItem('Analyzing Data: Interquartile Range', 2, 5, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s5'),
           new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
           new ContentItem('processing-class-discussion', 'Processing - activity', ContentPage),
           new ContentItem('activity', 'Activity', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Analyzing Data: Normal Distribution', 2, 6, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s6'),
           new ContentItem('experiencing', 'Experiencing - video', ContentPage),
-          new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
+          new ContentItem('processing-class-discussion', 'Processing class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('activity', 'Applying - activity', ContentPage)
         ]),
         new MenuItem('Analyzing Data - Standard Deviation', 2, 7, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s7'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('end', 'What is standard deviation?', ContentPage),
           new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('end', 'What is standard deviation?', ContentPage)
+          new ContentItem('applying', 'Appplying', AnswerQuestionPage)
         ]),
         new MenuItem('Making Predictions About Data', 2, 8, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
-          new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
         new MenuItem('Breaking The Cycle', 2, 9, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Project Workshop', 2, 10, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Project Presentation', 2, 11, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Summary/Quiz', 2, 12, null, [
           new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage)
