@@ -7,6 +7,9 @@
         </ion-buttons>
         <ion-title>{{selectedItem.title}}</ion-title>
         <ion-buttons end>
+            <button [hidden]="!userData.IsFacilitator" (click)="syncPage()">
+                <ion-icon name="sync"></ion-icon>
+            </button>
             <button (click)="createNote()">
                 <ion-icon name="create"></ion-icon>
             </button>

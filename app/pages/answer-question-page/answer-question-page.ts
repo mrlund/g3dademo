@@ -92,6 +92,9 @@ export class AnswerQuestionPage {
             this.menu.open();
         }
     }
+    syncPage(){
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
+    }
     navigateBackTo(page) {
         this.progress.openPage(page);
         this.nav.pop();

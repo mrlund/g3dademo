@@ -145,6 +145,9 @@ export class QuestionPeerReviewPage {
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
+    syncPage(){
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
+    }
     updateState(){
         console.log("Request update state");
         

@@ -1,4 +1,4 @@
-import {NavController, NavParams, MenuController, Toast, ToastController, Events} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
@@ -31,11 +31,14 @@ export class ContentPage {
                 private content: ContentData,
                 private menu: MenuController,
                 private progress: ProgressProvider,
+                private userService: UserService,
                 private toastController: ToastController,
+                private channelService:ChannelService,
                 private modalService: ModalService,
                 private events: Events) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
+        this.userData = userService.getUserData();
         if(this.selectedItem instanceof AnimationContentItem){
             this.animationName = this.selectedItem['animationName'];
         }
@@ -69,6 +72,9 @@ export class ContentPage {
             }
         );
     }
+    syncPage(){
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
+    }
     fileLink(file){
         var baseUrl = "project" + this.selectedItem.menuItem.project + "/session" +  this.selectedItem.menuItem.session + "/" + this.selectedItem.urlName + "/";
         return baseUrl + file;
@@ -83,11 +89,13 @@ export class ContentPage {
     navigateBackTo(page: ContentItem) {
         this.events.publish('lesson:next-prev');
         this.progress.openPage(page);
+        this.pauseAnimation = true;
         this.nav.pop();
     }
     navigateForwardTo(page: ContentItem) {
         this.events.publish('lesson:next-prev');
         this.progress.openPage(page);
+        this.pauseAnimation = true;
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
