@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnChanges, ElementRef} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {Globals} from '../../globals';
 declare var createjs: any;
@@ -22,9 +22,10 @@ declare var lib: any;
           [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
-        <div [hidden]="!isBusy"
-         style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
-         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
+        <div *ngIf="isBusy == true">
+            <div style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
+             [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
+            </div>
          </div>
   `,
     directives: []
@@ -60,7 +61,8 @@ export class Animation implements OnChanges {
 
     constructor(content: ContentData,
                 private thisElement: ElementRef,
-                private _globals: Globals) {
+                private _globals: Globals,
+                private cdRef: ChangeDetectorRef) {
         var self = this;
         this.content = content;
         this._globals.isClassroomModeOn.subscribe(value => {
@@ -144,9 +146,14 @@ export class Animation implements OnChanges {
         loader.installPlugin(createjs.Sound);
         loader.addEventListener("complete", this.handleComplete(this));
         loader.addEventListener("fileload", this.handleFileLoad);
+        loader.addEventListener("progress", this.handleQueueProgress(this));
         loader.loadManifest(lib.properties.manifest);
     }
-
+    doneLoading(){
+        this.isBusy = false; 
+        console.log(this.isBusy);
+        this.cdRef.detectChanges();
+    }
     handleFileLoad(evt) {
         if (evt.item.type == "image") {
             if (!window['createJSImages']) window['createJSImages'] = {};
@@ -155,9 +162,17 @@ export class Animation implements OnChanges {
             window['images'][evt.item.id] = evt.result;
         }
     }
+    handleQueueProgress(that){
+        return function(progress){
+            console.log(progress.loaded);
+            if (progress.loaded == 1){
+                console.log("Done loading", that.isBusy);
+                that.doneLoading();
+            }
+        }
 
+    }
     handleComplete(that) {
-        this.isBusy = false;
         this.dataLoaded = true;
         this.paused = false;
         return function () {

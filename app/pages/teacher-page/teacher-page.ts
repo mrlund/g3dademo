@@ -151,7 +151,8 @@ export class TeacherPage {
                 jqcloudEl.jQCloud(this.processedSuggestions[id], {
                     autoResize: true,
                     steps: 3,
-                    fontSize: ['60px', '45px', '30px']
+                    fontSize: ['50px', '35px', '20px'],
+                    removeOverflowing: false
                 });
             }
         }, 700)

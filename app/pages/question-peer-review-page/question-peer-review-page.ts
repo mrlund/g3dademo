@@ -164,7 +164,6 @@ export class QuestionPeerReviewPage {
         this.channelService.getConnection().proxies.inclasshub.invoke("submitReview", this.questions);
         this.updateState();
     }
-
     pullReview(){
         this.channelService.getConnection().proxies.inclasshub.invoke("pullReview", this.questions);
     }
