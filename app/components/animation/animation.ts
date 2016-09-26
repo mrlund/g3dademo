@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef, OnInit} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {Globals} from '../../globals';
+import {Events} from "ionic-angular";
 declare var createjs: any;
 declare var lib: any;
 
@@ -63,7 +64,8 @@ export class Animation implements OnChanges, OnInit {
     constructor(content: ContentData,
                 private thisElement: ElementRef,
                 private _globals: Globals,
-                private cdRef: ChangeDetectorRef) {
+                private cdRef: ChangeDetectorRef,
+                private events: Events) {
         var self = this;
         this.content = content;
         this._globals.isClassroomModeOn.subscribe(value => {
@@ -74,6 +76,11 @@ export class Animation implements OnChanges, OnInit {
             self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
             return self.sound;
         };
+        events.subscribe('lesson:next-prev', (val) => {
+            if(!this.paused) {
+                this.playPauseAnimation();
+            }
+        });
     }
 
     ngOnInit(): void {

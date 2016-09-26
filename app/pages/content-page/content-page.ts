@@ -1,4 +1,4 @@
-import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, ToastController, Events} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
@@ -32,7 +32,8 @@ export class ContentPage {
                 private menu: MenuController,
                 private progress: ProgressProvider,
                 private toastController: ToastController,
-                private modalService: ModalService) {
+                private modalService: ModalService,
+                private events: Events) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         if(this.selectedItem instanceof AnimationContentItem){
@@ -80,13 +81,13 @@ export class ContentPage {
         }
     }
     navigateBackTo(page: ContentItem) {
+        this.events.publish('lesson:next-prev');
         this.progress.openPage(page);
-        this.pauseAnimation = true;
         this.nav.pop();
     }
     navigateForwardTo(page: ContentItem) {
+        this.events.publish('lesson:next-prev');
         this.progress.openPage(page);
-        this.pauseAnimation = true;
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
