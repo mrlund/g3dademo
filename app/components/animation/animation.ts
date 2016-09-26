@@ -26,6 +26,8 @@ declare var lib: any;
         <div *ngIf="isBusy == true">
             <div style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
              [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
+             <a style="text-align: center; vertical-align: middle; font-weight: bold;"
+             [ngStyle]="{'line-height': sizeOfCanvas+'px'}"> {{formattedProgress}}</a>
             </div>
          </div>
   `,
@@ -57,6 +59,7 @@ export class Animation implements OnChanges, OnInit {
 
     private dataLoaded: boolean = false;
     private isBusy: boolean = false;
+    private formattedProgress: string = '0';
 
     sizeOfCanvas: number = 600;
     firstFramePath = '';
@@ -175,8 +178,11 @@ export class Animation implements OnChanges, OnInit {
         }
     }
     handleQueueProgress(that){
+        var self = this;
         return function(progress){
             console.log(progress.loaded);
+            self.formattedProgress = progress.loaded ? (progress.loaded * 100).toFixed(0) : '0';
+            self.cdRef.detectChanges();
             if (progress.loaded == 1){
                 console.log("Done loading", that.isBusy);
                 that.doneLoading();
