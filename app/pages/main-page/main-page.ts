@@ -61,12 +61,12 @@ export class MainPage implements OnInit{
     });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.debounceTime(500).subscribe(
-        (error: any) => { 
+        (error: any) => {
           console.warn(error);
           if (this.connectAttempts++ < 10){
             console.log("Reconnecting");
             this.startHubChannel();
-          } 
+          }
         },
         (error: any) => { console.error("errors$ error", error); }
     );
@@ -189,7 +189,7 @@ export class MainPage implements OnInit{
           new ContentItem('processing-activity', 'Text-Based Discussion Protocol', ContentPage),
           new ContentItem('generalized-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('applying-activity', 'Generalizing - class discussion', ContentPage),
-        ]),        
+        ]),
         new MenuItem('Analyzing Data - Mean', 2, 4, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s4'),
           new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
@@ -433,7 +433,7 @@ export class MainPage implements OnInit{
   openPage(page: MenuItem) {
     // close the menu when clicking a link from the menu
     this.menu.close();
-    // navigate to the new page if it is not the current page        
+    // navigate to the new page if it is not the current page
     var firstContentPage = page.pages[0];
     this.progress.openPage(firstContentPage);
 
@@ -478,6 +478,31 @@ export class MainPage implements OnInit{
     // Start the connection up!
     this.startHubChannel();
     this.teacherPageService.startTimer(); //timer for clearing suggestions every hour
+
+    this.channelService.getPageSyncData().subscribe((answer) => {
+      console.log("Got sync page:", answer);
+      if(!answer){
+        return;
+      }
+
+      var project = answer.project;
+      var session = answer.session;
+      var pageNum = answer.page;
+
+      var page = this.progress.getPageByParams( project, session, 1 );
+      if(page){
+        this.nav.setRoot(page.componentType, { item: page }).then(() => {
+          if(page.nextItem && page.page !== pageNum) {
+            do{
+              page = page.nextItem;
+              this.nav.push(page.componentType, {item: page});
+            }
+            while (page.nextItem && page.page !== pageNum)
+          }
+        });
+
+      }
+    });
   }
   startHubChannel(){
     console.log("Starting the channel service");

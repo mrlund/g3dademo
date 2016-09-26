@@ -75,6 +75,7 @@ export class ChannelService {
 
     data$:Observable<any>;
     asignmentData$:Observable<any>;
+    pageSyncData$:Observable<any>;
     reviewData$:Observable<any>;
     stateData$:Observable<any>;
 
@@ -85,6 +86,7 @@ export class ChannelService {
     private errorSubject = new Subject<any>();
     private dataSubject = new Subject<any>();
     private asignmentDataSubject = new Subject<any>();
+    private pageSyncDataSubject = new Subject<any>();
     private reviewDataSubject = new Subject<any>();
     private stateDataSubject = new Subject<any>();
 
@@ -113,6 +115,7 @@ export class ChannelService {
         this.starting$ = this.startingSubject.asObservable();
         this.data$ = this.dataSubject.asObservable();
         this.asignmentData$ = this.asignmentDataSubject.asObservable();
+        this.pageSyncData$ = this.pageSyncDataSubject.asObservable();
         this.reviewData$ = this.reviewDataSubject.asObservable();
         this.stateData$ = this.stateDataSubject.asObservable();
     }
@@ -199,6 +202,7 @@ export class ChannelService {
         this.stop();
         var dataSource = this.data$['source'];
         var assignmentDataSource = this.asignmentData$['source'];
+        var pageSyncDataSource = this.pageSyncData$['source'];
         var reviewDataSource = this.reviewData$['source'];
         var stateDataSource = this.stateData$['source'];
 
@@ -220,6 +224,10 @@ export class ChannelService {
                 this.hubConnection.proxies.inclasshub.on('receiveState', (data) => {
                     this.stateDataSubject.next(data);
                     //stateDataSource['next'](data);
+                });
+
+                this.hubConnection.proxies.inclasshub.on('syncCurrentPage', (data) => {
+                    pageSyncDataSource['next'](data);
                 });
 
                 this.connectionState$.subscribe((state) => {
@@ -268,6 +276,9 @@ export class ChannelService {
 
     getAssignmentData():Observable<any> {
         return this.asignmentData$;
+    }
+    getPageSyncData():Observable<any> {
+        return this.pageSyncData$;
     }
     getReviewData():Observable<any> {
         return this.reviewData$;
