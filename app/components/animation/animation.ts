@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef, OnInit} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {Globals} from '../../globals';
 declare var createjs: any;
@@ -12,7 +12,7 @@ declare var lib: any;
          [hidden]="!animationFileFound || !dataLoaded"
          (click)="playButtonAction()" width="600" height="600" 
          style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
-        <img *ngIf="paused && !dataLoaded" src="{{firstFramePath}}" 
+        <img *ngIf="!dataLoaded" src="{{firstFramePath}}" 
         style="position:absolute;top:0;left:0;"
         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="paused && isClassroomModeOn == false && isBusy == false"
@@ -30,7 +30,8 @@ declare var lib: any;
   `,
     directives: []
 })
-export class Animation implements OnChanges {
+export class Animation implements OnChanges, OnInit {
+
     @Input() name: string;
     @Input() project: string;
     @Input() session: string;
@@ -73,6 +74,9 @@ export class Animation implements OnChanges {
             self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
             return self.sound;
         };
+    }
+
+    ngOnInit(): void {
         setTimeout(() => {
             this.getContainerSize();
             this.buildFirstFramePath();
@@ -150,7 +154,8 @@ export class Animation implements OnChanges {
         loader.loadManifest(lib.properties.manifest);
     }
     doneLoading(){
-        this.isBusy = false; 
+        this.isBusy = false;
+        this.dataLoaded = true;
         console.log(this.isBusy);
         this.cdRef.detectChanges();
     }
@@ -173,7 +178,6 @@ export class Animation implements OnChanges {
 
     }
     handleComplete(that) {
-        this.dataLoaded = true;
         this.paused = false;
         return function () {
             that.stage = new createjs.Stage(that.canvas);
