@@ -6,6 +6,8 @@ import {MenuItem} from '../../models/menu-item';
 import {InnerContent} from '../../components/inner-content/inner-content';
 
 import {ProgressProvider} from '../../providers/progressProvider';
+import {UserService} from "../../services/userService";
+import {ChannelService} from '../../services/channelService';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {Http, Headers} from "@angular/http";
 import {ModalService} from "../../services/modalService";
@@ -42,6 +44,8 @@ export class ActivityTablePage {
                 private content: ContentData,
                 private menu: MenuController,
                 private progress: ProgressProvider,
+                private userService: UserService,
+                private channelService:ChannelService,
                 private http: Http,
                 private toastController: ToastController,
                 private modalService: ModalService,
@@ -51,6 +55,7 @@ export class ActivityTablePage {
             this.isClassroomModeOn = data;
         });
         this.selectedItem = navParams.get('item');
+        this.userData = userService.getUserData();
         if (!this.selectedItem)
         {
             this.selectedItem = new ContentItem(navParams.get('urlName'), navParams.get('urlName'), ActivityTablePage);
@@ -105,6 +110,9 @@ export class ActivityTablePage {
             }, self);
         }
         return this.randomSuggestions
+    }
+    syncPage(){
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
     }
     removeItem(removeItem){
         let tempList: Array<any> = new Array<any>();

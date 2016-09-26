@@ -3,6 +3,7 @@ import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
 
+import {ChannelService} from '../../services/channelService';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {Animation} from '../../components/animation/animation';
 import {InnerContent} from '../../components/inner-content/inner-content';
@@ -10,6 +11,7 @@ import {ContentItem, AnimationContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {ModalService} from "../../services/modalService";
+import {UserService} from "../../services/userService";
 
 @Component({
     templateUrl: 'build/pages/content-page/content-page.html',
@@ -31,10 +33,13 @@ export class ContentPage {
                 private content: ContentData,
                 private menu: MenuController,
                 private progress: ProgressProvider,
+                private userService: UserService,
                 private toastController: ToastController,
+                private channelService:ChannelService,
                 private modalService: ModalService) {
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
+        this.userData = userService.getUserData();
         if(this.selectedItem instanceof AnimationContentItem){
             this.animationName = this.selectedItem['animationName'];
         }
@@ -67,6 +72,9 @@ export class ContentPage {
                 console.log(error);
             }
         );
+    }
+    syncPage(){
+        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
     }
     fileLink(file){
         var baseUrl = "project" + this.selectedItem.menuItem.project + "/session" +  this.selectedItem.menuItem.session + "/" + this.selectedItem.urlName + "/";
