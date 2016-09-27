@@ -494,18 +494,19 @@ export class MainPage implements OnInit{
       var session = answer.session;
       var pageNum = answer.page;
 
-      var page = this.progress.getPageByParams( project, session, 1 );
-      if(page){
-        this.nav.setRoot(page.componentType, { item: page }).then(() => {
-          if(page.nextItem && page.page !== pageNum) {
-            do{
-              page = page.nextItem;
-              this.nav.push(page.componentType, {item: page});
-            }
-            while (page.nextItem && page.page !== pageNum)
-          }
-        });
+      var stack =[];
 
+      var page = this.progress.getPageByParams( project, session, 1 );
+      if(page) {
+        stack.push({page: page.componentType, params: {item: page}});
+        if (page.nextItem && page.page !== pageNum) {
+          do {
+            page = page.nextItem;
+            stack.push({page: page.componentType, params: {item: page}});
+          }
+          while (page.nextItem && page.page !== pageNum);
+          this.nav.setPages(stack, {animate: false});
+        }
       }
     });
   }
