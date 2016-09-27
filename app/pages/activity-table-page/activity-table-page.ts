@@ -34,6 +34,7 @@ export class ActivityTablePage {
     isSubmitted : boolean = false;
     isClassroomModeOn : boolean = false;
     selectItem: any = {};
+    userData:any;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;

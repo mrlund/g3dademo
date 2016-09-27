@@ -1,15 +1,16 @@
-import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
+import {NavController, NavParams, MenuController, Toast, ToastController, Events} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
 
-import {WelcomePage} from '../welcome-page/welcome-page';
 import {Animation} from '../../components/animation/animation';
 import {InnerContent} from '../../components/inner-content/inner-content';
 import {ContentItem, AnimationContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';
 import {CharacterPhraseImg} from "../../components/character-phrase-img/character-phrase-img";
 import {ModalService} from "../../services/modalService";
+import {UserService} from "../../services/userService";
+import {ChannelService} from "../../services/channelService";
 
 @Component({
     templateUrl: 'build/pages/content-page/content-page.html',
@@ -22,6 +23,7 @@ export class ContentPage {
     pageModel: string;
     animationName: string = '';
     pauseAnimation: boolean = true;
+    userData: any;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
