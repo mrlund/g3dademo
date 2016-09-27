@@ -93,7 +93,7 @@ export class AnswerQuestionPage {
         }
     }
     syncPage(){
-        this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
+        this.channelService.getConnection().proxies.inclasshub.invoke('forceSyncClients', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
     }
     navigateBackTo(page) {
         this.progress.openPage(page);

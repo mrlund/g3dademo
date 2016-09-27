@@ -16,6 +16,7 @@ export class DiscussionPage {
   selectedItem: any;
   private _pageContent: string;
   animationName: string;
+  userData: any;
     
   constructor(private nav: NavController,
               navParams: NavParams,
@@ -41,7 +42,7 @@ export class DiscussionPage {
       }
   }
   syncPage(){
-      this.channelService.getConnection().proxies.inclasshub.invoke('send', 'forceSyncClients ', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
+      this.channelService.getConnection().proxies.inclasshub.invoke('forceSyncClients', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
   }
   navigateBackTo(page){
         this.nav.pop();

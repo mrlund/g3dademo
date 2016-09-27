@@ -6,19 +6,19 @@
             "question": "How confident do you feel calculating your GPA?",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Very Confident"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Confident"
                 },
                 {
                     "answer": "Not Sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Not Confident"
                 },
                 {
-                    "answer": "Strongly Disagree"
+                    "answer": "Not Confident At All"
                 }                                
             ]
         }
