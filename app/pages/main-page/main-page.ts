@@ -58,6 +58,13 @@ export class MainPage implements OnInit{
   ) {
     _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
+      if(value){
+        this.userService.updateUserInfo(()=>{
+          this.userData = userService.getUserData();
+          this.progress.updateContinueFromData(this.userData['ContinueFrom']);
+          this.loadCompletedLessons();
+        });
+      }
     });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
     this.channelService.error$.debounceTime(500).subscribe(
@@ -79,6 +86,7 @@ export class MainPage implements OnInit{
     );
 
     this.userData = userService.getUserData();
+
     this.installClassroomModeValue(this.userData['IsFacilitator']);
     this.setupSelectedCourse();
 
@@ -362,32 +370,29 @@ export class MainPage implements OnInit{
       }
     });
 
-    this.loadCompletedLessons();
+//    this.loadCompletedLessons();
   }
   installClassroomModeValue(IsFacilitator):void{
     this.classroomMode = IsFacilitator ? false : true; // classroom is on only for students
   }
   loadCompletedLessons() {
-    this.progress.getApiProgress().subscribe(res => {
-      let parsedRes = res.json();
-      let completedPages = parsedRes.CompletedPages;
-      let completedPagesSet = new Map();
-      if (completedPages) {
-        for (let i = 0; i < completedPages.length; i++) {
-          if (completedPages[i].ProjectNumber && completedPages[i].SessionNumber) {
-            let projectNumber = completedPages[i].ProjectNumber;
-            let sessionNumber = completedPages[i].SessionNumber;
-            let pageNumber = completedPages[i].PageNumber;
-            completedPagesSet.set(projectNumber + '_' + sessionNumber + '_' + pageNumber,
-                {project: projectNumber, session: sessionNumber, page: pageNumber});
-          }
+    let completedPages = this.userData['CompletedPages'];
+    let completedPagesSet = new Map();
+    if (completedPages) {
+      for (let i = 0; i < completedPages.length; i++) {
+        if (completedPages[i].ProjectNumber && completedPages[i].SessionNumber) {
+          let projectNumber = completedPages[i].ProjectNumber;
+          let sessionNumber = completedPages[i].SessionNumber;
+          let pageNumber = completedPages[i].PageNumber;
+          completedPagesSet.set(projectNumber + '_' + sessionNumber + '_' + pageNumber,
+              {project: projectNumber, session: sessionNumber, page: pageNumber});
         }
-        completedPagesSet.forEach((page) => {
-          var projectIndex = page['project'];
-          this.setCompletedPages(this.pages[projectIndex].children, page['project'], page['session'], page['page']);
-        });
       }
-    })
+      completedPagesSet.forEach((page) => {
+        var projectIndex = page['project'];
+        this.setCompletedPages(this.pages[projectIndex].children, page['project'], page['session'], page['page']);
+      });
+    }
   }
 
   setCompletedPages(pages: Array<any>, projectNumber: number, sessionNumber: number, pageNumber: number) {

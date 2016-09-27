@@ -5,7 +5,6 @@ import {Globals} from "../globals";
 import {ChannelConfig} from "./channelService";
 import {ToastService} from "./toastService";
 
-
 export class User {
     constructor(
         public login: string,
@@ -50,17 +49,36 @@ export class UserService {
             localStorage.setItem("api_token_expiry", expiry.toString());
             this._globals.isLoggedIn.next(true);
             let headers = new Headers();
-            headers.append('Authorization', 'Bearer ' + token);
+            /*headers.append('Authorization', 'Bearer ' + token);
             //get data of userprofile
             this.http.get(this.baseUrl + '/api/account/userprofile', {headers: headers}).subscribe(res => {
                 let parsedRes = res.json();
                 localStorage.setItem("userData", JSON.stringify(parsedRes));
                 this.router.navigate(['/main']);
+            });*/
+            this.updateUserInfo(() => {
+                this.router.navigate(['/main']);
             });
+
         }, (err) => {
             var parsedErr = err.json();
             if(parsedErr && parsedErr.error_description) this.toastService.loginFails(parsedErr.error_description);
         });
+    }
+    updateUserInfo(callback) {
+        let token = localStorage.getItem("api_token");
+        if(token) {
+            let headers = new Headers();
+            headers.append('Authorization', 'Bearer ' + token);
+            //get data of userprofile
+            this.http.get(this.baseUrl + '/api/account/userprofile', {headers: headers}).subscribe(res => {
+                let parsedRes = res.json();
+                localStorage.setItem("userData", JSON.stringify(parsedRes));
+                if(callback){
+                    callback();
+                }
+            });
+        }
     }
     checkIfLoggedInFlag():void{
         let token = localStorage.getItem("api_token");

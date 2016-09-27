@@ -25,19 +25,16 @@ export class ProgressProvider {
         this._globals.isLoggedIn.subscribe(value => {
             this.isLoggedIn = value;
             this.completedLessons = new Array<MenuItem>();
-
-            if (value) {
-                this.getApiProgress().subscribe(res => {
-                    let parsedRes = res.json();
-                    let continueFrom = parsedRes['ContinueFrom'];
-                    let page = continueFrom['Page'];
-                    let project = continueFrom['Project'];
-                    let session = continueFrom['Session'];
-                    this.lastPageOpened.next(this.findLastOpenedPage(page, project, session));
-                });
-            }
         });
     }
+
+    updateContinueFromData(data){
+        let page = data['Page'];
+        let project = data['Project'];
+        let session = data['Session'];
+        this.lastPageOpened.next(this.findLastOpenedPage(page, project, session));
+    }
+
     setCourseContent(pages: Array<MenuItem>) {
         this.pages = pages;
     }
