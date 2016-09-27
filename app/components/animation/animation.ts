@@ -23,11 +23,14 @@ declare var lib: any;
           [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
-        <div *ngIf="isBusy == true">
-            <div style="background:url(/img/ring-alt.gif) no-repeat center center;position:absolute;top:0;left:0;"
-             [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
-             <a style="text-align: center; vertical-align: middle; font-weight: bold;"
-             [ngStyle]="{'line-height': sizeOfCanvas+'px'}"> {{formattedProgress}}</a>
+        <div *ngIf="isBusy == true" style="position: relative" [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
+            <div class="uil-ring-css" 
+            style="transform:scale(0.7); margin: 0 auto; position: absolute"
+            [ngStyle]="{'top': (sizeOfCanvas - 200)/2 +'px' ,'left': (sizeOfCanvas - 200)/2 +'px' }">
+             <div></div>
+             <a style="text-align: center; vertical-align: middle; font-weight: bold; line-height: 200px">
+              {{formattedProgress}}
+             </a>
             </div>
          </div>
   `,
