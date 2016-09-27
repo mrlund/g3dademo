@@ -108,7 +108,7 @@ export class TeacherPage {
                                     currentCloud.jQCloud(currentCloudData, {
                                         autoResize: true,
                                         steps: 3,
-                                        fontSize: ['60px', '45px', '30px']
+                                        fontSize: ['50px', '35px', '20px']
                                     });
                                  //   currentCloud.jQCloud('update', this.processedSuggestions[id]);
                                 }
@@ -128,7 +128,7 @@ export class TeacherPage {
                                 cloudElement.jQCloud(currentCloudData, {
                                     autoResize: true,
                                     steps: 3,
-                                    fontSize: ['60px', '45px', '30px']
+                                    fontSize: ['50px', '35px', '20px']
                                 });
                             }
                         }
