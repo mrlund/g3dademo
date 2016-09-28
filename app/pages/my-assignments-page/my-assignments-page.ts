@@ -2,12 +2,14 @@ import {Component, ViewChild} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {ProgressProvider} from "../../providers/progressProvider";
 import {Nav, NavController} from "ionic-angular";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     templateUrl: 'build/pages/my-assignments-page/my-assignments-page.html',
 })
 export class MyAssigmentsPage {
     private myAssignments: any = [];
+    private assignmentsSub: Subscription;
 
     constructor(private http: Http,
                 private progress: ProgressProvider,
@@ -46,7 +48,7 @@ export class MyAssigmentsPage {
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
         return new Promise(resolve => {
-            this.http.get('https://girlsinc.azurewebsites.net' + '/api/assignments', {headers: headers}).subscribe(data => {
+            this.assignmentsSub = this.http.get('https://girlsinc.azurewebsites.net' + '/api/assignments', {headers: headers}).subscribe(data => {
                 let myAssignments = data.json();
                 for (let i of myAssignments) {
                     i.AssignmentData = this.processAssignment(JSON.parse(i.AssignmentData));
@@ -61,6 +63,10 @@ export class MyAssigmentsPage {
             this.myAssignments = data;
         });
     };
+
+    ngOnDestroy(){
+        if(this.assignmentsSub) this.assignmentsSub.unsubscribe();
+    }
 
     redirect(assignmentData: any) {
         if (assignmentData && (assignmentData.ProjectNumber)) {

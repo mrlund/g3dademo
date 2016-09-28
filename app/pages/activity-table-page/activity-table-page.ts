@@ -12,6 +12,7 @@ import {CharacterPhraseImg} from "../../components/character-phrase-img/characte
 import {Http, Headers} from "@angular/http";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     templateUrl: 'build/pages/activity-table-page/activity-table-page.html',
@@ -35,6 +36,7 @@ export class ActivityTablePage {
     isClassroomModeOn : boolean = false;
     selectItem: any = {};
     userData:any;
+    classroomMode: Subscription;
 
     @ViewChild(InnerContent) innerContent:InnerContent;
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
@@ -52,7 +54,7 @@ export class ActivityTablePage {
                 private modalService: ModalService,
                 private _globals: Globals) {
         // If we navigated to this page, we will have an item available as a nav param
-        _globals.isClassroomModeOn.subscribe((data) => {
+        this.classroomMode =_globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
         this.selectedItem = navParams.get('item');
@@ -102,6 +104,9 @@ export class ActivityTablePage {
                 console.log(error);
             }
         );
+    }
+    ngOnDestroy(){
+        if(this.classroomMode) this.classroomMode.unsubscribe();
     }
     getRandom(arr){
         let self = this;

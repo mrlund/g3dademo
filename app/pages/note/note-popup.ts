@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Platform, NavParams, ViewController} from 'ionic-angular';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {Globals} from "../../globals";
+import {Subscription} from "rxjs/Subscription";
 
     
 @Component({
@@ -11,6 +12,7 @@ import {Globals} from "../../globals";
 export class NotePopup {
     character;
     note;
+    saveNoteSub: Subscription;
 
     constructor(
         private platform: Platform,
@@ -20,6 +22,10 @@ export class NotePopup {
         private _globals: Globals
     ) {
         this.note = "";
+    }
+
+    ngOnDestroy(){
+        if(this.saveNoteSub) this.saveNoteSub.unsubscribe();
     }
 
     dismiss() {
@@ -38,7 +44,7 @@ export class NotePopup {
                 pageNumber: pageNumber,
                 NoteText: self.note
         };
-        this.progress.saveNote(noteData).subscribe(res => {
+        this.saveNoteSub = this.progress.saveNote(noteData).subscribe(res => {
                 console.log('result save note');
                 console.log(res);
                 this.dismiss();

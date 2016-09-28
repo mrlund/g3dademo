@@ -22,6 +22,7 @@ import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../globals';
 import {MyAssigmentsPage} from "../my-assignments-page/my-assignments-page";
 import {MyNotesPage} from "../my-notes-page/my-notes-page";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   templateUrl: 'build/pages/main-page/main-page.html',
@@ -43,7 +44,12 @@ export class MainPage implements OnInit{
   classroomMode: boolean = false;
   connectAttempts: number = 0;
 
-  constructor(
+  classroomModeSub: Subscription;
+  debounceSub: Subscription;
+  channelServiceSub: Subscription;
+  pageSyncSub: Subscription;
+
+    constructor(
       private app: App,
       private platform: Platform,
       private menu: MenuController,
@@ -56,7 +62,7 @@ export class MainPage implements OnInit{
       private _globals: Globals,
       private toastController: ToastController
   ) {
-    _globals.isLoggedIn.subscribe(value => {
+    this.classroomModeSub = _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
       if(value){
         this.userService.updateUserInfo(()=>{
@@ -67,7 +73,7 @@ export class MainPage implements OnInit{
       }
     });
     //this.connectionState$ = this.channelService.connectionState$.map((state: ConnectionState) => { return ConnectionState[state]; });
-    this.channelService.error$.debounceTime(500).subscribe(
+    this.debounceSub = this.channelService.error$.debounceTime(500).subscribe(
         (error: any) => {
           console.warn(error);
           if (this.connectAttempts++ < 10){
@@ -80,7 +86,7 @@ export class MainPage implements OnInit{
     // Wire up a handler for the starting$ observable to log the
     //  success/fail result
     //
-    this.channelService.starting$.subscribe(
+    this.channelServiceSub =  this.channelService.starting$.subscribe(
         () => { console.log("signalr service has been started"); },
         () => { console.warn("signalr service failed to start!"); }
     );
@@ -484,7 +490,7 @@ export class MainPage implements OnInit{
     this.startHubChannel();
     this.teacherPageService.startTimer(); //timer for clearing suggestions every hour
 
-    this.channelService.getPageSyncData().subscribe((answer) => {
+    this.pageSyncSub = this.channelService.getPageSyncData().subscribe((answer) => {
       console.log("Got sync page:", answer);
       if(!answer){
         return;
@@ -509,6 +515,12 @@ export class MainPage implements OnInit{
         }
       }
     });
+  }
+  ngOnDestroy(){
+    if(this.classroomModeSub) this.classroomModeSub.unsubscribe();
+    if(this.debounceSub) this.debounceSub.unsubscribe();
+    if(this.channelServiceSub) this.channelServiceSub.unsubscribe();
+    if(this.pageSyncSub) this.pageSyncSub.unsubscribe();
   }
   startHubChannel(){
     console.log("Starting the channel service");

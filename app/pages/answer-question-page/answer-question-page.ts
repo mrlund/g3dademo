@@ -13,6 +13,7 @@ import {UserService} from "../../services/userService";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
 import {ApiService} from "../../services/apiService";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     templateUrl: 'build/pages/answer-question-page/answer-question-page.html',
@@ -25,6 +26,11 @@ export class AnswerQuestionPage {
     private isClassroomModeOn: boolean = false;
     questions: Array<any>;
     userData: Map<string, string>;
+
+    classroomModeSub: Subscription;
+    responseSub: Subscription;
+    suggestSub: Subscription;
+
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -40,7 +46,7 @@ export class AnswerQuestionPage {
                 private menu: MenuController,
                 private _globals: Globals,
                 private apiService: ApiService) {
-        _globals.isClassroomModeOn.subscribe((data) => {
+        this.classroomModeSub = _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
         // If we navigated to this page, we will have an item available as a nav param
@@ -82,6 +88,11 @@ export class AnswerQuestionPage {
             }
         );
     }
+    ngOnDestroy(){
+        if(this.classroomModeSub) this.classroomModeSub.unsubscribe();
+        if(this.responseSub) this.responseSub.unsubscribe();
+        if(this.suggestSub) this.suggestSub.unsubscribe();
+    }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
     }
@@ -114,7 +125,7 @@ export class AnswerQuestionPage {
                 ans.voteState = "voted";
             }
         });
-        this.apiService.postResponces(question).subscribe((data) => {
+        this.responseSub = this.apiService.postResponces(question).subscribe((data) => {
             console.log('answer posted')
         });
     }
@@ -129,7 +140,7 @@ export class AnswerQuestionPage {
         sendQuestion.suggestions.push(question.suggestion);
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'question-answer', question.questionId, this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page, this.userData["Name"], question.question, question.suggestion);
         question.suggestion = "";
-        this.apiService.postResponces(sendQuestion).subscribe((data) => {
+        this.suggestSub = this.apiService.postResponces(sendQuestion).subscribe((data) => {
             console.log('answer posted')
         });
     }

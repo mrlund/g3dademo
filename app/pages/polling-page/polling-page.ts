@@ -14,6 +14,7 @@ import {ModalService} from "../../services/modalService";
 import {Globals} from "../../globals";
 import {ApiService} from "../../services/apiService";
 import {UserService} from "../../services/userService";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     templateUrl: 'build/pages/polling-page/polling-page.html',
@@ -26,6 +27,10 @@ export class PollingPage {
     questions: Array<any>;
     isClassroomModeOn : boolean = false;
     userData: Map<string, string>;
+
+    classmodeSub: Subscription;
+    responseSub: Subscription;
+
 
     @ViewChild(CharacterPhraseImg) characterPhraseImg:CharacterPhraseImg;
     @ViewChild(InnerContent) innerContent:InnerContent;
@@ -43,7 +48,7 @@ export class PollingPage {
                 private apiService: ApiService,
                 private userService: UserService) {
         this.userData = userService.getUserData();
-        _globals.isClassroomModeOn.subscribe((data) => {
+        this.classmodeSub = _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
         // If we navigated to this page, we will have an item available as a nav param
@@ -83,6 +88,10 @@ export class PollingPage {
                 console.log(error);
             }
         );
+    }
+    ngOnDestroy(){
+        if(this.classmodeSub) this.classmodeSub.unsubscribe();
+        if(this.responseSub) this.responseSub.unsubscribe();
     }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
@@ -135,7 +144,7 @@ export class PollingPage {
         });
         this.channelService.getConnection().proxies.inclasshub.invoke('send', 'poll', question.questionId, this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page, this.userData["Name"], question.question, answer.answer);
 
-        this.apiService.postResponces(question).subscribe((data) => {
+        this.responseSub = this.apiService.postResponces(question).subscribe((data) => {
             console.log('answer posted')
         });
     }

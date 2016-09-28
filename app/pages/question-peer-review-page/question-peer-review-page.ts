@@ -39,6 +39,7 @@ export class QuestionPeerReviewPage {
     answerSub: Subscription;
     reviewSub: Subscription;
     stateSub: Subscription;
+    classroomModeSub: Subscription;
 
     submittedReview: boolean = false;
 
@@ -58,7 +59,7 @@ export class QuestionPeerReviewPage {
                 private _globals: Globals,
                 private userService: UserService) {
             this.userData = userService.getUserData();
-            _globals.isClassroomModeOn.subscribe((data) => {
+            this.classroomModeSub = _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
         // If we navigated to this page, we will have an item available as a nav param
@@ -138,9 +139,10 @@ export class QuestionPeerReviewPage {
     }
     ngOnDestroy(){
         console.log("Unsubscribe");
-        this.stateSub.unsubscribe();
-        this.answerSub.unsubscribe();
-        this.reviewSub.unsubscribe();
+        if(this.stateSub) this.stateSub.unsubscribe();
+        if(this.answerSub) this.answerSub.unsubscribe();
+        if(this.reviewSub) this.reviewSub.unsubscribe();
+        if(this.classroomModeSub) this.classroomModeSub.unsubscribe();
     }
     public get pageContent() : SafeHtml {
         return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings

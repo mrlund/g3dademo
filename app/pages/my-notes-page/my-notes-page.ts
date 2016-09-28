@@ -2,12 +2,14 @@ import {Component} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {NavController} from "ionic-angular";
 import {ProgressProvider} from "../../providers/progressProvider";
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
     templateUrl: 'build/pages/my-notes-page/my-notes-page.html',
 })
 export class MyNotesPage {
     myNotes: any = [];
+    notesSub: Subscription;
 
     constructor(private http: Http,
                 private progress: ProgressProvider,
@@ -18,7 +20,7 @@ export class MyNotesPage {
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
         return new Promise(resolve => {
-            this.http.get('https://girlsinc.azurewebsites.net' + '/api/notes', {headers: headers}).subscribe(data => {
+            this.notesSub = this.http.get('https://girlsinc.azurewebsites.net' + '/api/notes', {headers: headers}).subscribe(data => {
                 resolve(data.json());
             });
         });
@@ -28,6 +30,10 @@ export class MyNotesPage {
         this.load().then(data => {
             this.myNotes = data;
         });
+    };
+
+    ngOnDestroy(){
+       if(this.notesSub) this.notesSub.unsubscribe();
     };
 
     redirect(assignmentData:any) {
