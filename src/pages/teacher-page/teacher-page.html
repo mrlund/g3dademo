@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Teacher page
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span color="primary">Cancel</span>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="deleteSuggestions()">
+                <ion-icon name="trash"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <div class="page-container teacher-page-inner-content">
+        <div id="jqcloud"></div>
+        <div class="voting-container" *ngFor="let chart of charts | async">
+            <h3>{{chart.title}}</h3>
+            <table>
+                <tr>
+                    <td class="graph-column" *ngFor="let vote of chart.votes">
+                        <div [style.height]="vote.height">
+                            {{vote.count}}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td *ngFor="let vote of chart.votes">{{vote.name}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</ion-content>

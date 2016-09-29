@@ -1,0 +1,64 @@
+<ion-header>
+    <ion-navbar no-border-bottom hideBackButton="true">
+        <ion-buttons start>
+            <button ion-button icon-only (click)="toggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>{{selectedItem.title}}</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only [hidden]="!userData.IsFacilitator" (click)="syncPage()">
+                <ion-icon name="sync"></ion-icon>
+            </button>
+            <button ion-button icon-only (click)="createNote()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button icon-only [hidden]="!userData.IsFacilitator"
+                    (click)="goToTeacherPage()">
+                <ion-icon name="easel"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header has-footer" *ngIf="questions">
+    <div class="page-container">
+        <character-phrase-img></character-phrase-img>
+        <ion-card>
+            <ion-card-content class="content-page">
+                <inner-content></inner-content>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let question of questions.questions">
+            <ion-card-content>
+                <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
+                <ion-list>
+                    <ion-item *ngFor="let answer of question.answers">
+                        <button ion-button [ngClass]="answer.voteState" (click)="onSuggest(question, answer)" class="polling-option">{{answer.answer}}</button>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons start>
+            <button ion-button icon-left (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
+                <ion-icon name="arrow-back" item-left></ion-icon>
+                Previous
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button ion-button icon-right (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotAnswered()">
+                Next
+                <ion-icon name="arrow-forward" item-right></ion-icon>
+            </button>
+            <button ion-button icon-right (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotAnswered()">
+                DONE
+                <ion-icon name="checkmark" item-right></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
