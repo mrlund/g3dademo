@@ -29,8 +29,8 @@ import { InnerContent } from '../components/inner-content/inner-content';
 import { ContentData } from '../providers/contentProvider';
 import { ProgressProvider } from '../providers/progressProvider';
 
-import {ChannelService, SignalrWindow } from "../services/channelService"
 import {UserService} from "../services/userService"
+import {ChannelService, SignalrWindow } from "../services/channelService"
 import {ModalService} from "../services/modalService"
 import {TeacherPageService} from "../services/teacherPageService"
 import {ToastService} from "../services/toastService"
@@ -88,12 +88,12 @@ import {LocationStrategy, HashLocationStrategy } from '@angular/common';
     WelcomePage
   ],
   providers: [
+    UserService,
     appRouterProviders,
     HttpModule,
     ContentData,
     ProgressProvider,
     ChannelService,
-    UserService,
     ModalService,
     TeacherPageService,
     ToastService,

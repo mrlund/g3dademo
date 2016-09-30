@@ -1,7 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
-// import {UserService} from "./userService";
+import {UserService} from "./userService";
 import {ToastService} from "./toastService";
 
 /**
@@ -14,11 +14,6 @@ export class SignalrWindow extends Window {
     $:any;
 }
 
-export class UserService {
-  getChannelConfiguration(){
-    return null;
-  }
-}
 
 export enum ConnectionState {
     Connecting = 1,
@@ -46,7 +41,7 @@ export class ChannelEvent {
     }
 }
 
-class ChannelSubject {
+export class ChannelSubject {
     channel:string;
     subject:Subject<ChannelEvent>;
 }
@@ -87,29 +82,28 @@ export class ChannelService {
 
     // These are used to feed the public observables
     //
-    private connectionStateSubject = new Subject<ConnectionState>();
-    private startingSubject = new Subject<any>();
-    private errorSubject = new Subject<any>();
-    private dataSubject = new Subject<any>();
-    private asignmentDataSubject = new Subject<any>();
-    private pageSyncDataSubject = new Subject<any>();
-    private reviewDataSubject = new Subject<any>();
-    private stateDataSubject = new Subject<any>();
+  public connectionStateSubject = new Subject<ConnectionState>();
+  public startingSubject = new Subject<any>();
+  public errorSubject = new Subject<any>();
+  public dataSubject = new Subject<any>();
+  public asignmentDataSubject = new Subject<any>();
+  public pageSyncDataSubject = new Subject<any>();
+  public reviewDataSubject = new Subject<any>();
+  public stateDataSubject = new Subject<any>();
 
     // These are used to track the internal SignalR state
     //
-    private hubConnection:any;
-    private hubProxy:any;
-    // private connectionDropped: boolean = false; // is needed for showing toast
+  public hubConnection:any;
+  public hubProxy:any;
+    // public connectionDropped: boolean = false; // is needed for showing toast
 
     // An internal array to track what channel subscriptions exist
     //
-    private subjects = new Array<ChannelSubject>();
+  public subjects = new Array<ChannelSubject>();
 
-    constructor(/*@Inject(UserService) private userService:UserService,*/
-                private userService:UserService,
-                @Inject(SignalrWindow) private window:SignalrWindow,
-                @Inject(ToastService) private toastService:ToastService
+    constructor(@Inject(UserService) public userService:UserService,
+                @Inject(SignalrWindow) public window:SignalrWindow,
+                @Inject(ToastService) public toastService:ToastService
     ) {
         if (this.window.$ === undefined || this.window.$.hubConnection === undefined) {
             throw new Error("The variable '$' or the .hubConnection() function are not defined...please check the SignalR scripts have been loaded properly");

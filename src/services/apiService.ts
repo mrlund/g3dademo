@@ -6,11 +6,11 @@ import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class ApiService {
-    private currentPage:any = null;
-    private userData:any = null;
+  public currentPage:any = null;
+  public userData:any = null;
 
     // todo: should be fixed with real enum, cause there is no multiple-choice and etc
-    private ResponseType:any = {
+  public ResponseType:any = {
         'other':0,
         'PreTest':1,
         'PostTest':2,
@@ -18,9 +18,9 @@ export class ApiService {
         'PeerReview':4,
     };
 
-    constructor(private http: Http,
-                private progress: ProgressProvider,
-                private userService: UserService) {
+    constructor(public http: Http,
+                public progress: ProgressProvider,
+                public userService: UserService) {
         progress.getLastPage().subscribe((data) => {
             this.currentPage = data;
         });

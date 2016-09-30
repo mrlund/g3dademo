@@ -9,8 +9,8 @@ export class ModalService {
     isLoggedIn: boolean = false;
     currentPage: any = null;
 
-    constructor(private _globals: Globals,
-                private modalCtrl: ModalController){
+    constructor(public _globals: Globals,
+                public modalCtrl: ModalController){
         _globals.isLoggedIn.subscribe(value => {
             this.isLoggedIn = value;
         });

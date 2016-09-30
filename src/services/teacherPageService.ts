@@ -4,7 +4,7 @@ import {SignalrWindow} from "./channelService";
 @Injectable()
 export class TeacherPageService {
 
-    constructor(private window:SignalrWindow){
+    constructor(public window:SignalrWindow){
     }
 
     startTimer(){

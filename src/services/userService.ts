@@ -5,6 +5,8 @@ import {Globals} from "../app/globals";
 import {ChannelConfig} from "./channelService";
 import {ToastService} from "./toastService";
 
+
+
 export class User {
     constructor(
         public login: string,
@@ -14,12 +16,12 @@ export class User {
 @Injectable()
 export class UserService {
 
-    private baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
+  public baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
 
-    constructor(private router: Router,
-                private http: Http,
-                private _globals: Globals,
-                private toastService: ToastService){
+    constructor(public router: Router,
+                public http: Http,
+                public _globals: Globals,
+                public toastService: ToastService){
         this.checkIfLoggedInFlag();
     }
 
@@ -104,8 +106,8 @@ export class UserService {
         this.router.navigate(['/login']);
     }
     getUserData(){
-        let userDataString = localStorage.getItem('userData');
-        return userDataString ? JSON.parse(userDataString) : {};
+         let userDataString = localStorage.getItem('userData');
+         return userDataString ? JSON.parse(userDataString) : {};
     }
     setSelectedCourse(courseId) {
         let userData = this.getUserData();
