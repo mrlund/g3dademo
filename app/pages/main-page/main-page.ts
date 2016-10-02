@@ -257,7 +257,7 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('3: Shoplifting', 3, 0, [
         new MenuItem('Project Introduction', 3, 1, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s1'),
           new ContentItem('introduction', 'Introduction', ContentPage),
           new AnimationContentItem('storyline', 'Story line', ContentPage),
           new ContentItem('project-statement', 'Project title Project Statement', ContentPage),
@@ -271,19 +271,21 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Determining Outliers In Data', 3, 3, null, [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s3'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', ContentPage)
         ]),
         new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s4'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', AnswerQuestionPage)
         ]),
         new MenuItem('Project Workshop', 3, 5, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s5'),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
