@@ -6,19 +6,19 @@
             "question": "The mean number of suspensions is greater for which dataset?",
             "answers": [
                 {
-                    "answer": "Dataset 1 - the mean is 2",
+                    "answer": "African Americans - the mean is 2",
                     "isCorrect": true
                 },
                 {
-                    "answer": "Dataset 1 - the mean is 1.8",
+                    "answer": "African Americans - the mean is 1.8",
                     "isCorrect": false
                 },
                 {
-                    "answer": "Dataset 2 - the mean is 2.6",
+                    "answer": "Latin Americans - the mean is 2.6",
                     "isCorrect": false
                 },
                 {
-                    "answer": "Dataset 2 - the mean is 3",
+                    "answer": "Latin Americans - the mean is 3",
                     "isCorrect": false
                 }
             ]
@@ -29,15 +29,15 @@
             "question": "The median number of suspensions is greater for which dataset?",
             "answers": [
                 {
-                    "answer": "Dataset 1",
+                    "answer": "African Americans",
                     "isCorrect": true
                 },
                 {
-                    "answer": "Dataset 2",
+                    "answer": "Latin Americans",
                     "isCorrect": false
                 },
                 {
-                    "answer": "The median is the same for both datasets",
+                    "answer": "The median is the same for both",
                     "isCorrect": false
                 }
             ]

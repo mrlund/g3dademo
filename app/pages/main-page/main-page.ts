@@ -182,13 +182,14 @@ export class MainPage implements OnInit{
           new ContentItem('introduction', 'Introduction', ContentPage),
           new AnimationContentItem('storyline', 'Story line', ContentPage, 'p2s1'),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
         new MenuItem('Project Background', 2, 2, null, [
           new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('class-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
           new ContentItem('text-based-discussion', 'Text-Based Discussion Protocol', AnswerQuestionPage),
-          new ContentItem('poll', 'Polling test', PollingPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('generalized-discussion', 'Generalizing - class discussion', AnswerQuestionPage),
         ]),
         new MenuItem('Representing Quantitive Data', 2, 3, null, [
@@ -196,7 +197,7 @@ export class MainPage implements OnInit{
           new AnimationContentItem('intro-video', 'Experiencing', ContentPage, 'p2s3'),
           new ContentItem('processing-activity', 'Text-Based Discussion Protocol', ContentPage),
           new ContentItem('generalized-discussion', 'Experiencing - class discussion', AnswerQuestionPage),
-          new ContentItem('applying-activity', 'Generalizing - class discussion', ContentPage),
+          new ContentItem('applying-activity', 'Generalizing - Class Activity', ContentPage),
         ]),
         new MenuItem('Analyzing Data - Mean', 2, 4, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s4'),
@@ -207,7 +208,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Analyzing Data: Interquartile Range', 2, 5, null, [
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s5'),
-          new ContentItem('experiencing', 'Experiencing - activity ', ContentPage),
+          new ContentItem('experiencing', 'Experiencing - activity ', AnswerQuestionPage),
           new ContentItem('processing-class-discussion', 'Processing - activity', ContentPage),
           new ContentItem('activity', 'Activity', ContentPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
@@ -223,7 +224,7 @@ export class MainPage implements OnInit{
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s7'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('end', 'What is standard deviation?', ContentPage),
-          new ContentItem('processing-class-discussion', 'Processing class discussion', ContentPage),
+          new ContentItem('processing-class-discussion', 'Processing class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Appplying', AnswerQuestionPage)
         ]),
