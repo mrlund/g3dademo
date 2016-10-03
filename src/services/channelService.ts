@@ -1,7 +1,7 @@
 import {Injectable, Inject} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
-import {UserService} from "./userService";
+import {UserService2} from "./userService_2";
 import {ToastService} from "./toastService";
 
 /**
@@ -101,7 +101,7 @@ export class ChannelService {
     //
   public subjects = new Array<ChannelSubject>();
 
-    constructor(@Inject(UserService) public userService:UserService,
+    constructor(@Inject(UserService2) public userService:UserService2,
                 @Inject(SignalrWindow) public window:SignalrWindow,
                 @Inject(ToastService) public toastService:ToastService
     ) {

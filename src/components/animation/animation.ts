@@ -17,10 +17,10 @@ declare var lib: any;
         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="paused && isClassroomModeOn == false && isBusy == false"
          (click)="playButtonAction()"
-          src="/img/play-button-overlay.png"
+          src="/assets/img/play-button-overlay.png"
           style="position:absolute;top:0;left:0;z-index: 9999"
           [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
-        <img *ngIf="isClassroomModeOn == true" src="/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
+        <img *ngIf="isClassroomModeOn == true" src="/assets/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
         <div *ngIf="isBusy == true" style="position: relative" [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
             <div class="uil-ring-css" 
@@ -96,7 +96,7 @@ export class Animation implements OnChanges, OnInit {
 
     buildFirstFramePath(){
         if(this.project && this.session && this.urlName && this.firstFrame) {
-            this.firstFramePath = '/build/content/project' + this.project+'/session' + this.session+ '/' + this.urlName +  '/' + this.firstFrame;
+            this.firstFramePath = '/assets/content/project' + this.project+'/session' + this.session+ '/' + this.urlName +  '/' + this.firstFrame;
         }
     }
 
@@ -156,7 +156,7 @@ export class Animation implements OnChanges, OnInit {
         this.stageHeight = this.page_canvas.height;
 
         this.canvas = this.thisElement.nativeElement.firstElementChild;
-        let basePath = "/build/content/project" + this.project + "/session" + this.session + "/" + this.urlName + "/";
+        let basePath = "/assets/content/project" + this.project + "/session" + this.session + "/" + this.urlName + "/";
         var loader = new createjs.LoadQueue(false, basePath);
         loader.installPlugin(createjs.Sound);
         loader.addEventListener("complete", this.handleComplete(this));

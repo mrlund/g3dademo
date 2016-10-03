@@ -23,7 +23,7 @@ export class ContentData {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
-      this.http.get('/build/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/questions.json').subscribe(res => {
+      this.http.get('/assets/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/questions.json').subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         // this.data = this.processData(res.json());
@@ -42,7 +42,7 @@ export class ContentData {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
-      this.http.get('/build/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/content.html').subscribe(res => {
+      this.http.get('/assets/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/content.html').subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         // this.data = this.processData(res.json());
@@ -55,7 +55,7 @@ export class ContentData {
       // We're using Angular Http provider to request the data,
       // then on the response it'll map the JSON data to a parsed JS object.
       // Next we process the data and resolve the promise with the new data.
-      this.http.get('/build/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/model.json').subscribe(res => {
+      this.http.get('/assets/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/model.json').subscribe(res => {
         // we've got back the raw data, now generate the core schedule data
         // and save the data for later reference
         // this.data = this.processData(res.json());
@@ -77,7 +77,7 @@ export class ContentData {
             }
         }
         var script = document.createElement('script');
-        script.src = '/build/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/' + name + '.js';
+        script.src = '/assets/content/project' + projectNo + '/session' + sessionNo + '/' + pageName + '/' + name + '.js';
         script.async = false;
         script.onload = function(){
             var newAnimation = { name: name, animation: lib};
