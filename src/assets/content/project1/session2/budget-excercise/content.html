@@ -1,0 +1,14 @@
+<h1>Budget Excercise</h1>
+<p>
+    Create a monthly budget using your <strong>Education assignment</strong> and <strong>Health assignment</strong>. Be realistic
+    about how much you think you would spend and remember that any leftover money can be saved for the future or for other
+    luxuries like vacation.
+</p>
+<div *ngIf="model.assignments">
+    <ion-card *ngFor="let assignment of ctrl.getRandom(model.assignments)">
+        <ion-card-content>
+            <ion-card-title>Your <strong>{{assignment.assignmentName}}</strong> assignment is</ion-card-title>
+            <h1>{{assignment.assignment}}</h1>
+        </ion-card-content>
+    </ion-card>
+</div>

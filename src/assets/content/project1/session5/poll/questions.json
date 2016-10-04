@@ -1,0 +1,26 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 1051,
+            "question": "Math and data are present in a wide variety of careers",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "questionId": 3030201,
+            "question": "Symmetry",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 3030202,
+            "question": "Peaks",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 3030203,
+            "question": "Skewness",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 3030204,
+            "question": "Uniformity",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 3030205,
+            "question": "Gaps",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 3030206,
+            "question": "Spread",
+            "answers": [
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+    "questions": [
+        {
+            "type": "multiple-choice",
+            "questionId": 2060401,
+            "question": "Which is a normal distribution?",
+            "answers": [
+                {
+                    "answer": "Number of colds – not normal",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Sports participation – normal",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "It is symmetrical",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

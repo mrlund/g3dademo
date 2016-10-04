@@ -1,0 +1,26 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 1031,
+            "question": "How confident do you feel calculating your GPA?",
+            "answers": [
+                {
+                    "answer": "Very Confident"
+                },
+                {
+                    "answer": "Confident"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Not Confident"
+                },
+                {
+                    "answer": "Not Confident At All"
+                }                                
+            ]
+        }
+    ]
+}

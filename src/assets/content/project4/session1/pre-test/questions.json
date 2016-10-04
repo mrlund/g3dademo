@@ -1,0 +1,73 @@
+{
+    "questions": [
+        {
+            "type": "multiple-choice",
+            "questionId": 4010501,
+            "question": "Fill in the missing number based on the information provided about school response to Supreme Court ruling that you need a warrant to search a cell phone:",
+            "answers": [
+                {
+                    "answer": "23",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "15",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "75",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "24",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 4010502,
+            "question": "What is one interpretation you can make about the data?",
+            "answers": [
+                {
+                    "answer": "a. 100 people were surveyed",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "b. more students agree with the ruling that teachers",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "c. 36 teachers were surveyed ",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "d. this is a small sample size",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 4010503,
+            "question": "What type of table is the table above?",
+            "answers": [
+                {
+                    "answer": "a. two way frequency table",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "b. header table",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "c. number table",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "d. the table has no special name",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}

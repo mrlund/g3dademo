@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 
 
 import {HttpModule} from "@angular/http";
+import { COMPILER_PROVIDERS } from '@angular/compiler';
 
 
 import { ActivityTablePage } from '../pages/activity-table-page/activity-table-page';
@@ -89,6 +90,8 @@ import {LocationStrategy, HashLocationStrategy } from '@angular/common';
     WelcomePage
   ],
   providers: [
+    COMPILER_PROVIDERS,
+
     UserService,
     appRouterProviders,
     HttpModule,

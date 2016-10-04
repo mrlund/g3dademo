@@ -1,0 +1,25 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "questionId": 2020201,
+            "question": "What does the data show?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 2020202,
+            "question": "Is anything surprising about the data?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 2020203,
+            "question": "What new insights did we gain about this topic?",
+            "answers": [
+            ]
+        }
+    ]
+}

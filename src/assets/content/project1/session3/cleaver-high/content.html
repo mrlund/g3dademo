@@ -1,0 +1,88 @@
+<h1>Cleaver High</h1> 
+    <h2>Grade Point Average Formula</h2>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Section</th>
+            <th>Hurston High </th>
+            <th>Cleaver High</th>
+        </tr>        
+    </thead>
+    <tbody>
+        <tr>
+            <td>12 - 1</td>
+            <td>3.5</td>
+            <td>3.0</td>
+        </tr>
+        <tr>
+            <td>12 - 2</td>
+            <td>3.7</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>12 - 3</td>
+            <td>3.9</td>
+            <td>3.5</td>
+        </tr>
+        <tr>
+            <td>12 - 4</td>
+            <td>3.6</td>
+            <td>4.5</td>
+        </tr> 
+    </tbody>
+</table>
+<table class="table">
+    <tr>
+        <td>A = 4.0</td>
+        <td>B = 3.0</td>
+        <td>C = 2.0</td>
+        <td>D = 1.0</td>
+        <td>F = 0.0</td>
+    </tr>
+</table>
+<p>You find GPA by adding the points for all of the grades then dividing by the number of grades:</p>
+<table class="table">
+    <tr>
+        <td># of A's</td>
+        <td><input class="small" type="number" [(ngModel)]="model.scores.NoOfA" /></td>
+        <td> x 4 = </td>
+        <td>
+            <input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfA * 4 == model.scores.NoOfAPoints}" [(ngModel)]="model.scores.NoOfAPoints" />
+        </td>
+    </tr>
+    <tr>
+        <td># of B's</td>
+        <td><input class="small" type="number" [(ngModel)]="model.scores.NoOfB" /></td>
+        <td> x 3 = </td>
+        <td><input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfB * 3 == model.scores.NoOfBPoints}" [(ngModel)]="model.scores.NoOfBPoints" /></td>
+    </tr>
+        <tr>
+        <td># of C's</td>
+        <td><input class="small" type="number" [(ngModel)]="model.scores.NoOfC"/></td>
+        <td> x 2 = </td>
+        <td><input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfC * 2 == model.scores.NoOfCPoints}" [(ngModel)]="model.scores.NoOfCPoints" /></td>
+    </tr>
+        <tr>
+        <td># of D's</td>
+        <td><input class="small" type="number" [(ngModel)]="model.scores.NoOfD"/></td>
+        <td> x 1 = </td>
+        <td><input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfD * 1 == model.scores.NoOfDPoints}" [(ngModel)]="model.scores.NoOfDPoints" /></td>
+    </tr>
+        <tr>
+        <td># of F's</td>
+        <td><input class="small" type="number" [(ngModel)]="model.scores.NoOfF"/></td>
+        <td> x 0 = </td>
+        <td><input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfF * 0 == model.scores.NoOfFPoints}" [(ngModel)]="model.scores.NoOfFPoints" /></td>
+    </tr>    
+    <tr>
+        <td># of Grades:</td>
+        <td><input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfA + model.scores.NoOfB + model.scores.NoOfC + model.scores.NoOfD + model.scores.NoOfF == model.scores.noOfGrades}" [(ngModel)]="model.scores.noOfGrades" /></td>
+        <td> Total Points:</td>
+        <td><input class="small" type="number" [ngClass] ="{correct: model.scores.NoOfAPoints + model.scores.NoOfBPoints + model.scores.NoOfCPoints + model.scores.NoOfDPoints + model.scores.NoOfFPoints == model.scores.noOfPoints}" [(ngModel)]="model.scores.noOfPoints" /></td>
+    </tr>    
+        <tr>
+        <td colspan="2">Total Points/ #of Grades:</td>
+        <td><input class="small" type="number"  [ngClass] ="{correct: model.scores.noOfPoints / model.scores.noOfGrades == model.scores.GPA}" [(ngModel)]="model.scores.GPA" /></td>
+        <td>GPA</td>
+    </tr>
+</table>
