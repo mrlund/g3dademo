@@ -1,19 +1,19 @@
 <ion-header>
     <ion-navbar no-border-bottom hideBackButton="true">
         <ion-buttons left>
-            <button ion-button icon-only (click)="toggleMenu()">
+            <button ion-button icon-only color="primary" (click)="toggleMenu()">
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
         <ion-title>{{selectedItem.title}}</ion-title>
         <ion-buttons  end>
-            <button ion-button icon-only [hidden]="!userData.IsFacilitator" (click)="syncPage()">
+            <button ion-button icon-only color="primary" [hidden]="!userData.IsFacilitator" (click)="syncPage()">
                 <ion-icon name="sync"></ion-icon>
             </button>
-            <button ion-button icon-only (click)="createNote()">
+            <button ion-button icon-only color="primary" (click)="createNote()">
                 <ion-icon name="create"></ion-icon>
             </button>
-            <button ion-button icon-only [hidden]="!userData.IsFacilitator"
+            <button ion-button icon-only color="primary" [hidden]="!userData.IsFacilitator"
                     (click)="goToTeacherPage()">
                 <ion-icon name="easel"></ion-icon>
             </button>
@@ -59,18 +59,18 @@
 
 <ion-footer>
     <ion-toolbar>
-        <ion-buttons start>
-            <button ion-button icon-left (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
+        <ion-buttons left>
+            <button ion-button icon-left color="primary" (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
                 <ion-icon name="arrow-back" item-left></ion-icon>
                 Previous
             </button>
         </ion-buttons>
-        <ion-buttons end>
-            <button ion-button icon-right (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotProcessed()">
+        <ion-buttons right>
+            <button ion-button icon-right color="primary" (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotProcessed()">
                 Next
                 <ion-icon name="arrow-forward" item-right></ion-icon>
             </button>
-            <button ion-button icon-right (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotProcessed()">
+            <button ion-button icon-right color="primary" (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && questionsNotProcessed()">
                 Done
                 <ion-icon name="checkmark" item-right></ion-icon>
             </button>

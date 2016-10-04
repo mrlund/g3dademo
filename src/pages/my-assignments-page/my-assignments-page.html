@@ -1,7 +1,7 @@
 <ion-header>
     <ion-navbar hideBackButton="true">
         <ion-buttons side="left">
-            <button ion-button menuToggle>
+            <button ion-button menuToggle color="primary">
                 <ion-icon name="menu"></ion-icon>
             </button>
         </ion-buttons>
@@ -14,7 +14,7 @@
         <ion-card *ngFor="let assignment of myAssignments" class="my-assignments notes-card">
             <ion-card-header>
                 <h4>Project {{assignment.ProjectNumber}}, Session {{assignment.SessionNumber}}, Page {{assignment.PageNumber}}
-                                        <button ion-button icon-only (click)="redirect(assignment)" class="disable-hover button">
+                                        <button ion-button icon-only color="primary" (click)="redirect(assignment)" class="disable-hover button">
                         <span class="button-inner">
                             <ion-icon name="share-alt"></ion-icon>
                         </span>

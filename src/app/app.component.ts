@@ -10,6 +10,9 @@ import {UserService} from '../services/userService';
   // directives: [ROUTER_DIRECTIVES],
   template:  "<router-outlet></router-outlet>"
   // template: `<ion-nav [root]="rootPage"></ion-nav>`
+  config: {
+    mode: 'ios'
+  }
 })
 export class MyApp {
   //rootPage = TabsPage;

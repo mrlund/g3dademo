@@ -191,8 +191,10 @@ h1 {
   background-color: #f8f8f8;
   padding: 20px;
 }
+ion-title > .toolbar-title,
 .toolbar-title {
   color: #E5053A;
+  text-align: center;
 }
 
 .notes-card button {
