@@ -33,7 +33,7 @@
             <ion-card-content>
                 <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
                 <ion-list>
-                    <ion-item *ngFor="let answer of question.answers">
+                    <ion-item class="important-bottom-bordered" *ngFor="let answer of question.answers">
                         <button ion-button [ngClass]="answer.voteState" (click)="onSuggest(question, answer)" class="polling-option">{{answer.answer}}</button>
                     </ion-item>
                 </ion-list>

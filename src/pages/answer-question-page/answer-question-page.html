@@ -34,7 +34,7 @@
                 <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
                 <ion-list radio-group  [(ngModel)]="question.answered">
                     <div *ngIf="question.type == 'multiple-choice'">
-                        <ion-item *ngFor="let answer of question.answers">
+                        <ion-item class="important-bottom-bordered" *ngFor="let answer of question.answers">
                             <ion-label>{{answer.answer}}</ion-label>
                             <ion-radio (click)="sendResponses(question, answer)" value="{{answer.answer}}"></ion-radio>
                         </ion-item>
@@ -48,10 +48,12 @@
                         <li *ngFor="let suggestion of question.suggestions">{{suggestion}}</li>
                     </ul>
                 </ion-list>
-                <ion-footer *ngIf="question.type == 'discussion'">
+                <ion-item *ngIf="question.type == 'discussion'">
                     <ion-input [(ngModel)]="question.suggestion" type="text" placeholder="Type suggestion..."></ion-input>
-                    <button ion-button (click)="onSuggest(question)" class="right">Add Suggestion</button>
-                </ion-footer>
+                </ion-item>
+                <ion-item>
+                    <button ion-button (click)="onSuggest(question)" class="right answer-button">Add Suggestion</button>
+                </ion-item>
             </ion-card-content>
         </ion-card>
     </div>

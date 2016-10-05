@@ -85,12 +85,12 @@
                         </div>
                     </div>
                 </ion-list>
-                <ion-footer *ngIf="state == 'reviewing'">
+                <ion-item *ngIf="state == 'reviewing'">
                     <ion-input value="" [(ngModel)]="question.answers[0].response" type="text" placeholder="Give a reason for your assessment..."></ion-input>
-                </ion-footer>
-                <ion-footer *ngIf="state == 'answering'">
+                </ion-item>
+                <ion-item *ngIf="state == 'answering'">
                     <ion-input (blur)="validateAnswerFields()" value="" [(ngModel)]="question.answers[0].answer" type="text" placeholder="Answer..."></ion-input>
-                </ion-footer>
+                </ion-item>
             </ion-card-content>
         </ion-card>
         <ion-card>

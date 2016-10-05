@@ -5,10 +5,10 @@ div.selection {
 }
 
 .question input {
-  
+
 }
 .question button {
-  
+
 }
 .button.right {
   float: right;
@@ -32,8 +32,9 @@ input.text-input {
     color:#06BE06;
         vertical-align: bottom;
 }
-button.polling-option {
+button.polling-option.item-button {
     width: 80%;
+    height:40px;
     margin: 10px auto;
     display: block;
     padding: 20px;
