@@ -200,6 +200,7 @@ export class MainPage implements OnInit{
           new ContentItem('applying-activity', 'Generalizing - Class Activity', ContentPage),
         ]),
         new MenuItem('Analyzing Data - Mean', 2, 4, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p2s4'),
           new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage),
@@ -207,6 +208,7 @@ export class MainPage implements OnInit{
           new ContentItem('applying-class-discussion', 'Applying', AnswerQuestionPage),
         ]),
         new MenuItem('Analyzing Data: Interquartile Range', 2, 5, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s5'),
           new ContentItem('experiencing', 'Experiencing - activity ', AnswerQuestionPage),
           new ContentItem('processing-class-discussion', 'Processing - activity', ContentPage),
@@ -214,6 +216,7 @@ export class MainPage implements OnInit{
           new ContentItem('discussion', 'Discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Analyzing Data: Normal Distribution', 2, 6, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s6'),
           new ContentItem('experiencing', 'Experiencing - video', ContentPage),
           new ContentItem('processing-class-discussion', 'Processing class discussion', AnswerQuestionPage),
@@ -221,6 +224,7 @@ export class MainPage implements OnInit{
           new ContentItem('activity', 'Applying - activity', ContentPage)
         ]),
         new MenuItem('Analyzing Data - Standard Deviation', 2, 7, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new AnimationContentItem('introduction', 'Introduction', ContentPage, 'p2s7'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('end', 'What is standard deviation?', ContentPage),
@@ -229,11 +233,13 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Appplying', AnswerQuestionPage)
         ]),
         new MenuItem('Making Predictions About Data', 2, 8, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
         new MenuItem('Breaking The Cycle', 2, 9, null, [
+          new ContentItem('roadmap', 'Roadmap', ContentPage),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing class discussion', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
