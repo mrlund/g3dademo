@@ -46,5 +46,8 @@
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [],
+  "config":{
+    "ionic_copy": "./external-libs.js"
+  }
 }
