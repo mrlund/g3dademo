@@ -42,6 +42,7 @@ import {Globals} from "./globals"
 import { routing, appRouterProviders } from './routes';
 
 import {LocationStrategy, HashLocationStrategy } from '@angular/common';
+import {DynamicComponentModule} from "angular2-dynamic-component";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import {LocationStrategy, HashLocationStrategy } from '@angular/common';
   ],
   imports: [
     IonicModule.forRoot(MyApp),
+    DynamicComponentModule,
     routing
   ],
   bootstrap: [IonicApp],

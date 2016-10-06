@@ -22,6 +22,7 @@
     "@angular/router": "^3.0.1",
     "@ionic/app-scripts": "0.0.27",
     "@ionic/storage": "^1.0.3",
+    "angular2-dynamic-component": "0.0.50",
     "es6-shim": "^0.35.1",
     "ionic-angular": "^2.0.0-rc.0",
     "ionic-native": "^2.0.3",
@@ -35,6 +36,8 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "^0.0.23",
+    "core-js": "^2.4.1",
+    "ts-metadata-helper": "0.0.3",
     "typescript": "^2.0.3"
   },
   "description": "G3DA: An Ionic project",
@@ -47,7 +50,7 @@
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "config":{
+  "config": {
     "ionic_copy": "./external-libs.js"
   }
 }
