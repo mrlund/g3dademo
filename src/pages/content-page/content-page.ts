@@ -1,9 +1,8 @@
-import {NavController, NavParams, MenuController, Toast, ToastController, Events} from 'ionic-angular';
+import {NavController, NavParams, MenuController, ToastController, Events} from 'ionic-angular';
 import {Component, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ProgressProvider} from '../../providers/progressProvider';
 
-import {Animation} from '../../components/animation/animation';
 import {InnerContent} from '../../components/inner-content/inner-content';
 import {ContentItem, AnimationContentItem} from '../../models/content-item';
 import {MenuItem} from '../../models/menu-item';

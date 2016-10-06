@@ -36,10 +36,6 @@ export class TeacherPage {
 
         let dataObservable = this.channelService.getReceivedData();
 
-        function randomIntFromInterval(min, max) {
-            return Math.floor(Math.random() * (max - min + 1) + min);
-        }
-
         var currentCharts = this.charts.getValue();
         dataObservable['source'].subscribe((data) => {
             console.log("Received", data);

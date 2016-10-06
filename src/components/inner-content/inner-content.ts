@@ -1,5 +1,4 @@
-import {Component, ViewChild, ViewContainerRef} from '@angular/core';
-import {BehaviorSubject} from "rxjs/Rx";
+import {Component} from '@angular/core';
 import {IComponentInputData} from "angular2-dynamic-component";
 import {IonicModule} from "ionic-angular";
 
@@ -8,7 +7,7 @@ import {IonicModule} from "ionic-angular";
     template: `
         <div *ngIf="show">
            <DynamicComponent [componentTemplate]="tpl" [componentModules]="extraModules"
-                  [componentInputData]="{'model': inputData}">
+                  [componentInputData]="context">
             </DynamicComponent>
         </div>
   `
@@ -16,7 +15,7 @@ import {IonicModule} from "ionic-angular";
 
 export class InnerContent{
     public tpl:string;
-    public inputData: IComponentInputData;
+    public context: IComponentInputData;
     public show: boolean = false;
     public extraModules:Array<any> = [IonicModule];
 
@@ -24,8 +23,10 @@ export class InnerContent{
     }
 
     recompileTemplate(template, model, parentCtrl?) {
+      this.context = {};
       this.tpl = template;
-      this.inputData = model;
+      this.context = {'model': model};
+      if(parentCtrl) this.context['ctrl'] = parentCtrl;
       this.show = true;
     }
 }

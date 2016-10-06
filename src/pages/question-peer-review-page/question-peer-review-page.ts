@@ -1,7 +1,4 @@
-import {
-    NavController, NavParams, Loading,
-    LoadingController, MenuController
-} from 'ionic-angular';
+import {NavController, NavParams, LoadingController, MenuController} from 'ionic-angular';
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
@@ -16,9 +13,6 @@ import {InnerContent} from "../../components/inner-content/inner-content";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../app/globals";
 import {UserService} from "../../services/userService";
-
-import {Observable} from "rxjs/Observable";
-import {Subject} from "rxjs/Subject";
 import {Subscription} from "rxjs/Subscription";
 
 

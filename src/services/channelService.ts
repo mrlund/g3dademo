@@ -1,8 +1,6 @@
 import {Injectable, Inject} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
-import {UserService2} from "./userService_2";
-import {ToastService} from "./toastService";
 
 /**
  * When SignalR runs it will add functions to the global $ variable
@@ -55,6 +53,8 @@ export class ChannelSubject {
 @Injectable()
 export class ChannelService {
 
+  public baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
+
     /**
      * starting$ is an observable available to know if the signalr
      * connection is ready or not. On a successful connection this
@@ -101,10 +101,7 @@ export class ChannelService {
     //
   public subjects = new Array<ChannelSubject>();
 
-    constructor(@Inject(UserService2) public userService:UserService2,
-                @Inject(SignalrWindow) public window:SignalrWindow,
-                @Inject(ToastService) public toastService:ToastService
-    ) {
+    constructor(@Inject(SignalrWindow) public window:SignalrWindow) {
         if (this.window.$ === undefined || this.window.$.hubConnection === undefined) {
             throw new Error("The variable '$' or the .hubConnection() function are not defined...please check the SignalR scripts have been loaded properly");
         }
@@ -121,7 +118,7 @@ export class ChannelService {
         this.stateData$ = this.stateDataSubject.asObservable();
     }
     createConnection():any {
-        var channelConfig = this.userService.getChannelConfiguration();
+        var channelConfig = this.getChannelConfiguration();
 
         this.hubConnection = this.window.$.hubConnection();
         this.hubConnection.url = channelConfig.url;
@@ -205,13 +202,10 @@ export class ChannelService {
         var assignmentDataSource = this.asignmentData$['source'];
         var pageSyncDataSource = this.pageSyncData$['source'];
         var reviewDataSource = this.reviewData$['source'];
-        var stateDataSource = this.stateData$['source'];
+        // var stateDataSource = this.stateData$['source'];
 
         this.createConnection().start()
             .done(() => {
-                // if(this.connectionDropped) {
-                //     this.toastService.connectionStarted();
-                // }
                 // this.connectionDropped = false;
                 this.hubConnection.received((data) => {
                     dataSource['next'](data);
@@ -233,8 +227,6 @@ export class ChannelService {
 
                 this.connectionState$.subscribe((state) => {
                     if (state == ConnectionState.Disconnected) {
-                        // this.connectionDropped = true;
-                        // this.toastService.connectionDropped();
                         this.onDisconnect();
                     }
                 });
@@ -290,4 +282,19 @@ export class ChannelService {
     getStateSubject():Subject<any> {
         return this.stateDataSubject;
     }
+    getUserData(){
+      let userDataString = localStorage.getItem('userData');
+      return userDataString ? JSON.parse(userDataString) : {};
+    }
+    getChannelConfiguration() {
+      var userData = this.getUserData();
+      let channelConfig = new ChannelConfig();
+      channelConfig.url = this.baseUrl + "/signalr";
+      channelConfig.hubName = "inClassHub";
+      channelConfig.params = new Map<string, string>();
+      channelConfig.params['uid'] = userData.UserId;
+      channelConfig.params['courseClassId'] = userData.SelectedCourseId;
+      return channelConfig;
+    }
+
 }

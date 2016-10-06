@@ -1,11 +1,10 @@
-import {Injectable, Inject, OnInit, ViewChild} from '@angular/core';
+import {Injectable, ViewChild} from '@angular/core';
 import {ContentItem} from '../models/content-item';
 import {MenuItem} from '../models/menu-item';
-import {Events, ToastController, App, NavController} from 'ionic-angular';
+import {Events, App, NavController} from 'ionic-angular';
 import {Headers, Http, Response} from "@angular/http";
 import {BehaviorSubject, Observable} from "rxjs/Rx";
 import {Globals} from "../app/globals";
-import {WelcomePage} from "../pages/welcome-page/welcome-page";
 import {IContentItem} from  "../models/content-item"
 
 @Injectable()

@@ -133,7 +133,6 @@ export class ActivityTablePage {
     }
     addItem(selectedItem){
         this.table.push(selectedItem);
-        var newList = [];
         this.addList = this.addList.filter(item => {
             return item.categoryId != selectedItem.category.categoryId
         });

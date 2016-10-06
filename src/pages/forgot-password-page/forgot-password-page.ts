@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {UserService, User} from '../../services/userService';
+import {UserService} from '../../services/userService';
 
 @Component({
     templateUrl: 'forgot-password-page.html'

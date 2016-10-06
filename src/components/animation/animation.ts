@@ -137,7 +137,7 @@ export class Animation implements OnChanges, OnInit {
     }
 
     playPauseAnimation() {
-        var anim = this.stage.getChildAt(0);
+        // var anim = this.stage.getChildAt(0);
         this.playStateChanged.emit(!createjs.Ticker.getPaused());
         let st = this.sound;
         if (st) {
@@ -245,10 +245,11 @@ export class Animation implements OnChanges, OnInit {
     }
 
     resizeAnimation() {
-        var widthToHeight = this.stageWidth / this.stageHeight;
+        // var widthToHeight = this.stageWidth / this.stageHeight;
         var newWidth = this.thisElement.nativeElement.offsetWidth; //window.innerWidth;
-        var newHeight = this.thisElement.nativeElement.offsetHeight; //window.innerHeight;
-        var newWidthToHeight = newWidth / newHeight;
+        // var newWidthToHeight = newWidth / newHeight;
+
+
         //
         // if (newWidthToHeight > widthToHeight) {
         //     newWidth = newHeight * widthToHeight;

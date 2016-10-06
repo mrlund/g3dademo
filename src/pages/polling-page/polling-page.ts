@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {NavController, NavParams, MenuController, Toast, ToastController} from 'ionic-angular';
+import {NavController, NavParams, MenuController, ToastController} from 'ionic-angular';
 import {ContentData} from '../../providers/contentProvider';
 import {WelcomePage} from '../welcome-page/welcome-page';
 import {ContentItem} from '../../models/content-item';
@@ -113,7 +113,7 @@ export class PollingPage {
         this.nav.push(page.componentType, { item: page });
     }
     finishSession() {
-        let self = this;
+        // let self = this;
         this.progress.completeLesson(this.selectedItem.menuItem);
         let toast = this.toastController.create({
             message: 'Congratulations - You completed the lesson!',

@@ -5,8 +5,6 @@ import {Globals} from "../app/globals";
 import {ChannelConfig} from "./channelService";
 import {ToastService} from "./toastService";
 
-
-
 export class User {
     constructor(
         public login: string,
@@ -50,14 +48,6 @@ export class UserService {
             let expiry = new Date().getTime() + (parsedRes['expires_in'] * 1000) - 300;
             localStorage.setItem("api_token_expiry", expiry.toString());
             this._globals.isLoggedIn.next(true);
-            let headers = new Headers();
-            /*headers.append('Authorization', 'Bearer ' + token);
-            //get data of userprofile
-            this.http.get(this.baseUrl + '/api/account/userprofile', {headers: headers}).subscribe(res => {
-                let parsedRes = res.json();
-                localStorage.setItem("userData", JSON.stringify(parsedRes));
-                this.router.navigate(['/main']);
-            });*/
             this.updateUserInfo(() => {
                 this.router.navigate(['/main']);
             });

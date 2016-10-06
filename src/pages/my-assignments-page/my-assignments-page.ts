@@ -1,7 +1,7 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {ProgressProvider} from "../../providers/progressProvider";
-import {Nav, NavController} from "ionic-angular";
+import {NavController} from "ionic-angular";
 import {Subscription} from "rxjs/Subscription";
 
 @Component({

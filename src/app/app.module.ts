@@ -31,7 +31,6 @@ import { ContentData } from '../providers/contentProvider';
 import { ProgressProvider } from '../providers/progressProvider';
 
 import {UserService} from "../services/userService"
-import {UserService2} from "../services/userService_2"
 import {ChannelService, SignalrWindow } from "../services/channelService"
 import {ModalService} from "../services/modalService"
 import {TeacherPageService} from "../services/teacherPageService"
@@ -103,7 +102,6 @@ import {DynamicComponentModule} from "angular2-dynamic-component";
     ModalService,
     TeacherPageService,
     ToastService,
-    UserService2,
     ApiService,
     Globals,
 
