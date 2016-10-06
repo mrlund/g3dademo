@@ -3,6 +3,7 @@ import {Platform, NavParams, ViewController} from 'ionic-angular';
 import {ProgressProvider} from '../../providers/progressProvider';
 import {Globals} from "../../app/globals";
 import {Subscription} from "rxjs/Subscription";
+import {ApiService} from "../../services/apiService"
 
 
 @Component({
@@ -13,15 +14,31 @@ export class NotePopup {
     character;
     note;
     saveNoteSub: Subscription;
+    isExist: boolean = false;
+
 
     constructor(
         public platform: Platform,
         public params: NavParams,
         public viewCtrl: ViewController,
         public progress: ProgressProvider,
-        public _globals: Globals
+        public _globals: Globals,
+        public apiService: ApiService,
     ) {
         this.note = "";
+        let sessionNumber = this.params.get('sessionNumber');
+        let projectNumber = this.params.get('projectNumber');
+        let pageNumber = this.params.get('pageNumber');
+        apiService.getNoteForPage(sessionNumber, projectNumber, pageNumber).then(data => {
+
+            let currentNote = data;
+            if(currentNote){
+              console.log(JSON.stringify(currentNote));
+              this.note = currentNote.NoteText;
+              this.isExist = true;
+            }
+        });
+
     }
 
     ngOnDestroy(){
@@ -44,7 +61,7 @@ export class NotePopup {
                 pageNumber: pageNumber,
                 NoteText: self.note
         };
-        this.saveNoteSub = this.progress.saveNote(noteData).subscribe(res => {
+        this.saveNoteSub = this.progress.saveNote(noteData, this.isExist).subscribe(res => {
                 console.log('result save note');
                 console.log(res);
                 this.dismiss();

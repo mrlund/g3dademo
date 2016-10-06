@@ -61,11 +61,17 @@ export class ProgressProvider {
             this.lastPageOpened.next(page);
         }
     }
-    saveNote(noteData): Observable<Response> {
+    saveNote(noteData, isExist = false): Observable<Response> {
         let token = localStorage.getItem("api_token");
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + token);
-        return this.http.post(this.baseUrl + '/api/notes', noteData, { headers: headers });
+        let request;
+        if(!isExist) {
+          request = this.http.post(this.baseUrl + '/api/notes', noteData, {headers: headers});
+        } else {
+          request = this.http.put(this.baseUrl + '/api/notes', noteData, {headers: headers});
+        }
+        return request;
     }
     completeLesson(lesson: MenuItem) {
         if (this.isLoggedIn) {
