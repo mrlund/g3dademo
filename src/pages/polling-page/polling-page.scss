@@ -1,0 +1,49 @@
+div.selection {
+  font-size: 22px;
+  display: block;
+  text-align: center;
+}
+
+.question input {
+
+}
+.question button {
+
+}
+.button.right {
+  float: right;
+
+}
+input.text-input {
+  font-size: 26px;
+  border-bottom: 1px solid #aaa;
+}
+.incorrect-symbol {
+    font-size: 60px;
+    line-height: 20px;
+  font-weight: bold;
+  color: #F55555;
+      vertical-align: bottom;
+}
+.correct-symbol {
+    font-size: 60px;
+    line-height: 20px;
+    font-weight: bold;
+    color:#06BE06;
+        vertical-align: bottom;
+}
+button.polling-option.item-button {
+    width: 80%;
+    height:40px;
+    margin: 10px auto;
+    display: block;
+    padding: 20px;
+    max-width: 200px;
+}
+button.polling-option.voted {
+    background-color: #ccc;
+    pointer-events: none;
+}
+button.polling-option.votedFor {
+  pointer-events: none;
+}

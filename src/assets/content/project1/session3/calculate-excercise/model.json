@@ -1,0 +1,11 @@
+{
+      "characterImagePath": "/assets/content/general/valeria.png",
+  "characterImageText": "I hope you were paying attention - now try it yourself! Use the table below to calculate your GPA. Correct answers make the field turn green! If you forget a step don't worry - just go back and watch the video again.",
+    "scores": {
+        "NoOfA": 0,
+        "NoOfB": 0,
+        "NoOfC": 0,
+        "NoOfD": 0,
+        "NoOfF": 0
+    }
+}

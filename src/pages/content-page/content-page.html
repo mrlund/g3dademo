@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-buttons left>
+            <button ion-button icon-only color="primary" (click)="toggleMenu()">
+                <ion-icon name="menu"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{selectedItem.title}}</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only color="primary" [hidden]="!userData.IsFacilitator" (click)="syncPage()">
+                <ion-icon name="sync"></ion-icon>
+            </button>
+            <button ion-button icon-only color="primary" (click)="createNote()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="">
+    <div class="page-container">
+        <div *ngIf="selectedItem" class="selection">
+            <character-phrase-img></character-phrase-img>
+            <inner-content></inner-content>
+            <animation *ngIf="animationName && selectedItem" style="position:relative;display:block;" [name]="animationName" [session]="selectedItem.menuItem.session"
+                [project]="selectedItem.menuItem.project" [urlName]="selectedItem.urlName" [paused]="pauseAnimation" [firstFrame]="selectedItem.firstFrameFile" (playStateChanged)="setAnimationState($event)">
+            </animation>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons left>
+            <button ion-button icon-left color="primary" (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
+                <ion-icon name="arrow-back" item-left></ion-icon>
+                Previous
+            </button>
+        </ion-buttons>
+        <ion-buttons right>
+            <button ion-button icon-right color="primary" (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem">
+                Next
+                <ion-icon name="arrow-forward" item-right></ion-icon>
+            </button>
+            <button ion-button icon-right color="primary" (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem">
+                Done
+                <ion-icon name="checkmark" item-right></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,42 @@
+{
+  "characterImagePath": "/assets/content/general/zynab.png",
+  "characterImageText": "A number of things will influence the choices you make for your budget. Your education and health are two important ones, since your education affects how much you earn, and it can cost you a lot of money if you get sick. For this excercise we'll randomly pick two circumstances for you, and ask you to build a buget to fit that situation.",
+  "assignments": [
+    [
+      {
+        "assignmentName": "Education",
+        "assignment": "You decided to continue your education and get a Master’s Degree. Your monthly income is $7,420."
+      },
+      {
+        "assignmentName": "Education",
+        "assignment": "You decided to go to college and get a Bachelor’s degree. Your monthly income is $3,800."
+      },
+      {
+        "assignmentName": "Education",
+        "assignment": "You graduated from High school or earned a GED. Your monthly income is $2,650."
+      },
+      {
+        "assignmentName": "Education",
+        "assignment": "You dropped out of High School. Your monthly income is $1,348"
+      }
+    ],
+    [
+      {
+        "assignmentName": "Health",
+        "assignment": "You remain healthy"
+      },
+      {
+        "assignmentName": "Health",
+        "assignment": "You remain healthy"
+      },
+      {
+        "assignmentName": "Health",
+        "assignment": "You have poor health"
+      },
+      {
+        "assignmentName": "Health",
+        "assignment": "You remain healthy"
+      }
+    ]
+  ]
+}

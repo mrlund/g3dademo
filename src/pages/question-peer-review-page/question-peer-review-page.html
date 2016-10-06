@@ -1,0 +1,123 @@
+<ion-header>
+    <ion-navbar hideBackButton="true">
+        <ion-buttons left>
+            <button ion-button icon-only  color="primary" (click)="toggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        </ion-buttons>
+        <ion-title>{{selectedItem.title}}</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only color="primary" [hidden]="!userData.IsFacilitator" (click)="syncPage()">
+                <ion-icon name="sync"></ion-icon>
+            </button>
+            <button ion-button icon-only color="primary" (click)="createNote()">
+                <ion-icon name="create"></ion-icon>
+            </button>
+            <button ion-button icon-only color="primary" [hidden]="!userData.IsFacilitator" (click)="pullReview()">
+                <ion-icon name="ios-download-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="has-header has-footer" *ngIf="questions">
+    <div class="page-container">
+        <character-phrase-img></character-phrase-img>
+        <ion-card>
+            <ion-card-content class="content-page">
+                <inner-content></inner-content>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="state == 'reviewing'">
+            <ion-card-content>
+                <strong>Now you're the teacher!</strong> The answers below were given by a classmate. Do you think they are
+                correct, and why or why not?
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="state == 'viewFeedback'">
+            <ion-card-content>
+                <strong>How did you do?</strong> Your classmate gave you the following response.
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngIf="state == 'awaitingReviewAssignment' || state == 'awaitingReviewAssignmentFeedbackReady'  || state == 'awaitingFeedback'">
+            <ion-card-content>
+                Please Wait....
+                <ion-spinner></ion-spinner>
+            </ion-card-content>
+        </ion-card>
+        <ion-card *ngFor="let question of questions.questions">
+            <ion-card-content>
+                <ion-card-title *ngIf="questions">
+                    <strong>
+                    {{question.question}}
+                </strong>
+                </ion-card-title>
+                <ion-list radio-group [(ngModel)]="question.answers[0].isCorrect">
+                    <div *ngIf="state == 'reviewing'">
+                        <ion-item *ngFor="let answer of question.answers">
+                            <ion-label>Answer: {{answer.answer}}
+                                <br /><br />
+                                <strong>Your assessment:</strong>
+                            </ion-label>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Correct</ion-label>
+                            <ion-radio value="true"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>Not Correct</ion-label>
+                            <ion-radio value="false"></ion-radio>
+                        </ion-item>
+                    </div>
+                    <div *ngIf="state == 'viewFeedback'">
+                        <div *ngFor="let answer of question.answers">
+                            <ion-item>
+                                <ion-label><strong>Your answer:</strong> {{answer.answer}}</ion-label>
+                            </ion-item>
+                            <ion-item>
+                                <ion-label>
+                                    <strong>Your classmates assessment:</strong><br /><br />
+                                    <ion-icon class="correct-symbol" name="checkmark" *ngIf="answer.isCorrect"></ion-icon>
+                                    <ion-icon class="incorrect-symbol" name="close" *ngIf="!answer.isCorrect"></ion-icon>
+                                    &nbsp;&nbsp;{{answer.response}}
+                                </ion-label>
+                            </ion-item>
+                        </div>
+                    </div>
+                </ion-list>
+                <ion-item *ngIf="state == 'reviewing'">
+                    <ion-input value="" [(ngModel)]="question.answers[0].response" type="text" placeholder="Give a reason for your assessment..."></ion-input>
+                </ion-item>
+                <ion-item *ngIf="state == 'answering'">
+                    <ion-input (blur)="validateAnswerFields()" value="" [(ngModel)]="question.answers[0].answer" type="text" placeholder="Answer..."></ion-input>
+                </ion-item>
+            </ion-card-content>
+        </ion-card>
+        <ion-card>
+            <button ion-button *ngIf="state == 'awaitingReviewAssignmentFeedbackReady'" class="" (click)="showFeedback()">Show Feedback</button>
+            <button ion-button *ngIf="state == 'reviewing'" class="right" (click)="submitFeedback()">Submit Feedback</button>
+            <button ion-button *ngIf="state == 'answering'" class="right" [disabled]="!formComplete" (click)="submitAnswers()">Submit Answers</button>
+        </ion-card>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-buttons left>
+            <button ion-button icon-left color="primary" (click)="navigateBackTo(selectedItem.prevItem)" royal [hidden]="!selectedItem.prevItem">
+                <ion-icon name="arrow-back" item-left></ion-icon>
+                Previous
+            </button>
+        </ion-buttons>
+        <ion-buttons right>
+            <button ion-button icon-right color="primary" (click)="navigateForwardTo(selectedItem.nextItem)" royal [hidden]="!selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && (!submittedReview && isClassroomModeOn)">
+                Next
+                <ion-icon name="arrow-forward" item-right></ion-icon>
+            </button>
+            <button ion-button icon-right color="primary" (click)="finishSession(selectedItem)" royal [hidden]="selectedItem.nextItem" [disabled]="!selectedItem.menuItem.isComplete && (!submittedReview && isClassroomModeOn)">
+                DONE
+                <ion-icon name="checkmark" item-right></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
