@@ -15,6 +15,7 @@ export class NotePopup {
     note;
     saveNoteSub: Subscription;
     isExist: boolean = false;
+    StudentNoteId: string;
 
 
     constructor(
@@ -35,6 +36,7 @@ export class NotePopup {
             if(currentNote){
               console.log(JSON.stringify(currentNote));
               this.note = currentNote.NoteText;
+              this.StudentNoteId = currentNote.StudentNoteId;
               this.isExist = true;
             }
         });
@@ -59,7 +61,8 @@ export class NotePopup {
                 sessionNumber: sessionNumber,
                 projectNumber: projectNumber,
                 pageNumber: pageNumber,
-                NoteText: self.note
+                NoteText: self.note,
+                StudentNoteId: this.StudentNoteId
         };
         this.saveNoteSub = this.progress.saveNote(noteData, this.isExist).subscribe(res => {
                 console.log('result save note');
