@@ -258,7 +258,10 @@ export class MainPage implements OnInit{
           new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Summary/Quiz', 2, 12, null, [
-          new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage)
+          new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
+          new ContentItem('curriculum-eval', 'How did we do?', PollingPage)
+
         ])
       ]),
       new MenuItem('3: Shoplifting', 3, 0, [
