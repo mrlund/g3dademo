@@ -314,6 +314,11 @@ export class Animation implements OnChanges, OnInit {
         return;
       }
 
+      let st = this.sound;
+      if (st) {
+        st.setPaused(true);
+      }
+
       stage.gotoAndPlay(newPosition);
     }
 
