@@ -147,3 +147,29 @@
   -o-animation: uil-ring-anim 1s linear infinite;
   animation: uil-ring-anim 1s linear infinite;
 }
+
+animation .navControls{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .progressBar{
+    $progressBarHeight: 15px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: $progressBarHeight;
+    background-color: #fc6e8f;
+
+    .currentProgress{
+      position: relative;
+      top: calc(100% - #{$progressBarHeight});
+      height: $progressBarHeight;
+      background-color:  #E5053A;
+      transition: width .5s;
+    }
+  }
+}

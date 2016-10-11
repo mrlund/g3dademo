@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef, OnInit, NgZone} from '@angular/core';
 import {Globals} from '../../app/globals';
 import {Events} from "ionic-angular";
 import {ContentData} from '../../providers/contentProvider';
@@ -11,17 +11,26 @@ declare var lib: any;
         <canvas *ngIf="isClassroomModeOn == false"
          [hidden]="!animationFileFound || !dataLoaded"
          (click)="playButtonAction()" width="600" height="600" 
+         (mouseover)='mouseOver()'
+         (mouseleave)="mouseLeave()"
          style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
         <img *ngIf="!dataLoaded" src="{{firstFramePath}}" 
         style="position:absolute;top:0;left:0;"
         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="paused && isClassroomModeOn == false && isBusy == false"
          (click)="playButtonAction()"
+          (mouseover)='mouseOver()'
+          (mouseleave)="mouseLeave()"
           src="/assets/img/play-button-overlay.png"
           style="position:absolute;top:0;left:0;z-index: 9999"
           [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="isClassroomModeOn == true" src="/assets/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
+        <div *ngIf="isNavControlsShowing" class="navControls"  (click)="playButtonAction()" (mouseover)='mouseOver()'>
+            <div class="progressBar" (click)="rewindAnimation($event)">
+              <div class="currentProgress" [ngStyle]="{'width': currentProgressWidth+'px'}"></div>
+            </div>
+        </div>
         <div *ngIf="isBusy == true" style="position: relative" [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
             <div class="uil-ring-css" 
             style="transform:scale(0.7); margin: 0 auto; position: absolute"
@@ -60,17 +69,23 @@ export class Animation implements OnChanges, OnInit {
 
     public dataLoaded: boolean = false;
     public isBusy: boolean = false;
+    public isNavControlsShowing: boolean = false;
     public formattedProgress: string = '0';
 
     sizeOfCanvas: number = 600;
+    currentProgressWidth: string = '0';
     firstFramePath = '';
+
+    zone: NgZone;
 
     constructor(content: ContentData,
                 public thisElement: ElementRef,
                 public _globals: Globals,
                 public cdRef: ChangeDetectorRef,
-                public events: Events) {
+                public events: Events,
+                zone:NgZone) {
         var self = this;
+        this.zone = zone;
         this.content = content;
         this._globals.isClassroomModeOn.subscribe(value => {
             this.isClassroomModeOn = value;
@@ -137,7 +152,7 @@ export class Animation implements OnChanges, OnInit {
     }
 
     playPauseAnimation() {
-        // var anim = this.stage.getChildAt(0);
+        var anim = this.stage.getChildAt(0);
         this.playStateChanged.emit(!createjs.Ticker.getPaused());
         let st = this.sound;
         if (st) {
@@ -231,6 +246,16 @@ export class Animation implements OnChanges, OnInit {
             }
             let stage = that.stage.children[0];
             let timeline = stage['timeline'];
+
+
+            let newProgress = (timeline.position / timeline.duration * self.sizeOfCanvas).toFixed(0);
+            if(Math.abs(newProgress - self.currentProgressWidth) >= 1){//prevent often updates
+              self.zone.run(()=>{
+                self.currentProgressWidth = newProgress;
+              });
+
+            }
+
             if (timeline.position == 0) newCircle = false;
             if (timeline.duration - timeline.position == 1 && !newCircle) { //to pause at the end of movie
                 newCircle = true;
@@ -279,4 +304,37 @@ export class Animation implements OnChanges, OnInit {
         // this.page_canvas.parentElement.style.height = this.page_canvas.height + "px";
     }
 
+
+    rewindAnimationTo(newPosition){
+
+      let stage = this.stage.children[0];
+      let timeline = stage['timeline'];
+
+      if(newPosition < 0 || newPosition > timeline.duration){
+        return;
+      }
+
+      stage.gotoAndPlay(newPosition);
+    }
+
+    rewindAnimation(event){
+      event.stopPropagation();
+
+      let stage = this.stage.children[0];
+      let timeline = stage['timeline'];
+      let newPosition = Math.round(event.offsetX / this.sizeOfCanvas * timeline.duration);
+      this.rewindAnimationTo(newPosition);
+    }
+
+    mouseOver(){
+      if(this.dataLoaded){
+        this.isNavControlsShowing = true;
+      }
+    }
+
+    mouseLeave(){
+      setTimeout(()=>{
+        this.isNavControlsShowing = false;
+      }, 1000);
+    }
 }
