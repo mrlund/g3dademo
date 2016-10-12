@@ -11,24 +11,28 @@ declare var lib: any;
         <canvas *ngIf="isClassroomModeOn == false"
          [hidden]="!animationFileFound || !dataLoaded"
          (click)="playButtonAction()" width="600" height="600" 
-         (mouseover)='mouseOver()'
-         (mouseleave)="mouseLeave()"
          style="background-color:#FFFFFF;position:relative;display:block;"></canvas>
         <img *ngIf="!dataLoaded" src="{{firstFramePath}}" 
         style="position:absolute;top:0;left:0;"
         [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="paused && isClassroomModeOn == false && isBusy == false"
          (click)="playButtonAction()"
-          (mouseover)='mouseOver()'
-          (mouseleave)="mouseLeave()"
           src="/assets/img/play-button-overlay.png"
           style="position:absolute;top:0;left:0;z-index: 9999"
           [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>
         <img *ngIf="isClassroomModeOn == true" src="/assets/img/play-button-disabled-overlay.png" style="position:absolute;top:0;left:0;"
          [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}"/>   
-        <div *ngIf="isNavControlsShowing" class="navControls"  (click)="playButtonAction()" (mouseover)='mouseOver()'>
+        <div *ngIf="dataLoaded" class="navControls">
             <div class="progressBar" (click)="rewindAnimation($event)">
-              <div class="currentProgress" [ngStyle]="{'width': currentProgressWidth+'px'}"></div>
+                <div class="currentProgress" [ngStyle]="{'width': currentProgressWidth+'px'}"></div>
+            </div>
+            <div class="buttonPanel">
+               <button ion-button icon-only (click)="rewind5Sec()">
+                  <ion-icon name="rewind"></ion-icon>
+                </button>
+                <button ion-button icon-only (click)="fastForward5Sec()">
+                  <ion-icon name="fastforward"></ion-icon>
+                </button>
             </div>
         </div>
         <div *ngIf="isBusy == true" style="position: relative" [ngStyle]="{'width': sizeOfCanvas+'px','height': sizeOfCanvas+'px'}">
@@ -310,16 +314,23 @@ export class Animation implements OnChanges, OnInit {
       let stage = this.stage.children[0];
       let timeline = stage['timeline'];
 
-      if(newPosition < 0 || newPosition > timeline.duration){
-        return;
+      if(newPosition < 0 ){
+        newPosition = 0;
+      }
+
+      if(newPosition > timeline.duration){
+        newPosition = timeline.duration - 10;
       }
 
       let st = this.sound;
       if (st) {
         st.setPaused(true);
       }
-
       stage.gotoAndPlay(newPosition);
+
+      // if(this.paused){
+      //   this.playPauseAnimation()
+      // }
     }
 
     rewindAnimation(event){
@@ -331,15 +342,21 @@ export class Animation implements OnChanges, OnInit {
       this.rewindAnimationTo(newPosition);
     }
 
-    mouseOver(){
-      if(this.dataLoaded){
-        this.isNavControlsShowing = true;
-      }
+    rewind5Sec(){
+      let fps = lib.properties.fps;
+      let stage = this.stage.children[0];
+      let timeline = stage['timeline'];
+
+      let newPosition = timeline.position - fps * 5;
+      this.rewindAnimationTo(newPosition);
     }
 
-    mouseLeave(){
-      setTimeout(()=>{
-        this.isNavControlsShowing = false;
-      }, 1000);
+    fastForward5Sec(){
+      let fps = lib.properties.fps;
+      let stage = this.stage.children[0];
+      let timeline = stage['timeline'];
+
+      let newPosition = timeline.position + fps * 5;
+      this.rewindAnimationTo(newPosition);
     }
 }

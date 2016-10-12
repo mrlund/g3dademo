@@ -149,16 +149,15 @@
 }
 
 animation .navControls{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  //top: 0;
+  //bottom: 0;
+  //left: 0;
+  //right: 0;
 
   .progressBar{
-    $progressBarHeight: 15px;
-    position: absolute;
-    bottom: 0;
+    $progressBarHeight: 20px;
+    position: relative;
     left: 0;
     right: 0;
     height: $progressBarHeight;
@@ -170,6 +169,10 @@ animation .navControls{
       height: $progressBarHeight;
       background-color:  #E5053A;
       transition: width .5s;
+    }
+
+    .buttonPanel{
+
     }
   }
 }
