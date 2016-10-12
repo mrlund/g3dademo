@@ -326,11 +326,13 @@ export class Animation implements OnChanges, OnInit {
       if (st) {
         st.setPaused(true);
       }
-      stage.gotoAndPlay(newPosition);
 
-      // if(this.paused){
-      //   this.playPauseAnimation()
-      // }
+      if(this.paused) {
+        stage.gotoAndStop(newPosition);
+        this.stage.update();
+      } else {
+        stage.gotoAndPlay(newPosition);
+      }
     }
 
     rewindAnimation(event){
