@@ -96,6 +96,9 @@ export class Animation implements OnChanges, OnInit {
             // this.loadAnimationAction();
         });
         window['playSound'] = function (id, loop) {
+            if(self.sound){
+              self.sound.stop();
+            }
             self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
             return self.sound;
         };
@@ -330,6 +333,9 @@ export class Animation implements OnChanges, OnInit {
       if(this.paused) {
         stage.gotoAndStop(newPosition);
         this.stage.update();
+        if (st && !st.getPaused()) {
+          st.setPaused(true);
+        }
       } else {
         stage.gotoAndPlay(newPosition);
       }
