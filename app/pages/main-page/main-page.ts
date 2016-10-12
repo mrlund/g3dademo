@@ -272,7 +272,7 @@ export class MainPage implements OnInit{
           new ContentItem('pre-test', 'Shoplifting', AnswerQuestionPage)
         ]),
         new MenuItem('Data Distribution - Shape', 3, 2, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s2'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           // new ContentItem('processing', 'Processing', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
