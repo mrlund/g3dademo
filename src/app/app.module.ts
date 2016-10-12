@@ -67,7 +67,9 @@ import {DynamicComponentModule} from "angular2-dynamic-component";
     InnerContent
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      mode: 'ios'
+    }),
     DynamicComponentModule,
     routing
   ],
