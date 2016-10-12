@@ -1,0 +1,26 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// Global CSS
+// --------------------------------------------------
+// Put CSS rules here that you want to apply globally.
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+//
+// App Shared Sass variables belong in app.variables.scss.
+
+
+
+@import "../pages/welcome-page/welcome-page";
+@import "../pages/content-page/content-page";
+@import "../pages/polling-page/polling-page";
+@import "../pages/answer-question-page/answer-question-page";
+@import "../pages/activity-table-page/activity-table-page";
+@import "../pages/question-peer-review-page/question-peer-review-page";
+@import "../pages/teacher-page/teacher-page";
+@import "../components/character-phrase-img/character-phrase-img";
+@import "../components/animation/animation";
+
+

@@ -1,0 +1,11 @@
+{
+      "characterImagePath": "/assets/content/general/valeria.png",
+  "characterImageText": "Now here's the data I got for my school and our biggest competitor for the textbook stipends Cleaver High. Calculate our GPA and their GPA, and let's see who the frontrunner is for the money.",
+    "scores": {
+        "NoOfA": 0,
+        "NoOfB": 0,
+        "NoOfC": 0,
+        "NoOfD": 0,
+        "NoOfF": 0
+    }
+}

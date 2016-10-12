@@ -1,0 +1,32 @@
+<h1>We're the giga girls!</h1>
+<p>We're going to help you through this course on Data Analytics, and show you all the ways understanding data analytics can make a big difference to your education and life. </p>
+<div class="row character-intros" [ngClass]="showIntroFor">
+    <div class="character-intro zynab">
+        <strong>I’m ZINAB or Z.</strong> My family’s from Nigeria, and we live in the Melrose section of the South Bronx. I’m all about racial justice, and watch… I’m going to be first Muslim mayor of New York City. Believe that!
+    </div>
+    <div class="character-intro kimberley">
+        <strong>Hey, everyone, this KIMBERLY, and I’m from Brooklyn.</strong> My dream is to become venture capitalist so I can fund businesses and causes led by other Black women. I love business reality TV shows like Shark Tank and Undercover Boss.
+    </div>
+    <div class="character-intro yuna">
+        <strong>My name is YUNA,</strong> I’m from Murray Hill Queens. Second-generation Korean American. I love softball and statistics so right now my dream job would be in sabermetrics. You know, basically a data analyst in baseball.
+    </div>
+    <div class="character-intro valeria">
+        <strong>I’m VALERIA but most of my friends call me Val.</strong> First-generation Dominican from Washington Heights. I could watch MSNBC and CNN all day. In fact, one day I’m going to have my own political talk show like my crushes Rachel Maddow and Robin Roberts.
+    </div>
+</div>
+<ion-grid>
+    <ion-row [ngClass]="showIntroFor" class="character-images">
+        <ion-col (mouseover)="showIntroFor = 'zynab'">
+            <img src="/assets/content/general/zynab.png" style="width:100%;" class="zynab" />
+        </ion-col>
+        <ion-col (mouseover)="showIntroFor = 'kimberley'">
+            <img src="/assets/content/general/kimberley.png" style="width:100%;" class="kimberley" />
+        </ion-col>
+        <ion-col (mouseover)="showIntroFor = 'yuna'">
+            <img src="/assets/content/general/yuna.png" style="width:100%;" class="yuna" />
+        </ion-col>
+        <ion-col (mouseover)="showIntroFor = 'valeria'">
+            <img src="/assets/content/general/valeria.png" style="width:100%;" class="valeria" />
+        </ion-col>
+    </ion-row>
+</ion-grid>
