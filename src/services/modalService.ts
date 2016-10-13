@@ -18,13 +18,21 @@ export class ModalService {
             this.currentPage = value;
         });
         _globals.popupTypeActivated.subscribe(value => {
-            if(value == '') document.querySelector('ion-app').className = "";
+            if(value == ''){
+              this.clearAppClass();
+            }
             else {
-                document.querySelector('ion-app').className = "";
+                this.clearAppClass();
                 if(value == 'note') document.querySelector('ion-app').classList.add('note-popup');
                 if(value == 'teacher') document.querySelector('ion-app').classList.add('teacher-popup');
             }
         });
+    }
+
+    clearAppClass(){
+        let appElement = document.querySelector('ion-app');
+        appElement.classList.remove('note-popup'); //we can't just clear the class name because Ionic use it for own aims
+        appElement.classList.remove('teacher-popup');
     }
 
     showAddNotePopup() {
