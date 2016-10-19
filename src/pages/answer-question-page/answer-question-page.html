@@ -24,11 +24,7 @@
 <ion-content class="has-header has-footer" *ngIf="questions">
     <div class="page-container">
         <character-phrase-img></character-phrase-img>
-        <ion-card>
-            <ion-card-content class="ion-page">
-                <inner-content></inner-content>
-            </ion-card-content>
-        </ion-card>
+        <inner-content></inner-content>
         <ion-card *ngFor="let question of questions.questions">
             <ion-card-content>
                 <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
@@ -51,7 +47,7 @@
                 <ion-item *ngIf="question.type == 'discussion'">
                     <ion-input [(ngModel)]="question.suggestion" type="text" placeholder="Type suggestion..."></ion-input>
                 </ion-item>
-                <ion-item>
+                <ion-item *ngIf="question.type == 'discussion'">
                     <button ion-button (click)="onSuggest(question)" class="right answer-button">Add Suggestion</button>
                 </ion-item>
             </ion-card-content>

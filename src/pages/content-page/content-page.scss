@@ -118,3 +118,9 @@ input.correct ~ i {
 .character-images.zynab img.zynab, .character-images.kimberley img.kimberley, .character-images.yuna img.yuna, .character-images.valeria img.valeria {
   opacity: 1;
 }
+.left-list-items li {
+ text-align: left; 
+ border-bottom: 1px solid #ddd;
+ margin-bottom: 5px;
+ padding-bottom: 5px;
+}
