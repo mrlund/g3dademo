@@ -253,8 +253,6 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Project Workshop', 2, 10, null, [
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
-          new ContentItem('processing', 'Processing class discussion', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Project Presentation', 2, 11, null, [
@@ -275,44 +273,43 @@ export class MainPage implements OnInit{
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s1'),
           new ContentItem('introduction', 'Introduction', ContentPage),
           new ContentItem('project-statement', 'Project Statement', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('pre-test', 'Shoplifting', AnswerQuestionPage)
         ]),
         new MenuItem('Data Distribution - Shape', 3, 2, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s2'),
-          new ContentItem('experiencing', 'Experiencing', ContentPage),
-          // new ContentItem('processing', 'Processing', AnswerQuestionPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage)
+          new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+          new ContentItem('processing', 'Processing', AnswerQuestionPage)
         ]),
         new MenuItem('Determining Outliers In Data', 3, 3, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s3'),
-          new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('processing', 'Processing', AnswerQuestionPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage)
-        ]),
-        new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s4'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
+        new MenuItem('Analyzing the Impact of Outliers', 3, 4, null, [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s4'),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', AnswerQuestionPage),
+          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage)
+        ]),
         new MenuItem('Project Workshop', 3, 5, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s5'),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
-          new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
-          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
-          new ContentItem('applying', 'Applying', AnswerQuestionPage)
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage)
         ]),
         new MenuItem('Project Presentation', 3, 6, null, [
-          new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
-          new ContentItem('processing', 'Processing class discussion', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage)
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new ContentItem('class-session-agenda', 'Class session agenda', ContentPage),
+          new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
+          new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/Quiz', 3, 7, null, [
-          new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+          new ContentItem('poll', 'What do you think?', PollingPage),
+          new ContentItem('post-test', 'What did you learn?', AnswerQuestionPage)
         ])
       ]),
       new MenuItem('4: Cell Phone Usage', 4, 0, [

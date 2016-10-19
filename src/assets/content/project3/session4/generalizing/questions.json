@@ -2,14 +2,14 @@
     "questions": [
         {
             "type": "discussion",
-            "questionId": 3050401,
+            "questionId": 3040401,
             "question": "Should outliers be included in data analysis?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 3050402,
+            "questionId": 3040402,
             "question": "How does reporting outliers or not reporting outliers impact results?",
             "answers": [
             ]

@@ -1,0 +1,136 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 3010501,
+            "question": "I can see myself in a job that requires math or data analytics.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 3010502,
+            "question": "I'm not hessitant about taking math classes.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 3010503,
+            "question": "Reading and understanding articles with lots of data is easy.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 3010504,
+            "question": "I know how to analyze  and interpret data while looking at a chart or graph.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 3010505,
+            "question": "I would consider taking courses focusing on math in college/university.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 3010506,
+            "question": "Many interesting careers involve math or data.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        }                                        
+    ]
+}
