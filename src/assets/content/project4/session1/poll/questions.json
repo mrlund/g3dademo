@@ -1,0 +1,136 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 4010401,
+            "question": "I can see myself in a job that requires math or data analytics.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 4010402,
+            "question": "I would be interested in pursuing a career that involves math or data analytics.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 4010403,
+            "question": "I can read an article containing data and understand what the data mean.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 4010404,
+            "question": "I know how to analyze  and interpret data while looking at a chart or graph.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 4010405,
+            "question": "I would consider taking courses focusing on data analytics in college/university.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 4010406,
+            "question": "Many interesting careers involve math or data.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        }                                        
+    ]
+}

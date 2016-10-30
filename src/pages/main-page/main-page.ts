@@ -179,7 +179,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Summary/Quiz', 1, 9, null, [
           new ContentItem('poll', 'What do you think?', PollingPage),
-          new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage)
+          new ContentItem('post-test', 'What have you learned?', AnswerQuestionPage)
         ])
       ]),
       new MenuItem('2: Is School Discipline Fair?', 2, 0, [
@@ -262,7 +262,7 @@ export class MainPage implements OnInit{
           new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/Quiz', 2, 12, null, [
-          new ContentItem('post-test', 'What have you learnt?', AnswerQuestionPage),
+          new ContentItem('post-test', 'What have you learned?', AnswerQuestionPage),
           new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('curriculum-eval', 'How did we do?', PollingPage)
 
@@ -303,7 +303,7 @@ export class MainPage implements OnInit{
         ]),
         new MenuItem('Project Presentation', 3, 6, null, [
           new ContentItem('roadmap', 'Session Roadmap', ContentPage),
-          new ContentItem('class-session-agenda', 'Class session agenda', ContentPage),
+          new ContentItem('class-session-agenda', 'Content Rubric', ContentPage),
           new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
           new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
@@ -314,52 +314,51 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('4: Cell Phone Usage', 4, 0, [
         new MenuItem('Introduction', 4, 1, null,  [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s1'),
           new ContentItem('introduction', 'Introduction', ContentPage),
-          new AnimationContentItem('storyline', 'Story line', ContentPage),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
-          new ContentItem('pre-test', 'Is School Discipline Fair?', AnswerQuestionPage)
+          new ContentItem('poll', 'What do you think?', PollingPage),
+          new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
         new MenuItem('Unobtrusive Measures', 4, 2, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s2'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new AnimationContentItem('video', 'Video', ContentPage),
           new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Appplying', AnswerQuestionPage)
+          new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
         new MenuItem('Data Representation: Tables and Charts', 4, 3, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s3'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('table45', 'Table 45', ContentPage),
           new ContentItem('generalizing', 'Class discussion', ContentPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Two Way Frequency Tables', 4, 4, null, [
-          new ContentItem('intro-video', 'Introduction', ContentPage),
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s4'),
           new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('table45', 'Table 45', ContentPage),
           new ContentItem('generalizing', 'Class discussion', QuestionPeerReviewPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Project workshop', 4, 5, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('data', 'Data', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Class discussion', ContentPage),
-          new ContentItem('applying', 'Appplying', ContentPage)
+          new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Project Presentations', 4, 6, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage),
-          new ContentItem('experiencing', 'Class session agenda', ContentPage),
-          new ContentItem('presentation1', ' ', ContentPage),
-          new ContentItem('presentation2', ' ', ContentPage)
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new ContentItem('class-session-agenda', 'Content Rubric', ContentPage),
+          new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
+          new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/Quiz', 4, 7, null, [
-          new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
+          new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage),
+          new ContentItem('poll', 'What do you think?', PollingPage),
+          new ContentItem('curriculum-eval', 'How did we do?', PollingPage)
         ])
       ])
     ];
