@@ -2,22 +2,15 @@
     "questions": [
         {
             "type": "discussion",
-            "questionId": 4030301,
-            "question": "a) What is the Supreme Court?",
+            "questionId": 4030501,
+            "question": "What benefits are there from collecting data from just observing instead of interacting with the data source?",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 4030302,
-            "question": "b) How much do you think the Supreme Court justices know about technology?",
-            "answers": [
-            ]
-        },
-        {
-            "type": "discussion",
-            "questionId": 4030303,
-            "question": "c) What do you think about this decision?  Is it fair?",
+            "questionId": 4030502,
+            "question": "What are some cons?",
             "answers": [
             ]
         }

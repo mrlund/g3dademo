@@ -314,48 +314,55 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('4: Cell Phone Usage', 4, 0, [
         new MenuItem('Introduction', 4, 1, null,  [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s1'),
           new ContentItem('introduction', 'Introduction', ContentPage),
           new ContentItem('project-statement', 'Project Statement ', ContentPage),
           new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
-        new MenuItem('Unobtrusive Measures', 4, 2, null, [
-          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s2'),
+        new MenuItem('Projet Background', 4, 2, null,  [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s1'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
           new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
-        new MenuItem('Data Representation: Tables and Charts', 4, 3, null, [
+        new MenuItem('Unobtrusive Measures', 4, 3, null, [
+          new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s2'),
+          new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+          new ContentItem('definition', 'Definition', ContentPage),
+          new ContentItem('reactive-measures', 'Reactive Measures', ContentPage),
+          new ContentItem('unobtrusive-measures', 'Unobtrusive Measures', ContentPage),
+          new ContentItem('processing', 'Processing', AnswerQuestionPage),
+          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
+          new ContentItem('applying', 'Applying', ContentPage)
+        ]),
+        new MenuItem('Data Representation: Tables and Charts', 4, 4, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s3'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Class discussion', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage)
+          new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
-        new MenuItem('Two Way Frequency Tables', 4, 4, null, [
+        new MenuItem('Two Way Frequency Tables', 4, 5, null, [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s4'),
           new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('table45', 'Table 45', ContentPage),
-          new ContentItem('generalizing', 'Class discussion', QuestionPeerReviewPage),
+          new ContentItem('generalizing', 'Class discussion', AnswerQuestionPage),
           new ContentItem('applying', 'Applying', ContentPage)
         ]),
-        new MenuItem('Project workshop', 4, 5, null, [
+        new MenuItem('Project workshop', 4, 6, null, [
           new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('data', 'Data', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Class discussion', ContentPage),
           new ContentItem('applying', 'Applying', ContentPage)
         ]),
-        new MenuItem('Project Presentations', 4, 6, null, [
+        new MenuItem('Project Presentations', 4, 7, null, [
           new ContentItem('roadmap', 'Session Roadmap', ContentPage),
           new ContentItem('class-session-agenda', 'Content Rubric', ContentPage),
           new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
           new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
         ]),
-        new MenuItem('Summary/Quiz', 4, 7, null, [
+        new MenuItem('Summary/Quiz', 4, 8, null, [
           new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage),
           new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('curriculum-eval', 'How did we do?', PollingPage)
