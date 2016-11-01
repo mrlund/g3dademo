@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef, OnInit, NgZone} from '@angular/core';
-import {Globals} from '../../app/globals';
-import {Events} from "ionic-angular";
-import {ContentData} from '../../providers/contentProvider';
+import { Component, EventEmitter, Input, Output, OnChanges, ElementRef, ChangeDetectorRef, OnInit, NgZone } from '@angular/core';
+import { Globals } from '../../app/globals';
+import { Events } from "ionic-angular";
+import { ContentData } from '../../providers/contentProvider';
 declare var createjs: any;
 declare var lib: any;
 
@@ -77,17 +77,17 @@ export class Animation implements OnChanges, OnInit {
     public formattedProgress: string = '0';
 
     sizeOfCanvas: number = 600;
-    currentProgressWidth: string = '0';
+    currentProgressWidth: number = 0;
     firstFramePath = '';
 
     zone: NgZone;
 
     constructor(content: ContentData,
-                public thisElement: ElementRef,
-                public _globals: Globals,
-                public cdRef: ChangeDetectorRef,
-                public events: Events,
-                zone:NgZone) {
+        public thisElement: ElementRef,
+        public _globals: Globals,
+        public cdRef: ChangeDetectorRef,
+        public events: Events,
+        zone: NgZone) {
         var self = this;
         this.zone = zone;
         this.content = content;
@@ -96,14 +96,14 @@ export class Animation implements OnChanges, OnInit {
             // this.loadAnimationAction();
         });
         window['playSound'] = function (id, loop) {
-            if(self.sound){
-              self.sound.stop();
+            if (self.sound) {
+                self.sound.stop();
             }
             self.sound = createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, 0, loop);
             return self.sound;
         };
         events.subscribe('lesson:next-prev', (val) => {
-            if(!this.paused) {
+            if (!this.paused) {
                 this.playPauseAnimation();
             }
         });
@@ -116,9 +116,9 @@ export class Animation implements OnChanges, OnInit {
         });
     }
 
-    buildFirstFramePath(){
-        if(this.project && this.session && this.urlName && this.firstFrame) {
-            this.firstFramePath = '/assets/content/project' + this.project+'/session' + this.session+ '/' + this.urlName +  '/' + this.firstFrame;
+    buildFirstFramePath() {
+        if (this.project && this.session && this.urlName && this.firstFrame) {
+            this.firstFramePath = '/assets/content/project' + this.project + '/session' + this.session + '/' + this.urlName + '/' + this.firstFrame;
         }
     }
 
@@ -159,7 +159,7 @@ export class Animation implements OnChanges, OnInit {
     }
 
     playPauseAnimation() {
-        var anim = this.stage.getChildAt(0);
+        //var anim = this.stage.getChildAt(0);
         this.playStateChanged.emit(!createjs.Ticker.getPaused());
         let st = this.sound;
         if (st) {
@@ -186,7 +186,7 @@ export class Animation implements OnChanges, OnInit {
         loader.addEventListener("progress", this.handleQueueProgress(this));
         loader.loadManifest(lib.properties.manifest);
     }
-    doneLoading(){
+    doneLoading() {
         this.isBusy = false;
         this.dataLoaded = true;
         console.log(this.isBusy);
@@ -200,13 +200,13 @@ export class Animation implements OnChanges, OnInit {
             window['images'][evt.item.id] = evt.result;
         }
     }
-    handleQueueProgress(that){
+    handleQueueProgress(that) {
         var self = this;
-        return function(progress){
-            console.log(progress.loaded);
+        return function (progress) {
+            //console.log(progress.loaded);
             self.formattedProgress = progress.loaded ? (progress.loaded * 100).toFixed(0) : '0';
             self.cdRef.detectChanges();
-            if (progress.loaded == 1){
+            if (progress.loaded == 1) {
                 console.log("Done loading", that.isBusy);
                 that.doneLoading();
             }
@@ -255,23 +255,31 @@ export class Animation implements OnChanges, OnInit {
             let timeline = stage['timeline'];
 
 
-            let newProgress = (timeline.position / timeline.duration * self.sizeOfCanvas).toFixed(0);
-            if(Math.abs(newProgress - self.currentProgressWidth) >= 1){//prevent often updates
-              self.zone.run(()=>{
-                self.currentProgressWidth = newProgress;
-              });
+            //let newProgress = parseFloat((timeline.position / timeline.duration * self.sizeOfCanvas).toFixed(0));
+            if (timeline.position % 10 == 0) {//prevent often updates
+                self.zone.run(() => {
+                    self.currentProgressWidth = parseFloat((timeline.position / timeline.duration * self.sizeOfCanvas).toFixed(0));
+                });
 
             }
 
             if (timeline.position == 0) newCircle = false;
             if (timeline.duration - timeline.position == 1 && !newCircle) { //to pause at the end of movie
                 newCircle = true;
-                self.playPauseAnimation();
+
+                createjs.Ticker.setPaused(true);
+                let st = that.sound;
+                if (st) {
+                    st.setPaused(true);
+                }
+                that.paused = true;
+                that.playStateChanged.emit(true);
+                that.cdRef.detectChanges();
             }
         }
     }
 
-    getContainerSize(){
+    getContainerSize() {
         var newWidth = this.thisElement.nativeElement.offsetWidth; //window.innerWidth;
         this.sizeOfCanvas = newWidth; //  new value instead of default 600 px
     }
@@ -312,59 +320,59 @@ export class Animation implements OnChanges, OnInit {
     }
 
 
-    rewindAnimationTo(newPosition){
+    rewindAnimationTo(newPosition) {
 
-      let stage = this.stage.children[0];
-      let timeline = stage['timeline'];
+        let stage = this.stage.children[0];
+        let timeline = stage['timeline'];
 
-      if(newPosition < 0 ){
-        newPosition = 0;
-      }
-
-      if(newPosition > timeline.duration){
-        newPosition = timeline.duration - 10;
-      }
-
-      let st = this.sound;
-      if (st) {
-        st.setPaused(true);
-      }
-
-      if(this.paused) {
-        stage.gotoAndStop(newPosition);
-        this.stage.update();
-        if (st && !st.getPaused()) {
-          st.setPaused(true);
+        if (newPosition < 0) {
+            newPosition = 0;
         }
-      } else {
-        stage.gotoAndPlay(newPosition);
-      }
+
+        if (newPosition > timeline.duration) {
+            newPosition = timeline.duration - 10;
+        }
+
+        let st = this.sound;
+        if (st) {
+            st.setPaused(true);
+        }
+
+        if (this.paused) {
+            stage.gotoAndStop(newPosition);
+            this.stage.update();
+            if (st && !st.getPaused()) {
+                st.setPaused(true);
+            }
+        } else {
+            stage.gotoAndPlay(newPosition);
+        }
     }
 
-    rewindAnimation(event){
-      event.stopPropagation();
+    rewindAnimation(event) {
+        event.stopPropagation();
 
-      let stage = this.stage.children[0];
-      let timeline = stage['timeline'];
-      let newPosition = Math.round(event.offsetX / this.sizeOfCanvas * timeline.duration);
-      this.rewindAnimationTo(newPosition);
+        let stage = this.stage.children[0];
+        let timeline = stage['timeline'];
+        let newPosition = Math.round(event.offsetX / this.sizeOfCanvas * timeline.duration);
+        this.rewindAnimationTo(newPosition);
     }
 
-    rewind5Sec(){
-      let fps = lib.properties.fps;
-      let stage = this.stage.children[0];
-      let timeline = stage['timeline'];
+    rewind5Sec() {
+        let fps = lib.properties.fps;
+        let stage = this.stage.children[0];
+        let timeline = stage['timeline'];
 
-      let newPosition = timeline.position - fps * 5;
-      this.rewindAnimationTo(newPosition);
+        let newPosition = timeline.position - fps * 5;
+        this.rewindAnimationTo(newPosition);
     }
 
-    fastForward5Sec(){
-      let fps = lib.properties.fps;
-      let stage = this.stage.children[0];
-      let timeline = stage['timeline'];
+    fastForward5Sec() {
+        let fps = lib.properties.fps;
+        let stage = this.stage.children[0];
+        let timeline = stage['timeline'];
 
-      let newPosition = timeline.position + fps * 5;
-      this.rewindAnimationTo(newPosition);
+        let newPosition = timeline.position + fps * 5;
+        this.rewindAnimationTo(newPosition);
     }
 }

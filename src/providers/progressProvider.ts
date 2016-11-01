@@ -131,7 +131,11 @@ export class ProgressProvider {
                     if (lessonNo == project.children.length - 1) {
                         //Last lesson. Get next project.
                         if (this.pages.length > index) {
-                            nextLesson = this.pages[index + 1].children[0]
+                            if (this.pages[index + 1]){
+                                nextLesson = this.pages[index + 1].children[0]
+                            } else {
+                                nextLesson = this.pages[1].children[0];
+                            }
                         }
 
                     } else {

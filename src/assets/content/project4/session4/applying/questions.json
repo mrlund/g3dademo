@@ -2,14 +2,14 @@
     "questions": [
         {
             "type": "discussion",
-            "questionId": 4030301,
+            "questionId": 4040501,
             "question": "Paragraph",
             "answers": [
             ]
         },
         {
             "type": "discussion",
-            "questionId": 4030302,
+            "questionId": 4040502,
             "question": "Table",
             "answers": [
             ]
@@ -17,7 +17,7 @@
         ,
         {
             "type": "discussion",
-            "questionId": 4030302,
+            "questionId": 4040502,
             "question": "Bar Chart",
             "answers": [
             ]

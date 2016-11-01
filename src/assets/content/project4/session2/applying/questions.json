@@ -2,8 +2,15 @@
     "questions": [
         {
             "type": "discussion",
-            "questionId": 4020601,
-            "question": "Make a list of a postive and a negative your data could be used by others",
+            "questionId": 4020501,
+            "question": "What is a postive way your data could be used by others?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 4020502,
+            "question": "What is a negative way your data could be used by others?",
             "answers": [
             ]
         }

@@ -319,7 +319,7 @@ export class MainPage implements OnInit{
           new ContentItem('poll', 'What do you think?', PollingPage),
           new ContentItem('pre-test', 'What do you know?', AnswerQuestionPage)
         ]),
-        new MenuItem('Projet Background', 4, 2, null,  [
+        new MenuItem('Project Background', 4, 2, null,  [
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s1'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing class discussion', AnswerQuestionPage),
@@ -347,14 +347,12 @@ export class MainPage implements OnInit{
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p4s4'),
           new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Class discussion', AnswerQuestionPage),
-          new ContentItem('applying', 'Applying', ContentPage)
+          new ContentItem('generalizing', 'Class discussion', AnswerQuestionPage)
         ]),
         new MenuItem('Project workshop', 4, 6, null, [
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Class discussion', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage)
+          new ContentItem('generalizing', 'Class discussion', ContentPage)
         ]),
         new MenuItem('Project Presentations', 4, 7, null, [
           new ContentItem('roadmap', 'Session Roadmap', ContentPage),
