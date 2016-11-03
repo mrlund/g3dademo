@@ -16,6 +16,7 @@ import { ForgotPassword } from '../pages/forgot-password-page/forgot-password-pa
 import { LoginPage } from '../pages/login-page/login-page';
 import { MainPage } from '../pages/main-page/main-page';
 import { MyAssigmentsPage } from '../pages/my-assignments-page/my-assignments-page';
+import {ClassAssigmentsPage} from "../pages/class-assignments-page/class-assignments-page";
 import { MyNotesPage } from '../pages/my-notes-page/my-notes-page';
 import { NotePopup } from '../pages/note/note-popup';
 import { PollingPage } from '../pages/polling-page/polling-page';
@@ -55,6 +56,7 @@ import {DynamicComponentModule} from "angular2-dynamic-component";
     LoginPage,
     MainPage,
     MyAssigmentsPage,
+    ClassAssigmentsPage,
     MyNotesPage,
     NotePopup,
     PollingPage,
@@ -85,6 +87,7 @@ import {DynamicComponentModule} from "angular2-dynamic-component";
     LoginPage,
     MainPage,
     MyAssigmentsPage,
+    ClassAssigmentsPage,
     MyNotesPage,
     NotePopup,
     PollingPage,

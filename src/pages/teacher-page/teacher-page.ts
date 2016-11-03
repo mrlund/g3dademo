@@ -4,6 +4,7 @@ import {Component, ChangeDetectorRef} from '@angular/core';
 import {ChannelService, SignalrWindow} from '../../services/channelService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {BehaviorSubject} from "rxjs";
+import {UserService} from '../../services/userService';
 
 @Component({
     templateUrl: 'teacher-page.html',
@@ -20,7 +21,8 @@ export class TeacherPage {
         public teacherPageService: TeacherPageService,
         public window: SignalrWindow,
         public cdRef: ChangeDetectorRef,
-        public viewCtrl: ViewController) {
+        public viewCtrl: ViewController,
+        public userService: UserService) {
     }
     ngOnInit() {
         // Create a function that the hub can call to broadcast messages.
@@ -40,7 +42,7 @@ export class TeacherPage {
         dataObservable['source'].subscribe((data) => {
             console.log("Received", data);
 
-                if (data.A[0] == "poll") {
+                if (data.A && data.A[0] == "poll") {
                     let existingVote = false;
                     let totalVotes = 1;
                     let maxVote = 0;
@@ -152,6 +154,11 @@ export class TeacherPage {
                 });
             }
         }, 700)
+    }
+    refreshData(){
+        let userData = this.userService.getUserData();
+        let classId = userData.SelectedCourseId;
+        this.channelService.getConnection().proxies.inclasshub.invoke('getRecentMessages', 1);
     }
     toggleMenu() {
         if (this.menu.isOpen()) {

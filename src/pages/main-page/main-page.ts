@@ -21,6 +21,9 @@ import {UserService} from '../../services/userService';
 import {TeacherPageService} from '../../services/teacherPageService';
 import {Globals} from '../../app/globals';
 import {MyAssigmentsPage} from "../my-assignments-page/my-assignments-page";
+import {ClassAssigmentsPage} from "../class-assignments-page/class-assignments-page";
+
+
 import {MyNotesPage} from "../my-notes-page/my-notes-page";
 import {Subscription} from "rxjs/Subscription";
 
@@ -559,5 +562,9 @@ export class MainPage implements OnInit{
   showMyNotesPage(){
       this.menu.close();
       this.nav.setRoot(MyNotesPage);
+  }
+  showClassAssignments(){
+      this.menu.close();
+      this.nav.setRoot(ClassAssigmentsPage);    
   }
 }

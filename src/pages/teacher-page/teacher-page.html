@@ -9,14 +9,15 @@
             </button>
         </ion-buttons>
         <ion-buttons right>
+            <button ion-button icon-only color="primary" (click)="refreshData()">
+                <ion-icon name="refresh"></ion-icon>
+            </button>
             <button ion-button icon-only color="primary" (click)="deleteSuggestions()">
                 <ion-icon name="trash"></ion-icon>
             </button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
-
 <ion-content>
     <div class="page-container teacher-page-inner-content">
         <div id="jqcloud"></div>
