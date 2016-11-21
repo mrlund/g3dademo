@@ -10,7 +10,7 @@
                     "isCorrect": true
                 },
                 {
-                    "answer": "Option 2",
+                    "answer": "Interval",
                     "isCorrect": false
                 }
             ]
@@ -21,7 +21,7 @@
             "question": "What type of data can not be ordered?",
             "answers": [
                 {
-                    "answer": "Option",
+                    "answer": "Interval",
                     "isCorrect": true
                 },
                 {
@@ -36,35 +36,35 @@
             "question": "What type of data can be ordered but does not increase in even increments?",
             "answers": [
                 {
-                    "answer": "Option",
+                    "answer": "Interval",
                     "isCorrect": true
                 },
                 {
-                    "answer": "Option",
+                    "answer": "Nominal",
                     "isCorrect": false
                 },
                 {
-                    "answer": "Option",
+                    "answer": "Ratio",
                     "isCorrect": false
                 }
             ]
         },
         {
-            "type": "text",
+            "type": "multiple-choice",
             "questionId": 1060304,
             "question": "What type of data can be ordered and increases in even increments?",
             "answers": [
                 {
-                    "answer": "Option",
+                    "answer": "Interval",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Nominal",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Ratio",
                     "isCorrect": true
-                },
-                {
-                    "answer": "Option",
-                    "isCorrect": false
-                },
-                {
-                    "answer": "Option",
-                    "isCorrect": false
                 }
             ]
         }
