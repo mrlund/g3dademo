@@ -338,6 +338,24 @@ export class MainPage implements OnInit{
         new MenuItem('Summary/Quiz', 4, 7, null, [
           new ContentItem('post-test', 'Complete project post test', AnswerQuestionPage)
         ])
+      ]),
+      new MenuItem('5: Project 5 Stock Market', 5, 0, [
+        new MenuItem('Introduction', 5, 1, null, [
+          new ContentItem('project-introduction-roadmap', 'Introduction', ContentPage),
+          new ContentItem('project-introduction-storyline', 'Project Introduction: Storyline', ContentPage),
+          new ContentItem('project-introduction', 'Project Introduction', ContentPage),
+        ]),
+          new MenuItem('Project 5 Session 2', 5, 2, null, [
+              new ContentItem('project-roadmap', 'Project5: Session 2: Project Roadmap', ContentPage),
+              new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+              new ContentItem('processing', 'Processing', ContentPage),
+              new ContentItem('processing-questions', 'Processing', AnswerQuestionPage),
+              new ContentItem('generalizing', 'Generalizing', ContentPage),
+              new ContentItem('applying', 'Applying', ContentPage)
+          ]),
+          new MenuItem('Session3', 5, 3, null, [
+              new ContentItem('roadmap', 'Session 3: Roadmap: Researching Stock Performance', ContentPage),
+          ])
       ])
     ];
     console.log("Got content");

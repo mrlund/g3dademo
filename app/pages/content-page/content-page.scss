@@ -119,3 +119,16 @@ input.correct ~ i {
 .character-images.zynab img.zynab, .character-images.kimberley img.kimberley, .character-images.yuna img.yuna, .character-images.valeria img.valeria {
   opacity: 1;
 }
+
+.img-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.img-link img {
+  max-height: 80px;
+}
+.img-link-item {
+  margin: 3px;
+}
+
