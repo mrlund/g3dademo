@@ -1,0 +1,46 @@
+{
+  "questions": [
+    {
+      "type": "discussion",
+      "questionId": 5050301,
+      "question": "1. What is the company’s service or product?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5050302,
+      "question": "2. Explain any new financial terms used in this case study. ",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5050303,
+      "question": "3. What happened to the stock right after the IPO? Explain.",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5050304,
+      "question": "4. How did the stock perform over time?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5050305,
+      "question": "5. What are some of the reasons for any change in the stock price? ",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5050306,
+      "question": "6. How many people in your group would buy this stock right now? What are your reasons?",
+      "answers": [
+      ]
+    }
+  ]
+}

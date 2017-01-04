@@ -345,17 +345,40 @@ export class MainPage implements OnInit{
           new ContentItem('project-introduction-storyline', 'Project Introduction: Storyline', ContentPage),
           new ContentItem('project-introduction', 'Project Introduction', ContentPage),
         ]),
-          new MenuItem('Project 5 Session 2', 5, 2, null, [
-              new ContentItem('project-roadmap', 'Project5: Session 2: Project Roadmap', ContentPage),
-              new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
-              new ContentItem('processing', 'Processing', ContentPage),
-              new ContentItem('processing-questions', 'Processing', AnswerQuestionPage),
-              new ContentItem('generalizing', 'Generalizing', ContentPage),
-              new ContentItem('applying', 'Applying', ContentPage)
-          ]),
-          new MenuItem('Session3', 5, 3, null, [
-              new ContentItem('roadmap', 'Session 3: Roadmap: Researching Stock Performance', ContentPage),
-          ])
+        new MenuItem('Session 2', 5, 2, null, [
+            new ContentItem('project-roadmap', 'Project5: Session 2: Project Roadmap', ContentPage),
+            new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+            new ContentItem('processing', 'Processing', ContentPage),
+            new ContentItem('processing-questions', 'Processing', AnswerQuestionPage),
+            new ContentItem('generalizing', 'Generalizing', ContentPage),
+            new ContentItem('applying', 'Applying', ContentPage)
+        ]),
+        new MenuItem('Session3', 5, 3, null, [
+          new ContentItem('roadmap', 'Session 3: Roadmap: Researching Stock Performance', ContentPage),
+          new ContentItem('experiencing', 'Session 3: Experiencing', ContentPage),
+          new ContentItem('processing', 'Session 3: Processing', ContentPage),
+          new ContentItem('generalizing', 'Session 3: Generalizing', ContentPage),
+          new ContentItem('applying', 'Session 3: Applying', ContentPage),
+        ]),
+        new MenuItem('Session4', 5, 4, null, [
+          new ContentItem('roadmap', 'Session 4:  Gains and Losses Roadmap', ContentPage),
+          new ContentItem('experiencing', 'Session 4:  Experiencing', AnswerQuestionPage),
+          new ContentItem('processing', 'Session 4: Processing', ContentPage),
+          new ContentItem('generalizing', 'Session 4: Generalizing', ContentPage),
+          new ContentItem('applying', 'Session 4: Applying', ContentPage),
+        ]),
+        new MenuItem('Session5', 5, 5, null, [
+          new ContentItem('roadmap', 'Session 5: Stock Market Simulation (pt.1) Roadmap', ContentPage),
+          new ContentItem('experiencing', 'Session 5: Experiencing', ContentPage),
+          new ContentItem('processing', 'Session 5: Processing', AnswerQuestionPage),
+          new ContentItem('generalizing', 'Session 5: Generalizing', ContentPage),
+          new ContentItem('applying', 'Session 5: Applying', ContentPage),
+
+        ]),
+        new MenuItem('Session6', 5, 6, null, [
+          new ContentItem('roadmap', 'Session 6: Stock Market Simulation (pt.2) Roadmap', ContentPage),
+          new ContentItem('experiencing', 'Session 6: Experiencing', ContentPage),
+        ])
       ])
     ];
     console.log("Got content");

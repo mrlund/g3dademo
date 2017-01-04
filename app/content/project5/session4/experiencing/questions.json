@@ -1,0 +1,32 @@
+{
+  "questions": [
+    {
+      "type": "discussion",
+      "questionId": 5040201,
+      "question": "What is a stock?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5040202,
+      "question": "Who sells stocks and why?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5040203,
+      "question": "Who buys stocks and why?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5040204,
+      "question": "What causes stock prices to change?",
+      "answers": [
+      ]
+    }
+  ]
+}
