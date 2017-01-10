@@ -340,12 +340,12 @@ export class MainPage implements OnInit{
         ])
       ]),
       new MenuItem('5: Project 5 Stock Market', 5, 0, [
-        new MenuItem('Introduction', 5, 1, null, [
+        new MenuItem('Project Introduction & Background', 5, 1, null, [
           new AnimationContentItem('project-introduction-roadmap', 'Introduction', ContentPage, 'p5s1'),
           new ContentItem('project-introduction-storyline', 'Project Introduction: Storyline', ContentPage),
           new ContentItem('project-introduction', 'Project Introduction', ContentPage),
         ]),
-        new MenuItem('Session 2', 5, 2, null, [
+        new MenuItem('Project Roadmap', 5, 2, null, [
             new AnimationContentItem('project-roadmap', 'Project5: Session 2: Project Roadmap' , ContentPage, 'p5s2'),
             new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
             new ContentItem('processing', 'Processing', ContentPage),
@@ -353,31 +353,31 @@ export class MainPage implements OnInit{
             new ContentItem('generalizing', 'Generalizing', ContentPage),
             new ContentItem('applying', 'Applying', ContentPage)
         ]),
-        new MenuItem('Session3', 5, 3, null, [
-          new AnimationContentItem('roadmap', 'Session 3: Roadmap: Researching Stock Performance', ContentPage, 'p5s3'),
-          new ContentItem('experiencing', 'Session 3: Experiencing', ContentPage),
-          new ContentItem('processing', 'Session 3: Processing', ContentPage),
-          new ContentItem('generalizing', 'Session 3: Generalizing', ContentPage),
-          new ContentItem('applying', 'Session 3: Applying', ContentPage),
+        new MenuItem('Researching Stock Performance', 5, 3, null, [
+          new AnimationContentItem('roadmap', 'Roadmap: Researching Stock Performance', ContentPage, 'p5s3'),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
         ]),
-        new MenuItem('Session4', 5, 4, null, [
+        new MenuItem('Gain and Losses', 5, 4, null, [
           new AnimationContentItem('roadmap', 'Session 4:  Gains and Losses Roadmap', ContentPage, 'p5s4'),
-          new ContentItem('experiencing', 'Session 4:  Experiencing', AnswerQuestionPage),
-          new ContentItem('processing', 'Session 4: Processing', ContentPage),
-          new ContentItem('generalizing', 'Session 4: Generalizing', ContentPage),
-          new ContentItem('applying', 'Session 4: Applying', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
         ]),
-        new MenuItem('Session5', 5, 5, null, [
-          new AnimationContentItem('roadmap', 'Session 5: Stock Market Simulation (pt.1) Roadmap', ContentPage, 'p5s5'),
-          new ContentItem('experiencing', 'Session 5: Experiencing', ContentPage),
-          new ContentItem('processing', 'Session 5: Processing', AnswerQuestionPage),
-          new ContentItem('generalizing', 'Session 5: Generalizing', ContentPage),
-          new ContentItem('applying', 'Session 5: Applying', ContentPage),
+        new MenuItem('Stock Market Simulation Part 1', 5, 5, null, [
+          new AnimationContentItem('roadmap', 'Stock Market Simulation (pt.1) Roadmap', ContentPage, 'p5s5'),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', AnswerQuestionPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
 
         ]),
-        new MenuItem('Session6', 5, 6, null, [
-          new AnimationContentItem('roadmap', 'Session 6: Stock Market Simulation (pt.2) Roadmap', ContentPage, 'p5s6'),
-          new ContentItem('experiencing', 'Session 6: Experiencing', ContentPage),
+        new MenuItem('Stock Market Simulation Part 2', 5, 6, null, [
+          new AnimationContentItem('roadmap', 'Stock Market Simulation (pt.2) Roadmap', ContentPage, 'p5s6'),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
         ])
       ])
     ];
