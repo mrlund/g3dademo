@@ -21,7 +21,8 @@ import {Subscription} from "rxjs/Subscription";
 })
 export class QuestionPeerReviewPage {
     selectedItem: any;
-    public _pageContent: string;
+    public pageContent: string;
+    public pageModel: string;
     public isClassroomModeOn: boolean;
     questions: any;
     state: string = 'answering';
@@ -67,6 +68,7 @@ export class QuestionPeerReviewPage {
         }
     }
     ngOnInit() {
+        let self = this;
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.questions = data;
@@ -77,16 +79,16 @@ export class QuestionPeerReviewPage {
         );
         this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
-                this._pageContent = data._body;
-                this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
+                self.pageContent = data['_body'];
+                self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
                     (data) => {
-                        let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
-                        this.characterPhraseImg.draw(pageModel);
+                        self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
+                        self.characterPhraseImg.draw(self.pageModel);
+                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
                         this.updateState();
                     }
                 ).catch((e) => {
-                    this.innerContent.recompileTemplate(this._pageContent, '');
+                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
                 })
             },
             (error) => {
@@ -136,9 +138,9 @@ export class QuestionPeerReviewPage {
         if(this.reviewSub) this.reviewSub.unsubscribe();
         if(this.classroomModeSub) this.classroomModeSub.unsubscribe();
     }
-    public get pageContent() : SafeHtml {
-        return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
-    }
+    // public get pageContent() : SafeHtml {
+    //     return this._sanitizer.bypassSecurityTrustHtml(this._pageContent); //to avoid xss attacks warnings
+    // }
     syncPage(){
         this.channelService.getConnection().proxies.inclasshub.invoke('forceSyncClients', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
     }
