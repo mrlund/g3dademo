@@ -1,0 +1,216 @@
+* {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+}
+@media screen and (min-width: 789px) {
+  .page-container {
+    width: 789px;
+    margin: 0 auto;
+  }
+}
+
+.has-header {
+  top: 44px !important;
+  bottom: 0px;
+  height: initial !important;
+}
+
+.has-footer {
+  bottom: 44px !important;
+  height: initial !important;
+}
+
+#jqcloud {
+  font-size: 15px !important;
+}
+.teacher-page-inner-content {
+  height: 100% !important;
+}
+.voting-container {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+.voting-container table {
+  margin: 0 auto;
+}
+.voting-container .graph-column {
+  height: 200px;
+  vertical-align: bottom;
+}
+.voting-container .graph-column > div {
+  background-color: #ed6464;
+  max-width: 50px;
+  color: #fff;
+  text-align: center;
+  margin: 0 auto;
+}
+.voting-container td {
+  padding: 0 20px;
+}
+.toast-message {
+  background-color: #E5053A;
+  font-size: 20px;
+  padding: 30px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.little-positive-toast .toast-message{
+  background-color: green !important;
+  font-size: 15px !important;
+  padding: 15px !important;
+  color: #fff;
+  border-radius: 5px;
+}
+
+//THE SPEECH BUBBLE
+
+.triangle-border {
+  position:relative;
+  padding:15px;
+  margin:1em 0 3em;
+  border:5px solid #ed6464;
+  color:#333;
+  background:#fff;
+  /* css3 */
+  -webkit-border-radius:10px;
+  -moz-border-radius:10px;
+  border-radius:10px;
+}
+
+/* Variant : for left positioned triangle
+------------------------------------------ */
+
+.triangle-border.left {
+  margin-left:30px;
+}
+
+/* Variant : for right positioned triangle
+------------------------------------------ */
+
+.triangle-border.right {
+  margin-right:30px;
+}
+
+/* THE TRIANGLE
+------------------------------------------------------------------------------------------------------------------------------- */
+
+.triangle-border:before {
+  content:"";
+  position:absolute;
+  bottom:-20px; /* value = - border-top-width - border-bottom-width */
+  left:40px; /* controls horizontal position */
+  border-width:20px 20px 0;
+  border-style:solid;
+  border-color:#ed6464 transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* creates the smaller  triangle */
+.triangle-border:after {
+  content:"";
+  position:absolute;
+  bottom:-13px; /* value = - border-top-width - border-bottom-width */
+  left:47px; /* value = (:before left) + (:before border-left) - (:after border-left) */
+  border-width:13px 13px 0;
+  border-style:solid;
+  border-color:#fff transparent;
+  /* reduce the damage in FF3.0 */
+  display:block;
+  width:0;
+}
+
+/* Variant : top
+------------------------------------------ */
+
+/* creates the larger triangle */
+.triangle-border.top:before {
+  top:-20px; /* value = - border-top-width - border-bottom-width */
+  bottom:auto;
+  left:auto;
+  right:40px; /* controls horizontal position */
+  border-width:0 20px 20px;
+}
+
+/* creates the smaller  triangle */
+.triangle-border.top:after {
+  top:-13px; /* value = - border-top-width - border-bottom-width */
+  bottom:auto;
+  left:auto;
+  right:47px; /* value = (:before right) + (:before border-right) - (:after border-right) */
+  border-width:0 13px 13px;
+}
+
+/* Variant : left
+------------------------------------------ */
+
+/* creates the larger triangle */
+.triangle-border.left:before {
+  top:10px; /* controls vertical position */
+  bottom:auto;
+  left:-30px; /* value = - border-left-width - border-right-width */
+  border-width:15px 30px 15px 0;
+  border-color:transparent #ed6464;
+}
+
+/* creates the smaller  triangle */
+.triangle-border.left:after {
+  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom:auto;
+  left:-21px; /* value = - border-left-width - border-right-width */
+  border-width:9px 21px 9px 0;
+  border-color:transparent #fff;
+}
+
+/* Variant : right
+------------------------------------------ */
+
+/* creates the larger triangle */
+.triangle-border.right:before {
+  top:10px; /* controls vertical position */
+  bottom:auto;
+  left:auto;
+  right:-30px; /* value = - border-left-width - border-right-width */
+  border-width:15px 0 15px 30px;
+  border-color:transparent #ed6464;
+}
+
+/* creates the smaller  triangle */
+.triangle-border.right:after {
+  top:16px; /* value = (:before top) + (:before border-top) - (:after border-top) */
+  bottom:auto;
+  left:auto;
+  right:-21px; /* value = - border-left-width - border-right-width */
+  border-width:9px 0 9px 21px;
+  border-color:transparent #fff;
+}
+#character-text-block {
+  max-width: 600px;
+}
+h1 {
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+ion-title > .toolbar-title,
+.toolbar-title {
+  color: #E5053A;
+  text-align: center;
+}
+
+.notes-card button {
+  float: right;
+  font-size: 12px;
+  padding: 5px 5px;
+  height: auto;
+  margin-top: 0;
+}
+.notes-card ion-card-header {
+  padding: 8px 16px 0px;
+  background-color: #f8f8f8;
+  margin-bottom: 10px;
+}
+
+.important-bottom-bordered{
+    border-bottom: 1px solid #dedede !important;
+}

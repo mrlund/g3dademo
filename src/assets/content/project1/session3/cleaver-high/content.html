@@ -1,0 +1,52 @@
+<h1>Cleaver High</h1> 
+    <h2>Grade Point Average Formula</h2>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Section</th>
+            <th>Hurston High </th>
+            <th>Cleaver High</th>
+        </tr>        
+    </thead>
+    <tbody>
+        <tr>
+            <td>12 - 1</td>
+            <td>3.5</td>
+            <td>3.0</td>
+        </tr>
+        <tr>
+            <td>12 - 2</td>
+            <td>3.7</td>
+            <td>4.0</td>
+        </tr>
+        <tr>
+            <td>12 - 3</td>
+            <td>3.9</td>
+            <td>3.5</td>
+        </tr>
+        <tr>
+            <td>12 - 4</td>
+            <td>3.6</td>
+            <td>4.0</td>
+        </tr> 
+    </tbody>
+</table>
+<p>You find average GPA by adding the points for all of the grades then dividing by the number of grades:</p>
+<table class="table">
+    <tr>
+        <td>Hurston High</td>
+        <td>Sum of GPAs: <input class="small" type="number" [(ngModel)]="model.scores.HurstonSum" [ngClass] ="{correct: model.scores.HurstonSum == 14.7}" /></td>
+        <td> / # of GPAs <input class="small" type="number" [(ngModel)]="model.scores.HurstonNo" [ngClass] ="{correct: model.scores.HurstonNo == 4}" /></td>
+        <td>
+            = <input class="small" type="number" [ngClass] ="{correct: model.scores.HurstonSum / model.scores.HurstonNo == model.scores.HurstonAvg}" [(ngModel)]="model.scores.HurstonAvg" />
+        </td>
+    </tr>
+    <tr>
+        <td>Cleaver High</td>
+        <td>Sum of GPAs: <input class="small" type="number" [(ngModel)]="model.scores.CleaverSum" [ngClass] ="{correct: model.scores.CleaverSum == 15}" /></td>
+        <td> / # of GPAs <input class="small" type="number" [(ngModel)]="model.scores.CleaverNo" [ngClass] ="{correct: model.scores.CleaverNo == 4}" /></td>
+        <td>
+            = <input class="small" type="number" [ngClass] ="{correct: model.scores.CleaverSum / model.scores.CleaverNo == model.scores.CleaverAvg}" [(ngModel)]="model.scores.CleaverAvg" />
+        </td>
+    </tr>
+</table>

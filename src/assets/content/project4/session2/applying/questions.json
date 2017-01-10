@@ -1,0 +1,18 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "questionId": 4020501,
+            "question": "What is a postive way your data could be used by others?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 4020502,
+            "question": "What is a negative way your data could be used by others?",
+            "answers": [
+            ]
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "questionId": 3020201,
+            "question": "Distribution A",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 3020202,
+            "question": "Distribution B",
+            "answers": [
+            ]
+        }
+    ]
+}

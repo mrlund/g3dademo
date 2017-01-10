@@ -1,0 +1,33 @@
+{
+    "questions": [
+        {
+            "type": "discussion",
+            "questionId": 4050201,
+            "question": "What are some similarities between these two tables?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 4050201,
+            "question": "What are some differences between these two tables?",
+            "answers": [
+            ]
+        },        
+        {
+            "type": "discussion",
+            "questionId": 4050202,
+            "question": "What type of table is table two?",
+            "answers": [
+            ]
+        },
+        {
+            "type": "discussion",
+            "questionId": 4050203,
+            "question": "Define table two as a two way frequency table",
+            "answers": [
+            ]
+        }
+
+    ]
+}
