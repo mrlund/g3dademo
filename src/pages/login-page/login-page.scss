@@ -17,3 +17,24 @@ button.button.red {
    background-color: #E5053A;
     box-shadow: 3px 3px 10px #aaa;
 }
+.login-input-form {
+  .login-form-item {
+    .item-inner {
+      border: 1px solid red;
+      border-radius: 5px;
+      padding: 1px;
+      margin: 3px;
+    }
+  }
+
+  .login-page-input {
+    .text-input {
+      border-bottom: none;
+    }
+  }
+  .login-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: red;
+  }
+}

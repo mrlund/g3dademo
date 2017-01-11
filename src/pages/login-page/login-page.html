@@ -12,41 +12,56 @@
             </ion-segment>
         </div>
 
-        <div [ngSwitch]="authType">
+        <div [ngSwitch]="authType" class="login-input-form">
             <form *ngSwitchCase="'login'" #loginCreds="ngForm">
-                <ion-item>
-                    <ion-label>Login</ion-label>
-                    <ion-input name="login" ngModel></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Password</ion-label>
-                    <ion-input type="password" name="password" ngModel></ion-input>
-                </ion-item>
-
+                <div padding>
+                    <ion-item class="login-form-item">
+                        <ion-label>
+                            <ion-icon name="contact" class="login-icon"></ion-icon>
+                            Login
+                        </ion-label>
+                        <ion-input name="login" ngModel class="login-page-input"></ion-input>
+                    </ion-item>
+                    <ion-item class="login-form-item">
+                        <ion-label>
+                            <ion-icon name="lock" class="login-icon"></ion-icon>
+                            Password
+                        </ion-label>
+                        <ion-input type="password" name="password" ngModel class="login-page-input"></ion-input>
+                    </ion-item>
+                </div>
                 <div padding>
                     <button ion-button block (click)="loginAction(loginCreds.value)">Login</button>
                 </div>
                 <div padding>
                     <button ion-button block (click)="redirectToForgotPasswordPage()">Forgot your password?</button>
                 </div>
-
             </form>
 
             <form *ngSwitchCase="'signup'" #signupCreds="ngForm">
-                <ion-item>
-                    <ion-label>Login</ion-label>
-                    <ion-input type="text" name="signLogin" ngModel></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Password</ion-label>
-                    <ion-input type="password" name="signPassword" ngModel></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Confirm password</ion-label>
-                    <ion-input type="password" name="signPasswordConfirm" ngModel></ion-input>
-                </ion-item>
-
                 <div padding>
+                    <ion-item class="login-form-item">
+                        <ion-label>
+                            <ion-icon name="contact" class="login-icon"></ion-icon>
+                            Login
+                        </ion-label>
+                        <ion-input type="text" name="signLogin" ngModel class="login-page-input"></ion-input>
+                    </ion-item>
+                    <ion-item class="login-form-item">
+                        <ion-label>
+                            <ion-icon name="lock" class="login-icon"></ion-icon>
+                            Password
+                        </ion-label>
+                        <ion-input type="password" name="signPassword" ngModel class="login-page-input"></ion-input>
+                    </ion-item>
+                    <ion-item class="login-form-item">
+                        <ion-label>
+                            <ion-icon name="lock" class="login-icon"></ion-icon>
+                            Confirm password
+                        </ion-label>
+                        <ion-input type="password" name="signPasswordConfirm" ngModel class="login-page-input"></ion-input>
+                    </ion-item>
+
                     <button ion-button block (click)="signupAction(signupCreds.value)">Signup</button>
                 </div>
             </form>
