@@ -371,7 +371,7 @@ export class MainPage implements OnInit{
       ]),
       new MenuItem('5: Project 5 Stock Market', 5, 0, [
         new MenuItem('Project Introduction & Background', 5, 1, null, [
-          new AnimationContentItem('project-introduction-roadmap', 'Introduction', ContentPage, 'p5s1'),
+          new AnimationContentItem('project-introduction-roadmap', 'Introduction', ContentPage, 'p5s1',),
           new ContentItem('project-introduction-storyline', 'Project Introduction: Storyline', ContentPage),
           new ContentItem('project-introduction', 'Project Introduction', ContentPage),
         ]),
