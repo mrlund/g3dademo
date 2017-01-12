@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {IComponentInputData} from "angular2-dynamic-component";
-import {IonicModule} from "ionic-angular";
+import {IonicModule, NavParams} from "ionic-angular";
 
 @Component({
     selector: 'inner-content',
@@ -18,14 +18,16 @@ export class InnerContent{
     public context: IComponentInputData;
     public show: boolean = false;
     public extraModules:Array<any> = [IonicModule];
+    public sessionNumber: String;
 
-    constructor() {
+    constructor(navParams: NavParams) {
+        this.sessionNumber = navParams.get('item').menuItem.session;
     }
 
     recompileTemplate(template, model, parentCtrl?) {
       this.context = {};
       this.tpl = template;
-      this.context = {'model': model};
+      this.context = {'model': model, 'sessionNumber': this.sessionNumber};
       if(parentCtrl) this.context['ctrl'] = parentCtrl;
       this.show = true;
     }

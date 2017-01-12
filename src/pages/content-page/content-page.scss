@@ -7,7 +7,34 @@ h1 {
   font-size: 24px;
   color: #333;
   text-transform: uppercase;
+
 }
+
+h1.session-header:after {
+  content: attr(data-num);
+  position: absolute;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background: red;
+  text-align: center;
+  line-height: 60px;
+  left: -40px;
+  top: 50%;
+  margin-top: -35px;
+  border: 2px solid red;
+  box-shadow: inset 0px 0px 0px 4px #fff;
+  font-size: 40px;
+  font-weight: 900;
+  color: white;
+}
+h1.session-header {
+  position: relative;
+  padding: 10px 10px 10px 60px;
+  margin-left: 20px;
+  text-align: left;
+}
+
 h2 {
   font-size: 20px;
   color: #333;
