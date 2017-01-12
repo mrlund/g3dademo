@@ -19,6 +19,7 @@ button.button.red {
 }
 .login-input-form {
   .login-form-item {
+    margin-bottom: 20px;
     padding-left: 0;
     .item-inner {
       border: 1px solid red;
@@ -37,5 +38,8 @@ button.button.red {
     margin-left: 5px;
     margin-right: 5px;
     color: red;
+  }
+  .login-button {
+    margin-bottom: 10px;
   }
 }
