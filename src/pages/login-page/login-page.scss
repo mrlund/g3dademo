@@ -18,25 +18,6 @@ button.button.red {
     box-shadow: 3px 3px 10px #aaa;
 }
 .login-input-form {
-  .remember-me {
-    padding-left: 0px;
-    .checkbox{
-      .checkbox-checked {
-        color: black;
-        background-color: #fff;
-      }
-      .checkbox-icon {
-        border-radius: 5px;
-      }
-      .checkbox-inner {
-        border-color: black;
-      }
-
-    }
-    .item-inner {
-      border-bottom: none;
-    }
-  }
   .login-form-item {
     padding-left: 0;
     .item-inner {
