@@ -420,7 +420,7 @@ export class MainPage implements OnInit{
 
     events.subscribe('lesson:complete', (lesson) => {
       if(this.isLoggedIn) {
-        lesson[0].isComplete = true;
+        lesson.isComplete = true;
         let toast = this.toastController.create({
           message: 'Congratulations - You completed the lesson!',
           duration: 3000
