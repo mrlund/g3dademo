@@ -7,7 +7,6 @@ h1 {
   font-size: 24px;
   color: #333;
   text-transform: uppercase;
-
 }
 
 h1.session-header:after {
@@ -31,8 +30,9 @@ h1.session-header:after {
 h1.session-header {
   position: relative;
   padding: 10px 10px 10px 60px;
-  margin-left: 20px;
+  margin-left: 40px;
   text-align: left;
+  font-weight: 900;
 }
 
 h2 {
@@ -58,6 +58,36 @@ p {
     box-shadow: 3px 3px 5px #efefef;
   }
 
+  ul.listed-items-checkmark {
+    padding: 20px;
+    li {
+      font-size: 24px;
+      font-weight: 900;
+      text-align: left;
+      list-style: none;
+      border-bottom: 2px solid #f4f4f4;
+      div {
+        display: flex;
+      }
+      .checkmark:before {
+        line-height: 0.5em;
+      }
+      .checkmark {
+        margin: 0px;
+        .checkmark-content {
+          align-self: center;
+          font-weight: 900;
+          font-size: 24px;
+          color: black;
+          padding-left: 10px;
+        }
+        display: flex;
+        font-weight: 900;
+        font-size: 80px;
+        color: rgb(229, 5, 58);
+      }
+    }
+  }
 
   table {
     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
