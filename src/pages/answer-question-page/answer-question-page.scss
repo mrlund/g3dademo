@@ -14,10 +14,52 @@ div.selection {
   float: right;
 
 }
-input.text-input {
-  font-size: 26px;
-  border-bottom: 1px solid #aaa;
+.page-container {
+  .inner-content-page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .questions {
+    box-shadow: none;
+  }
+  .answer-page-input {
+    padding-left: 0;
+    input.text-input {
+      font-size: 20px;
+      padding: 2px;
+      border: 1px solid red;
+      background: #fff;
+      font-size: 1.2em;
+      border: 1px solid red;
+      border-radius: 5px;
+      height: 40px;
+    }
+
+  }
+  .answers {
+    margin: 0;
+    padding: 0;
+    .answer {
+      list-style: none;
+      padding-left: 1em;
+      text-indent: -.7em;
+      font-size: 18px;
+    }
+    .answer:before {
+      content: "• ";
+      color: red;
+      padding-right: 5px;
+    }
+  }
+
+  ion-card {
+    background: #ededed;
+  }
+  ion-item {
+    background: #ededed;
+  }
 }
+
 .incorrect-symbol {
     font-size: 60px;
     line-height: 20px;
@@ -34,4 +76,6 @@ input.text-input {
 }
 button.item-button.answer-button{
     height:40px;
+    font-weight: 900;
+    font-size: 0.8em;
 }

@@ -25,7 +25,7 @@
     <div class="page-container">
         <character-phrase-img></character-phrase-img>
         <inner-content></inner-content>
-        <ion-card *ngFor="let question of questions.questions">
+        <ion-card class="questions" *ngFor="let question of questions.questions">
             <ion-card-content>
                 <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
                 <ion-list radio-group  [(ngModel)]="question.answered">
@@ -40,11 +40,11 @@
                     </ion-item>
                 </ion-list>
                 <ion-list *ngIf="question.suggestions && question.suggestions.length">
-                    <ul>
-                        <li *ngFor="let suggestion of question.suggestions">{{suggestion}}</li>
+                    <ul class="answers">
+                        <li class="answer" *ngFor="let suggestion of question.suggestions">{{suggestion}}</li>
                     </ul>
                 </ion-list>
-                <ion-item *ngIf="question.type == 'discussion'">
+                <ion-item *ngIf="question.type == 'discussion'" class="answer-page-input">
                     <ion-input [(ngModel)]="question.suggestion" type="text" placeholder="Type suggestion..."></ion-input>
                 </ion-item>
                 <ion-item *ngIf="question.type == 'discussion'">
