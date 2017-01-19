@@ -21,6 +21,10 @@ div.selection {
   }
   .questions {
     box-shadow: none;
+    background: #ededed;
+    ion-item {
+      background: #ededed;
+    }
   }
   .answer-page-input {
     padding-left: 0;
@@ -28,7 +32,7 @@ div.selection {
       font-size: 20px;
       padding: 2px;
       border: 1px solid red;
-      background: #fff;
+      background: #ffffff;
       font-size: 1.2em;
       border: 1px solid red;
       border-radius: 5px;
@@ -52,12 +56,14 @@ div.selection {
     }
   }
 
+  /*
   ion-card {
     background: #ededed;
   }
   ion-item {
     background: #ededed;
   }
+  */
 }
 
 .incorrect-symbol {
