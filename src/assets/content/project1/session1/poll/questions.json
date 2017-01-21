@@ -6,19 +6,24 @@
             "question": "I can see myself in a job that requires math or data analytics.",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "face-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "face-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "face-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "face-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
+                    "answer": "Strongly Disagree",
+                    "buttonType": "face-strongly-disagree"
                 }                                
             ]
         },
@@ -28,19 +33,24 @@
             "question": "I'm not hessitant about taking math classes.",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
                 }                                
             ]
         },

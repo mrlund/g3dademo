@@ -34,7 +34,46 @@
                 <ion-card-title *ngIf="questions"><strong>{{question.question}}</strong></ion-card-title>
                 <ion-list>
                     <ion-item class="important-bottom-bordered" *ngFor="let answer of question.answers">
-                        <button ion-button [ngClass]="answer.voteState" (click)="onSuggest(question, answer)" class="polling-option">{{answer.answer}}</button>
+                        <button ion-button [ngClass]="answer.voteState" (click)="onSuggest(question, answer)" class="polling-option" *ngIf="!answer.buttonType">
+                            {{answer.answer}}
+                        </button>
+                        <div [ngClass]="answer.voteState" (click)="onSuggest(question, answer)" class="polling-button" *ngIf="answer.buttonType">
+                            <div class="polling-icon face-strongly-agree" *ngIf="answer.buttonType == 'face-strongly-agree'">
+                                <ion-icon name="happy"></ion-icon>
+                            </div>
+                            <div class="polling-icon face-agree" *ngIf="answer.buttonType == 'face-agree'">
+                                <ion-icon>&#9786;</ion-icon>
+                            </div>
+                            <div class="polling-icon face-not-sure" *ngIf="answer.buttonType == 'face-not-sure'">
+                                <ion-icon>?</ion-icon>
+                            </div>
+                            <div class="polling-icon face-disagree" *ngIf="answer.buttonType == 'face-disagree'">
+                                <ion-icon>&#9785;</ion-icon>
+                            </div>
+                            <div class="polling-icon face-strongly-disagree" *ngIf="answer.buttonType == 'face-strongly-disagree'">
+                                <ion-icon name="sad"></ion-icon>
+                            </div>
+                            <div class="polling-icon thumb-strongly-agree" *ngIf="answer.buttonType == 'thumb-strongly-agree'">
+                                <ion-icon name="thumbs-up"></ion-icon>
+                            </div>
+                            <div class="polling-icon thumb-agree" *ngIf="answer.buttonType == 'thumb-agree'">
+                                <ion-icon name="thumbs-up"></ion-icon>
+                            </div>
+                            <div class="polling-icon thumb-not-sure" *ngIf="answer.buttonType == 'thumb-not-sure'">
+                                <ion-icon>?</ion-icon>
+                            </div>
+                            <div class="polling-icon thumb-disagree" *ngIf="answer.buttonType == 'thumb-disagree'">
+                                <ion-icon name="thumbs-down"></ion-icon>
+                            </div>
+                            <div class="polling-icon thumb-strongly-disagree" *ngIf="answer.buttonType == 'thumb-strongly-disagree'">
+                                <ion-icon name="thumbs-down"></ion-icon>
+                            </div>
+
+                            <div class="polling-button-text">
+                                {{answer.answer}}
+                            </div>
+                        </div>
+
                     </ion-item>
                 </ion-list>
             </ion-card-content>

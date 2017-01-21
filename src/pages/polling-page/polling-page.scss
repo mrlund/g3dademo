@@ -35,15 +35,121 @@ input.text-input {
 button.polling-option.item-button {
     width: 80%;
     height:40px;
-    margin: 10px auto;
+    margin: 10px;
     display: block;
     padding: 20px;
     max-width: 250px;
+    font-weight: 900;
+    font-size: 20px;
 }
 button.polling-option.voted {
-    background-color: #ccc;
     pointer-events: none;
 }
 button.polling-option.votedFor {
   pointer-events: none;
+  background: #ffffff;
+  color: rgb(229, 5, 58);
+  border: 1px solid rgb(229, 5, 58);
+  border-radius: 5px;
 }
+
+/*-----*/
+div.polling-button.voted {
+  pointer-events: none;
+}
+div.polling-button.votedFor {
+  pointer-events: none;
+  .polling-button-text {
+    background: #ffffff;
+    color: rgb(229, 5, 58);
+    border: 2px solid rgb(229, 5, 58);
+    border-radius: 5px;
+  }
+  .polling-icon {
+    color: rgb(229, 5, 58);
+    background: #ffffff;
+    border: 2px solid rgb(229, 5, 58);
+  }
+  .polling-icon.face-strongly-agree, .polling-icon.face-strongly-disagree {
+    color: #ffffff;
+    background: rgb(229, 5, 58);
+  }
+}
+.polling-button {
+  width: 100%;
+  max-width: 250px;
+  margin: 10px;
+  font-weight: 900;
+  font-size: 20px;
+  color: #ffffff;
+  max-width: 250px;
+  text-align: center;
+
+  .polling-button-text {
+    width: 100%;
+    background: rgb(229, 5, 58);
+    border-radius: 4px;
+    vertical-align: middle;
+    line-height: 40px;
+    padding-left: 20px;
+  }
+  .polling-icon {
+    top: 50%;
+    margin-top: -26px;
+    margin-left: -10px;
+    position: absolute;
+    color: rgb(229, 5, 58);
+    height: 60px;
+    width: 60px;
+    ion-icon {
+      margin-top: -8px;
+    }
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid rgb(229, 5, 58);
+    box-shadow: inset 0px 0px 0px 1px #fff;
+    font-size: 55px;
+  }
+  .polling-icon.face-agree {
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+    ion-icon {
+      margin-top: -5px;
+
+    }
+    font-size: 45px;
+  }
+
+  .polling-icon.face-disagree {
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+    ion-icon {
+      margin-top: 5px;
+    }
+    font-size: 35px;
+    font-weight: 100;
+  }
+
+  .polling-icon.thumb-agree, .polling-icon.thumb-disagree {
+    ion-icon {
+      margin-top: 7px;
+    }
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+    font-size: 30px;
+  }
+  .polling-icon.thumb-strongly-agree, .polling-icon.thumb-strongly-disagree {
+    ion-icon {
+      margin-top: 2px;
+    }
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+    font-size: 40px;
+  }
+  .polling-icon.face-not-sure, .polling-icon.thumb-not-sure {
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+  }
+
+}
+
