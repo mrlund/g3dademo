@@ -49,7 +49,7 @@ button.polling-option.votedFor {
   pointer-events: none;
   background: #ffffff;
   color: rgb(229, 5, 58);
-  border: 1px solid rgb(229, 5, 58);
+  border: 2px solid rgb(229, 5, 58);
   border-radius: 5px;
 }
 
@@ -71,8 +71,10 @@ div.polling-button.votedFor {
     border: 2px solid rgb(229, 5, 58);
   }
   .polling-icon.face-strongly-agree, .polling-icon.face-strongly-disagree {
+    border: 1px solid rgb(229, 5, 58);
     color: #ffffff;
     background: rgb(229, 5, 58);
+    box-shadow: inset 0px 0px 0px 0px rgb(229, 5, 58);
   }
 }
 .polling-button {

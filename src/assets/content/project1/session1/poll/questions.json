@@ -82,19 +82,24 @@
             "question": "I know how to analyze  and interpret data while looking at a chart or graph.",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "face-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "face-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "face-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "face-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
+                    "answer": "Strongly Disagree",
+                    "buttonType": "face-strongly-disagree"
                 }                                
             ]
         },
