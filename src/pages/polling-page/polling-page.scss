@@ -1,3 +1,16 @@
+.polling-page-questions {
+  background: #ededed;
+  .list {
+    ion-item.answer {
+      border-top: none;
+      border-bottom: none;
+      background: #ededed;
+    }
+  }
+  .question {
+    border-bottom: none;
+  }
+}
 div.selection {
   font-size: 22px;
   display: block;
@@ -53,7 +66,6 @@ button.polling-option.votedFor {
   border-radius: 5px;
 }
 
-/*-----*/
 div.polling-button.voted {
   pointer-events: none;
 }
@@ -77,6 +89,7 @@ div.polling-button.votedFor {
     box-shadow: inset 0px 0px 0px 0px rgb(229, 5, 58);
   }
 }
+
 .polling-button {
   width: 100%;
   max-width: 250px;
