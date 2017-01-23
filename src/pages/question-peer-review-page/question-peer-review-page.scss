@@ -18,3 +18,13 @@ input.text-input {
   font-size: 26px;
   border-bottom: 1px solid #aaa;
 }
+.question-peer-review {
+  display: flex;
+  align-items: center;
+  .question-peer-review-icon {
+    font-size: 45px;
+    color: rgb(229, 5, 58);
+    font-weight: 900;
+    margin-right: 2px;
+  }
+}

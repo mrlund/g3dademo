@@ -44,9 +44,12 @@
         <ion-card *ngFor="let question of questions.questions">
             <ion-card-content>
                 <ion-card-title *ngIf="questions">
-                    <strong>
-                    {{question.question}}
-                </strong>
+                    <div class="question-peer-review">
+                        <ion-icon class="question-peer-review-icon">?</ion-icon>
+                        <strong>
+                            {{question.question}}
+                        </strong>
+                    </div>
                 </ion-card-title>
                 <ion-list radio-group [(ngModel)]="question.answers[0].isCorrect">
                     <div *ngIf="state == 'reviewing'">
