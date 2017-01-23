@@ -15,13 +15,12 @@ div.selection {
 
 }
 .page-container {
-  .inner-content-page {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
   .questions {
     box-shadow: none;
     background: #ededed;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
     ion-item {
       background: #ededed;
     }
@@ -55,15 +54,6 @@ div.selection {
       padding-right: 5px;
     }
   }
-
-  /*
-  ion-card {
-    background: #ededed;
-  }
-  ion-item {
-    background: #ededed;
-  }
-  */
 }
 
 .incorrect-symbol {
