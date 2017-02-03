@@ -6,19 +6,28 @@
             "question": "Knowing the correlation between education and income, I am more interested in a carreer in maths or data analytics than before I started?",
             "answers": [
                 {
+<<<<<<< Updated upstream
                     "answer": "Strongly Agree"
+=======
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
+>>>>>>> Stashed changes
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
                 }                                
             ]
         }
