@@ -13,13 +13,17 @@ import {UserService} from '../services/userService';
 })
 export class MyApp {
   //rootPage = TabsPage;
+  
 
   constructor(platform: Platform,  public userService: UserService) {
+    if (window.location.hash.indexOf("access_token") > -1 && window.location.hash.length > 20){
+      this.userService.saveToken(window.location.hash);
+    }
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
-      this.userService.goToMain();
+      //this.userService.goToMain();
     });
   }
 }

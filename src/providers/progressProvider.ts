@@ -29,10 +29,12 @@ export class ProgressProvider {
     }
 
     updateContinueFromData(data){
-        let page = data['Page'];
-        let project = data['Project'];
-        let session = data['Session'];
-        this.lastPageOpened.next(this.findLastOpenedPage(page, project, session));
+        if (data){
+            let page = data['Page'];
+            let project = data['Project'];
+            let session = data['Session'];
+            this.lastPageOpened.next(this.findLastOpenedPage(page, project, session));
+        }
     }
 
     setCourseContent(pages: Array<MenuItem>) {

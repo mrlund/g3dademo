@@ -13,6 +13,7 @@ export class User {
 
 @Injectable()
 export class UserService {
+    private token: string;
 
   public baseUrl: string = "https://girlsinc.azurewebsites.net"; // "http://localhost:26209"; //
 
@@ -21,6 +22,45 @@ export class UserService {
                 public _globals: Globals,
                 public toastService: ToastService){
         this.checkIfLoggedInFlag();
+    }
+
+    saveToken(token){
+        this.token = token; 
+    }
+    getToken(){
+        if (this.token){
+            return this.token;
+        }
+    }
+    loginWithToken(token){
+            let headers = new Headers();
+            headers.append('Authorization', 'Bearer ' + token);
+            //get data of userprofile
+            this.http.get(this.baseUrl + '/api/account/userprofile', {headers: headers}).subscribe(res => {
+                let parsedRes = res.json();
+                localStorage.setItem("userData", JSON.stringify(parsedRes));
+                this.persistToken(token);
+                this._globals.isLoggedIn.next(true);
+                this.router.navigate(['/main']);
+            }, 
+            err => {
+                console.log(err);
+                this.http.post(this.baseUrl + '/api/account/ConnectExternalToUser', null, {headers: headers}).subscribe(res => {
+                    this.redirectGoogleAuth();
+                });
+                
+            });
+    }
+    redirectGoogleAuth(){
+        this.http.get(this.baseUrl + '/api/Account/ExternalLogins?returnUrl=http://g3da.azurewebsites.net/&generateState=true').subscribe(res => {
+            let parsedRes = res.json();
+            window.location.href = this.baseUrl + parsedRes[0].Url;
+        });
+    }
+    persistToken(token){
+        localStorage.setItem("api_token", token);
+        let expiry = new Date().getTime() + (28800 * 1000) - 300;
+        localStorage.setItem("api_token_expiry", expiry.toString());
     }
 
     logout():void{

@@ -9,8 +9,20 @@ export class LoginPage {
   authType: string = "login";
 
   constructor(public userService: UserService) {
+    let token = this.userService.getToken();
+    if (token){
+      let firstEq = token.indexOf("=") + 1;
+      token = token.slice(firstEq, token.indexOf("&"));
+      console.log("Token: " + token );
+      this.userService.saveToken("");
+      userService.loginWithToken(token);
+    }
+
   }
 
+  loginWithGoogle(){
+    this.userService.redirectGoogleAuth();
+  }
   loginAction(obj: any){
     let login = obj.login;
     let passwd = obj.password;

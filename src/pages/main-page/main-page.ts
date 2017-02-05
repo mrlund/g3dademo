@@ -65,6 +65,7 @@ export class MainPage implements OnInit{
       public _globals: Globals,
       public toastController: ToastController
   ) {
+    
     this.classroomModeSub = _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
       if(value){

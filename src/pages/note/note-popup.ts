@@ -30,7 +30,7 @@ export class NotePopup {
         let sessionNumber = this.params.get('sessionNumber');
         let projectNumber = this.params.get('projectNumber');
         let pageNumber = this.params.get('pageNumber');
-        apiService.getNoteForPage(sessionNumber, projectNumber, pageNumber).then(data => {
+        apiService.getNoteForPage(sessionNumber, projectNumber, pageNumber).then((data : any) => {
 
             let currentNote = data;
             if(currentNote){
