@@ -1,5 +1,5 @@
 import {NavController, NavParams, LoadingController, MenuController} from 'ionic-angular';
-import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {DomSanitizer} from "@angular/platform-browser";
 import {Component, ChangeDetectorRef, ViewChild} from '@angular/core';
 import {ContentData} from '../../providers/contentProvider';
 import {ContentItem} from '../../models/content-item';

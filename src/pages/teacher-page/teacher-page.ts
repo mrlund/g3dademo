@@ -157,7 +157,6 @@ export class TeacherPage {
     }
     refreshData(){
         let userData = this.userService.getUserData();
-        let classId = userData.SelectedCourseId;
         this.channelService.getConnection().proxies.inclasshub.invoke('getRecentMessages', 1);
     }
     toggleMenu() {
