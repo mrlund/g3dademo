@@ -411,6 +411,44 @@ export class MainPage implements OnInit{
           new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
           new AnimationContentItem('animation', 'Stock Market Simulation (pt.2) Roadmap', ContentPage, 'p5s6'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
+        ]),
+        new MenuItem('Stock Market Simulation (pt.2)', 5, 7, null, [
+          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
+          new ContentItem('animation', 'Animation', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
+        ]),
+        new MenuItem('Stock Market Simulation (pt.2)', 5, 8, null, [
+          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
+          new ContentItem('animation', 'Animation', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
+        ]),
+        new MenuItem('Stock Market Simulation (pt.2)', 5, 9, null, [
+          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
+          new ContentItem('animation', 'Animation', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
+        ]),
+        new MenuItem('Project Workshop', 5, 10, null, [
+          new ContentItem('roadmap', 'Project Workshop', ContentPage),
+          new ContentItem('animation', 'Project Workshop', ContentPage),
+        ]),
+        new MenuItem('Project Presentation', 5, 11, null, [
+          new ContentItem('roadmap', 'Project Workshop', ContentPage),
+          new ContentItem('animation', 'Project Workshop', ContentPage),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', ContentPage)
+        ]),
+        new MenuItem('Summary/quiz', 5, 12, null, [
+          new ContentItem('what-did-you-learn', 'Summary/Quiz', ContentPage),
+          new ContentItem('what-do-you-know', 'Summary/Quiz', ContentPage)
         ])
       ])
     ];
