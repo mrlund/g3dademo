@@ -1,7 +1,12 @@
 <h1 class="session-header" [attr.data-num]="sessionNumber">Project Roadmap</h1>
 <p>In this project you will learn:</p>
-<ul class="listed-items">
-<li>1. Unobtrusive Measures</li>
-<li>2. Data Representation: Tables And Simple Charts</li>
-<li>3. Discovering Trends In Data Tables</li>
+
+<ul class="listed-items-checkmark">
+  <li *ngFor='let point of model.pointsToLearn'>
+    <div class="checkmark-items">
+      <ion-icon name="checkmark" class="checkmark">
+        <div class="checkmark-content">{{point}}</div>
+      </ion-icon>
+    </div>
+  </li>
 </ul>

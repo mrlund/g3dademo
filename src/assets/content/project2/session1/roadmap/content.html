@@ -1,10 +1,10 @@
 <h1 class="session-header" [attr.data-num]="sessionNumber">Project Roadmap</h1>
-<ul class="listed-items">
-<li>1.	Representing Quantitative Data</li>
-<li>2.	Analyzing Data - Mean</li>
-<li>3.	Analyzing Data – Interquartile Range</li>
-<li>4.	Analyzing Data – Normal Distribution</li>
-<li>5.	Analyzing Data – Standard Deviation</li>
-<li>6.	Making Predictions About Data</li>
-<li>7.	Breaking The Cycle</li>
+<ul class="listed-items-checkmark">
+  <li *ngFor='let point of model.pointsToLearn'>
+    <div class="checkmark-items">
+      <ion-icon name="checkmark" class="checkmark">
+        <div class="checkmark-content">{{point}}</div>
+      </ion-icon>
+    </div>
+  </li>
 </ul>

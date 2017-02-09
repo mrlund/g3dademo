@@ -2,7 +2,12 @@
     Gain and Losses
 </h1>
 <h4>Roadmap:</h4>
-<ul class="left-list-items">
-  <li>Experiencing: Text about the content</li>
-  <li>Processing: Text.....</li>
+<ul class="listed-items-checkmark">
+  <li *ngFor='let point of model.pointsToLearn'>
+    <div class="checkmark-items">
+      <ion-icon name="checkmark" class="checkmark">
+        <div class="checkmark-content">{{point}}</div>
+      </ion-icon>
+    </div>
+  </li>
 </ul>

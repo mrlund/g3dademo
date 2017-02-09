@@ -1,8 +1,10 @@
 <h1 class="session-header" [attr.data-num]="sessionNumber">Roadmap</h1>
-<ul class="listed-items">
-    <li>Review: Types of data</li>
-    <li>Group project: Data collection</li>
-    <li>Video: How to make a Histogram</li>
-    <li>Video: How to make a Histogram using Google Sheets</li>
-    <li>Go forth and create!</li>
+<ul class="listed-items-checkmark">
+  <li *ngFor='let point of model.pointsToLearn'>
+    <div class="checkmark-items">
+      <ion-icon name="checkmark" class="checkmark">
+        <div class="checkmark-content">{{point}}</div>
+      </ion-icon>
+    </div>
+  </li>
 </ul>

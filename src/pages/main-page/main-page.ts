@@ -303,7 +303,7 @@ export class MainPage implements OnInit{
           new AnimationContentItem('intro-video', 'Introduction', ContentPage, 'p3s5'),
           new ContentItem('experiencing', 'Experiencing: class discussion', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage)
+          new ContentItem('generalizing', 'Generalizing', ContentPage)
         ]),
         new MenuItem('Project Presentation', 3, 6, null, [
           new ContentItem('roadmap', 'Session Roadmap', ContentPage),
