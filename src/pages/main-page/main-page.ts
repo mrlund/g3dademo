@@ -65,7 +65,7 @@ export class MainPage implements OnInit{
       public _globals: Globals,
       public toastController: ToastController
   ) {
-    
+
     this.classroomModeSub = _globals.isLoggedIn.subscribe(value => {
       this.isLoggedIn = value;
       if(value){
@@ -373,41 +373,43 @@ export class MainPage implements OnInit{
       new MenuItem('5: Project 5 Stock Market', 5, 0, [
         new MenuItem('Project Introduction & Background', 5, 1, null, [
           new AnimationContentItem('project-introduction-roadmap', 'Introduction', ContentPage, 'p5s1'),
-          new ContentItem('project-introduction-storyline', 'Project Introduction: Storyline', ContentPage),
-          new ContentItem('project-introduction', 'Project Introduction', ContentPage),
+          new ContentItem('project-statement', 'Project Statement', ContentPage),
+          new ContentItem('what-do-you-think', 'What Do You Think', ContentPage),
+          new ContentItem('what-do-you-know', 'What Do Yo Know', ContentPage),
         ]),
         new MenuItem('Project Roadmap', 5, 2, null, [
-            new AnimationContentItem('project-roadmap', 'Project5: Session 2: Project Roadmap' , ContentPage, 'p5s2'),
+            new ContentItem('session-roadmap', 'Session Roadmap', ContentPage),
+            new AnimationContentItem('animation', 'Animation' , ContentPage, 'p5s2'),
             new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
-            new ContentItem('processing', 'Processing', ContentPage),
-            new ContentItem('processing-questions', 'Processing', AnswerQuestionPage),
-            new ContentItem('generalizing', 'Generalizing', ContentPage),
+            new ContentItem('processing', 'Processing', AnswerQuestionPage),
+            new ContentItem('generalizing', 'Generalizing', QuestionPeerReviewPage),
             new ContentItem('applying', 'Applying', ContentPage)
         ]),
         new MenuItem('Researching Stock Performance', 5, 3, null, [
-          new AnimationContentItem('roadmap', 'Roadmap: Researching Stock Performance', ContentPage, 'p5s3'),
+          new ContentItem('roadmap', 'Roadmap: Researching Stock Performance', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s3'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Applying', ContentPage),
         ]),
         new MenuItem('Gain and Losses', 5, 4, null, [
-          new AnimationContentItem('roadmap', 'Session 4:  Gains and Losses Roadmap', ContentPage, 'p5s4'),
+          new ContentItem('roadmap', 'Session 4: Gains and Losses', ContentPage),
+          new AnimationContentItem('animation', 'Session 4: Animation', ContentPage, 'p5s4'),
           new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
-          new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage),
+          new ContentItem('processing', 'Processing', QuestionPeerReviewPage),
+          new ContentItem('generalizing', 'Generalizing', QuestionPeerReviewPage),
         ]),
         new MenuItem('Stock Market Simulation Part 1', 5, 5, null, [
-          new AnimationContentItem('roadmap', 'Stock Market Simulation (pt.1) Roadmap', ContentPage, 'p5s5'),
+          new ContentItem('roadmap', 'Stock Market Simulation (pt.1) Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s5'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage),
-
         ]),
         new MenuItem('Stock Market Simulation Part 2', 5, 6, null, [
-          new AnimationContentItem('roadmap', 'Stock Market Simulation (pt.2) Roadmap', ContentPage, 'p5s6'),
+          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
+          new AnimationContentItem('animation', 'Stock Market Simulation (pt.2) Roadmap', ContentPage, 'p5s6'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
         ])
       ])
@@ -607,6 +609,6 @@ export class MainPage implements OnInit{
   }
   showClassAssignments(){
       this.menu.close();
-      this.nav.setRoot(ClassAssigmentsPage);    
+      this.nav.setRoot(ClassAssigmentsPage);
   }
 }

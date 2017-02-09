@@ -191,13 +191,20 @@ input.correct ~ i {
 .img-link .img-200 {
   max-height: 200px;
 }
+.img-link .img-400 {
+  max-height: 400px;
+}
+.processing-content  {
+  display: flex;
+  flex-direction: row;
+}
 .img-link-item {
   margin: 3px;
   align-items: center;
 }
 
 .left-list-items li {
- text-align: left; 
+ text-align: left;
  border-bottom: 1px solid #ddd;
  margin-bottom: 5px;
  padding-bottom: 5px;

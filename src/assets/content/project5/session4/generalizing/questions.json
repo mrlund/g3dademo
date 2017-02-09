@@ -1,0 +1,22 @@
+{
+  "questions": [
+    {
+      "questionId": 5040401,
+      "type": "discussion",
+      "question": "You bought 10 shares at $236 price = $",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5040402,
+      "type": "discussion",
+      "question": "You sold 10 shares at $214 price = $",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5040403,
+      "type": "discussion",
+      "question": "Your profit/loss = $",
+      "answers": [{}]
+    }
+  ]
+}
