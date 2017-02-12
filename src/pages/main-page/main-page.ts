@@ -370,14 +370,14 @@ export class MainPage implements OnInit{
           new ContentItem('curriculum-eval', 'How did we do?', PollingPage)
         ])
       ]),
-      new MenuItem('5: Project 5 Stock Market', 5, 0, [
-        new MenuItem('Project Introduction & Background', 5, 1, null, [
+      new MenuItem('Project 5 Stock Market', 5, 0, [
+        new MenuItem('Project Introduction', 5, 1, null, [
           new AnimationContentItem('project-introduction-roadmap', 'Introduction', ContentPage, 'p5s1'),
           new ContentItem('project-statement', 'Project Statement', ContentPage),
           new ContentItem('what-do-you-think', 'What Do You Think', ContentPage),
           new ContentItem('what-do-you-know', 'What Do Yo Know', ContentPage),
         ]),
-        new MenuItem('Project Roadmap', 5, 2, null, [
+        new MenuItem('Project Background', 5, 2, null, [
             new ContentItem('session-roadmap', 'Session Roadmap', ContentPage),
             new AnimationContentItem('animation', 'Animation' , ContentPage, 'p5s2'),
             new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
