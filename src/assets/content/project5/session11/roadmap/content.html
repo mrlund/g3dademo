@@ -1,4 +1,11 @@
-<h1 class="session-header" [attr.data-num]="sessionNumber">
-  Project Presentations
-</h1>
-<h3>Session Roadmap</h3>
+<h1 class="session-header" [attr.data-num]="sessionNumber">Session Roadmap</h1>
+
+<ul class="listed-items-checkmark">
+  <li *ngFor='let point of model.pointsToLearn'>
+    <div class="checkmark-items">
+      <ion-icon name="checkmark" class="checkmark">
+        <div class="checkmark-content">{{point}}</div>
+      </ion-icon>
+    </div>
+  </li>
+</ul>

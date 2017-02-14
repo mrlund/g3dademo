@@ -444,7 +444,7 @@ export class MainPage implements OnInit{
           new ContentItem('roadmap', 'Project Workshop', ContentPage),
           new ContentItem('animation', 'Project Workshop', ContentPage),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('processing', 'Processing', ContentPage)
+          new ContentItem('processing', 'Processing', AnswerQuestionPage)
         ]),
         new MenuItem('Summary/quiz', 5, 12, null, [
           new ContentItem('what-did-you-learn', 'Summary/Quiz', ContentPage),
