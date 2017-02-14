@@ -1,0 +1,111 @@
+{
+  "questions": [
+    {
+      "questionId": 5020601,
+      "type": "discussion",
+      "question": "Last:",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020602,
+      "type": "discussion",
+      "question": "Change:",
+      "answers": [{}]
+
+    },
+    {
+      "questionId": 5020603,
+      "type": "discussion",
+      "question": "Volume:",
+      "answers": [{}]
+
+    },
+    {
+      "questionId": 5020604,
+      "type": "discussion",
+      "question": "Day High:",
+      "answers": [{}]
+
+    },
+    {
+      "questionId": 5020605,
+      "type": "discussion",
+      "question": "Day Low",
+      "answers": [{}]
+
+    },
+    {
+      "questionId": 5020606,
+      "type": "discussion",
+      "question": "Open:",
+      "answers": [{}]
+
+    },
+    {
+      "questionId": 5020607,
+      "type": "discussion",
+      "question": "Previous Close:",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020608,
+      "type": "discussion",
+      "question": "Bid:",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020609,
+      "type": "discussion",
+      "question": "Ask:",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020610,
+      "type": "discussion",
+      "question": "52 Week High:",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020611,
+      "type": "discussion",
+      "question": "52 Week Low:",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020612,
+      "type": "discussion",
+      "question": "P/E",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020613,
+      "type": "discussion",
+      "question": "Earnings/Share",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020614,
+      "type": "discussion",
+      "question": "Dividends/Share",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020615,
+      "type": "discussion",
+      "question": "Current Div. Yield",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020616,
+      "type": "discussion",
+      "question": "# Share Outstanding",
+      "answers": [{}]
+    },
+    {
+      "questionId": 5020617,
+      "type": "discussion",
+      "question": "Exchange",
+      "answers": [{}]
+    }
+  ]
+}

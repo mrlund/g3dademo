@@ -383,7 +383,7 @@ export class MainPage implements OnInit{
             new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
             new ContentItem('processing', 'Processing', AnswerQuestionPage),
             new ContentItem('generalizing', 'Generalizing', QuestionPeerReviewPage),
-            new ContentItem('applying', 'Applying', ContentPage)
+            new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
         new MenuItem('Researching Stock Performance', 5, 3, null, [
           new ContentItem('roadmap', 'Roadmap: Researching Stock Performance', ContentPage),
