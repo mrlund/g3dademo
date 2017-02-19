@@ -1,4 +1,12 @@
 <h1 class="session-header" [attr.data-num]="sessionNumber">
-  Stock Market Simulation (pt.1)
+  Session Roadmap: Stock Market Simulation
 </h1>
-<h4>Roadmap</h4>
+<ul class="listed-items-checkmark">
+  <li *ngFor='let point of model.pointsToLearn'>
+    <div class="checkmark-items">
+      <ion-icon name="checkmark" class="checkmark">
+        <div class="checkmark-content">{{point}}</div>
+      </ion-icon>
+    </div>
+  </li>
+</ul>

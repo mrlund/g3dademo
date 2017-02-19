@@ -1,0 +1,151 @@
+{
+    "questions": [
+        {
+            "type": "poll",
+            "questionId": 5010401,
+            "question": "I can see myself in a job that requires math or data analytics.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree",
+                    "buttonType": "face-strongly-agree"
+                },
+                {
+                    "answer": "Agree",
+                    "buttonType": "face-agree"
+                },
+                {
+                    "answer": "Not Sure",
+                    "buttonType": "face-not-sure"
+                },
+                {
+                    "answer": "Disagree",
+                    "buttonType": "face-disagree"
+                },
+                {
+                    "answer": "Strongly Disagree",
+                    "buttonType": "face-strongly-disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 5010402,
+            "question": "I'm not hessitant about taking math classes.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
+                },
+                {
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
+                },
+                {
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
+                },
+                {
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
+                },
+                {
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 5010403,
+            "question": "Reading and understanding articles with lots of data is easy.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 5010404,
+            "question": "I know how to analyze  and interpret data while looking at a chart or graph.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree",
+                    "buttonType": "face-strongly-agree"
+                },
+                {
+                    "answer": "Agree",
+                    "buttonType": "face-agree"
+                },
+                {
+                    "answer": "Not Sure",
+                    "buttonType": "face-not-sure"
+                },
+                {
+                    "answer": "Disagree",
+                    "buttonType": "face-disagree"
+                },
+                {
+                    "answer": "Strongly Disagree",
+                    "buttonType": "face-strongly-disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 5010405,
+            "question": "I would consider taking courses focusing on math in college/university.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        },
+        {
+            "type": "poll",
+            "questionId": 5010406,
+            "question": "Many interesting careers involve math or data.",
+            "answers": [
+                {
+                    "answer": "Strongly Agree"
+                },
+                {
+                    "answer": "Agree"
+                },
+                {
+                    "answer": "Not Sure"
+                },
+                {
+                    "answer": "Disagree"
+                },
+                {
+                    "answer": "Strongly Disagree"
+                }                                
+            ]
+        }                                        
+    ]
+}

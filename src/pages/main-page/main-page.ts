@@ -370,85 +370,89 @@ export class MainPage implements OnInit{
           new ContentItem('curriculum-eval', 'How did we do?', PollingPage)
         ])
       ]),
-      new MenuItem('Project 5 Stock Market', 5, 0, [
+      new MenuItem('5: The Stock Market', 5, 0, [
         new MenuItem('Project Introduction', 5, 1, null, [
-          new AnimationContentItem('project-introduction-roadmap', 'Introduction', ContentPage, 'p5s1'),
+          new ContentItem('roadmap', 'Project Roadmap', ContentPage),
           new ContentItem('project-statement', 'Project Statement', ContentPage),
-          new ContentItem('what-do-you-think', 'What Do You Think', ContentPage),
-          new ContentItem('what-do-you-know', 'What Do Yo Know', ContentPage),
+          new ContentItem('what-do-you-think', 'What Do You Think', PollingPage),
+          new ContentItem('what-do-you-know', 'What Do Yo Know', AnswerQuestionPage),
         ]),
         new MenuItem('Project Background', 5, 2, null, [
             new ContentItem('session-roadmap', 'Session Roadmap', ContentPage),
-            new AnimationContentItem('animation', 'Animation' , ContentPage, 'p5s2'),
+            new AnimationContentItem('animation', 'The Stock Market' , ContentPage, 'p5s1'),
             new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
             new ContentItem('processing', 'Processing', AnswerQuestionPage),
             new ContentItem('generalizing', 'Generalizing', QuestionPeerReviewPage),
             new ContentItem('applying', 'Applying', AnswerQuestionPage)
         ]),
         new MenuItem('Researching Stock Performance', 5, 3, null, [
-          new ContentItem('roadmap', 'Roadmap: Researching Stock Performance', ContentPage),
-          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s3'),
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Charging Bull', ContentPage, 'p5s2'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
           new ContentItem('applying', 'Applying', ContentPage),
         ]),
-        new MenuItem('Gain and Losses', 5, 4, null, [
-          new ContentItem('roadmap', 'Session 4: Gains and Losses', ContentPage),
-          new AnimationContentItem('animation', 'Session 4: Animation', ContentPage, 'p5s4'),
-          new ContentItem('experiencing', 'Experiencing', AnswerQuestionPage),
+        new MenuItem('Gains and Losses', 5, 4, null, [
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Gains & Losses', ContentPage, 'p5s3'),
+          new ContentItem('experiencing', 'Buying and Selling', AnswerQuestionPage),
           new ContentItem('processing', 'Processing', QuestionPeerReviewPage),
           new ContentItem('generalizing', 'Generalizing', QuestionPeerReviewPage),
         ]),
         new MenuItem('Stock Market Simulation Part 1', 5, 5, null, [
-          new ContentItem('roadmap', 'Stock Market Simulation (pt.1) Roadmap', ContentPage),
-          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s5'),
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s4'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', AnswerQuestionPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
         ]),
         new MenuItem('Stock Market Simulation Part 2', 5, 6, null, [
-          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
-          new AnimationContentItem('animation', 'Stock Market Simulation (pt.2) Roadmap', ContentPage, 'p5s6'),
-          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s5'),
+          new ContentItem('experiencing', 'Simulation Part 1', ContentPage),
+          new ContentItem('processing', 'Simulation Part 2', ContentPage),
+          new ContentItem('generalizing', 'Simulation Part 3', ContentPage),
+          new ContentItem('applying', 'Debrief', AnswerQuestionPage)
         ]),
-        new MenuItem('Stock Market Simulation (pt.2)', 5, 7, null, [
-          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
-          new ContentItem('animation', 'Animation', ContentPage),
-          new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage),
-        ]),
-        new MenuItem('Stock Market Simulation (pt.2)', 5, 8, null, [
-          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
-          new ContentItem('animation', 'Animation', ContentPage),
+        new MenuItem('Stock Market Trends', 5, 7, null, [
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s6'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Applying', ContentPage),
         ]),
-        new MenuItem('Stock Market Simulation (pt.2)', 5, 9, null, [
-          new ContentItem('roadmap', 'Stock Market Simulation (pt.2)', ContentPage),
-          new ContentItem('animation', 'Animation', ContentPage),
+        new MenuItem('Line of best fit', 5, 8, null, [
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s7'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
           new ContentItem('applying', 'Applying', ContentPage),
         ]),
-        new MenuItem('Project Workshop', 5, 10, null, [
+        new MenuItem('Stock Days Part 1', 5, 9, null, [
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s8'),
+          new ContentItem('experiencing', 'Experiencing', ContentPage),
+          new ContentItem('processing', 'Processing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('applying', 'Applying', ContentPage),
+        ]),
+        new MenuItem('Stock Days Check-In', 5, 10, null, [
           new ContentItem('roadmap', 'Project Workshop', ContentPage),
           new ContentItem('animation', 'Project Workshop', ContentPage),
         ]),
         new MenuItem('Project Presentation', 5, 11, null, [
-          new ContentItem('roadmap', 'Project Workshop', ContentPage),
-          new ContentItem('animation', 'Project Workshop', ContentPage),
-          new ContentItem('experiencing', 'Experiencing', ContentPage),
-          new ContentItem('processing', 'Processing', AnswerQuestionPage)
+          new ContentItem('roadmap', 'Session Roadmap', ContentPage),
+          new ContentItem('content-rubric', 'Content Rubric', ContentPage),
+          new ContentItem('presentation-rubric', 'Presentation rubric', ContentPage),
+          new ContentItem('evaluations', 'Evaluating Presentations', AnswerQuestionPage)
+
         ]),
         new MenuItem('Summary/quiz', 5, 12, null, [
-          new ContentItem('what-did-you-learn', 'Summary/Quiz', ContentPage),
-          new ContentItem('what-do-you-know', 'Summary/Quiz', ContentPage)
+          new ContentItem('what-do-you-think', 'What do you think?', PollingPage),
+          new ContentItem('what-do-you-know', 'What did you learn?', AnswerQuestionPage)
         ])
       ])
     ];

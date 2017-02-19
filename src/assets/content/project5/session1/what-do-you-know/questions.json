@@ -1,0 +1,57 @@
+{
+    "questions": [
+        {
+            "type": "multiple-choice",
+            "questionId": 5010501,
+            "question": "The slope of a graph represents the...",
+            "answers": [
+                {
+                    "answer": "Rate of Change",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "Type of Data",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "Price of a Stock",
+                    "isCorrect": false
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 5010502,
+            "question": "A steeper slope means a stock is a good investment.",
+            "answers": [
+                {
+                    "answer": "True",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "False",
+                    "isCorrect": true
+                }
+            ]
+        },
+        {
+            "type": "multiple-choice",
+            "questionId": 5010503,
+            "question": "The intercept of a linear model is also called",
+            "answers": [
+                {
+                    "answer": "The constant term",
+                    "isCorrect": true
+                },
+                {
+                    "answer": "The best fit",
+                    "isCorrect": false
+                },
+                {
+                    "answer": "The trend line",
+                    "isCorrect": false
+                }
+            ]
+        }
+    ]
+}
