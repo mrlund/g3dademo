@@ -92,7 +92,6 @@ div.polling-button.votedFor {
 
 .polling-button {
   width: 100%;
-  max-width: 250px;
   margin: 10px;
   font-weight: 900;
   font-size: 20px;
@@ -145,26 +144,46 @@ div.polling-button.votedFor {
     font-weight: 100;
   }
 
-  .polling-icon.thumb-agree, .polling-icon.thumb-disagree {
+  .polling-icon.thumb-agree {
     ion-icon {
-      margin-top: 7px;
+      margin-top: 6px;
     }
     background: rgb(229, 5, 58);
     color: #ffffff;
     font-size: 30px;
   }
-  .polling-icon.thumb-strongly-agree, .polling-icon.thumb-strongly-disagree {
+
+  .polling-icon.thumb-disagree {
     ion-icon {
-      margin-top: 2px;
+      margin-top: 9px;
+    }
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+    font-size: 30px;
+  }
+  .polling-icon.thumb-strongly-agree {
+    ion-icon {
+      margin-top: 1px;
     }
     background: rgb(229, 5, 58);
     color: #ffffff;
     font-size: 40px;
   }
+  .polling-icon.thumb-strongly-disagree {
+    ion-icon {
+      margin-top: 3px;
+    }
+    background: rgb(229, 5, 58);
+    color: #ffffff;
+    font-size: 40px;
+  }
+
   .polling-icon.face-not-sure, .polling-icon.thumb-not-sure {
+    ion-icon {
+      margin-top: -10px;
+    }
     background: rgb(229, 5, 58);
     color: #ffffff;
   }
-
 }
 
