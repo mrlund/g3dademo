@@ -7,24 +7,24 @@
             "answers": [
                 {
                     "answer": "Strongly Agree",
-                    "buttonType": "face-strongly-agree"
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
                     "answer": "Agree",
-                    "buttonType": "face-agree"
+                    "buttonType": "thumb-agree"
                 },
                 {
                     "answer": "Not Sure",
-                    "buttonType": "face-not-sure"
+                    "buttonType": "thumb-not-sure"
                 },
                 {
                     "answer": "Disagree",
-                    "buttonType": "face-disagree"
+                    "buttonType": "thumb-disagree"
                 },
                 {
                     "answer": "Strongly Disagree",
-                    "buttonType": "face-strongly-disagree"
-                }                                
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
         },
         {
@@ -51,7 +51,7 @@
                 {
                     "answer": "Strongly Disagree",
                     "buttonType": "thumb-strongly-disagree"
-                }                                
+                }
             ]
         },
         {
@@ -60,20 +60,25 @@
             "question": "Reading and understanding articles with lots of data is easy.",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
-                }                                
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
         },
         {
@@ -83,24 +88,24 @@
             "answers": [
                 {
                     "answer": "Strongly Agree",
-                    "buttonType": "face-strongly-agree"
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
                     "answer": "Agree",
-                    "buttonType": "face-agree"
+                    "buttonType": "thumb-agree"
                 },
                 {
                     "answer": "Not Sure",
-                    "buttonType": "face-not-sure"
+                    "buttonType": "thumb-not-sure"
                 },
                 {
                     "answer": "Disagree",
-                    "buttonType": "face-disagree"
+                    "buttonType": "thumb-disagree"
                 },
                 {
                     "answer": "Strongly Disagree",
-                    "buttonType": "face-strongly-disagree"
-                }                                
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
         },
         {
@@ -109,20 +114,25 @@
             "question": "I would consider taking courses focusing on math in college/university.",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
-                }                                
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
         },
         {
@@ -131,21 +141,26 @@
             "question": "Many interesting careers involve math or data.",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
-                }                                
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
-        }                                        
+        }
     ]
 }

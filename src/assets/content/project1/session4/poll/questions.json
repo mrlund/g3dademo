@@ -6,20 +6,25 @@
             "question": "How confident do you feel creating a box and whisker plot?",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
-                }                                
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
         }
     ]

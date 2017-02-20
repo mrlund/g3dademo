@@ -6,20 +6,25 @@
             "question": "Now that you've collected and analyzed your own data, do using graphs make data easier to understand?",
             "answers": [
                 {
-                    "answer": "Strongly Agree"
+                    "answer": "Strongly Agree",
+                    "buttonType": "thumb-strongly-agree"
                 },
                 {
-                    "answer": "Agree"
+                    "answer": "Agree",
+                    "buttonType": "thumb-agree"
                 },
                 {
-                    "answer": "Not Sure"
+                    "answer": "Not Sure",
+                    "buttonType": "thumb-not-sure"
                 },
                 {
-                    "answer": "Disagree"
+                    "answer": "Disagree",
+                    "buttonType": "thumb-disagree"
                 },
                 {
-                    "answer": "Strongly Disagree"
-                }                                
+                    "answer": "Strongly Disagree",
+                    "buttonType": "thumb-strongly-disagree"
+                }
             ]
 
         }
