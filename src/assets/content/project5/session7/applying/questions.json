@@ -1,0 +1,25 @@
+{
+  "questions": [
+    {
+      "type": "discussion",
+      "questionId": 5070601,
+      "question": "Are the data you plotted linear?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5070602,
+      "question": "Is performance over 1 month enough to make a good judgment of the performance of the stock?",
+      "answers": [
+      ]
+    },
+    {
+      "type": "discussion",
+      "questionId": 5070603,
+      "question": "If you only had one month’s data, could you make a statement about the performance of the stock?",
+      "answers": [
+      ]
+    }
+  ]
+}

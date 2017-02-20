@@ -420,7 +420,7 @@ export class MainPage implements OnInit{
           new AnimationContentItem('animation', 'Animation', ContentPage, 'p5s6'),
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
-          new ContentItem('generalizing', 'Generalizing', ContentPage),
+          new ContentItem('generalizing', 'Generalizing', AnswerQuestionPage),
           new ContentItem('applying', 'Applying', ContentPage),
         ]),
         new MenuItem('Line of best fit', 5, 8, null, [
@@ -429,7 +429,7 @@ export class MainPage implements OnInit{
           new ContentItem('experiencing', 'Experiencing', ContentPage),
           new ContentItem('processing', 'Processing', ContentPage),
           new ContentItem('generalizing', 'Generalizing', ContentPage),
-          new ContentItem('applying', 'Applying', ContentPage),
+          new ContentItem('applying', 'Applying', AnswerQuestionPage),
         ]),
         new MenuItem('Stock Days Part 1', 5, 9, null, [
           new ContentItem('roadmap', 'Session Roadmap', ContentPage),

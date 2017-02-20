@@ -1,0 +1,28 @@
+{
+  "questions": [
+    {
+      "type": "discussion",
+      "questionId": 5080601,
+      "question": "What is the R2 value for the dataset?",
+      "answers": []
+    },
+    {
+      "type": "discussion",
+      "questionId": 5080602,
+      "question": "Was your prediction of the trend of the data accurate based on the R2 value?",
+      "answers": []
+    },
+    {
+      "type": "discussion",
+      "questionId": 5080603,
+      "question": "Does the data appear to really be linear?",
+      "answers": []
+    },
+    {
+      "type": "discussion",
+      "questionId": 5080604,
+      "question": "Add at least one more trend line to the data – does it fit better?",
+      "answers": []
+    }
+  ]
+}
