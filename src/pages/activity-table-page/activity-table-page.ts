@@ -13,14 +13,15 @@ import {Http, Headers} from "@angular/http";
 import {ModalService} from "../../services/modalService";
 import {Globals} from "../../app/globals";
 import {Subscription} from "rxjs/Subscription";
+import { BaseContentPage } from '../page-types';
 
 @Component({
     templateUrl: 'activity-table-page.html'
 })
-export class ActivityTablePage {
+export class ActivityTablePage extends BaseContentPage {
     randomSuggestions: Array<any> = [];
     selectedItem: any;
-    pageContent: string;
+    _pageContent: string;
     categories: Array<any>;
     table: Array<any> = [];
     addList: Array<any> = [];
@@ -51,6 +52,7 @@ export class ActivityTablePage {
                 public toastController: ToastController,
                 public modalService: ModalService,
                 public _globals: Globals) {
+        super();
         // If we navigated to this page, we will have an item available as a nav param
         this.classroomMode =_globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
@@ -67,7 +69,7 @@ export class ActivityTablePage {
         }
     }
     ngOnInit() {
-        let self = this;
+        super.ngOnInit();
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.categories = data.categories;
@@ -80,23 +82,6 @@ export class ActivityTablePage {
                    });
                 });
                 this.nextCategoryName = this.addList[0] && this.addList[0].item.category.categoryId ? this.addList[0].item.category.name : "";
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-        this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
-            (data) => {
-                self.pageContent = data['_body'];
-                self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
-                    (data) => {
-                        self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel, self);
-                        self.characterPhraseImg.draw(self.pageModel);
-                    }
-                ).catch((e) => {
-                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel, self);
-                })
             },
             (error) => {
                 console.log(error);

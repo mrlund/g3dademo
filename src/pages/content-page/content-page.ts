@@ -10,13 +10,14 @@ import {CharacterPhraseImg} from "../../components/character-phrase-img/characte
 import {ModalService} from "../../services/modalService";
 import {UserService} from "../../services/userService";
 import {ChannelService} from "../../services/channelService";
+import { BaseContentPage } from '../page-types';
 
 @Component({
     templateUrl: 'content-page.html'
 })
-export class ContentPage {
+export class ContentPage extends BaseContentPage {
     selectedItem: ContentItem;
-    pageContent: string;
+    _pageContent: string;
     pageModel: string;
     animationName: string = '';
     pauseAnimation: boolean = true;
@@ -35,6 +36,7 @@ export class ContentPage {
                 public channelService:ChannelService,
                 public modalService: ModalService,
                 public events: Events) {
+        super();
         // If we navigated to this page, we will have an item available as a nav param
         this.selectedItem = navParams.get('item');
         this.userData = userService.getUserData();
@@ -48,29 +50,10 @@ export class ContentPage {
             this.selectedItem.menuItem = new MenuItem('Title', this.selectedItem.project, this.selectedItem.session, null, [this.selectedItem]);
             this.selectedItem.page = 2;
         }
-        this.pageContent = "<h1>This is a content page!</h1>";
+        this._pageContent = "<h1>This is a content page!</h1>";
         this.pageModel = null;
     }
-    ngOnInit(){
-        let self = this;
-        this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
-            (data) => {
-                self.pageContent = data['_body'];
-                self.content.loadModel(self.selectedItem.menuItem.project, self.selectedItem.menuItem.session, self.selectedItem.urlName).then(
-                    (data) => {
-                        self.pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        self.characterPhraseImg.draw(self.pageModel);
-                        self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
-                    }
-                ).catch((e) => {
-                    self.innerContent.recompileTemplate(self.pageContent, self.pageModel);
-                })
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-    }
+
     syncPage(){
         this.channelService.getConnection().proxies.inclasshub.invoke('forceSyncClients', this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.page);
     }
