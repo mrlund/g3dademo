@@ -14,11 +14,12 @@ import {ModalService} from "../../services/modalService";
 import {Globals} from "../../app/globals";
 import {ApiService} from "../../services/apiService";
 import {Subscription} from "rxjs/Subscription";
+import { BaseContentPage } from '../page-types';
 
 @Component({
     templateUrl: 'answer-question-page.html'
 })
-export class AnswerQuestionPage {
+export class AnswerQuestionPage extends BaseContentPage {
     selectedItem: any;
     public _pageContent: string;
     public isClassroomModeOn: boolean = false;
@@ -44,6 +45,7 @@ export class AnswerQuestionPage {
                 public menu: MenuController,
                 public _globals: Globals,
                 public apiService: ApiService) {
+        super();
         this.classroomModeSub = _globals.isClassroomModeOn.subscribe((data) => {
             this.isClassroomModeOn = data;
         });
@@ -60,26 +62,10 @@ export class AnswerQuestionPage {
         }
     }
     ngOnInit() {
+        super.ngOnInit();
         this.content.loadQuestions(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
             (data) => {
                 this.questions = data;
-            },
-            (error) => {
-                console.log(error);
-            }
-        );
-        this.content.loadContent(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
-            (data) => {
-                this._pageContent = data._body;
-                this.content.loadModel(this.selectedItem.menuItem.project, this.selectedItem.menuItem.session, this.selectedItem.urlName).then(
-                    (data) => {
-                        let pageModel = data['_body'] ? JSON.parse(data['_body']) : null;
-                        this.innerContent.recompileTemplate(this._pageContent, pageModel, this);
-                        this.characterPhraseImg.draw(pageModel);
-                    }
-                ).catch((e) => {
-                    this.innerContent.recompileTemplate(this._pageContent, '');
-                })
             },
             (error) => {
                 console.log(error);
